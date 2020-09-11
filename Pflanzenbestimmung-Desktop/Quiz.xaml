@@ -31,13 +31,13 @@
 
 
         <!-- Felder -->
-        <!-- Links -->
         <Grid Grid.Row="1" Grid.ColumnSpan="2" Visibility="Visible">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
 
+            <!-- Links -->
             <StackPanel Grid.Column="0">
                 <Grid Style="{DynamicResource QuizGridStyle}">
                     <Grid.ColumnDefinitions>

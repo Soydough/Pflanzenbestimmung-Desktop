@@ -23,8 +23,8 @@
             <Button Content="Aktuelles Quiz starten" />
             <Button Content="Eigenes Quiz starten" />
             <Button Content="Statistik" />
-            <Button Content="Einstellungen" />
-            <Button Content="Administratives" />
+            <Button Content="Administratives" Visibility="Visible" />
+            <Button Content="Ausloggen" />
         </StackPanel>
     </Grid>
 </UserControl>

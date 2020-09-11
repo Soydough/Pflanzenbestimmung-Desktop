@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace Pflanzenbestimmung_Desktop
 {
     /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
+    /// Interaktionslogik für Verwaltung.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Verwaltung : UserControl
     {
-        public MainWindow()
+        public Verwaltung()
         {
             InitializeComponent();
-            ContentHolder.Content = new Registrierung();
         }
     }
 }

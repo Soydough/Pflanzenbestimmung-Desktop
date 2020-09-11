@@ -12,7 +12,11 @@
         <Setter Property="Background" Value="{StaticResource backgroundColor}" />
         <Style.Resources>
 
-            <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}" />
+            <Style TargetType="Button">
+                <Style.Setters>
+                    <Setter Property="Background" Value="{StaticResource buttonColor}" />
+                </Style.Setters>
+            </Style>
 
             <Style TargetType="StackPanel">
                 <Setter Property="Background" Value="{StaticResource backgroundColor}" />
@@ -69,6 +73,17 @@
         </Style.Resources>
     </Style>
 
+
+    <Style TargetType="ScrollViewer" x:Key="ErscheinendePflanzenButtonsStyle">
+        <Style.Resources>
+            <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle}">
+                <Setter Property="Margin" Value="20, 5" />
+                <Setter Property="Height" Value="40" />
+            </Style>
+        </Style.Resources>
+    </Style>
+
+
     <Style TargetType="Grid" x:Key="QuizGridStyle">
         <Style.Resources>
             <Style TargetType="Label">
@@ -85,6 +100,30 @@
     <!-- Style für Benutzernamen-Textboxen -->
     <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib"
            x:Key="BenutzernameStyle">
+        <Style.Resources>
+            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                <VisualBrush.Visual>
+                    <Label Content="Benutzername" Foreground="LightGray" />
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Style.Resources>
+        <Style.Triggers>
+            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+            </Trigger>
+            <Trigger Property="Text" Value="{x:Null}">
+                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="Background" Value="White" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <!-- Style für Pflanzen-Textboxen -->
+    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+           x:Key="PflanzenStyle">
         <Style.Resources>
             <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                 <VisualBrush.Visual>
