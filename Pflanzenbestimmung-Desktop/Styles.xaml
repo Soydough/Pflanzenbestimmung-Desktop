@@ -1,0 +1,107 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Pflanzenbestimmung_Desktop"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib">
+
+    <SolidColorBrush x:Key="backgroundColor" Color="#71b85d" />
+    <SolidColorBrush x:Key="buttonColor" Color="#306820" />
+
+
+    <Style TargetType="UserControl"
+           x:Key="HauptStyle">
+        <Setter Property="Background" Value="{StaticResource backgroundColor}" />
+        <Style.Resources>
+
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}" />
+
+            <Style TargetType="StackPanel">
+                <Setter Property="Background" Value="{StaticResource backgroundColor}" />
+            </Style>
+
+            <Style TargetType="Border">
+                <Setter Property="Background" Value="White" />
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style x:Key="StackpanelStyle" TargetType="StackPanel">
+        <Style.Setters>
+            <Setter Property="Background" Value="{StaticResource backgroundColor}" />
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="ButtonStyle" TargetType="Control">
+        <Style.Setters>
+            <Setter Property="Background" Value="{StaticResource buttonColor}" />
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="ToggleButtonStyle" TargetType="ToggleButton" BasedOn="{StaticResource ButtonStyle}" />
+
+    <Style TargetType="StackPanel" x:Key="HauptmenüButtonsStyle">
+        <Style.Resources>
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="Margin" Value="20" />
+                <Setter Property="Height" Value="40" />
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style TargetType="StackPanel" x:Key="EinstellungenButtonsStyle" BasedOn="{StaticResource StackpanelStyle}">
+        <Style.Resources>
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="Margin" Value="20, 20, 20, 5" />
+                <Setter Property="Height" Value="40" />
+            </Style>
+            <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle}">
+                <Setter Property="Margin" Value="20" />
+                <Setter Property="Height" Value="40" />
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style TargetType="StackPanel" x:Key="AdministrationButtonsStyle" BasedOn="{StaticResource StackpanelStyle}">
+        <Style.Resources>
+            <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+                <Setter Property="Margin" Value="20, 50, 20, 5" />
+                <Setter Property="Height" Value="40" />
+            </Style>
+        </Style.Resources>
+    </Style>
+
+    <Style TargetType="Grid" x:Key="QuizGridStyle">
+        <Style.Resources>
+            <Style TargetType="Label">
+                <Setter Property="HorizontalAlignment" Value="Right" />
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Margin" Value="20,5,20,0" />
+                <Setter Property="Grid.Column" Value="1" />
+            </Style>
+        </Style.Resources>
+    </Style>
+
+
+    <!-- Style für Benutzernamen-Textboxen -->
+    <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+           x:Key="BenutzernameStyle">
+        <Style.Resources>
+            <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                <VisualBrush.Visual>
+                    <Label Content="Benutzername" Foreground="LightGray" />
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Style.Resources>
+        <Style.Triggers>
+            <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+            </Trigger>
+            <Trigger Property="Text" Value="{x:Null}">
+                <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter Property="Background" Value="White" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
