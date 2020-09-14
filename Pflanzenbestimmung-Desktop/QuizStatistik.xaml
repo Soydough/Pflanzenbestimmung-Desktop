@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="Pflanzenbestimmung_Desktop.QuizStatistik"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Pflanzenbestimmung_Desktop"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Style="{DynamicResource HauptStyle}">
+    <StackPanel>
+        <Grid Name="GattungsnameGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Gattungsname:" />
+            <Label Name="GattungsnameLabel" Grid.Column="1" Content="Euphorbia" Foreground="Red" />
+        </Grid>
+        <Grid Name="ArtnameGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Artname:" />
+            <Label Grid.Column="1" Name="ArtnameLabel" Content="Pulcherrima" Foreground="Green" />
+        </Grid>
+        <Grid Name="DeutscherNameGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Deutscher Name:" />
+            <Label Grid.Column="1" Name="DeutscherNameLabel" Content="Weihnachtsstern, Christstern" Foreground="Green" />
+        </Grid>
+        <Grid Name="FamilieGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Familie:" />
+            <Label Grid.Column="1" Name="FamilieLabel" Content="Euphorbiacae, Wolfsmilchgewächse" Foreground="Red" />
+        </Grid>
+        <Grid Name="HerkunftGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Heimat, Herkunft" />
+            <Label Grid.Column="1" Name="HerkunftLabel" Content="Mexiko, Mittelamerika" Foreground="Red" />
+        </Grid>
+        <Grid Name="BlueteGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Blüte:" />
+            <Label Grid.Column="1" Name="BlueteLabel" Content="zymöse Cyathien" Foreground="Green" />
+        </Grid>
+        <Grid Name="BluetezeitGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Blütezeit:" />
+            <Label Grid.Column="1" Name="BluetezeitLabel" Content="photoperiodische Reaktion" Foreground="Green" />
+        </Grid>
+        <Grid Name="BlattGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Blatt:" />
+            <Label Grid.Column="1" Name="BlattLabel" Content="wechselständig, länglich oval, teilweise gezähnt" Foreground="Red" />
+        </Grid>
+        <Grid Name="HabitusGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Habitus, Wuchs:" />
+            <Label Grid.Column="1" Name="HabitusLabel" Content="aufrecht, verzweigt" Foreground="Green" />
+        </Grid>
+        <Grid Name="BesonderheitenGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Besonderheiten:" />
+            <Label Grid.Column="1" Name="BesonderheitenLabel" Content="farbige Blattmetamorphosen (Hochblätter/Brakteen)" Foreground="Green" />
+        </Grid>
+    </StackPanel>
+</UserControl>

@@ -61,6 +61,15 @@
     <Compile Include="Quiz.xaml.cs">
       <DependentUpon>Quiz.xaml</DependentUpon>
     </Compile>
+    <Compile Include="QuizBildanzeige.xaml.cs">
+      <DependentUpon>QuizBildanzeige.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuizDateneingabe.xaml.cs">
+      <DependentUpon>QuizDateneingabe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuizStatistik.xaml.cs">
+      <DependentUpon>QuizStatistik.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Registrierung.xaml.cs">
       <DependentUpon>Registrierung.xaml</DependentUpon>
     </Compile>
@@ -125,6 +134,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="QuizBildanzeige.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuizDateneingabe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuizStatistik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Registrierung.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,6 +188,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pflanzenplatzhalter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="platzhalter.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

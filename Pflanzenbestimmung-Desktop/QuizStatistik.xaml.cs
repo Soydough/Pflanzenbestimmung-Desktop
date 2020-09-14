@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace Pflanzenbestimmung_Desktop
 {
     /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
+    /// Interaktionslogik für QuizStatistik.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class QuizStatistik : UserControl
     {
-        public MainWindow()
+        public QuizStatistik()
         {
             InitializeComponent();
-            ContentHolder.Content = new Anmeldung();
         }
     }
 }
