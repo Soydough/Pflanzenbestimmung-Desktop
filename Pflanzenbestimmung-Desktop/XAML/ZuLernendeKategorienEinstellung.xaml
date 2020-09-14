@@ -40,7 +40,7 @@
             <CheckBox Name="BlueteCheckBox" Content="Blüte" />
             <CheckBox Name="BluetezeitCheckBox" Content="Blütezeit" />
             <CheckBox Name="BlattCheckBox" Content="Blatt" />
-            <CheckBox Name="HabitusCheckBox" Content="Habitus, Wachs" />
+            <CheckBox Name="HabitusCheckBox" Content="Habitus, Wuchs" />
             <CheckBox Name="BesonderheitenCheckBox" Content="Besonderheiten" IsChecked="True" />
         </StackPanel>
 

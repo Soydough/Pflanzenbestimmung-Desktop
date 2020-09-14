@@ -55,110 +55,117 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ErscheinendePflanzenEinstellung.xaml.cs">
+    <Compile Include="XAML\ErscheinendePflanzenEinstellung.xaml.cs">
       <DependentUpon>ErscheinendePflanzenEinstellung.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Quiz.xaml.cs">
-      <DependentUpon>Quiz.xaml</DependentUpon>
+    <Compile Include="XAML\PflanzenAnlegung.xaml.cs">
+      <DependentUpon>PflanzenAnlegung.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QuizBildanzeige.xaml.cs">
+    <Compile Include="XAML\QuizBildanzeige.xaml.cs">
       <DependentUpon>QuizBildanzeige.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QuizDateneingabe.xaml.cs">
+    <Compile Include="XAML\QuizDateneingabe.xaml.cs">
       <DependentUpon>QuizDateneingabe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="QuizStatistik.xaml.cs">
+    <Compile Include="XAML\QuizStatistik.xaml.cs">
       <DependentUpon>QuizStatistik.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Registrierung.xaml.cs">
+    <Compile Include="XAML\Registrierung.xaml.cs">
       <DependentUpon>Registrierung.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Statistik.xaml.cs">
+    <Compile Include="XAML\Statistik.xaml.cs">
       <DependentUpon>Statistik.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Verwaltung.xaml.cs">
+    <Compile Include="XAML\Verwaltung.xaml.cs">
       <DependentUpon>Verwaltung.xaml</DependentUpon>
     </Compile>
-    <Page Include="Administration.xaml">
+    <Compile Include="XAML\ZuLernendeKategorienEinstellung.xaml.cs">
+      <DependentUpon>ZuLernendeKategorienEinstellung.xaml</DependentUpon>
+    </Compile>
+    <Page Include="XAML\Administration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Anmeldung.xaml">
+    <Page Include="XAML\Anmeldung.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Benutzerverwaltung.xaml">
+    <Page Include="XAML\Benutzerverwaltung.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Einstellungen.xaml">
+    <Page Include="XAML\Einstellungen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ErscheinendePflanzenEinstellung.xaml">
+    <Page Include="XAML\ErscheinendePflanzenEinstellung.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Hauptmenü.xaml">
+    <Page Include="XAML\Hauptmenü.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="XAML\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Administration.xaml.cs">
+    <Compile Include="XAML\Administration.xaml.cs">
       <DependentUpon>Administration.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Anmeldung.xaml.cs">
+    <Compile Include="XAML\Anmeldung.xaml.cs">
       <DependentUpon>Anmeldung.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Benutzerverwaltung.xaml.cs">
+    <Compile Include="XAML\Benutzerverwaltung.xaml.cs">
       <DependentUpon>Benutzerverwaltung.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Einstellungen.xaml.cs">
+    <Compile Include="XAML\Einstellungen.xaml.cs">
       <DependentUpon>Einstellungen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Hauptmenü.xaml.cs">
+    <Compile Include="XAML\Hauptmenü.xaml.cs">
       <DependentUpon>Hauptmenü.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="XAML\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Quiz.xaml">
+    <Page Include="XAML\PflanzenAnlegung.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QuizBildanzeige.xaml">
+    <Page Include="XAML\QuizBildanzeige.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QuizDateneingabe.xaml">
+    <Page Include="XAML\QuizDateneingabe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="QuizStatistik.xaml">
+    <Page Include="XAML\QuizStatistik.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Registrierung.xaml">
+    <Page Include="XAML\Registrierung.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Statistik.xaml">
+    <Page Include="XAML\Statistik.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles.xaml">
+    <Page Include="XAML\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Verwaltung.xaml">
+    <Page Include="XAML\Verwaltung.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\ZuLernendeKategorienEinstellung.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,10 +197,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="pflanzenplatzhalter.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="platzhalter.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="XAML\bild_hochladen_platzhalter.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
