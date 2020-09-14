@@ -77,8 +77,9 @@
 
                 <Label Content="Besonderheiten:" Grid.Row="4" />
                 <TextBox x:Name="QuizBesonderheitenTextBox" Grid.Row="4" />
-
             </Grid>
         </StackPanel>
+
+        <Button Content="Weiter" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Width="100" Height="30"/>
     </Grid>
 </UserControl>
