@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -33,8 +32,9 @@ namespace Pflanzenbestimmung_Desktop
 
             string hash = Main.GetHashWithSalt(passwort, benutzername);
 
-            Main.benutzer = Main.datenbankverbindung.BenutzerBekommen(benutzername, hash);
-            if(Main.benutzer.IstGueltig())
+            Main.benutzer = Main.api_anbindung.BenutzerBekommenAsync(benutzername, hash);
+
+            if(Main.benutzer.IstGueltig)
             {
                 MainWindow.changeContent(new Hauptmenü());
             }

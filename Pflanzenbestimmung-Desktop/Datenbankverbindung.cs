@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -41,19 +42,31 @@ namespace Pflanzenbestimmung_Desktop
 
                 ergebnisse = ds.Tables[0].Rows[0].ItemArray;
 
-                //int id = (int)ergebnisse[0];
-                int ausbilderId = Convert.ToInt32(ergebnisse[1]);
-                int ausbildungsArtId = Convert.ToInt32(ergebnisse[2]);
-                int fachrichrichtungId = Convert.ToInt32(ergebnisse[3]);
-                string nutzername = Convert.ToString(ergebnisse[4]);
-                //string passwort = (string)ergebnisse[5];
-
-                b = new Benutzer(ausbilderId, ausbildungsArtId, fachrichrichtungId, nutzername);
-
-                //Wenn Nachname angegeben wurde
-                if (ergebnisse.Length > 6)
+                //Wenn Administrator
+                if (ergebnisse.Length == 4)
                 {
-                    b.name = Convert.ToString(ergebnisse[6]);
+                    //int id = Convert.ToInt32(ergebnisse[0]);
+                    string nutzername = Convert.ToString(ergebnisse[1]);
+                    //string passwort = Convert.ToString(ergebnisse[2]);
+                    int beruf = Convert.ToInt32(ergebnisse[3]);
+                    b = new Benutzer(nutzername, beruf);
+                }
+                else
+                {
+                    //int id = Convert.ToInt32(ergebnisse[0]);
+                    int ausbilderId = Convert.ToInt32(ergebnisse[1]);
+                    int ausbildungsArtId = Convert.ToInt32(ergebnisse[2]);
+                    int fachrichrichtungId = Convert.ToInt32(ergebnisse[3]);
+                    string nutzername = Convert.ToString(ergebnisse[4]);
+                    //string passwort = Convert.ToString(ergebnisse[5]);
+
+                    b = new Benutzer(ausbilderId, ausbildungsArtId, fachrichrichtungId, nutzername);
+
+                    //Wenn Nachname angegeben wurde
+                    if (ergebnisse.Length > 6)
+                    {
+                        b.name = Convert.ToString(ergebnisse[6]);
+                    }
                 }
             }
             catch
@@ -65,3 +78,4 @@ namespace Pflanzenbestimmung_Desktop
         }
     }
 }
+*/

@@ -24,5 +24,11 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
         }
+
+        private void AusloggenButton_Click(object sender, RoutedEventArgs e)
+        {
+            Main.benutzer = null;
+            MainWindow.changeContent(new Anmeldung());
+        }
     }
 }

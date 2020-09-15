@@ -35,8 +35,19 @@ namespace Pflanzenbestimmung_Desktop
 
             switch (o.GetType().Name)
             {
+                case "Administration":
+                    dieses.Title = "Administration";
+                    break;
                 case "Anmeldung":
                     dieses.Title = "Anmeldung";
+                    break;
+                case "Hauptmenü":
+                    dieses.Title = "Pflanzenbestimmung";
+                    if (!Main.benutzer.istAdmin)
+                        ((Hauptmenü)o).AdministrativesButton.Visibility = Visibility.Collapsed;
+                    break;
+                case "Registrierung":
+                    dieses.Title = "Registrierung";
                     break;
                 default:
                     dieses.Title = "Pflanzenbestimmung";
