@@ -8,13 +8,13 @@ namespace Pflanzenbestimmung_Desktop
 {
     public class Benutzer
     {
-        int ausbilderId;
-        int ausbildungsartId;
-        int fachrichtungId;
-        string benutzername;
-        string name;
-        string vorname;
-        int pruefung;
+        public int ausbilderId;
+        public int ausbildungsartId;
+        public int fachrichtungId;
+        public string benutzername;
+        public string name;
+        public string vorname;
+        public int pruefung;
 
         public Benutzer(int ausbilderId, int ausbildungsartId, int fachrichtungId, string benutzername, string name = null,
             string vorname = null, int pruefung = 0)
@@ -34,11 +34,14 @@ namespace Pflanzenbestimmung_Desktop
             this.ausbilderId = ausbilderId;
         }
 
-        bool IstGueltig()
-        {
-            return ausbilderId >= 0;
-        }
-
         public static Benutzer ungueltigerBenutzer = new Benutzer(-1);
+    }
+
+    public static class BenutzerExt
+    {
+        public static bool IstGueltig(this Benutzer b)
+        {
+            return b.ausbilderId >= 0;
+        }
     }
 }

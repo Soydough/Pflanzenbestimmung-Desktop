@@ -32,11 +32,12 @@ namespace Pflanzenbestimmung_Desktop
 
             DataSet ds = new DataSet();
             adapter = new MySqlDataAdapter(query);
-            object[] ergebnisse = new object[ds.Tables[0].Rows.Count];
 
             Benutzer b;
             try
             {
+                object[] ergebnisse = new object[ds.Tables[0].Rows.Count];
+
                 adapter.Fill(ds);
 
                 for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
