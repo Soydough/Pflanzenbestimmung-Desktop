@@ -20,10 +20,17 @@ namespace Pflanzenbestimmung_Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static ContentControl contentHolder;
         public MainWindow()
         {
             InitializeComponent();
-            ContentHolder.Content = new Anmeldung();
+            contentHolder = ContentHolder;
+            changeContent(new Anmeldung());
+        }
+
+        public static void changeContent(object o)
+        {
+            contentHolder.Content = o;
         }
     }
 }

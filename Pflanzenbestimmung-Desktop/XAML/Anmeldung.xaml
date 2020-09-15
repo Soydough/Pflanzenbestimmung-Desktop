@@ -11,12 +11,13 @@
     <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
         <Label Content="Benutzername"/>
         <Border>
-            <TextBox x:Name="AnmdelungBenutzernameTextBox" Style="{DynamicResource ResourceKey=BenutzernameStyle}" Width="150"/>
+            <TextBox x:Name="AnmeldungBenutzernameTextBox" Style="{DynamicResource ResourceKey=BenutzernameStyle}" Width="150"/>
         </Border>
 
         <Label Content="Passwort:"/>
         <PasswordBox x:Name="AnmeldungPasswordBox"/>
 
-        <Button x:Name="AnmeldungButton" Content="Anmelden" Margin="0,30,0,0"/>
+        <Button x:Name="AnmeldungButton" Content="Anmelden" Margin="0,30,0,0"
+                Click="AnmeldungButton_Click"/>
     </StackPanel>
 </UserControl>

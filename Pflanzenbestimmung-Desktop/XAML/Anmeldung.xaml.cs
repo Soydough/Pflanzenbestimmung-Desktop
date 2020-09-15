@@ -24,5 +24,15 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
         }
+
+        private void AnmeldungButton_Click(object sender, RoutedEventArgs e)
+        {
+            string benutzername = AnmeldungBenutzernameTextBox.Text;
+            string passwort = AnmeldungPasswordBox.Password;
+
+            string hash = Main.GetHashWithSalt(passwort, benutzername);
+
+            Main.benutzer = Main.datenbankverbindung.BenutzerBekommen(benutzername, hash);
+        }
     }
 }
