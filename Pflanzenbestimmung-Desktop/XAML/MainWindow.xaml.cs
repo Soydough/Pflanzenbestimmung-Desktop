@@ -20,17 +20,28 @@ namespace Pflanzenbestimmung_Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static ContentControl contentHolder;
+        public static MainWindow dieses;
+
         public MainWindow()
         {
             InitializeComponent();
-            contentHolder = ContentHolder;
+            dieses = this;
             changeContent(new Anmeldung());
         }
 
         public static void changeContent(object o)
         {
-            contentHolder.Content = o;
+            dieses.ContentHolder.Content = o;
+
+            switch (o.GetType().Name)
+            {
+                case "Anmeldung":
+                    dieses.Title = "Anmeldung";
+                    break;
+                default:
+                    dieses.Title = "Pflanzenbestimmung";
+                    break;
+            }
         }
     }
 }

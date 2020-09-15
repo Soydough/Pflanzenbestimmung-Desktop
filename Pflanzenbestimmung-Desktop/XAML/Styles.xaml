@@ -50,7 +50,7 @@
     <Style TargetType="StackPanel" x:Key="HauptmenüButtonsStyle">
         <Style.Resources>
             <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-                <Setter Property="Margin" Value="20" />
+                <Setter Property="Margin" Value="15" />
                 <Setter Property="Height" Value="40" />
             </Style>
         </Style.Resources>

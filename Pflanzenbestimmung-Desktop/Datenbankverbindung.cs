@@ -36,21 +36,25 @@ namespace Pflanzenbestimmung_Desktop
             Benutzer b;
             try
             {
-                object[] ergebnisse = new object[ds.Tables[0].Rows.Count];
-
                 adapter.Fill(ds);
+                object[] ergebnisse = new object[ds.Tables[0].Rows[0].ItemArray.Length];
 
-                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-                {
-                    ergebnisse[i] = ds.Tables[0].Rows[i].ItemArray[0] + ", " + ds.Tables[0].Rows[i].ItemArray[1];
-                }
+                ergebnisse = ds.Tables[0].Rows[0].ItemArray;
+
+                //int id = (int)ergebnisse[0];
+                int ausbilderId = Convert.ToInt32(ergebnisse[1]);
+                int ausbildungsArtId = Convert.ToInt32(ergebnisse[2]);
+                int fachrichrichtungId = Convert.ToInt32(ergebnisse[3]);
+                string nutzername = Convert.ToString(ergebnisse[4]);
+                //string passwort = (string)ergebnisse[5];
+
+                b = new Benutzer(ausbilderId, ausbildungsArtId, fachrichrichtungId, nutzername);
 
                 //Wenn Nachname angegeben wurde
-                if (ergebnisse.Length == 5)
-                    b = new Benutzer((int)ergebnisse[0], (int)ergebnisse[1], (int)ergebnisse[2], (string)ergebnisse[3], (string)ergebnisse[4]);
-                //Wenn kein echter Name angegeben wurde
-                else
-                    b = new Benutzer((int)ergebnisse[0], (int)ergebnisse[1], (int)ergebnisse[2], (string)ergebnisse[3]);
+                if (ergebnisse.Length > 6)
+                {
+                    b.name = Convert.ToString(ergebnisse[6]);
+                }
             }
             catch
             {
