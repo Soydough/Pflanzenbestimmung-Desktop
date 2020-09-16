@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -23,6 +11,31 @@ namespace Pflanzenbestimmung_Desktop
         public Administration()
         {
             InitializeComponent();
+        }
+
+        private void HauptmenüButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new Hauptmenü());
+        }
+
+        private void Benutzerverwaltung_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new Benutzerverwaltung());
+        }
+
+        private void ZuLernendeKategorienEinstellungButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new ZuLernendeKategorienEinstellung());
+        }
+
+        private void NeuePflanzeButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new PflanzenAnlegung());
+        }
+
+        private void NeuerBenutzer_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new Registrierung());
         }
     }
 }

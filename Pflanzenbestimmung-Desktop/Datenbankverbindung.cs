@@ -1,11 +1,11 @@
-﻿/*
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Windows;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -15,67 +15,165 @@ namespace Pflanzenbestimmung_Desktop
         string connectionString = "Server='localhost';Database='pflanzenbestimmung';Uid='root';Pwd='citrix170890';";
         MySqlDataAdapter adapter;
 
+        #region MySQL-Befehl-Strings
+        private readonly string administratorenIdBekommenString = "SELECT id from admins where nutzername = @dbnutzername";
+        private readonly string benutzerHinzufügenString = "INSERT into azubis (nutzername, passwort, fk_ausbilder, fk_ausbildungsart, fk_fachrichtung) values (@dbnutzername, @dbpasswort, @dbausbilder, @dbausbildungsart, @dbfachrichtung)";
+
+        private readonly string ausbildungsArtenBekommenString = "SELECT * from ausbildungsart";
+        private readonly string fachrichtungenBekommenString = "SELECT * from  fachrichtung";
+        private readonly string ausbilderBekommenString = "SELECT * from admins where id != 1";
+
+        private readonly string pflanzeHinzufügenString = "INSERT into pflanze (gattungsname, artname, dename, famname, herkunft, bluete, bluetezeit, blatt, wuchs, besonderheiten) values " +
+            "(@dbgattung, @dbart, @dbdename, @dbfamname, @dbherkunft, @dbbluete, @dbbluetezeit, @dbblatt, @dbwuchs, @dbbesonderheiten)";
+        #endregion
+
         public Datenbankverbindung()
         {
             connection = new MySqlConnection(connectionString);
         }
 
-
-        public Benutzer BenutzerBekommen(string benutzername, string passwort)
+        public bool FuegePflanzeHinzu(string gattung, string art, string dename,
+            string famname, string herkunft, string bluete, string bluetezeit,
+            string blatt, string wuchs, string besonderheiten)
         {
-            MySqlParameter benutzernameParameter = new MySqlParameter("dbbenutzername", benutzername);
-            MySqlParameter passwortParameter = new MySqlParameter("dbpasswort", passwort);
+            MySqlCommand query = new MySqlCommand(pflanzeHinzufügenString, connection);
 
-            MySqlCommand query = new MySqlCommand("call check_login(@dbbenutzername, @dbpasswort)", connection);
+            query.Parameters.AddWithValue("dbgattung", gattung);
+            query.Parameters.AddWithValue("dbart", art);
+            query.Parameters.AddWithValue("dbdename", dename);
+            query.Parameters.AddWithValue("dbfamname", famname);
+            query.Parameters.AddWithValue("herkunft", herkunft);
+            query.Parameters.AddWithValue("bluete", bluete);
+            query.Parameters.AddWithValue("bluetezeit", bluetezeit);
+            query.Parameters.AddWithValue("blatt", blatt);
+            query.Parameters.AddWithValue("wuchs", wuchs);
+            query.Parameters.AddWithValue("besonderheiten", besonderheiten);
 
-            query.Parameters.Add(benutzernameParameter);
-            query.Parameters.Add(passwortParameter);
+            try
+            {
+                connection.Open();
+                query.ExecuteNonQuery();
+                connection.Close();
+                return true;
+            }
+            catch
+            {
+                connection.Close();
+            }
+
+            return false;
+        }
+
+        public bool FuegeBenutzerHinzu(string benutzername, string passwort, int ausbilderId, int ausbildungsart, int fachrichtung)
+        {
+            if (ausbilderId == -1)
+                MessageBox.Show("Die Ausbilder-ID des angemeldeten Benutzers kann nicht festegestellt werden. Mögliche Ursachen:\n" +
+                    "   • Es besteht keine Internet-Verbindung\n" +
+                    "   • Sie haben versucht, eine Sicherheitslücke zu finden ;)\n" +
+                    "\n" +
+                    "Bitte versuchen Sie es in einigen Minuten noch einmal");
+            else
+            {
+                //try
+                //{
+
+                //Fehler: Der Nachname muss gesetzt werden
+                //Aber: Soll das so sein?
+
+                    MySqlParameter benutzernameParameter = new MySqlParameter("dbnutzername", benutzername);
+                    MySqlParameter passwortParameter = new MySqlParameter("dbpasswort", passwort);
+                    //MySqlParameter nachnameParameter = new MySqlParameter("dbnachname", nachname);
+                    MySqlParameter ausbilderParameter = new MySqlParameter("dbausbilder", ausbilderId);
+                    MySqlParameter ausbildungsartParameter = new MySqlParameter("dbausbildungsart", ausbildungsart);
+                    MySqlParameter fachrichtungParameter = new MySqlParameter("dbfachrichtung", fachrichtung);
+
+                    MySqlCommand query = new MySqlCommand(benutzerHinzufügenString, connection);
+
+                    query.Parameters.Add(benutzernameParameter);
+                    query.Parameters.Add(passwortParameter);
+                    query.Parameters.Add(ausbilderParameter);
+                    query.Parameters.Add(ausbildungsartParameter);
+                    query.Parameters.Add(fachrichtungParameter);
+
+                    connection.Open();
+                    query.ExecuteNonQuery();
+                    connection.Close();
+                    return true;
+                //}
+                //catch
+                //{
+                //    connection.Close();
+                //    MessageBox.Show("Ein Fehler ist aufgetreten! Der Benutzer konnte nicht hinzugefügt werden. Mögliche Ursachen:\n" +
+                //        "   • Es besteht keine Internet-Verbindung\n" +
+                //        "   • Das Programm hat einen Fehler\n" +
+                //        "\n" +
+                //        "Bitte versuchen Sie es in einigen Minuten noch einmal.");
+                //}
+            }
+            return false;
+        }
+
+        public int BekommeAusbilderId(string benutzername)
+        {
+            MySqlParameter benutzernameParameter = new MySqlParameter("dbnutzername", benutzername);
+
+            MySqlCommand query = new MySqlCommand(administratorenIdBekommenString, connection);
+            query.Parameters.Add(benutzername);
+
+            DataSet ds = new DataSet();
+            adapter = new MySqlDataAdapter(query);
+            
+            try
+            {
+                adapter.Fill(ds);
+                return Convert.ToInt32(ds.Tables[0].Rows[0].ItemArray[0]);
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
+        public Dictionary<int, string> BekommeFachrichtungen()
+        {
+            return BekommeDictionary(fachrichtungenBekommenString);
+        }
+
+        public Dictionary<int, string> BekommeAusbildungsArten()
+        {
+            return BekommeDictionary(ausbildungsArtenBekommenString);
+        }
+
+        public Dictionary<int, string> BekommeAusbilder()
+        {
+            return BekommeDictionary(ausbilderBekommenString);
+        }
+
+        public Dictionary<int, string> BekommeDictionary(string suchString)
+        {
+            Dictionary<int, string> dict = new Dictionary<int, string>();
+
+            MySqlCommand query = new MySqlCommand(suchString, connection);
 
             DataSet ds = new DataSet();
             adapter = new MySqlDataAdapter(query);
 
-            Benutzer b;
             try
             {
                 adapter.Fill(ds);
-                object[] ergebnisse = new object[ds.Tables[0].Rows[0].ItemArray.Length];
-
-                ergebnisse = ds.Tables[0].Rows[0].ItemArray;
-
-                //Wenn Administrator
-                if (ergebnisse.Length == 4)
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                 {
-                    //int id = Convert.ToInt32(ergebnisse[0]);
-                    string nutzername = Convert.ToString(ergebnisse[1]);
-                    //string passwort = Convert.ToString(ergebnisse[2]);
-                    int beruf = Convert.ToInt32(ergebnisse[3]);
-                    b = new Benutzer(nutzername, beruf);
-                }
-                else
-                {
-                    //int id = Convert.ToInt32(ergebnisse[0]);
-                    int ausbilderId = Convert.ToInt32(ergebnisse[1]);
-                    int ausbildungsArtId = Convert.ToInt32(ergebnisse[2]);
-                    int fachrichrichtungId = Convert.ToInt32(ergebnisse[3]);
-                    string nutzername = Convert.ToString(ergebnisse[4]);
-                    //string passwort = Convert.ToString(ergebnisse[5]);
+                    DataRow item = ds.Tables[0].Rows[i];
 
-                    b = new Benutzer(ausbilderId, ausbildungsArtId, fachrichrichtungId, nutzername);
+                    int id = Convert.ToInt32(item[0]);
+                    string name = Convert.ToString(item[1]);
 
-                    //Wenn Nachname angegeben wurde
-                    if (ergebnisse.Length > 6)
-                    {
-                        b.name = Convert.ToString(ergebnisse[6]);
-                    }
+                    dict.Add(id, name);
                 }
             }
-            catch
-            {
-                b = Benutzer.ungueltigerBenutzer;
-            }
+            catch { }
 
-            return b;
+            return dict;
         }
     }
 }
-*/

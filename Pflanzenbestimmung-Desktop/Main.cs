@@ -9,10 +9,32 @@ namespace Pflanzenbestimmung_Desktop
 {
     public static class Main
     {
-        //public static Datenbankverbindung datenbankverbindung = new Datenbankverbindung();
+        public static Datenbankverbindung datenbankverbindung = new Datenbankverbindung();
+        
         public static API_Anbindung api_anbindung = new API_Anbindung();
 
         public static Benutzer benutzer;
+
+        public static Dictionary<int, string> ausbildungsarten;
+
+        public static Dictionary<int, string> fachrichtungen;
+
+        public static Dictionary<int, string> ausbilder;
+
+        public static int ausbilderId;
+
+        public static void Initialize()
+        {
+            ausbilder = datenbankverbindung.BekommeAusbilder();
+            ausbildungsarten = datenbankverbindung.BekommeAusbildungsArten();
+            fachrichtungen = datenbankverbindung.BekommeFachrichtungen();
+
+        }
+
+        public static void AktualisiereAusbilderId()
+        {
+            ausbilderId = datenbankverbindung.BekommeAusbilderId(benutzer.nutzername);
+        }
 
         private static string ToHex(byte[] bytes, bool upperCase)
         {

@@ -23,7 +23,7 @@
             <Button Content="Aktuelles Quiz starten" />
             <Button Content="Eigenes Quiz starten" />
             <Button Content="Statistik" />
-            <Button Name="AdministrativesButton" Content="Administratives" Visibility="Visible" />
+            <Button Name="AdministrationButton" Click="AdministrationButton_Click" Content="Administratives" Visibility="Visible" />
             <Button Name="AusloggenButton" Click="AusloggenButton_Click" Content="Ausloggen" />
         </StackPanel>
     </Grid>

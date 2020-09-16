@@ -30,5 +30,10 @@ namespace Pflanzenbestimmung_Desktop
             Main.benutzer = null;
             MainWindow.changeContent(new Anmeldung());
         }
+
+        private void AdministrationButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new Administration());
+        }
     }
 }

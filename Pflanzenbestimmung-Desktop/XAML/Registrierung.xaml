@@ -22,16 +22,29 @@
                         <Setter Property="HorizontalAlignment" Value="Right" />
                         <Setter Property="Margin" Value="0, 0, 0, 10" />
                     </Style>
-                </Style.Resources>
+                        <Style TargetType="PasswordBox">
+                            <Setter Property="Width" Value="200" />
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Margin" Value="0, 0, 0, 10" />
+                        </Style>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="Width" Value="200" />
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Margin" Value="0, 0, 0, 10" />
+                        </Style>
+
+                    </Style.Resources>
             </Style>
         </StackPanel.Style>
         <Grid>
             <Label Content="Benutzername:" />
-            <TextBox />
+            <TextBox Name="BenutzernameTextBox" />
         </Grid>
         <Grid>
             <Label Content="Passwort:" />
-            <TextBox />
+            <PasswordBox Name="PasswordBox" />
         </Grid>
             <Grid>
                 <Label>
@@ -45,7 +58,19 @@
                     </Label.Content>
                 </Label>
 
-                <TextBox />
+                <TextBox Name="NachnameTextBox" />
+            </Grid>
+            <Grid>
+                <Label Content="Ausbildungsart"/>
+                <ComboBox Name="AubildungsartComboBox" />
+            </Grid>
+            <Grid>
+                <Label Content="Fachrichtung" />
+                <ComboBox Name="FachrichtungComboBox" />
+            </Grid>
+            <Grid>
+                <Label Content="Ausbilder" />
+                <ComboBox Name="AusbilderComboBox" />
             </Grid>
         </StackPanel>
 
@@ -55,9 +80,9 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Button Content="Abbrechen" Margin="10"/>
+            <Button Name="AbbrechenButton" Click="AbbrechenButton_Click" Content="Abbrechen" Margin="10"/>
 
-            <Button Content="Absenden" Margin="10" Grid.Column="1" />
+            <Button Name="AbsendenButton" Click="AbsendenButton_Click" Content="Absenden" Margin="10" Grid.Column="1" />
         </Grid>
     </Grid>
 </UserControl>

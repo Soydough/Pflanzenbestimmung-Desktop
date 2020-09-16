@@ -24,5 +24,10 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
         }
+
+        private void Zurück_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new Administration());
+        }
     }
 }

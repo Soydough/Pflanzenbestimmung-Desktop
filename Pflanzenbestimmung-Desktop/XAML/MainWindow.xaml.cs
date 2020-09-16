@@ -26,7 +26,9 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
             dieses = this;
-            changeContent(new Anmeldung());
+            Main.Initialize();
+            //changeContent(new Anmeldung());
+            changeContent(new Registrierung());
         }
 
         public static void changeContent(object o)
@@ -44,10 +46,15 @@ namespace Pflanzenbestimmung_Desktop
                 case "Hauptmenü":
                     dieses.Title = "Pflanzenbestimmung";
                     if (!Main.benutzer.istAdmin)
-                        ((Hauptmenü)o).AdministrativesButton.Visibility = Visibility.Collapsed;
+                        ((Hauptmenü)o).AdministrationButton.Visibility = Visibility.Collapsed;
+                    Main.AktualisiereAusbilderId();
                     break;
                 case "Registrierung":
                     dieses.Title = "Registrierung";
+                    ((Registrierung)o).Initialize();
+                    break;
+                case "Benutzerverwaltung":
+                    dieses.Title = "Benutzerverwaltung";
                     break;
                 default:
                     dieses.Title = "Pflanzenbestimmung";
