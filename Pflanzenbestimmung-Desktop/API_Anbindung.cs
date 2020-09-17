@@ -66,11 +66,11 @@ namespace Pflanzenbestimmung_Desktop
                     values["gattung"] = gattung;
                     values["art"] = art;
 
-                    throw new Exception("Noch nicht fertig programmiert!");
-
+                    
                     var response = client.UploadValues("http://localhost/azubi.php", values);
                     var responseString = Encoding.Default.GetString(response);
 
+                    throw new Exception("Noch nicht fertig programmiert!");
                 }
             }
             catch

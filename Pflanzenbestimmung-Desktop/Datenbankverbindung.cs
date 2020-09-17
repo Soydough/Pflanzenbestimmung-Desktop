@@ -77,9 +77,6 @@ namespace Pflanzenbestimmung_Desktop
                 //try
                 //{
 
-                //Fehler: Der Nachname muss gesetzt werden
-                //Aber: Soll das so sein?
-
                     MySqlParameter benutzernameParameter = new MySqlParameter("dbnutzername", benutzername);
                     MySqlParameter passwortParameter = new MySqlParameter("dbpasswort", passwort);
                     //MySqlParameter nachnameParameter = new MySqlParameter("dbnachname", nachname);
