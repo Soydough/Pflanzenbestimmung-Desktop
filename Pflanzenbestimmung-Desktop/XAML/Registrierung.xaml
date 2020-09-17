@@ -81,7 +81,6 @@
             </Grid.ColumnDefinitions>
 
             <Button Name="AbbrechenButton" Click="AbbrechenButton_Click" Content="Abbrechen" Margin="10"/>
-
             <Button Name="AbsendenButton" Click="AbsendenButton_Click" Content="Absenden" Margin="10" Grid.Column="1" />
         </Grid>
     </Grid>
