@@ -28,7 +28,7 @@ namespace Pflanzenbestimmung_Desktop
             dieses = this;
             Main.Initialize();
             //changeContent(new Anmeldung());
-            changeContent(new Registrierung());
+            changeContent(new Anmeldung());
         }
 
         public static void changeContent(object o)

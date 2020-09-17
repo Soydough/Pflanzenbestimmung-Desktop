@@ -112,10 +112,8 @@ namespace Pflanzenbestimmung_Desktop
 
         public int BekommeAusbilderId(string benutzername)
         {
-            MySqlParameter benutzernameParameter = new MySqlParameter("dbnutzername", benutzername);
-
             MySqlCommand query = new MySqlCommand(administratorenIdBekommenString, connection);
-            query.Parameters.Add(benutzername);
+            query.Parameters.AddWithValue("dbbenutzername", benutzerHinzufügenString);
 
             DataSet ds = new DataSet();
             adapter = new MySqlDataAdapter(query);
