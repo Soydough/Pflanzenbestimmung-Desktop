@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Specialized;
-using System.IO;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
-using Flurl.Http;
-using Newtonsoft.Json;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -38,7 +32,7 @@ namespace Pflanzenbestimmung_Desktop
                     if (b.berflag != -1)
                     {
                         //Admin
-                        return new Administrator(b.berflag);
+                        return Administrator.fromTempObjekt(b);
                     }
                     else
                     {
@@ -66,7 +60,7 @@ namespace Pflanzenbestimmung_Desktop
                     values["gattung"] = gattung;
                     values["art"] = art;
 
-                    
+
                     var response = client.UploadValues("http://localhost/azubi.php", values);
                     var responseString = Encoding.Default.GetString(response);
 

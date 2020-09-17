@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace Pflanzenbestimmung_Desktop
 {
     public static class Main
     {
         public static Datenbankverbindung datenbankverbindung = new Datenbankverbindung();
-        
+
         public static API_Anbindung api_anbindung = new API_Anbindung();
 
         public static Benutzer benutzer;

@@ -1,10 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 using System.Windows;
 
 namespace Pflanzenbestimmung_Desktop
@@ -77,25 +74,25 @@ namespace Pflanzenbestimmung_Desktop
                 //try
                 //{
 
-                    MySqlParameter benutzernameParameter = new MySqlParameter("dbnutzername", benutzername);
-                    MySqlParameter passwortParameter = new MySqlParameter("dbpasswort", passwort);
-                    //MySqlParameter nachnameParameter = new MySqlParameter("dbnachname", nachname);
-                    MySqlParameter ausbilderParameter = new MySqlParameter("dbausbilder", ausbilderId);
-                    MySqlParameter ausbildungsartParameter = new MySqlParameter("dbausbildungsart", ausbildungsart);
-                    MySqlParameter fachrichtungParameter = new MySqlParameter("dbfachrichtung", fachrichtung);
+                MySqlParameter benutzernameParameter = new MySqlParameter("dbnutzername", benutzername);
+                MySqlParameter passwortParameter = new MySqlParameter("dbpasswort", passwort);
+                //MySqlParameter nachnameParameter = new MySqlParameter("dbnachname", nachname);
+                MySqlParameter ausbilderParameter = new MySqlParameter("dbausbilder", ausbilderId);
+                MySqlParameter ausbildungsartParameter = new MySqlParameter("dbausbildungsart", ausbildungsart);
+                MySqlParameter fachrichtungParameter = new MySqlParameter("dbfachrichtung", fachrichtung);
 
-                    MySqlCommand query = new MySqlCommand(benutzerHinzufügenString, connection);
+                MySqlCommand query = new MySqlCommand(benutzerHinzufügenString, connection);
 
-                    query.Parameters.Add(benutzernameParameter);
-                    query.Parameters.Add(passwortParameter);
-                    query.Parameters.Add(ausbilderParameter);
-                    query.Parameters.Add(ausbildungsartParameter);
-                    query.Parameters.Add(fachrichtungParameter);
+                query.Parameters.Add(benutzernameParameter);
+                query.Parameters.Add(passwortParameter);
+                query.Parameters.Add(ausbilderParameter);
+                query.Parameters.Add(ausbildungsartParameter);
+                query.Parameters.Add(fachrichtungParameter);
 
-                    connection.Open();
-                    query.ExecuteNonQuery();
-                    connection.Close();
-                    return true;
+                connection.Open();
+                query.ExecuteNonQuery();
+                connection.Close();
+                return true;
                 //}
                 //catch
                 //{
@@ -117,7 +114,7 @@ namespace Pflanzenbestimmung_Desktop
 
             DataSet ds = new DataSet();
             adapter = new MySqlDataAdapter(query);
-            
+
             try
             {
                 adapter.Fill(ds);
