@@ -14,7 +14,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         
-        <StackPanel HorizontalAlignment="Center" Grid.ColumnSpan="2">
+        <StackPanel HorizontalAlignment="Center">
             <StackPanel.Style>
                 <Style>
                     <Style.Resources>
@@ -33,18 +33,38 @@
         
         
             <CheckBox Name="GattungCheckBox" Content="Gattungsname" IsChecked="True" />
-            <CheckBox Name="ArtCheckBox" Content="Artname" IsChecked="True" />
             <CheckBox Name="DeutscherNameCheckBox" Content="Deutscher Name" IsChecked="True" />
-            <CheckBox Name="FamilieCheckBox" Content="Familienname" IsChecked="True" />
             <CheckBox Name="HerkunftCheckBox" Content="Heimat, Herkunft" IsChecked="True" />
-            <CheckBox Name="BlueteCheckBox" Content="Blüte" />
             <CheckBox Name="BluetezeitCheckBox" Content="Blütezeit" />
-            <CheckBox Name="BlattCheckBox" Content="Blatt" />
             <CheckBox Name="HabitusCheckBox" Content="Habitus, Wuchs" />
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" Grid.Column="1">
+            <StackPanel.Style>
+                <Style>
+                    <Style.Resources>
+                        <Style TargetType="CheckBox">
+                            <Setter Property="Margin" Value="0,5"/>
+
+                            <Setter Property="LayoutTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1.5" ScaleY="1.5" />
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Style.Resources>
+                </Style>
+            </StackPanel.Style>
+
+
+            <CheckBox Name="ArtCheckBox" Content="Artname" IsChecked="True" />
+            <CheckBox Name="FamilieCheckBox" Content="Familienname" IsChecked="True" />
+            <CheckBox Name="BlueteCheckBox" Content="Blüte" />
+            <CheckBox Name="BlattCheckBox" Content="Blatt" />
             <CheckBox Name="BesonderheitenCheckBox" Content="Besonderheiten" IsChecked="True" />
         </StackPanel>
 
-        <Button Content="Speichern" Width="100" Height="30" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Margin="20"/>
-        <Button Content="Abbrechen" Width="100" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Grid.Column="1"/>
+        <Button Content="Abbrechen" Click="Button_Click" Width="100" Height="30" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Margin="20"/>
+        <Button Content="Speichern" Width="100" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Grid.Column="1"/>
     </Grid>
 </UserControl>

@@ -17,5 +17,10 @@ namespace Pflanzenbestimmung_Desktop
         {
             MainWindow.changeContent(new Administration());
         }
+
+        private void Bearbeiten_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new Administration());
+        }
     }
 }

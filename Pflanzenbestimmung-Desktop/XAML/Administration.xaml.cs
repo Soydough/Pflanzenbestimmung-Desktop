@@ -37,5 +37,10 @@ namespace Pflanzenbestimmung_Desktop
         {
             MainWindow.changeContent(new Registrierung());
         }
+
+        private void ErscheinendePflanzen_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new ErscheinendePflanzenEinstellung());
+        }
     }
 }

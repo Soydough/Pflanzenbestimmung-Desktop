@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Pflanzenbestimmung_Desktop"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="400" d:DesignWidth="800"
              Style="{DynamicResource HauptStyle}">
     <StackPanel>
         <Grid Name="GattungsnameGrid">
@@ -98,5 +98,7 @@
             <Label Content="Besonderheiten:" />
             <Label Grid.Column="1" Name="BesonderheitenLabel" Content="farbige Blattmetamorphosen (Hochblätter/Brakteen)" Foreground="Green" />
         </Grid>
+
+        <Button Content="Hauptmenü" Margin="100" Height="30"/>
     </StackPanel>
 </UserControl>

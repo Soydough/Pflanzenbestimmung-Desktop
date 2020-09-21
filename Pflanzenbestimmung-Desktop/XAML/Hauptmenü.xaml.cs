@@ -27,5 +27,15 @@ namespace Pflanzenbestimmung_Desktop
         {
             MainWindow.changeContent(new Administration());
         }
+
+        private void AktuellesQuizButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new QuizDateneingabe());
+        }
+
+        private void StatistikButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new Statistik());
+        }
     }
 }

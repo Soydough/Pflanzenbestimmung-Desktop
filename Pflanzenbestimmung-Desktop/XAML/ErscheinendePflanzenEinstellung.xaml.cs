@@ -11,5 +11,15 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
         }
+
+        private void Bearbeiten_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+
+        private void Zurück_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new Administration());
+        }
     }
 }

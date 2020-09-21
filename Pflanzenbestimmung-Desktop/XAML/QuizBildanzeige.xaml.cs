@@ -10,6 +10,8 @@ namespace Pflanzenbestimmung_Desktop
         public QuizBildanzeige()
         {
             InitializeComponent();
+
+            //Bilder laden und zu ScrollView hinzufügen
         }
     }
 }

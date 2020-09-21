@@ -5,23 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Pflanzenbestimmung_Desktop"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="500"
+             d:DesignHeight="400" d:DesignWidth="500"
              Style="{DynamicResource HauptStyle}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition Height="7*"/>
             <RowDefinition />
         </Grid.RowDefinitions>
-    <StackPanel Margin="10">
-        <StackPanel.Style>
-            <Style>
-                <Style.Resources>
-                    <Style TargetType="TextBox">
-                        <Setter Property="Width" Value="200" />
-                        <Setter Property="Height" Value="20" />
-                        <Setter Property="HorizontalAlignment" Value="Right" />
-                        <Setter Property="Margin" Value="0, 0, 0, 10" />
-                    </Style>
+        <StackPanel Margin="10" Name="BenutzerPanel" Visibility="Visible">
+            <StackPanel.Style>
+                <Style>
+                    <Style.Resources>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Width" Value="200" />
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Margin" Value="0, 0, 0, 10" />
+                        </Style>
                         <Style TargetType="PasswordBox">
                             <Setter Property="Width" Value="200" />
                             <Setter Property="Height" Value="20" />
@@ -36,29 +36,23 @@
                         </Style>
 
                     </Style.Resources>
-            </Style>
-        </StackPanel.Style>
-        <Grid>
-            <Label Content="Benutzername:" />
-            <TextBox Name="BenutzernameTextBox" />
-        </Grid>
-        <Grid>
-            <Label Content="Passwort:" />
-            <PasswordBox Name="PasswordBox" />
-        </Grid>
+                </Style>
+            </StackPanel.Style>
             <Grid>
-                <Label>
-                    <Label.Content>
-                        <TextBlock>
-                        <TextBlock Text="Name (optional):"
-                                   ToolTip="Bitte den Nachnamen eingeben"
-                                   TextDecorations="Underline"/>
-                        <TextBlock Text="?" FontSize="8" Margin="0,1,0,0"/>
-                        </TextBlock>
-                    </Label.Content>
-                </Label>
-
+                <Label Content="Benutzername:" />
+                <TextBox Name="BenutzernameTextBox" />
+            </Grid>
+            <Grid>
+                <Label Content="Passwort:" />
+                <PasswordBox Name="PasswordBox" />
+            </Grid>
+            <Grid>
+                <Label Content="Name:"/>
                 <TextBox Name="NachnameTextBox" />
+            </Grid>
+            <Grid>
+                <Label Content="Vorname:"/>
+                <TextBox Name="VornameTextBox" />
             </Grid>
             <Grid>
                 <Label Content="Ausbildungsart"/>
@@ -74,14 +68,58 @@
             </Grid>
         </StackPanel>
 
+        <StackPanel Margin="10" Name="AdminPanel" Visibility="Visible">
+            <StackPanel.Style>
+                <Style>
+                    <Style.Resources>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Width" Value="200" />
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Margin" Value="0, 0, 0, 10" />
+                        </Style>
+                        <Style TargetType="PasswordBox">
+                            <Setter Property="Width" Value="200" />
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Margin" Value="0, 0, 0, 10" />
+                        </Style>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="Width" Value="200" />
+                            <Setter Property="Height" Value="20" />
+                            <Setter Property="HorizontalAlignment" Value="Right" />
+                            <Setter Property="Margin" Value="0, 0, 0, 10" />
+                        </Style>
+
+                    </Style.Resources>
+                </Style>
+            </StackPanel.Style>
+            <Grid>
+                <Label Content="Benutzername:" />
+                <TextBox Name="AdminBenutzernameTextBox" />
+            </Grid>
+            <Grid>
+                <Label Content="Passwort:" />
+                <PasswordBox Name="AdminPasswordBox" />
+            </Grid>
+            <Grid>
+                <Label Content="Name:"/>
+                <TextBox Name="AdminNachnameTextBox" />
+            </Grid>
+            <Grid>
+                <Label Content="Vorname:"/>
+                <TextBox Name="AdminVornameTextBox" />
+            </Grid>
+        </StackPanel>
+
         <Grid VerticalAlignment="Bottom" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Button Name="AbbrechenButton" Click="AbbrechenButton_Click" Content="Abbrechen" Margin="10"/>
-            <Button Name="AbsendenButton" Click="AbsendenButton_Click" Content="Absenden" Margin="10" Grid.Column="1" />
+            <Button Name="AbbrechenButton" Click="AbbrechenButton_Click" Content="Abbrechen" Margin="10" Height="30"/>
+            <Button Name="AbsendenButton" Click="AbsendenButton_Click" Content="Absenden" Margin="10" Grid.Column="1" Height="30" />
         </Grid>
     </Grid>
 </UserControl>

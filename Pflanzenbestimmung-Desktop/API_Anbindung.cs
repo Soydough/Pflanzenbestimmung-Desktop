@@ -8,6 +8,9 @@ namespace Pflanzenbestimmung_Desktop
 {
     public class API_Anbindung
     {
+        //private readonly string url = "http://localhost/dbSchnittstelle.php";
+        private readonly string url = "http://10.33.11.142/API/dbSchnittstelle.php";
+
         public API_Anbindung()
         {
         }
@@ -23,7 +26,7 @@ namespace Pflanzenbestimmung_Desktop
                     values["User"] = benutzername;
                     values["PW"] = passwort;
 
-                    var response = client.UploadValues("http://localhost/dbSchnittstelle.php", values);
+                    var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
                     BenutzerJSONTempObjekt[] benutzerTempArr = JsonConvert.DeserializeObject<BenutzerJSONTempObjekt[]>(responseString);

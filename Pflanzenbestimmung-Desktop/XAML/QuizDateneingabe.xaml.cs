@@ -10,6 +10,8 @@ namespace Pflanzenbestimmung_Desktop
         public QuizDateneingabe()
         {
             InitializeComponent();
+
+            //Kategorien laden und hinzufügen
         }
     }
 }
