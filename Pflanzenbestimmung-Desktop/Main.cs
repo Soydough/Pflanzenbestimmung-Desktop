@@ -21,12 +21,15 @@ namespace Pflanzenbestimmung_Desktop
 
         public static int ausbilderId;
 
+        public static List<Pflanze> pflanzen;
+
         public static void Initialize()
         {
             ausbilder = datenbankverbindung.BekommeAusbilder();
             ausbildungsarten = datenbankverbindung.BekommeAusbildungsArten();
             fachrichtungen = datenbankverbindung.BekommeFachrichtungen();
 
+            pflanzen = api_anbindung.PflanzenBekommen();
         }
 
         public static void AktualisiereAusbilderId()

@@ -118,6 +118,7 @@
     <Compile Include="BenutzerJSONTempObjekt.cs" />
     <Compile Include="Datenbankverbindung.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="Pflanze.cs" />
     <Compile Include="XAML\ErscheinendePflanzenEinstellung.xaml.cs">
       <DependentUpon>ErscheinendePflanzenEinstellung.xaml</DependentUpon>
     </Compile>

@@ -8,6 +8,11 @@ namespace Pflanzenbestimmung_Desktop
 {
     public class Datenbankverbindung
     {
+        /// <summary>
+        /// Diese Datei wird später wahrscheinlich gelöscht. Hier gibt es also nichts wichtiges zu sehen
+        /// </summary>
+
+
         public MySqlConnection connection;
         string connectionString = "Server='localhost';Database='pflanzenbestimmung';Uid='root';Pwd='citrix170890';";
         MySqlDataAdapter adapter;

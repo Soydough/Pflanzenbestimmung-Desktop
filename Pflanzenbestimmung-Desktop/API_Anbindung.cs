@@ -1,6 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 
@@ -15,7 +18,7 @@ namespace Pflanzenbestimmung_Desktop
         {
         }
 
-        public Benutzer BenutzerBekommenAsync(string benutzername, string passwort)
+        public Benutzer BenutzerBekommen(string benutzername, string passwort)
         {
             try
             {
@@ -48,6 +51,26 @@ namespace Pflanzenbestimmung_Desktop
             {
                 return Benutzer.ungueltigerBenutzer;
             }
+        }
+
+        public List<Pflanze> PflanzenBekommen()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection();
+                    values["method"] = "getPflanzen";
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    Pflanze[] pflanzen = JsonConvert.DeserializeObject<Pflanze[]>(responseString);
+                    return pflanzen.ToList();
+                }
+            }
+            catch { }
+            return new List<Pflanze>();
         }
 
         public bool FuegePflanzeHinzu(string gattung, string art, string deutscherName,
