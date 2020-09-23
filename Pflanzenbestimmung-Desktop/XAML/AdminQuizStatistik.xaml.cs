@@ -6,9 +6,9 @@ namespace Pflanzenbestimmung_Desktop
     /// <summary>
     /// Interaktionslogik für QuizStatistik.xaml
     /// </summary>
-    public partial class QuizStatistik : UserControl
+    public partial class AdminQuizStatistik : UserControl
     {
-        public QuizStatistik()
+        public AdminQuizStatistik()
         {
             InitializeComponent();
         }
@@ -20,7 +20,7 @@ namespace Pflanzenbestimmung_Desktop
 
         private void ZurückButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            // Momentan deaktiviert :)
+            MainWindow.changeContent(new AdminStatistik());
         }
     }
 }

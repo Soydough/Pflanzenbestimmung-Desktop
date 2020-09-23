@@ -26,7 +26,7 @@ namespace Pflanzenbestimmung_Desktop
 
             string hash = Main.GetHashWithSalt(passwort, benutzername);
 
-            Main.benutzer = Main.api_anbindung.BenutzerBekommen(benutzername, hash);
+            Main.benutzer = Main.api_anbindung.Login(benutzername, hash);
 
             if (Main.benutzer.IstGueltig)
             {

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -12,10 +13,12 @@ namespace Pflanzenbestimmung_Desktop
         public MainWindow()
         {
             InitializeComponent();
+            Mouse.SetCursor(Cursors.Wait);
             dieses = this;
             Main.Initialize();
             //changeContent(new Anmeldung());
             changeContent(new Anmeldung());
+            Mouse.SetCursor(Cursors.None);
         }
 
         public static void changeContent(object o)

@@ -13,5 +13,10 @@ namespace Pflanzenbestimmung_Desktop
 
             //Kategorien laden und hinzufügen
         }
+
+        private void Weiter_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new QuizStatistik());
+        }
     }
 }

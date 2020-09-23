@@ -18,7 +18,7 @@ namespace Pflanzenbestimmung_Desktop
         {
         }
 
-        public Benutzer BenutzerBekommen(string benutzername, string passwort)
+        public Benutzer Login(string benutzername, string passwort)
         {
             try
             {
@@ -32,8 +32,8 @@ namespace Pflanzenbestimmung_Desktop
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
-                    BenutzerJSONTempObjekt[] benutzerTempArr = JsonConvert.DeserializeObject<BenutzerJSONTempObjekt[]>(responseString);
-                    BenutzerJSONTempObjekt b = benutzerTempArr[0];
+                    BenutzerTemplate[] benutzerTempArr = JsonConvert.DeserializeObject<BenutzerTemplate[]>(responseString);
+                    BenutzerTemplate b = benutzerTempArr[0];
                     b.nutzername = benutzername;
                     if (b.berflag != -1)
                     {
@@ -53,24 +53,35 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public List<Pflanze> PflanzenBekommen()
+        public T[] Bekommen<T>()
         {
             try
             {
                 using (var client = new WebClient())
                 {
                     var values = new NameValueCollection();
-                    values["method"] = "getPflanzen";
+
+                    string methodStr;
+                    
+                    switch(typeof(T).Name)
+                    {
+                        case "Administrator":
+                            methodStr = "Admins";
+                            break;
+                        default:
+                            methodStr = typeof(T).Name + "n";
+                            break;
+                    }
+                    values["method"] = "get" + methodStr;
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
-                    Pflanze[] pflanzen = JsonConvert.DeserializeObject<Pflanze[]>(responseString);
-                    return pflanzen.ToList();
+                    return JsonConvert.DeserializeObject<T[]>(responseString);
                 }
             }
             catch { }
-            return new List<Pflanze>();
+            return new T[0];
         }
 
         public bool FuegePflanzeHinzu(string gattung, string art, string deutscherName,
@@ -114,8 +125,8 @@ namespace Pflanzenbestimmung_Desktop
                     var response = client.UploadValues("http://localhost/azubi.php", values);
                     var responseString = Encoding.Default.GetString(response);
 
-                    BenutzerJSONTempObjekt[] benutzerTempArr = JsonConvert.DeserializeObject<BenutzerJSONTempObjekt[]>(responseString);
-                    BenutzerJSONTempObjekt b = benutzerTempArr[0];
+                    BenutzerTemplate[] benutzerTempArr = JsonConvert.DeserializeObject<BenutzerTemplate[]>(responseString);
+                    BenutzerTemplate b = benutzerTempArr[0];
                     b.nutzername = benutzername;
                 }
             }

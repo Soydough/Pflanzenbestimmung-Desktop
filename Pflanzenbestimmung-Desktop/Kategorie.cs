@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -8,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace Pflanzenbestimmung_Desktop
 {
-    public class Pflanze
+    public class Kategorie
     {
         public int id;
-        public int zier;
-        public int gala;
-        [JsonProperty("0")]
-        public KategorieAbfrage[] kategorieAbfragen;
+        public string kategorie;
+        public int abfrage;
     }
 }

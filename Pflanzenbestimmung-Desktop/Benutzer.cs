@@ -2,9 +2,8 @@
 
 namespace Pflanzenbestimmung_Desktop
 {
-    public class Benutzer : BenutzerJSONTempObjekt
+    public class Benutzer : BenutzerTemplate
     {
-        public bool istAdmin = false;
         public bool IstGueltig = true;
 
         //Wird nur für ungültigen Benutzer verwendet
@@ -21,7 +20,7 @@ namespace Pflanzenbestimmung_Desktop
                 istAdmin = true;
         }
 
-        public static Benutzer fromTempObjekt(BenutzerJSONTempObjekt temp)
+        public static Benutzer fromTempObjekt(BenutzerTemplate temp)
         {
             Benutzer b = new Benutzer();
             b.nutzername = temp.nutzername;

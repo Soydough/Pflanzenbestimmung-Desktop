@@ -11,6 +11,7 @@
         <Button Name="ZuLernendeKategorienEinstellungButton" Click="ZuLernendeKategorienEinstellungButton_Click" Content="Zu lernende Kategorien"/>
         <Button Name="NeuerBenutzer" Click="NeuerBenutzer_Click" Content="Neuen Benutzer anlegen"/>
         <Button Name="Benutzerverwaltung" Click="Benutzerverwaltung_Click" Content="Vorhandene Nutzer verwalten"/>
+        <Button Name="StatistikButton" Click="StatistikButton_Click" Content="Statistik" />
         <Button Name="ErscheinendePflanzen" Click="ErscheinendePflanzen_Click" Content="Erscheinende Pflanzen verwalten" />
         <Button Name="HauptmenüButton" Click="HauptmenüButton_Click" Content="Zurück zum Hauptmenü"/>
     </StackPanel>

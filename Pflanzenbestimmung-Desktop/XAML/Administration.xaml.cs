@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Pflanzenbestimmung_Desktop.XAML;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop
@@ -41,6 +42,11 @@ namespace Pflanzenbestimmung_Desktop
         private void ErscheinendePflanzen_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.changeContent(new ErscheinendePflanzenEinstellung());
+        }
+
+        private void StatistikButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new AdminStatistikBenutzerAuswahl());
         }
     }
 }

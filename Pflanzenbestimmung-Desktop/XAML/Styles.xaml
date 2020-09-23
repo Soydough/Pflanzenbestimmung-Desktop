@@ -74,7 +74,7 @@
     <Style TargetType="StackPanel" x:Key="AdministrationButtonsStyle" BasedOn="{StaticResource StackpanelStyle}">
         <Style.Resources>
             <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-                <Setter Property="Margin" Value="50,15" />
+                <Setter Property="Margin" Value="50,12" />
                 <Setter Property="Height" Value="30" />
             </Style>
             <Style TargetType="ToggleButton" BasedOn="{StaticResource ToggleButtonStyle}">
@@ -138,7 +138,7 @@
         <Style.Resources>
             <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
                 <VisualBrush.Visual>
-                    <Label Content="Benutzername" Foreground="LightGray" />
+                    <Label Content="Pflanzenname" Foreground="LightGray" />
                 </VisualBrush.Visual>
             </VisualBrush>
         </Style.Resources>

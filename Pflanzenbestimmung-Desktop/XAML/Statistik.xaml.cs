@@ -11,5 +11,10 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
         }
+
+        private void Hauptmenü_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new Hauptmenü());
+        }
     }
 }

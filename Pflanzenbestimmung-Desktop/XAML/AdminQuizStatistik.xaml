@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Pflanzenbestimmung_Desktop.QuizStatistik"
+﻿<UserControl x:Class="Pflanzenbestimmung_Desktop.AdminQuizStatistik"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -100,7 +100,7 @@
         </Grid>
 
         <StackPanel Orientation="Horizontal">
-            <Button Visibility="Collapsed" Name="ZurückButton" Click="ZurückButton_Click" Content="Zurück" Width="200" Height="30" Margin="100"/>
+            <Button Name="ZurückButton" Click="ZurückButton_Click" Content="Zurück" Width="200" Height="30" Margin="100"/>
             <Button Name="HauptmenüButton" Click="HauptmenüButton_Click" Content="Hauptmenü" Width="200" Height="30" Margin="100"/>
         </StackPanel>
     </StackPanel>

@@ -1,7 +1,12 @@
 ﻿namespace Pflanzenbestimmung_Desktop
 {
-    public class BenutzerJSONTempObjekt
+    public class BenutzerTemplate
     {
+        public int id;
+        public int id_ausbilder;
+        public int quiz_art;
+        public int bool_pruefung;
+
         public string nutzername;
         public string vorname;
         public string name;

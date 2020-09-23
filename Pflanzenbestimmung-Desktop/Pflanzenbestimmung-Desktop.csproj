@@ -115,10 +115,21 @@
     <Compile Include="Administrator.cs" />
     <Compile Include="API_Anbindung.cs" />
     <Compile Include="Benutzer.cs" />
-    <Compile Include="BenutzerJSONTempObjekt.cs" />
+    <Compile Include="BenutzerTemplate.cs" />
     <Compile Include="Datenbankverbindung.cs" />
+    <Compile Include="Kategorie.cs" />
+    <Compile Include="KategorieAbfrage.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Pflanze.cs" />
+    <Compile Include="XAML\AdminGesamtStatistik.xaml.cs">
+      <DependentUpon>AdminGesamtStatistik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XAML\AdminStatistik.xaml.cs">
+      <DependentUpon>AdminStatistik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XAML\AdminStatistikBenutzerAuswahl.xaml.cs">
+      <DependentUpon>AdminStatistikBenutzerAuswahl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="XAML\ErscheinendePflanzenEinstellung.xaml.cs">
       <DependentUpon>ErscheinendePflanzenEinstellung.xaml</DependentUpon>
     </Compile>
@@ -130,6 +141,9 @@
     </Compile>
     <Compile Include="XAML\QuizDateneingabe.xaml.cs">
       <DependentUpon>QuizDateneingabe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XAML\AdminQuizStatistik.xaml.cs">
+      <DependentUpon>AdminQuizStatistik.xaml</DependentUpon>
     </Compile>
     <Compile Include="XAML\QuizStatistik.xaml.cs">
       <DependentUpon>QuizStatistik.xaml</DependentUpon>
@@ -146,7 +160,19 @@
     <Compile Include="XAML\ZuLernendeKategorienEinstellung.xaml.cs">
       <DependentUpon>ZuLernendeKategorienEinstellung.xaml</DependentUpon>
     </Compile>
+    <Page Include="XAML\AdminGesamtStatistik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="XAML\Administration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\AdminStatistik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\AdminStatistikBenutzerAuswahl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -208,6 +234,10 @@
     <Page Include="XAML\QuizDateneingabe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\AdminQuizStatistik.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="XAML\QuizStatistik.xaml">
       <SubType>Designer</SubType>

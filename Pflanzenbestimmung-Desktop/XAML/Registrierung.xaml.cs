@@ -20,7 +20,7 @@ namespace Pflanzenbestimmung_Desktop
         {
             AusbilderComboBox.ItemsSource = Main.ausbilder;
             AusbilderComboBox.DisplayMemberPath = "Value";
-            AusbilderComboBox.SelectedIndex = Main.ausbilderId;
+            AusbilderComboBox.SelectedIndex = Main.benutzer.id;
 
             AubildungsartComboBox.ItemsSource = Main.ausbildungsarten;
             AubildungsartComboBox.DisplayMemberPath = "Value";

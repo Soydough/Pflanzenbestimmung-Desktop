@@ -1,8 +1,9 @@
 ﻿using Newtonsoft.Json;
+using System.Runtime.CompilerServices;
 
 namespace Pflanzenbestimmung_Desktop
 {
-    class Administrator : Benutzer
+    public class Administrator : Benutzer
     {
         public Administrator()
         {
@@ -15,7 +16,7 @@ namespace Pflanzenbestimmung_Desktop
             istAdmin = true;
         }
 
-        public static Administrator fromTempObjekt(BenutzerJSONTempObjekt temp)
+        new public static Administrator fromTempObjekt(BenutzerTemplate temp)
         {
             Administrator a = new Administrator();
             a.nutzername = temp.nutzername;
@@ -25,6 +26,10 @@ namespace Pflanzenbestimmung_Desktop
             a.istAdmin = true;
 
             return a;
+        }
+        public override string ToString()
+        {
+            return nutzername;
         }
     }
 }

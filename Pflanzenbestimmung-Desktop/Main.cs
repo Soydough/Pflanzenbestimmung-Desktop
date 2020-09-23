@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -17,24 +18,41 @@ namespace Pflanzenbestimmung_Desktop
 
         public static Dictionary<int, string> fachrichtungen;
 
-        public static Dictionary<int, string> ausbilder;
+        public static Dictionary<int, Administrator> ausbilder;
 
         public static int ausbilderId;
 
-        public static List<Pflanze> pflanzen;
+        public static Pflanze[] pflanzen;
+
+        public static Kategorie[] kategorien;
 
         public static void Initialize()
         {
-            ausbilder = datenbankverbindung.BekommeAusbilder();
+            //ausbilder = datenbankverbindung.BekommeAusbilder();
             ausbildungsarten = datenbankverbindung.BekommeAusbildungsArten();
             fachrichtungen = datenbankverbindung.BekommeFachrichtungen();
 
-            pflanzen = api_anbindung.PflanzenBekommen();
+            ausbilder = api_anbindung.Bekommen<Administrator>().ToDictionary();
+
+            pflanzen = api_anbindung.Bekommen<Pflanze>();
+            kategorien = api_anbindung.Bekommen<Kategorie>();
         }
 
         public static void AktualisiereAusbilderId()
         {
             ausbilderId = datenbankverbindung.BekommeAusbilderId(benutzer.nutzername);
+        }
+
+        public static Dictionary<int, T> ToDictionary<T>(this T[] arr)
+        {
+            Dictionary<int, T> dict = new Dictionary<int, T>();
+
+            for(int i = 0; i < arr.Length; i++)
+            {
+                dict.Add(i, arr[i]);
+            }
+
+            return dict;
         }
 
         private static string ToHex(byte[] bytes, bool upperCase)

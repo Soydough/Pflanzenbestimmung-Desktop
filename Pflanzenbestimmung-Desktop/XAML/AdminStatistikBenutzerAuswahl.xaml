@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="Pflanzenbestimmung_Desktop.XAML.AdminStatistikBenutzerAuswahl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Pflanzenbestimmung_Desktop.XAML"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="800"
+             Style="{DynamicResource HauptStyle}">
+    <StackPanel Margin="20" VerticalAlignment="Stretch">
+        <Label Content="Benutzer durchsuchen:"/>
+        <Border>
+            <TextBox Style="{DynamicResource BenutzernameStyle}"/>
+        </Border>
+
+        <ScrollViewer Height="260" Margin="0,10">
+            <StackPanel>
+                <StackPanel.Style>
+                    <Style>
+                        <Style.Resources>
+                            <Style TargetType="Border">
+                                <Style.Setters>
+                                    <Setter Property="Margin" Value="0,5" />
+                                </Style.Setters>
+                            </Style>
+                        </Style.Resources>
+                    </Style>
+                </StackPanel.Style>
+                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
+                    <Label Content="Gesamtstatistik"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
+                    <Label Content="Testbenutzer"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
+                    <Label Content="Testbenutzer"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
+                    <Label Content="Testbenutzer"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
+                    <Label Content="Testbenutzer"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
+                    <Label Content="Testbenutzer"/>
+                </Border>
+                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
+                    <Label Content="Testbenutzer"/>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Grid>
+            <Button Name="Zurück" Click="Zurück_Click" Content="Abbrechen" VerticalAlignment="Bottom" Height="30" Width="200" HorizontalAlignment="Left"/>
+            <Button Name="Weiter" Click="Weiter_Click" Content="Weiter" Height="30" Width="200" HorizontalAlignment="Right" />
+        </Grid>
+    </StackPanel>
+</UserControl>
