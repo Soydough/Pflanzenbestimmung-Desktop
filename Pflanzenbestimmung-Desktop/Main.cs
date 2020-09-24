@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -47,7 +46,7 @@ namespace Pflanzenbestimmung_Desktop
         {
             Dictionary<int, T> dict = new Dictionary<int, T>();
 
-            for(int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
                 dict.Add(i, arr[i]);
             }

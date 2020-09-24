@@ -1,13 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using Dirk.Warnsholdt.Helper.ByteExt;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Net;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using Dirk.Warnsholdt.Helper.ByteExt;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -64,8 +60,8 @@ namespace Pflanzenbestimmung_Desktop
                     var values = new NameValueCollection();
 
                     string methodStr;
-                    
-                    switch(typeof(T).Name)
+
+                    switch (typeof(T).Name)
                     {
                         case "Administrator":
                             methodStr = "Admins";
@@ -117,11 +113,10 @@ namespace Pflanzenbestimmung_Desktop
 
                     values["method"] = "createBild";
                     values["IDp"] = IDp.ToString();
-                    values["bild"] = bild;
+                    values["bild"] = bild.ToBinaryString();
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
-
                 }
             }
             catch { }

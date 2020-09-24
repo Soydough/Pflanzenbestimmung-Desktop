@@ -1,5 +1,4 @@
-﻿using Pflanzenbestimmung_Desktop.XAML;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop
 {
