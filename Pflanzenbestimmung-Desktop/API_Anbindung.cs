@@ -5,7 +5,9 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using Dirk.Warnsholdt.Helper.ByteExt;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -82,6 +84,47 @@ namespace Pflanzenbestimmung_Desktop
             }
             catch { }
             return new T[0];
+        }
+
+        public Pflanzenbild BekommePflanzenbild(int IDpb)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection();
+
+                    values["method"] = "getPBild";
+                    values["IDpb"] = IDpb.ToString();
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    return JsonConvert.DeserializeObject<Pflanzenbild>(responseString);
+                }
+            }
+            catch { }
+            return null;
+        }
+
+        public void BildHochladen(int IDp, byte[] bild)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection();
+
+                    values["method"] = "createBild";
+                    values["IDp"] = IDp.ToString();
+                    values["bild"] = bild;
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                }
+            }
+            catch { }
         }
 
         public bool FuegePflanzeHinzu(string gattung, string art, string deutscherName,

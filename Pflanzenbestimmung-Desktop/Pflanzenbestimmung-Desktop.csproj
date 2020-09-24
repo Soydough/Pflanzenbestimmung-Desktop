@@ -47,6 +47,9 @@
     <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
+    <Reference Include="Helper, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Helper.1.0.6\lib\netstandard2.0\Helper.dll</HintPath>
+    </Reference>
     <Reference Include="K4os.Compression.LZ4, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Compression.LZ4.1.1.11\lib\net46\K4os.Compression.LZ4.dll</HintPath>
     </Reference>
@@ -121,6 +124,9 @@
     <Compile Include="KategorieAbfrage.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Pflanze.cs" />
+    <Compile Include="Pflanzenbild.cs" />
+    <Compile Include="QuizArt.cs" />
+    <Compile Include="StatDetails.cs" />
     <Compile Include="XAML\AdminGesamtStatistik.xaml.cs">
       <DependentUpon>AdminGesamtStatistik.xaml</DependentUpon>
     </Compile>
