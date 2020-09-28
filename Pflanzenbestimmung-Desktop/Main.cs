@@ -35,7 +35,6 @@ namespace Pflanzenbestimmung_Desktop
             //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter.png");
             //api_anbindung.BildHochladen(1, platzhalter);
             //*/
-            ausbilder = datenbankverbindung.BekommeAusbilder();
             ausbildungsarten = datenbankverbindung.BekommeAusbildungsArten();
             fachrichtungen = datenbankverbindung.BekommeFachrichtungen();
 
