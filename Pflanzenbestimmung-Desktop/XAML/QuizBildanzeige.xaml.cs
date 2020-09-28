@@ -12,6 +12,10 @@ namespace Pflanzenbestimmung_Desktop
             InitializeComponent();
 
             //Bilder laden und zu ScrollView hinzufügen
+            ScrollViewer scrollViewer = BilderScrollView;
+
+            Main.PflanzenbilderBekommen(1);
+
         }
     }
 }

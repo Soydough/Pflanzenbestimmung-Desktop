@@ -30,7 +30,7 @@ namespace Pflanzenbestimmung_Desktop
 
         private void AktuellesQuizButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.changeContent(new QuizDateneingabe());
+            MainWindow.changeContent(new QuizBildanzeige());
         }
 
         private void StatistikButton_Click(object sender, RoutedEventArgs e)

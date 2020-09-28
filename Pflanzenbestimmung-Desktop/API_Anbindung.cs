@@ -1,4 +1,5 @@
 ﻿using Dirk.Warnsholdt.Helper.ByteExt;
+using Dirk.Warnsholdt.Helper.ArrayExt;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Specialized;
@@ -51,7 +52,7 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public T[] Bekommen<T>()
+        public T[] Bekommen<T>(string parName = "null")
         {
             try
             {
@@ -61,15 +62,15 @@ namespace Pflanzenbestimmung_Desktop
 
                     string methodStr;
 
-                    switch (typeof(T).Name)
+                    if (parName.Equals("null"))
                     {
-                        case "Administrator":
-                            methodStr = "Admins";
-                            break;
-                        default:
-                            methodStr = typeof(T).Name + "n";
-                            break;
+                        methodStr = typeof(T).Name + "n";
                     }
+                    else
+                    {
+                        methodStr = parName;
+                    }
+                    
                     values["method"] = "get" + methodStr;
 
                     var response = client.UploadValues(url, values);
@@ -111,9 +112,10 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     var values = new NameValueCollection();
 
-                    values["method"] = "createBild";
+                    values["method"] = "createPBild";
                     values["IDp"] = IDp.ToString();
-                    values["bild"] = bild.ToBinaryString();
+                    //values["Bild"] = bild.ToBinaryString();
+                    values["Bild"] = bild.ToSeperatedString(",", "", "");
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);

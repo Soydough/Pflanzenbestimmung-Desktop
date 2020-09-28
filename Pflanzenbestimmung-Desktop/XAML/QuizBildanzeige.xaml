@@ -9,7 +9,7 @@
              Style="{DynamicResource HauptStyle}">
 
     <StackPanel>
-    <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+    <ScrollViewer Name="BilderScrollView" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
         <StackPanel Orientation="Horizontal" Margin="10">
             <Image Source="platzhalter.png" Width="400" Height="300"/>
             <Image Source="platzhalter.png" Width="400" Height="300"/>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -25,16 +26,35 @@ namespace Pflanzenbestimmung_Desktop
 
         public static Kategorie[] kategorien;
 
+        public static Pflanzenbild[] pflanzenbilder;
+
         public static void Initialize()
         {
-            //ausbilder = datenbankverbindung.BekommeAusbilder();
+            //datenbankverbindung.BekommeAllePflanzenTest();
+            ///*
+            //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter.png");
+            //api_anbindung.BildHochladen(1, platzhalter);
+            //*/
+            ausbilder = datenbankverbindung.BekommeAusbilder();
             ausbildungsarten = datenbankverbindung.BekommeAusbildungsArten();
             fachrichtungen = datenbankverbindung.BekommeFachrichtungen();
 
-            ausbilder = api_anbindung.Bekommen<Administrator>().ToDictionary();
+            ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
 
             pflanzen = api_anbindung.Bekommen<Pflanze>();
             kategorien = api_anbindung.Bekommen<Kategorie>();
+        }
+
+        public static void FragenBekommen()
+        {
+            
+        }
+
+        public static void PflanzenbilderBekommen(int pflanzenId)
+        {
+            List<Pflanzenbild> temp = new List<Pflanzenbild>();
+            temp.Add(api_anbindung.BekommePflanzenbild(pflanzenId));
+            pflanzenbilder = temp.ToArray();
         }
 
         public static void AktualisiereAusbilderId()

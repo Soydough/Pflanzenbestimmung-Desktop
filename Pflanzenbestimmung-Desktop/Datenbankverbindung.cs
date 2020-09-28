@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows;
+using Dirk.Warnsholdt.Helper.ArrayExt;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -14,7 +15,8 @@ namespace Pflanzenbestimmung_Desktop
 
 
         public MySqlConnection connection;
-        string connectionString = "Server='localhost';Database='pflanzenbestimmung';Uid='root';Pwd='citrix170890';";
+        //string connectionString = "Server='localhost';Database='pflanzenbestimmung';Uid='root';Pwd='citrix170890';";
+        string connectionString = "Server='10.33.11.142';Database='pflanzenbestimmung';Uid='root';Pwd='';";
         MySqlDataAdapter adapter;
 
         #region MySQL-Befehl-Strings
@@ -32,6 +34,20 @@ namespace Pflanzenbestimmung_Desktop
         public Datenbankverbindung()
         {
             connection = new MySqlConnection(connectionString);
+        }
+
+        public void BekommeAllePflanzenTest()
+        {
+            MySqlCommand query = new MySqlCommand(
+                "SELECT * from p_bilder",
+                //"SELECT table_name FROM information_schema.tables;",
+                connection);
+
+            DataSet ds = new DataSet();
+            adapter = new MySqlDataAdapter(query);
+
+                adapter.Fill(ds);
+            MessageBox.Show(ds.Tables[0].Rows[0].ItemArray.ToSeperatedString());
         }
 
         public bool FuegePflanzeHinzu(string gattung, string art, string dename,
