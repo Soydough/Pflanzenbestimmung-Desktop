@@ -114,7 +114,6 @@ namespace Pflanzenbestimmung_Desktop
 
                     values["method"] = "createPBild";
                     values["IDp"] = IDp.ToString();
-                    //values["Bild"] = bild.ToBinaryString();
                     values["Bild"] = bild.ToSeperatedString(",", "", "");
 
                     var response = client.UploadValues(url, values);
@@ -124,6 +123,8 @@ namespace Pflanzenbestimmung_Desktop
             catch { }
         }
 
+
+        // Veraltet
         public bool FuegePflanzeHinzu(string gattung, string art, string deutscherName,
             string famname, string herkunft, string bluete, string bluetezeit,
             string blatt, string wuchs, string besonderheiten)
@@ -137,7 +138,7 @@ namespace Pflanzenbestimmung_Desktop
                     values["gattung"] = gattung;
                     values["art"] = art;
 
-                    var response = client.UploadValues("http://localhost/azubi.php", values);
+                    var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
                     throw new Exception("Noch nicht fertig programmiert!");
@@ -161,7 +162,7 @@ namespace Pflanzenbestimmung_Desktop
                     values["User"] = benutzername;
                     values["PW"] = passwort;
 
-                    var response = client.UploadValues("http://localhost/azubi.php", values);
+                    var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
                     BenutzerTemplate[] benutzerTempArr = JsonConvert.DeserializeObject<BenutzerTemplate[]>(responseString);
