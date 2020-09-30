@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System.Drawing;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -19,6 +22,8 @@ namespace Pflanzenbestimmung_Desktop
             //changeContent(new Anmeldung());
             changeContent(new Anmeldung());
             Mouse.SetCursor(Cursors.None);
+
+            //Main.EinloggenLaden();
         }
 
         public static void changeContent(object o)
@@ -50,6 +55,19 @@ namespace Pflanzenbestimmung_Desktop
                     dieses.Title = "Pflanzenbestimmung";
                     break;
             }
+        }
+
+        public static void StartLoading()
+        {
+            dieses.Laden.Visibility = Visibility.Visible;
+            dieses.ContentHolder.Background = new SolidColorBrush(Colors.White) { Opacity = 0.3 };
+            Mouse.OverrideCursor = Cursors.Wait;
+        }
+        public static void StopLoading()
+        {
+            dieses.Laden.Visibility = Visibility.Hidden;
+            dieses.ContentHolder.Background = new SolidColorBrush(Colors.White) { Opacity = 1 };
+            Mouse.OverrideCursor = null;
         }
     }
 }

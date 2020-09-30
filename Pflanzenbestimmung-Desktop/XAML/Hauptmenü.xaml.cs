@@ -11,6 +11,7 @@ namespace Pflanzenbestimmung_Desktop
         public Hauptmenü()
         {
             InitializeComponent();
+            //Main.QuizBekommen();
         }
 
         private void AusloggenButton_Click(object sender, RoutedEventArgs e)
@@ -30,7 +31,11 @@ namespace Pflanzenbestimmung_Desktop
 
         private void AktuellesQuizButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.changeContent(new QuizBildanzeige());
+            Main.QuizBekommen();
+            Main.PflanzenbilderBekommen();
+            ////Das erste Pflanzenbild anzeigen
+            //MainWindow.changeContent(new QuizBildanzeige());
+            MainWindow.changeContent(new QuizDateneingabe());
         }
 
         private void StatistikButton_Click(object sender, RoutedEventArgs e)

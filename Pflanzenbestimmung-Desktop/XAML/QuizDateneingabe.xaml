@@ -15,7 +15,7 @@
 
         <!-- Links -->
         <StackPanel Grid.Column="0">
-            <Grid Style="{DynamicResource QuizGridStyle}">
+            <Grid Name="LinkesGrid" Style="{DynamicResource QuizGridStyle}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="2*" />
@@ -49,7 +49,7 @@
 
         <!-- Rechts -->
         <StackPanel Grid.Column="1">
-            <Grid Style="{DynamicResource QuizGridStyle}">
+            <Grid Name="RechtesGrid" Style="{DynamicResource QuizGridStyle}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="2*" />

@@ -5,6 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pflanzenbestimmung_Desktop"
         mc:Ignorable="d"
-        Title="Pflanzenbestimmung" Height="450" Width="800">
-    <ContentControl Name="ContentHolder"/>
+        Title="Pflanzenbestimmung" Height="450" Width="800"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com">
+
+    <Grid>
+        <ContentControl Name="ContentHolder" Visibility="Visible" Opacity="1"/>
+        <Grid Name="Laden" Visibility="Hidden">
+            <Image gif:ImageBehavior.AnimatedSource="flowey_tanzt.gif" />
+        </Grid>
+    </Grid>
 </Window>

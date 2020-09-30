@@ -1,9 +1,12 @@
-﻿namespace Pflanzenbestimmung_Desktop
+﻿using Newtonsoft.Json;
+
+namespace Pflanzenbestimmung_Desktop
 {
-    class QuizArt
+    public class QuizArt
     {
         public int id;
         public string quizname;
+        [JsonProperty("quizgroe\u00dfe")]
         public int quizgröße;
     }
 }

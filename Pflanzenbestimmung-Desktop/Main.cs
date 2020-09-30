@@ -1,8 +1,15 @@
-﻿using System;
+﻿using Flurl.Util;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Linq;
+using System.Windows.Threading;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
+using Dirk.Warnsholdt.Helper.Stall;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -28,13 +35,25 @@ namespace Pflanzenbestimmung_Desktop
 
         public static Pflanzenbild[] pflanzenbilder;
 
+        public static QuizArt quizArt;
+
+        //public static Quiz quiz;
+        public static Quizfrage[] quiz;
+
+        public static Random random = new Random();
+
+        public static Pflanzenbild[] momentanePflanzenbilder;
+
+        public static int momentanePflanzeAusQuiz = -1; // -1: kein Quiz
+
+
         public static void Initialize()
         {
             //datenbankverbindung.BekommeAllePflanzenTest();
-            ///*
+            //
             //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter.png");
             //api_anbindung.BildHochladen(1, platzhalter);
-            //*/
+            //
             ausbildungsarten = datenbankverbindung.BekommeAusbildungsArten();
             fachrichtungen = datenbankverbindung.BekommeFachrichtungen();
 
@@ -44,16 +63,34 @@ namespace Pflanzenbestimmung_Desktop
             kategorien = api_anbindung.Bekommen<Kategorie>();
         }
 
-        public static void FragenBekommen()
+        public static void QuizBekommen()
         {
-            
+            quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt")[0];
+            int anzahl = quizArt.quizgröße;
+
+            //quiz = new Quiz();
+            //quiz.pflanzen = new Pflanze[anzahl];
+            //quiz.kategorien = kategorien;
+            quiz = new Quizfrage[anzahl];
+
+            List<Pflanze> tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
+            for(int i = 0; i < quiz.Length; i++)
+            {
+                quiz[i] = new Quizfrage();
+                int index = random.Next(tempPflanzen.Count - 1);
+                quiz[i].pflanze = tempPflanzen[index];
+            }
+
+            kategorien = api_anbindung.Bekommen<Kategorie>();
         }
 
-        public static void PflanzenbilderBekommen(int pflanzenId)
+        public static void FragenBekommen()
         {
-            List<Pflanzenbild> temp = new List<Pflanzenbild>();
-            temp.Add(api_anbindung.BekommePflanzenbild(pflanzenId));
-            pflanzenbilder = temp.ToArray();
+        }
+
+        public static void PflanzenbilderBekommen()
+        {
+            pflanzenbilder = api_anbindung.BekommePflanzenbilder(quiz[++momentanePflanzeAusQuiz].pflanze.id);
         }
 
         public static void AktualisiereAusbilderId()
@@ -99,6 +136,18 @@ namespace Pflanzenbestimmung_Desktop
             string StringIn = pass + ben.Substring(ben.Length - Math.Min(3, ben.Length), Math.Min(3, ben.Length));
             //Get Hash as Hex code
             return SHA256HexHashString(StringIn);
+        }
+
+        public static void LadenStart()
+        {
+            MainWindow.StartLoading();
+        }
+
+        public static void Laden(int amount = 30000)
+        {
+            //MainWindow.StartLoading();
+            Stall.Bubblesort(amount);
+            MainWindow.StopLoading();
         }
     }
 }

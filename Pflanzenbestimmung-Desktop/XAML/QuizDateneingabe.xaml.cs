@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -11,12 +12,52 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
 
-            //Kategorien laden und hinzufügen
+            LinkesGrid.Children.Clear();
+            RechtesGrid.Children.Clear();
+
+            for (int i = 0; i < Main.kategorien.Length; i++)
+            {
+                Kategorie k = Main.kategorien[i];
+
+                Label kategorie = new Label();
+                kategorie.Content = k.kategorie;
+                TextBox eingabe = new TextBox();
+                eingabe.Name = k.kategorie + "TextBox";
+
+                if (i % 2 == 0)
+                {
+                    LinkesGrid.Children.Add(kategorie);
+                    LinkesGrid.Children.Add(eingabe);
+
+                    Grid.SetRow(kategorie, i / 2 + 1);
+                    Grid.SetRow(eingabe, i / 2 + 1);
+
+                    Grid.SetColumn(eingabe, 1);
+                }
+                else {
+                    RechtesGrid.Children.Add(kategorie);
+                    RechtesGrid.Children.Add(eingabe);
+
+                    Grid.SetRow(kategorie, (i + 1) / 2 - 1);
+                    Grid.SetRow(eingabe, (i + 1) / 2 - 1);
+
+                    Grid.SetColumn(eingabe, 1);
+                }
+            }
         }
 
         private void Weiter_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            MainWindow.changeContent(new QuizStatistik());
+            Main.momentanePflanzeAusQuiz++;
+
+            //Antworten speichern
+            for(int i = 0; i < Main.kategorien.Length; i++)
+            {
+                string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;
+                Main.quiz[Main.momentanePflanzeAusQuiz].k.gegebeneAntwort = eingabe;
+            }
+
+            //MainWindow.changeContent(new QuizStatistik());
         }
     }
 }

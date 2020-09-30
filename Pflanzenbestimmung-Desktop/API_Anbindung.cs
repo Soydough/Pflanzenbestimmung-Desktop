@@ -5,6 +5,8 @@ using System;
 using System.Collections.Specialized;
 using System.Net;
 using System.Text;
+using System.Collections.Generic;
+using Dirk.Warnsholdt.Helper;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -12,6 +14,7 @@ namespace Pflanzenbestimmung_Desktop
     {
         //private readonly string url = "http://localhost/dbSchnittstelle.php";
         private readonly string url = "http://10.33.11.142/API/dbSchnittstelle.php";
+        //private readonly string url = "http://localhost/pflanzenbestimmung/api/dbSchnittstelle.php";
 
         public API_Anbindung()
         {
@@ -45,12 +48,12 @@ namespace Pflanzenbestimmung_Desktop
                         return Benutzer.fromTempObjekt(b);
                     }
                 }
-            }
+        }
             catch
             {
                 return Benutzer.ungueltigerBenutzer;
             }
-        }
+}
 
         public T[] Bekommen<T>(string parName = "null")
         {
@@ -83,24 +86,52 @@ namespace Pflanzenbestimmung_Desktop
             return new T[0];
         }
 
-        public Pflanzenbild BekommePflanzenbild(int IDpb)
+        public Pflanzenbild[] BekommePflanzenbilder(int IDpb)
         {
             try
             {
                 using (var client = new WebClient())
                 {
-                    var values = new NameValueCollection();
-
-                    values["method"] = "getPBild";
-                    values["IDpb"] = IDpb.ToString();
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "getPBilder",
+                        ["IDpb"] = IDpb.ToString()
+                    };
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
-                    return JsonConvert.DeserializeObject<Pflanzenbild>(responseString);
+                    return JsonConvert.DeserializeObject<Pflanzenbild[]>(responseString);
                 }
             }
             catch { }
+            return null;
+        }
+
+        public Pflanzenantwort[] BekommePflanzenantworten()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "getPBilder",
+                        //["IDpb"] = IDpb.ToString()
+                    };
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    //return JsonConvert.DeserializeObject<Pflanzenbild[]>(responseString);
+                }
+            }
+            catch { }
+            return null;
+        }
+
+        public List<int[]> BekommeQuizPersonZuweisungen(int IDa)
+        {
             return null;
         }
 
@@ -114,7 +145,7 @@ namespace Pflanzenbestimmung_Desktop
 
                     values["method"] = "createPBild";
                     values["IDp"] = IDp.ToString();
-                    values["Bild"] = bild.ToSeperatedString(",", "", "");
+                    values["Bild"] = MySql.Data.MySqlClient.MySqlHelper.EscapeString(bild.GetString());
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
@@ -168,13 +199,14 @@ namespace Pflanzenbestimmung_Desktop
                     BenutzerTemplate[] benutzerTempArr = JsonConvert.DeserializeObject<BenutzerTemplate[]>(responseString);
                     BenutzerTemplate b = benutzerTempArr[0];
                     b.nutzername = benutzername;
+                    return true;
                 }
             }
             catch
             {
             }
 
-            return false;
+            return !true;
         }
     }
 }

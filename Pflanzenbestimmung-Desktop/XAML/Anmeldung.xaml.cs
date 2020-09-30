@@ -15,18 +15,21 @@ namespace Pflanzenbestimmung_Desktop
 #if DEBUG
             AnmeldungBenutzernameTextBox.Text = "SysAdmin";
             AnmeldungPasswordBox.Password = "KarteiAdmin321#";
-            AnmeldungButton_Click(null, null);
+            //AnmeldungButton_Click(null, null);
 #endif
         }
 
         private void AnmeldungButton_Click(object sender, RoutedEventArgs e)
         {
+            Main.LadenStart();
             string benutzername = AnmeldungBenutzernameTextBox.Text;
             string passwort = AnmeldungPasswordBox.Password;
 
             string hash = Main.GetHashWithSalt(passwort, benutzername);
 
             Main.benutzer = Main.api_anbindung.Login(benutzername, hash);
+
+            Main.Laden();
 
             if (Main.benutzer.IstGueltig)
             {
