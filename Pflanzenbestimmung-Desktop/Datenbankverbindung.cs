@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows;
-using Dirk.Warnsholdt.Helper.ArrayExt;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -47,7 +46,6 @@ namespace Pflanzenbestimmung_Desktop
             adapter = new MySqlDataAdapter(query);
 
                 adapter.Fill(ds);
-            MessageBox.Show(ds.Tables[0].Rows[0].ItemArray.ToSeperatedString());
         }
 
         public bool FuegePflanzeHinzu(string gattung, string art, string dename,
