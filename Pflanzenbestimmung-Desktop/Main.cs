@@ -145,7 +145,7 @@ namespace Pflanzenbestimmung_Desktop
             MainWindow.StartLoading();
         }
 
-        public static void Laden(int amount = 30000)
+        public static void Laden(int amount = 10000)
         {
             //MainWindow.StartLoading();
             Stall.Bubblesort(amount);
