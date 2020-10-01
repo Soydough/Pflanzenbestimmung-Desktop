@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Media;
+using System.Drawing;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -18,6 +19,7 @@ namespace Pflanzenbestimmung_Desktop
     {
         // Klasse zu speichern von Variablen, die auf mehreren Seiten gebraucht werden
 
+        #region Variablen
         //Veraltet
         public static Datenbankverbindung datenbankverbindung = new Datenbankverbindung();
 
@@ -50,19 +52,20 @@ namespace Pflanzenbestimmung_Desktop
 
         public static int momentanePflanzeAusQuiz = -1; // -1: kein Quiz
 
+        public static ImageSource fullscreenImage;
+
+        #endregion
 
         public static void Initialize()
         {
             //datenbankverbindung.BekommeAllePflanzenTest();
             //
 
-            /*
                 //Platzhalter-Bilder hochladen
-                byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter.jpg");
-                api_anbindung.BildHochladen(1, platzhalter);
-                api_anbindung.BildHochladen(2, platzhalter);
-                api_anbindung.BildHochladen(3, platzhalter);
-            */
+                //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter.jpg");
+                //api_anbindung.BildHochladen(1, platzhalter);
+                //api_anbindung.BildHochladen(2, platzhalter);
+                //api_anbindung.BildHochladen(3, platzhalter);
 
             //
             //ausbildungsarten = datenbankverbindung.BekommeAusbildungsArten();
@@ -87,11 +90,14 @@ namespace Pflanzenbestimmung_Desktop
             quiz = new Quizfrage[anzahl];
 
             List<Pflanze> tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
+            List<Kategorie> tempKategorien = ((Kategorie[])kategorien.Clone()).ToList();
+
             for(int i = 0; i < quiz.Length; i++)
             {
                 quiz[i] = new Quizfrage();
                 int index = random.Next(tempPflanzen.Count - 1);
                 quiz[i].pflanze = tempPflanzen[index];
+                quiz[i].kategorienUndAntworten = tempKategorien[index];
             }
 
             kategorien = api_anbindung.Bekommen<Kategorie>();

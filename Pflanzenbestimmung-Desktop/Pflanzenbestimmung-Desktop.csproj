@@ -144,6 +144,9 @@
     <Compile Include="XAML\AdminStatistikBenutzerAuswahl.xaml.cs">
       <DependentUpon>AdminStatistikBenutzerAuswahl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="XAML\BildanzeigeVollbild.xaml.cs">
+      <DependentUpon>BildanzeigeVollbild.xaml</DependentUpon>
+    </Compile>
     <Compile Include="XAML\ErscheinendePflanzenEinstellung.xaml.cs">
       <DependentUpon>ErscheinendePflanzenEinstellung.xaml</DependentUpon>
     </Compile>
@@ -195,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="XAML\Benutzerverwaltung.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\BildanzeigeVollbild.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

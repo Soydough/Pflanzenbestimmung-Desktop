@@ -31,7 +31,10 @@ namespace Pflanzenbestimmung_Desktop
 
         private void AktuellesQuizButton_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow.StartLoading();
             Main.QuizBekommen();
+
+            Main.Laden();
             //Main.PflanzenbilderBekommen();
             ////Das erste Pflanzenbild anzeigen
             MainWindow.changeContent(new QuizBildanzeige());

@@ -83,7 +83,7 @@ namespace Pflanzenbestimmung_Desktop
             return new T[0];
         }
 
-        public Pflanzenbild[] BekommePflanzenbilder(int IDpb)
+        public Pflanzenbild[] BekommePflanzenbilder(int IDp)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace Pflanzenbestimmung_Desktop
                     var values = new NameValueCollection
                     {
                         ["method"] = "getPBilder",
-                        ["IDpb"] = IDpb.ToString()
+                        ["IDp"] = IDp.ToString()
                     };
 
                     var response = client.UploadValues(url, values);

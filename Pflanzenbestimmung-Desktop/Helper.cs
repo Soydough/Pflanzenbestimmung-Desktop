@@ -17,7 +17,7 @@ namespace Pflanzenbestimmung_Desktop
         /// <returns>Ein String</returns>
         public static string GetString(this byte[] arr)
         {
-            return Encoding.UTF8.GetString(arr);
+            return Encoding.Default.GetString(arr);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pflanzenbestimmung_Desktop
         /// <returns>Ein Byte-Array</returns>
         public static byte[] ToBytes(this string str)
         {
-            return Encoding.UTF8.GetBytes(str);
+            return Encoding.Default.GetBytes(str);
         }
     }
 

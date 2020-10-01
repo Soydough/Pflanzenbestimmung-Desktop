@@ -61,19 +61,8 @@ namespace Pflanzenbestimmung_Desktop
             for (int i = 0; i < Main.kategorien.Length; i++)
             {
                 string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;
-                //Main.quiz[Main.];
                 Main.quiz[Main.momentanePflanzeAusQuiz].kategorienUndAntworten[i].eingegebeneAntwort = eingabe;
             }
-
-            /*
-            for (int i = 0; i < Main.kategorien.Length; i++)
-            {
-                TextBox textBox = UIHelper.FindChild<TextBox>(Application.Current.MainWindow, "myTextBoxName");
-
-                string eingabe = ((TextBox)textBox).Text;
-                Main.quiz[Main.momentanePflanzeAusQuiz].kategorienUndAntworten[i].eingegebeneAntwort = eingabe;
-            }
-            */
 
             MainWindow.changeContent(new QuizStatistik());
         }

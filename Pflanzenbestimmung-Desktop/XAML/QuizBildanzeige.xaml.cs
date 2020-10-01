@@ -4,6 +4,9 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows;
 using System.Linq.Expressions;
+using System.Windows.Controls.Primitives;
+using System.Windows.Media;
+using Pflanzenbestimmung_Desktop.XAML;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -54,11 +57,49 @@ namespace Pflanzenbestimmung_Desktop
                         }
                         bmp.Freeze();
                         image.Source = bmp;
+
+                        image.Margin = new Thickness(10);
+
+                        image.MouseUp += ImageClickEvent;
+
                         stackPanel.Children.Add(image);
                     }
                     catch { }
                 }
             }
+
+            void ImageClickEvent(object sender, EventArgs e)
+            {
+                //MessageBox.Show("Opening second window.");
+                Image image = sender as Image;
+                Main.fullscreenImage = image.Source;
+                var popup = new BildanzeigeVollbild();
+                popup.Show();
+
+                //var myPopup = new Popup
+                //{
+                //    Child = new Image
+                //    {
+                //        Source = image.Source,
+                //        Stretch = Stretch.UniformToFill,
+                //        Height = SystemParameters.PrimaryScreenHeight,
+                //        Width = SystemParameters.PrimaryScreenWidth
+                //    }
+                //};
+                //myPopup.IsOpen = true;
+            }
+
+
+        }
+
+        private void Image_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Weiter_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new QuizDateneingabe());
         }
     }
 }
