@@ -1,9 +1,9 @@
-﻿using Dirk.Warnsholdt.Helper.ArrayExt;
-using System;
+﻿using System;
 using System.IO;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows;
+using System.Linq.Expressions;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -19,16 +19,15 @@ namespace Pflanzenbestimmung_Desktop
             //Bilder laden und zu ScrollView hinzufügen
             StackPanel stackPanel = BilderScrollView;
 
-            
+            Main.quiz[0].pflanze.id_pflanze = 1;
             //Bekomme aktuelle Bilder
             Main.PflanzenbilderBekommen();
-
 
 
             if (Main.pflanzenbilder.IsNullOrEmpty())
             {
                 string pflanze = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[3].antwort;
-                MessageBox.Show("Für die Pflanze {0} sind keine Bilder hinterlegt!");
+                MessageBox.Show($"Für die Pflanze {pflanze} sind keine Bilder hinterlegt!");
             }
             else
             {
@@ -36,23 +35,28 @@ namespace Pflanzenbestimmung_Desktop
 
                 for (int i = 0; i < Main.pflanzenbilder.Length; i++)
                 {
-                    Image image = new Image();
-                    byte[] b = Main.pflanzenbilder[i].bild;
-
-                    BitmapImage bmp = new BitmapImage();
-
-                    using (MemoryStream mem = new MemoryStream(b))
+                    //TODO: Convert try to convert image to bitmap
+                    try
                     {
-                        bmp.BeginInit();
-                        bmp.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
-                        bmp.CacheOption = BitmapCacheOption.OnLoad;
-                        bmp.UriSource = null;
-                        bmp.StreamSource = mem;
-                        bmp.EndInit();
+                        Image image = new Image();
+                        byte[] b = Main.pflanzenbilder[i].bild.ToBytes();
+
+                        BitmapImage bmp = new BitmapImage();
+
+                        using (MemoryStream mem = new MemoryStream(b))
+                        {
+                            bmp.BeginInit();
+                            bmp.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                            bmp.CacheOption = BitmapCacheOption.OnLoad;
+                            bmp.UriSource = null;
+                            bmp.StreamSource = mem;
+                            bmp.EndInit();
+                        }
+                        bmp.Freeze();
+                        image.Source = bmp;
+                        stackPanel.Children.Add(image);
                     }
-                    bmp.Freeze();
-                    image.Source = bmp;
-                    stackPanel.Children.Add(image);
+                    catch { }
                 }
             }
         }

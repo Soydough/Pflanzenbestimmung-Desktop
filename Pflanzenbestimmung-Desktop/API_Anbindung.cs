@@ -1,12 +1,9 @@
-﻿using Dirk.Warnsholdt.Helper.ByteExt;
-using Dirk.Warnsholdt.Helper.ArrayExt;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Specialized;
 using System.Net;
 using System.Text;
 using System.Collections.Generic;
-using Dirk.Warnsholdt.Helper;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -108,6 +105,7 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
+
         public Pflanzenantwort[] BekommePflanzenantworten()
         {
             try
@@ -155,32 +153,7 @@ namespace Pflanzenbestimmung_Desktop
         }
 
 
-        // Veraltet
-        public bool FuegePflanzeHinzu(string gattung, string art, string deutscherName,
-            string famname, string herkunft, string bluete, string bluetezeit,
-            string blatt, string wuchs, string besonderheiten)
-        {
-            try
-            {
-                using (var client = new WebClient())
-                {
-                    var values = new NameValueCollection();
-                    values["method"] = "login";
-                    values["gattung"] = gattung;
-                    values["art"] = art;
-
-                    var response = client.UploadValues(url, values);
-                    var responseString = Encoding.Default.GetString(response);
-
-                    throw new Exception("Noch nicht fertig programmiert!");
-                }
-            }
-            catch
-            {
-            }
-
-            return false;
-        }
+       
 
         public bool BenutzerErstellen(string benutzername, string passwort, string ausbilderBenutzername, int ausbildungsart, int fachrichtung)
         {

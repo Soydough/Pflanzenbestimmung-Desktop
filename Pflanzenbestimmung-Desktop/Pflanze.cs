@@ -4,9 +4,9 @@ namespace Pflanzenbestimmung_Desktop
 {
     public class Pflanze
     {
-        public int id;
-        public int zier;
-        public int gala;
+        public int id_pflanze;
+        public int zierpflanzenbau;
+        public int gartenlandschaftsbau;
         [JsonProperty("0")]
         public KategorieAbfrage[] kategorieAbfragen;
     }

@@ -9,7 +9,6 @@ using System.Windows.Threading;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
-using Dirk.Warnsholdt.Helper.Stall;
 using System.Windows;
 using System.Windows.Media;
 
@@ -56,10 +55,19 @@ namespace Pflanzenbestimmung_Desktop
         {
             //datenbankverbindung.BekommeAllePflanzenTest();
             //
-            //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter.png");
-            //api_anbindung.BildHochladen(1, platzhalter);
+
+            /*
+                //Platzhalter-Bilder hochladen
+                byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter.jpg");
+                api_anbindung.BildHochladen(1, platzhalter);
+                api_anbindung.BildHochladen(2, platzhalter);
+                api_anbindung.BildHochladen(3, platzhalter);
+            */
+
             //
-            ausbildungsarten = datenbankverbindung.BekommeAusbildungsArten();
+            //ausbildungsarten = datenbankverbindung.BekommeAusbildungsArten();
+
+
             fachrichtungen = datenbankverbindung.BekommeFachrichtungen();
 
             ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
@@ -95,7 +103,8 @@ namespace Pflanzenbestimmung_Desktop
 
         public static void PflanzenbilderBekommen()
         {
-            pflanzenbilder = api_anbindung.BekommePflanzenbilder(quiz[++momentanePflanzeAusQuiz].pflanze.id);
+            momentanePflanzeAusQuiz++;
+            pflanzenbilder = api_anbindung.BekommePflanzenbilder(quiz[momentanePflanzeAusQuiz].pflanze.id_pflanze);
         }
 
         public static void AktualisiereAusbilderId()

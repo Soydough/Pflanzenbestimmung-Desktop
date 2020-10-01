@@ -10,6 +10,8 @@ namespace Pflanzenbestimmung_Desktop
         public Statistik()
         {
             InitializeComponent();
+
+
         }
 
         private void Hauptmenü_Click(object sender, System.Windows.RoutedEventArgs e)

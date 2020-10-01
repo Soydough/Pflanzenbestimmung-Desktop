@@ -32,10 +32,10 @@ namespace Pflanzenbestimmung_Desktop
         private void AktuellesQuizButton_Click(object sender, RoutedEventArgs e)
         {
             Main.QuizBekommen();
-            Main.PflanzenbilderBekommen();
+            //Main.PflanzenbilderBekommen();
             ////Das erste Pflanzenbild anzeigen
-            //MainWindow.changeContent(new QuizBildanzeige());
-            MainWindow.changeContent(new QuizDateneingabe());
+            MainWindow.changeContent(new QuizBildanzeige());
+            //MainWindow.changeContent(new QuizDateneingabe());
         }
 
         private void StatistikButton_Click(object sender, RoutedEventArgs e)

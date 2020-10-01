@@ -3,6 +3,6 @@
     public class Pflanzenbild
     {
         public int id_bild;
-        public byte[] bild;
+        public string bild;
     }
 }
