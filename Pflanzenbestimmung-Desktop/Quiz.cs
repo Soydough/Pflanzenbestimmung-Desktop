@@ -8,6 +8,6 @@ namespace Pflanzenbestimmung_Desktop
 {
     public class Quiz
     {
-        //public Quizfrage[] fragen;
+        public Quizfrage[] fragen;
     }
 }

@@ -48,12 +48,12 @@ namespace Pflanzenbestimmung_Desktop
                         return Benutzer.fromTempObjekt(b);
                     }
                 }
-        }
+            }
             catch
             {
                 return Benutzer.ungueltigerBenutzer;
             }
-}
+        }
 
         public T[] Bekommen<T>(string parName = "null")
         {
@@ -73,7 +73,7 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         methodStr = parName;
                     }
-                    
+
                     values["method"] = "get" + methodStr;
 
                     var response = client.UploadValues(url, values);

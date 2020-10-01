@@ -22,7 +22,8 @@ namespace Pflanzenbestimmung_Desktop
                 Label kategorie = new Label();
                 kategorie.Content = k.kategorie;
                 TextBox eingabe = new TextBox();
-                eingabe.Name = k.kategorie + "TextBox";
+                //eingabe.Name = k.kategorie + "TextBox";
+                RegisterName(k.kategorie + "TextBox", eingabe);
 
                 if (i % 2 == 0)
                 {
@@ -51,13 +52,30 @@ namespace Pflanzenbestimmung_Desktop
             Main.momentanePflanzeAusQuiz++;
 
             //Antworten speichern
-            for(int i = 0; i < Main.kategorien.Length; i++)
+            //for (int i = 0; i < Main.kategorien.Length; i++)
+            //{
+            //    string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;
+            //    Main.quiz[Main.momentanePflanzeAusQuiz].k.gegebeneAntwort = eingabe;
+            //}
+
+            for (int i = 0; i < Main.kategorien.Length; i++)
             {
                 string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;
-                Main.quiz[Main.momentanePflanzeAusQuiz].k.gegebeneAntwort = eingabe;
+                //Main.quiz[Main.];
+                Main.quiz[Main.momentanePflanzeAusQuiz].kategorienUndAntworten[i].eingegebeneAntwort = eingabe;
             }
 
-            //MainWindow.changeContent(new QuizStatistik());
+            /*
+            for (int i = 0; i < Main.kategorien.Length; i++)
+            {
+                TextBox textBox = UIHelper.FindChild<TextBox>(Application.Current.MainWindow, "myTextBoxName");
+
+                string eingabe = ((TextBox)textBox).Text;
+                Main.quiz[Main.momentanePflanzeAusQuiz].kategorienUndAntworten[i].eingegebeneAntwort = eingabe;
+            }
+            */
+
+            MainWindow.changeContent(new QuizStatistik());
         }
     }
 }
