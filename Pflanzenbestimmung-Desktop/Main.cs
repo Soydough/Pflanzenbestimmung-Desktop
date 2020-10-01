@@ -17,7 +17,10 @@ namespace Pflanzenbestimmung_Desktop
 {
     public static class Main
     {
-        public static Datenbankverbindung datenbankverbindung = new Datenbankverbindung();
+        // Klasse zu speichern von Variablen, die auf mehreren Seiten gebraucht werden
+
+        //Veraltet
+        //public static Datenbankverbindung datenbankverbindung = new Datenbankverbindung();
 
         public static API_Anbindung api_anbindung = new API_Anbindung();
 
