@@ -64,8 +64,6 @@ namespace Pflanzenbestimmung_Desktop
                 Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[i].gegebeneAntwort = eingabe;
             }
 
-            Main.momentanePflanzeAusQuiz++;
-
             MainWindow.changeContent(new QuizStatistik());
         }
     }

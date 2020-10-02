@@ -131,6 +131,7 @@
     <Compile Include="Pflanzenbild.cs" />
     <Compile Include="QuizArt.cs" />
     <Compile Include="QuizPflanze.cs" />
+    <Compile Include="QuizPZuweisung.cs" />
     <Compile Include="StatDetails.cs" />
     <Compile Include="XAML\AdminGesamtStatistik.xaml.cs">
       <DependentUpon>AdminGesamtStatistik.xaml</DependentUpon>

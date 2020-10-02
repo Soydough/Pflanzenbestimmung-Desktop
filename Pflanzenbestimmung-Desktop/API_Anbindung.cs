@@ -105,7 +105,7 @@ namespace Pflanzenbestimmung_Desktop
         }
 
 
-        public Pflanzenantwort[] BekommePflanzenantworten()
+        public QuizPZuweisung[] BekommeQuizPZuweisung(int IDa)
         {
             try
             {
@@ -113,14 +113,14 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     var values = new NameValueCollection
                     {
-                        ["method"] = "getPBilder",
-                        //["IDpb"] = IDpb.ToString()
+                        ["method"] = "getQuizPZuweisung",
+                        ["IDa"] = IDa.ToString()
                     };
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
-                    //return JsonConvert.DeserializeObject<Pflanzenbild[]>(responseString);
+                    return JsonConvert.DeserializeObject<QuizPZuweisung[]>(responseString);
                 }
             }
             catch { }

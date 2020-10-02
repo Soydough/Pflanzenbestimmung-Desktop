@@ -47,22 +47,12 @@ namespace Pflanzenbestimmung_Desktop
 
         public static ImageSource fullscreenImage;
 
+        public static QuizPZuweisung[] quizPZuweisungen;
+
         #endregion
 
         public static void Initialize()
         {
-            //datenbankverbindung.BekommeAllePflanzenTest();
-            //
-
-            //Platzhalter-Bilder hochladen
-            //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter.jpg");
-            //api_anbindung.BildHochladen(1, platzhalter);
-            //api_anbindung.BildHochladen(2, platzhalter);
-            //api_anbindung.BildHochladen(3, platzhalter);
-
-            //
-            //ausbildungsarten = datenbankverbindung.BekommeAusbildungsArten();
-
 
             fachrichtungen = datenbankverbindung.BekommeFachrichtungen();
             ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
@@ -72,28 +62,38 @@ namespace Pflanzenbestimmung_Desktop
 
         public static void QuizBekommen()
         {
+            if(benutzer.istAdmin)
+            {
+                MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
+                return;
+            }
+
             quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt")[0];
             int anzahl = quizArt.quizgröße;
-
-            //quiz = new Quiz();
-            //quiz.pflanzen = new Pflanze[anzahl];
-            //quiz.kategorien = kategorien;
             quiz = new QuizPflanze[anzahl];
+
+            quizPZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
+
+            if (quizPZuweisungen.IsNullOrEmpty())
+            {
+                MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
+                return;
+            }
 
             List<Pflanze> tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
 
             for (int i = 0; i < quiz.Length; i++)
             {
                 quiz[i] = new QuizPflanze();
-                int index = random.Next(tempPflanzen.Count - 1);
-                quiz[i].pflanze = tempPflanzen[index];
+                int index = random.Next(quizPZuweisungen.Length - 1);
+                quiz[i].pflanze = pflanzen[quizPZuweisungen[index].id_pflanze];
 
-                //Enfernt die hinzugefügte Pflanze, damit die die Pflanzen möglichst zufällig sind
-                tempPflanzen.RemoveAt(index);
-                //Fügt die Pflanzen wieder hinzu, falls keine mehr vefügbar sind
+                //Enfernt die hinzugefügte Pflanze, damit jede Pflanzen nur einmal vorkommt
+                tempPflanzen.Remove(quiz[i].pflanze);
+                //Beendet den for-loop, wenn keine Pflanzen mehr verfügbar sind
                 if (tempPflanzen.IsNullOrEmpty())
                 {
-                    tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
+                    break;
                 }
             }
         }
