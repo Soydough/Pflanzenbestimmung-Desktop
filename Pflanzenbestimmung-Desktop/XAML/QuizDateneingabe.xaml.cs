@@ -14,6 +14,8 @@ namespace Pflanzenbestimmung_Desktop
             LinkesGrid.Children.Clear();
             RechtesGrid.Children.Clear();
 
+            //MainWindow.DebugChangeTitle(Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[0].antwort);
+
             for (int i = 0; i < Main.kategorien.Length; i++)
             {
                 Kategorie k = Main.kategorien[i];

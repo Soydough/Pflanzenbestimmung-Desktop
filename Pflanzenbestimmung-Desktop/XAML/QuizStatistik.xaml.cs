@@ -28,13 +28,15 @@ namespace Pflanzenbestimmung_Desktop
                 Label gegebeneAntwortLabel = new Label();
                 gegebeneAntwortLabel.Content = Main.quiz[pflanzenIndex].pflanze.kategorieAbfragen[i].gegebeneAntwort;
 
-                if(korrekteAntwortLabel.Content == gegebeneAntwortLabel.Content)
+                if(korrekteAntwortLabel.Content.Equals(gegebeneAntwortLabel.Content))
                 {
-                    gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Green;
+                    gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.LimeGreen;
+                    gegebeneAntwortLabel.Content += " ✓";
                 }
                 else
                 {
                     gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Red;
+                    gegebeneAntwortLabel.Content += " ×";
                 }
 
                 //RegisterName(Main.kategorien[i].kategorie + "Label", gegebeneAntwortLabel);

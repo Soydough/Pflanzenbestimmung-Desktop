@@ -7,6 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="800"
              Style="{DynamicResource HauptStyle}">
+    <Grid>
     <StackPanel Name="StackPanel">
         <Grid Name="GattungsnameGrid">
             <Grid.ColumnDefinitions>
@@ -101,7 +102,10 @@
 
         <StackPanel Orientation="Horizontal">
             <Button Visibility="Collapsed" Name="ZurückButton" Click="ZurückButton_Click" Content="Zurück" Width="200" Height="30" Margin="100"/>
-            <Button Name="HauptmenüButton" Click="HauptmenüButton_Click" Content="Hauptmenü" Width="200" Height="30" Margin="100"/>
+            
         </StackPanel>
     </StackPanel>
+        
+        <Button Name="HauptmenüButton" Click="HauptmenüButton_Click" Content="Hauptmenü" Width="200" Height="30" Margin="100,20" VerticalAlignment="Bottom"/>
+    </Grid>
 </UserControl>
