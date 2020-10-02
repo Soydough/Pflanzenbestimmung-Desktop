@@ -14,6 +14,7 @@ namespace Pflanzenbestimmung_Desktop
         public MainWindow()
         {
             InitializeComponent();
+
             Mouse.SetCursor(Cursors.Wait);
             dieses = this;
             Main.Initialize();

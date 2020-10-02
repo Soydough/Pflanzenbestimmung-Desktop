@@ -49,14 +49,20 @@ namespace Pflanzenbestimmung_Desktop
 
         private void Weiter_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Main.momentanePflanzeAusQuiz++;
-
             //Antworten speichern
             for (int i = 0; i < Main.kategorien.Length; i++)
             {
                 string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;
+
+                if(string.IsNullOrWhiteSpace(eingabe))
+                {
+                    eingabe = "kеine Eingabe gemacht!";
+                }
+
                 Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[i].gegebeneAntwort = eingabe;
             }
+
+            Main.momentanePflanzeAusQuiz++;
 
             MainWindow.changeContent(new QuizStatistik());
         }
