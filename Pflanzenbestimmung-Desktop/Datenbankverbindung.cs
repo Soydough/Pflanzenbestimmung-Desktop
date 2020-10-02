@@ -45,7 +45,7 @@ namespace Pflanzenbestimmung_Desktop
             DataSet ds = new DataSet();
             adapter = new MySqlDataAdapter(query);
 
-                adapter.Fill(ds);
+            adapter.Fill(ds);
         }
 
         public bool FuegePflanzeHinzu(string gattung, string art, string dename,

@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net;
 using System.Text;
-using System.Collections.Generic;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -153,7 +152,7 @@ namespace Pflanzenbestimmung_Desktop
         }
 
 
-       
+
 
         public bool BenutzerErstellen(string benutzername, string passwort, string ausbilderBenutzername, int ausbildungsart, int fachrichtung)
         {

@@ -1,17 +1,10 @@
-﻿using Flurl.Util;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Linq;
-using System.Windows.Threading;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Media;
-using System.Drawing;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -37,14 +30,14 @@ namespace Pflanzenbestimmung_Desktop
 
         public static Pflanze[] pflanzen;
 
-        public static Kategorie[] kategorien;
-
         public static Pflanzenbild[] pflanzenbilder;
 
         public static QuizArt quizArt;
 
         //public static Quiz quiz;
-        public static Quizfrage[] quiz;
+        public static QuizPflanze[] quiz;
+
+        public static Kategorie[] kategorien;
 
         public static Random random = new Random();
 
@@ -61,20 +54,18 @@ namespace Pflanzenbestimmung_Desktop
             //datenbankverbindung.BekommeAllePflanzenTest();
             //
 
-                //Platzhalter-Bilder hochladen
-                //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter.jpg");
-                //api_anbindung.BildHochladen(1, platzhalter);
-                //api_anbindung.BildHochladen(2, platzhalter);
-                //api_anbindung.BildHochladen(3, platzhalter);
+            //Platzhalter-Bilder hochladen
+            //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter.jpg");
+            //api_anbindung.BildHochladen(1, platzhalter);
+            //api_anbindung.BildHochladen(2, platzhalter);
+            //api_anbindung.BildHochladen(3, platzhalter);
 
             //
             //ausbildungsarten = datenbankverbindung.BekommeAusbildungsArten();
 
 
             fachrichtungen = datenbankverbindung.BekommeFachrichtungen();
-
             ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
-
             pflanzen = api_anbindung.Bekommen<Pflanze>();
             kategorien = api_anbindung.Bekommen<Kategorie>();
         }
@@ -87,24 +78,24 @@ namespace Pflanzenbestimmung_Desktop
             //quiz = new Quiz();
             //quiz.pflanzen = new Pflanze[anzahl];
             //quiz.kategorien = kategorien;
-            quiz = new Quizfrage[anzahl];
+            quiz = new QuizPflanze[anzahl];
 
             List<Pflanze> tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
-            List<Kategorie> tempKategorien = ((Kategorie[])kategorien.Clone()).ToList();
 
-            for(int i = 0; i < quiz.Length; i++)
+            for (int i = 0; i < quiz.Length; i++)
             {
-                quiz[i] = new Quizfrage();
+                quiz[i] = new QuizPflanze();
                 int index = random.Next(tempPflanzen.Count - 1);
                 quiz[i].pflanze = tempPflanzen[index];
-                quiz[i].kategorienUndAntworten = tempKategorien[index];
+
+                //Enfernt die hinzugefügte Pflanze, damit die die Pflanzen möglichst zufällig sind
+                tempPflanzen.RemoveAt(index);
+                //Fügt die Pflanzen wieder hinzu, falls keine mehr vefügbar sind
+                if (tempPflanzen.IsNullOrEmpty())
+                {
+                    tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
+                }
             }
-
-            kategorien = api_anbindung.Bekommen<Kategorie>();
-        }
-
-        public static void FragenBekommen()
-        {
         }
 
         public static void PflanzenbilderBekommen()

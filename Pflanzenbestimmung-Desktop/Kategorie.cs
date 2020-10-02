@@ -14,13 +14,5 @@
         /// Wie oft die Pflanze abgefragt wurde (korrekt)
         /// </summary>
         public int abfrage;
-        /// <summary>
-        /// Die korrekte Antwort
-        /// </summary>
-        public string antwort;
-        /// <summary>
-        /// Die gegebene Antwort
-        /// </summary>
-        public string gegebeneAntwort;
     }
 }

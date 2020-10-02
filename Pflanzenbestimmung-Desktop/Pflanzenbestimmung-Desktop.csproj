@@ -129,10 +129,7 @@
     <Compile Include="Pflanze.cs" />
     <Compile Include="Pflanzenantwort.cs" />
     <Compile Include="Pflanzenbild.cs" />
-    <Compile Include="Quiz.cs" />
     <Compile Include="QuizArt.cs" />
-    <Compile Include="Quizfrage.cs" />
-    <Compile Include="Quizkategorie.cs" />
     <Compile Include="QuizPflanze.cs" />
     <Compile Include="StatDetails.cs" />
     <Compile Include="XAML\AdminGesamtStatistik.xaml.cs">

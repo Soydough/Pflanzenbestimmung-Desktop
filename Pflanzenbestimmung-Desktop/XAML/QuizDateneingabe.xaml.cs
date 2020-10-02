@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -35,7 +34,8 @@ namespace Pflanzenbestimmung_Desktop
 
                     Grid.SetColumn(eingabe, 1);
                 }
-                else {
+                else
+                {
                     RechtesGrid.Children.Add(kategorie);
                     RechtesGrid.Children.Add(eingabe);
 
@@ -61,7 +61,7 @@ namespace Pflanzenbestimmung_Desktop
             for (int i = 0; i < Main.kategorien.Length; i++)
             {
                 string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;
-                Main.quiz[Main.momentanePflanzeAusQuiz].kategorienUndAntworten[i].eingegebeneAntwort = eingabe;
+                Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[i].gegebeneAntwort = eingabe;
             }
 
             MainWindow.changeContent(new QuizStatistik());
