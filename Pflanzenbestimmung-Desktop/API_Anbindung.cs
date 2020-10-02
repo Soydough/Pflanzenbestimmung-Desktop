@@ -153,18 +153,23 @@ namespace Pflanzenbestimmung_Desktop
         }
 
 
-       
 
-        public bool BenutzerErstellen(string benutzername, string passwort, string ausbilderBenutzername, int ausbildungsart, int fachrichtung)
+
+        public bool BenutzerErstellen(string benutzername, string passwort,string name, string vorname, string ausbilderBenutzername, int ausbildungsart, int fachrichtung, int ausbilder)
         {
             try
             {
                 using (var client = new WebClient())
                 {
                     var values = new NameValueCollection();
-                    values["method"] = "login";
+                    values["method"] = "createAzubi";
                     values["User"] = benutzername;
                     values["PW"] = passwort;
+                    values["Name"] = name;
+                    values["Vorname"] = vorname;
+                    values["IDaa"] = ausbildungsart.ToString();
+                    values["IDf"] = fachrichtung.ToString();
+                    values["IDab"] = ausbilder.ToString();
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
@@ -180,6 +185,51 @@ namespace Pflanzenbestimmung_Desktop
             }
 
             return !true;
+        }
+
+
+        public Ausbildungsart[] BekommeAusbildungsart()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "getAusbildungsart",
+                        // ["IDaB"] = IDaB.ToString()
+                    };
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    // return JsonConvert.DeserializeObject<Ausbildungsart[]>(responseString);
+                }
+            }
+            catch { }
+            return null;
+        }
+
+        public Fachrichtung[] BekommeFachrichtung()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "getFachrichtung",
+                        //["IDpb"] = IDpb.ToString()
+                    };
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    //  return JsonConvert.DeserializeObject<Fachrichtung[]>(responseString);
+                }
+            }
+            catch { }
+            return null;
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Media;
 using System.Drawing;
+using Newtonsoft.Json;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -27,9 +28,9 @@ namespace Pflanzenbestimmung_Desktop
 
         public static Benutzer benutzer;
 
-        public static Dictionary<int, string> ausbildungsarten;
+        public static Dictionary<int, Ausbildungsart> ausbildungsarten;
 
-        public static Dictionary<int, string> fachrichtungen;
+        public static Dictionary<int, Fachrichtung> fachrichtungen;
 
         public static Dictionary<int, Administrator> ausbilder;
 
@@ -61,17 +62,19 @@ namespace Pflanzenbestimmung_Desktop
             //datenbankverbindung.BekommeAllePflanzenTest();
             //
 
-                //Platzhalter-Bilder hochladen
-                //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter.jpg");
-                //api_anbindung.BildHochladen(1, platzhalter);
-                //api_anbindung.BildHochladen(2, platzhalter);
-                //api_anbindung.BildHochladen(3, platzhalter);
+            //Platzhalter-Bilder hochladen
+            //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter.jpg");
+            //api_anbindung.BildHochladen(1, platzhalter);
+            //api_anbindung.BildHochladen(2, platzhalter);
+            //api_anbindung.BildHochladen(3, platzhalter);
 
             //
             //ausbildungsarten = datenbankverbindung.BekommeAusbildungsArten();
 
 
-            fachrichtungen = datenbankverbindung.BekommeFachrichtungen();
+
+            ausbildungsarten = api_anbindung.Bekommen<Ausbildungsart>("Ausbildungsart").ToDictionary();
+            fachrichtungen = api_anbindung.Bekommen<Fachrichtung>("Fachrichtung").ToDictionary();
 
             ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
 
@@ -92,12 +95,11 @@ namespace Pflanzenbestimmung_Desktop
             List<Pflanze> tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
             List<Kategorie> tempKategorien = ((Kategorie[])kategorien.Clone()).ToList();
 
-            for(int i = 0; i < quiz.Length; i++)
+            for (int i = 0; i < quiz.Length; i++)
             {
                 quiz[i] = new Quizfrage();
                 int index = random.Next(tempPflanzen.Count - 1);
                 quiz[i].pflanze = tempPflanzen[index];
-                quiz[i].kategorienUndAntworten = tempKategorien[index];
             }
 
             kategorien = api_anbindung.Bekommen<Kategorie>();

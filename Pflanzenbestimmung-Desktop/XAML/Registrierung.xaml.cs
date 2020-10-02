@@ -43,9 +43,9 @@ namespace Pflanzenbestimmung_Desktop
             passwort = Main.GetHashWithSalt(passwort, benutzername);
 
 
-            int ausbildungsart = ((KeyValuePair<int, string>)dieses.AubildungsartComboBox.SelectedItem).Key;
-            int fachrichtung = ((KeyValuePair<int, string>)dieses.FachrichtungComboBox.SelectedItem).Key;
-            int ausbilderId = ((KeyValuePair<int, string>)dieses.AusbilderComboBox.SelectedItem).Key;
+            int ausbildungsart = ((KeyValuePair<int, Ausbildungsart>)dieses.AubildungsartComboBox.SelectedItem).Key;
+            int fachrichtung = ((KeyValuePair<int, Fachrichtung>)dieses.FachrichtungComboBox.SelectedItem).Key;
+            int ausbilderId = ((KeyValuePair<int, Administrator>)dieses.AusbilderComboBox.SelectedItem).Key;
 
             Main.datenbankverbindung.FuegeBenutzerHinzu(benutzername, passwort, ausbilderId, ausbildungsart, fachrichtung);
         }
