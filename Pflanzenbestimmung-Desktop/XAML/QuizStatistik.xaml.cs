@@ -10,6 +10,8 @@ namespace Pflanzenbestimmung_Desktop
         public QuizStatistik()
         {
             InitializeComponent();
+
+            //Zeige an, welche Antworten richtig waren
         }
 
         private void HauptmenüButton_Click(object sender, System.Windows.RoutedEventArgs e)

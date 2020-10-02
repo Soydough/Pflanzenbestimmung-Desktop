@@ -52,12 +52,6 @@ namespace Pflanzenbestimmung_Desktop
             Main.momentanePflanzeAusQuiz++;
 
             //Antworten speichern
-            //for (int i = 0; i < Main.kategorien.Length; i++)
-            //{
-            //    string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;
-            //    Main.quiz[Main.momentanePflanzeAusQuiz].k.gegebeneAntwort = eingabe;
-            //}
-
             for (int i = 0; i < Main.kategorien.Length; i++)
             {
                 string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;

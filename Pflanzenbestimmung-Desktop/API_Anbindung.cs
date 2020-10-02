@@ -151,9 +151,6 @@ namespace Pflanzenbestimmung_Desktop
             catch { }
         }
 
-
-
-
         public bool BenutzerErstellen(string benutzername, string passwort, string ausbilderBenutzername, int ausbildungsart, int fachrichtung)
         {
             try
