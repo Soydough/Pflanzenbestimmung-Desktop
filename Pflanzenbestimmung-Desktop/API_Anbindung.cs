@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net;
 using System.Text;
-using System.Collections.Generic;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -106,7 +105,7 @@ namespace Pflanzenbestimmung_Desktop
         }
 
 
-        public Pflanzenantwort[] BekommePflanzenantworten()
+        public QuizPZuweisung[] BekommeQuizPZuweisung(int IDa)
         {
             try
             {
@@ -114,14 +113,14 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     var values = new NameValueCollection
                     {
-                        ["method"] = "getPBilder",
-                        //["IDpb"] = IDpb.ToString()
+                        ["method"] = "getQuizPZuweisung",
+                        ["IDa"] = IDa.ToString()
                     };
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
-                    //return JsonConvert.DeserializeObject<Pflanzenbild[]>(responseString);
+                    return JsonConvert.DeserializeObject<QuizPZuweisung[]>(responseString);
                 }
             }
             catch { }
@@ -151,9 +150,6 @@ namespace Pflanzenbestimmung_Desktop
             }
             catch { }
         }
-
-
-
 
         public bool BenutzerErstellen(string benutzername, string passwort,string name, string vorname, string ausbilderBenutzername, int ausbildungsart, int fachrichtung, int ausbilder)
         {

@@ -7,6 +7,6 @@ namespace Pflanzenbestimmung_Desktop
     {
         public List<Bitmap> bilder;
 
-        public List<Kategorie> kategorien;  //Gattung, Art, etc.
+        public Pflanze pflanze;  //Gattung, Art, etc.
     }
 }

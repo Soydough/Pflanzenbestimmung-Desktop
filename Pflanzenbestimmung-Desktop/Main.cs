@@ -1,14 +1,8 @@
-﻿using Flurl.Util;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Linq;
-using System.Windows.Threading;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Media;
 using System.Drawing;
@@ -38,14 +32,14 @@ namespace Pflanzenbestimmung_Desktop
 
         public static Pflanze[] pflanzen;
 
-        public static Kategorie[] kategorien;
-
         public static Pflanzenbild[] pflanzenbilder;
 
         public static QuizArt quizArt;
 
         //public static Quiz quiz;
-        public static Quizfrage[] quiz;
+        public static QuizPflanze[] quiz;
+
+        public static Kategorie[] kategorien;
 
         public static Random random = new Random();
 
@@ -54,6 +48,8 @@ namespace Pflanzenbestimmung_Desktop
         public static int momentanePflanzeAusQuiz = -1; // -1: kein Quiz
 
         public static ImageSource fullscreenImage;
+
+        public static QuizPZuweisung[] quizPZuweisungen;
 
         #endregion
 
@@ -77,36 +73,51 @@ namespace Pflanzenbestimmung_Desktop
             fachrichtungen = api_anbindung.Bekommen<Fachrichtung>("Fachrichtung").ToDictionary();
 
             ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
-
             pflanzen = api_anbindung.Bekommen<Pflanze>();
             kategorien = api_anbindung.Bekommen<Kategorie>();
         }
 
         public static void QuizBekommen()
         {
+            if(benutzer.istAdmin)
+            {
+                MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
+                return;
+            }
+
             quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt")[0];
             int anzahl = quizArt.quizgröße;
+            quiz = new QuizPflanze[anzahl];
 
-            //quiz = new Quiz();
-            //quiz.pflanzen = new Pflanze[anzahl];
-            //quiz.kategorien = kategorien;
-            quiz = new Quizfrage[anzahl];
-
-            List<Pflanze> tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
-            List<Kategorie> tempKategorien = ((Kategorie[])kategorien.Clone()).ToList();
+            quizPZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
 
             for (int i = 0; i < quiz.Length; i++)
             {
                 quiz[i] = new Quizfrage();
                 int index = random.Next(tempPflanzen.Count - 1);
                 quiz[i].pflanze = tempPflanzen[index];
+            if (quizPZuweisungen.IsNullOrEmpty())
+            {
+                MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
+                return;
             }
 
-            kategorien = api_anbindung.Bekommen<Kategorie>();
-        }
+            List<Pflanze> tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
 
-        public static void FragenBekommen()
-        {
+            for (int i = 0; i < quiz.Length; i++)
+            {
+                quiz[i] = new QuizPflanze();
+                int index = random.Next(quizPZuweisungen.Length - 1);
+                quiz[i].pflanze = pflanzen[quizPZuweisungen[index].id_pflanze];
+
+                //Enfernt die hinzugefügte Pflanze, damit jede Pflanzen nur einmal vorkommt
+                tempPflanzen.Remove(quiz[i].pflanze);
+                //Beendet den for-loop, wenn keine Pflanzen mehr verfügbar sind
+                if (tempPflanzen.IsNullOrEmpty())
+                {
+                    break;
+                }
+            }
         }
 
         public static void PflanzenbilderBekommen()
@@ -143,7 +154,7 @@ namespace Pflanzenbestimmung_Desktop
         private static string SHA256HexHashString(string StringIn)
         {
             string hashString;
-            using (var sha256 = SHA256Managed.Create())
+            using (var sha256 = SHA256.Create())
             {
                 var hash = sha256.ComputeHash(Encoding.Default.GetBytes(StringIn));
                 hashString = ToHex(hash, false);

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Pflanzenbestimmung_Desktop
 {
-    public class Quiz
+    public class QuizPZuweisung
     {
-        public Quizfrage[] fragen;
+        public int id_pflanze;
     }
 }

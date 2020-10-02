@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Threading;
 
 namespace Pflanzenbestimmung_Desktop
@@ -31,6 +29,21 @@ namespace Pflanzenbestimmung_Desktop
             if (self is null)
                 return true;
             if (self.Length == 0)
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// Gibt zurück, ob eine Liste null oder leer ist.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="self"></param>
+        /// <returns></returns>
+        public static bool IsNullOrEmpty<T>(this List<T> self)
+        {
+            if (self is null)
+                return true;
+            if (self.Count == 0)
                 return true;
             return false;
         }

@@ -1,12 +1,9 @@
-﻿using System;
+﻿using Pflanzenbestimmung_Desktop.XAML;
+using System;
 using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using System.Windows;
-using System.Linq.Expressions;
-using System.Windows.Controls.Primitives;
-using System.Windows.Media;
-using Pflanzenbestimmung_Desktop.XAML;
 
 namespace Pflanzenbestimmung_Desktop
 {

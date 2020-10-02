@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -16,6 +14,7 @@ namespace Pflanzenbestimmung_Desktop
         public MainWindow()
         {
             InitializeComponent();
+
             Mouse.SetCursor(Cursors.Wait);
             dieses = this;
             Main.Initialize();

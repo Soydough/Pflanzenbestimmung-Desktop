@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -14,6 +13,8 @@ namespace Pflanzenbestimmung_Desktop
 
             LinkesGrid.Children.Clear();
             RechtesGrid.Children.Clear();
+
+            //MainWindow.DebugChangeTitle(Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[0].antwort);
 
             for (int i = 0; i < Main.kategorien.Length; i++)
             {
@@ -35,7 +36,8 @@ namespace Pflanzenbestimmung_Desktop
 
                     Grid.SetColumn(eingabe, 1);
                 }
-                else {
+                else
+                {
                     RechtesGrid.Children.Add(kategorie);
                     RechtesGrid.Children.Add(eingabe);
 
@@ -49,19 +51,17 @@ namespace Pflanzenbestimmung_Desktop
 
         private void Weiter_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            Main.momentanePflanzeAusQuiz++;
-
             //Antworten speichern
-            //for (int i = 0; i < Main.kategorien.Length; i++)
-            //{
-            //    string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;
-            //    Main.quiz[Main.momentanePflanzeAusQuiz].k.gegebeneAntwort = eingabe;
-            //}
-
             for (int i = 0; i < Main.kategorien.Length; i++)
             {
                 string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;
-                Main.quiz[Main.momentanePflanzeAusQuiz].kategorienUndAntworten[i].eingegebeneAntwort = eingabe;
+
+                if(string.IsNullOrWhiteSpace(eingabe))
+                {
+                    eingabe = "kеine Eingabe gemacht!";
+                }
+
+                Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[i].gegebeneAntwort = eingabe;
             }
 
             MainWindow.changeContent(new QuizStatistik());

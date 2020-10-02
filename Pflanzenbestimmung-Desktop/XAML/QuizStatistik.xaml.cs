@@ -7,9 +7,46 @@ namespace Pflanzenbestimmung_Desktop
     /// </summary>
     public partial class QuizStatistik : UserControl
     {
+        public static int pflanzenIndex = 0;
         public QuizStatistik()
         {
             InitializeComponent();
+
+            //Zeige an, welche Antworten richtig waren
+
+            StackPanel.Children.Clear();
+
+            for (int i = 0; i < Main.kategorien.Length; i++)
+            {
+                Grid grid = new Grid();
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+
+                Label korrekteAntwortLabel = new Label();
+                korrekteAntwortLabel.Content = Main.quiz[pflanzenIndex].pflanze.kategorieAbfragen[i].antwort;
+
+                Label gegebeneAntwortLabel = new Label();
+                gegebeneAntwortLabel.Content = Main.quiz[pflanzenIndex].pflanze.kategorieAbfragen[i].gegebeneAntwort;
+
+                if(korrekteAntwortLabel.Content.Equals(gegebeneAntwortLabel.Content))
+                {
+                    gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.LimeGreen;
+                    gegebeneAntwortLabel.Content += " ✓";
+                }
+                else
+                {
+                    gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Red;
+                    gegebeneAntwortLabel.Content += " ×";
+                }
+
+                //RegisterName(Main.kategorien[i].kategorie + "Label", gegebeneAntwortLabel);
+
+                grid.Children.Add(korrekteAntwortLabel);
+                grid.Children.Add(gegebeneAntwortLabel);
+                Grid.SetColumn(gegebeneAntwortLabel, 1);
+
+                StackPanel.Children.Add(grid);
+            }
         }
 
         private void HauptmenüButton_Click(object sender, System.Windows.RoutedEventArgs e)
