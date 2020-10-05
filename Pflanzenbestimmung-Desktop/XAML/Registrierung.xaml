@@ -13,7 +13,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <TabControl Name="TabHolder">
+        <TabControl Name="TabHolder" SelectionChanged="TabHolder_SelectionChanged">
             <TabItem Header="Normaler Benutzer">
                 <StackPanel Margin="10" Name="BenutzerPanel" Visibility="Visible">
                     <StackPanel.Style>

@@ -16,5 +16,6 @@ namespace Pflanzenbestimmung_Desktop
         {
             return ausbildungsart;
         }
+        
     }
 }

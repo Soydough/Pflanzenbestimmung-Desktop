@@ -23,6 +23,7 @@ namespace Pflanzenbestimmung_Desktop
             a.vorname = temp.name;
             a.berflag = temp.berflag;
             a.istAdmin = true;
+            a.id_ausbilder = temp.id_ausbilder;
 
             return a;
         }
