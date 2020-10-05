@@ -33,6 +33,7 @@ namespace Pflanzenbestimmung_Desktop
 
             if (Main.benutzer.IstGueltig)
             {
+                Main.LadeStatistiken();
                 MainWindow.changeContent(new Hauptmenü());
             }
             else

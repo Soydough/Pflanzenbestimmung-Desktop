@@ -36,10 +36,13 @@ namespace Pflanzenbestimmung_Desktop
 
         public static QuizArt quizArt;
 
-        //public static Quiz quiz;
         public static QuizPflanze[] quiz;
 
         public static Kategorie[] kategorien;
+
+        public static AzubiStatistik[] statistiken;
+
+        public static AzubiStatistik statistik;
 
         public static Random random = new Random();
 
@@ -66,10 +69,18 @@ namespace Pflanzenbestimmung_Desktop
 
             ausbildungsarten = api_anbindung.Bekommen<Ausbildungsart>("Ausbildungsart").ToDictionary();
             fachrichtungen = api_anbindung.Bekommen<Fachrichtung>("Fachrichtung").ToDictionary();
-
+            
             ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
             pflanzen = api_anbindung.Bekommen<Pflanze>();
             kategorien = api_anbindung.Bekommen<Kategorie>();
+        }
+
+        public static void LadeStatistiken()
+        {
+            if(!benutzer.istAdmin)
+            {
+                statistiken = api_anbindung.BekommeStatistiken(benutzer.id);
+            }
         }
 
         public static void QuizBekommen()
