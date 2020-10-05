@@ -64,11 +64,6 @@ namespace Pflanzenbestimmung_Desktop
             //api_anbindung.BildHochladen(2, platzhalter);
             //api_anbindung.BildHochladen(3, platzhalter);
 
-            //
-            //ausbildungsarten = datenbankverbindung.BekommeAusbildungsArten();
-
-
-
             ausbildungsarten = api_anbindung.Bekommen<Ausbildungsart>("Ausbildungsart").ToDictionary();
             fachrichtungen = api_anbindung.Bekommen<Fachrichtung>("Fachrichtung").ToDictionary();
 
@@ -79,7 +74,7 @@ namespace Pflanzenbestimmung_Desktop
 
         public static void QuizBekommen()
         {
-            if(benutzer.istAdmin)
+            if (benutzer.istAdmin)
             {
                 MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
                 return;
@@ -91,11 +86,6 @@ namespace Pflanzenbestimmung_Desktop
 
             quizPZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
 
-            for (int i = 0; i < quiz.Length; i++)
-            {
-                quiz[i] = new Quizfrage();
-                int index = random.Next(tempPflanzen.Count - 1);
-                quiz[i].pflanze = tempPflanzen[index];
             if (quizPZuweisungen.IsNullOrEmpty())
             {
                 MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
