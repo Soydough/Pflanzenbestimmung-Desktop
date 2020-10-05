@@ -35,10 +35,14 @@ namespace Pflanzenbestimmung_Desktop
             Main.QuizBekommen();
 
             Main.Laden();
-            //Main.PflanzenbilderBekommen();
-            ////Das erste Pflanzenbild anzeigen
-            MainWindow.changeContent(new QuizBildanzeige());
-            //MainWindow.changeContent(new QuizDateneingabe());
+
+            if (!Main.quiz.IsNullOrEmpty())
+            {
+                //Main.PflanzenbilderBekommen();
+                ////Das erste Pflanzenbild anzeigen
+                MainWindow.changeContent(new QuizBildanzeige());
+                //MainWindow.changeContent(new QuizDateneingabe());
+            }
         }
 
         private void StatistikButton_Click(object sender, RoutedEventArgs e)

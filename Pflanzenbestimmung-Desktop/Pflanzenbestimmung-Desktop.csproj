@@ -120,6 +120,7 @@
     <Compile Include="Administrator.cs" />
     <Compile Include="API_Anbindung.cs" />
     <Compile Include="Ausbildungsart.cs" />
+    <Compile Include="AzubiStatistik.cs" />
     <Compile Include="Benutzer.cs" />
     <Compile Include="BenutzerTemplate.cs" />
     <Compile Include="Datenbankverbindung.cs" />
@@ -134,7 +135,8 @@
     <Compile Include="QuizArt.cs" />
     <Compile Include="QuizPflanze.cs" />
     <Compile Include="QuizPZuweisung.cs" />
-    <Compile Include="StatDetails.cs" />
+    <Compile Include="StatistikPflanze.cs" />
+    <Compile Include="StatistikPflanzeAntwort.cs" />
     <Compile Include="XAML\AdminGesamtStatistik.xaml.cs">
       <DependentUpon>AdminGesamtStatistik.xaml</DependentUpon>
     </Compile>

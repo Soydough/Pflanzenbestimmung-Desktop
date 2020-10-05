@@ -106,7 +106,7 @@ namespace Pflanzenbestimmung_Desktop
         }
 
 
-        public QuizPZuweisung[] BekommeQuizPZuweisung(int IDa)
+        public QuizPZuweisung[] BekommeQuizPZuweisung(int IDaz)
         {
             try
             {
@@ -115,7 +115,7 @@ namespace Pflanzenbestimmung_Desktop
                     var values = new NameValueCollection
                     {
                         ["method"] = "getQuizPZuweisung",
-                        ["IDa"] = IDa.ToString()
+                        ["IDaz"] = IDaz.ToString()
                     };
 
                     var response = client.UploadValues(url, values);
@@ -125,11 +125,6 @@ namespace Pflanzenbestimmung_Desktop
                 }
             }
             catch { }
-            return null;
-        }
-
-        public List<int[]> BekommeQuizPersonZuweisungen(int IDa)
-        {
             return null;
         }
 
@@ -198,6 +193,72 @@ namespace Pflanzenbestimmung_Desktop
 
 
 
+        }
+
+        public AzubiStatistik[] BekommeStatistiken(int IDaz)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "getQuizPZuweisung",
+                        ["IDaz"] = IDaz.ToString()
+                    };
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    return JsonConvert.DeserializeObject<AzubiStatistik[]>(responseString);
+                }
+            }
+            catch { }
+            return null;
+        }
+
+        public void ErstelleStatistik(int IDaz, int FQuote, string Zeit, int IDp)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "createStatistik",
+                        ["IDaz"] = IDaz.ToString(),
+                        ["FQuote"] = FQuote.ToString(),
+                        ["Zeit"] = Zeit,
+                        ["IDp"] = IDp.ToString()
+                    };
+
+                    client.UploadValues(url, values);
+                }
+            }
+            catch { }
+            return;
+        }
+
+        public void ErstelleEinzelStatistik(int IDs, int IDk, int IDp, string Eingabe)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "createStatistik",
+                        ["IDs"] = IDs.ToString(),
+                        ["IDk"] = IDk.ToString(),
+                        ["IDp"] = IDp.ToString(),
+                        ["Eingabe"] = Eingabe
+                    };
+
+                    client.UploadValues(url, values);
+                }
+            }
+            catch { }
+            return;
         }
 
 

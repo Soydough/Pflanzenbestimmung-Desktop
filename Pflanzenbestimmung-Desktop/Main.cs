@@ -42,10 +42,13 @@ namespace Pflanzenbestimmung_Desktop
 
         public static QuizArt quizArt;
 
-        //public static Quiz quiz;
         public static QuizPflanze[] quiz;
 
         public static Kategorie[] kategorien;
+
+        public static AzubiStatistik[] statistiken;
+
+        public static AzubiStatistik statistik;
 
         public static Random random = new Random();
 
@@ -70,18 +73,25 @@ namespace Pflanzenbestimmung_Desktop
             //api_anbindung.BildHochladen(2, platzhalter);
             //api_anbindung.BildHochladen(3, platzhalter);
 
-
             ausbildungsarten = api_anbindung.Bekommen<Ausbildungsart>("Ausbildungsart").ToDictionary();
             fachrichtungen = api_anbindung.Bekommen<Fachrichtung>("Fachrichtung").ToDictionary();
-
+            
             ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
             pflanzen = api_anbindung.Bekommen<Pflanze>();
             kategorien = api_anbindung.Bekommen<Kategorie>();
         }
 
+        public static void LadeStatistiken()
+        {
+            if(!benutzer.istAdmin)
+            {
+                statistiken = api_anbindung.BekommeStatistiken(benutzer.id);
+            }
+        }
+
         public static void QuizBekommen()
         {
-            if(benutzer.istAdmin)
+            if (benutzer.istAdmin)
             {
                 MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
                 return;
@@ -93,11 +103,11 @@ namespace Pflanzenbestimmung_Desktop
 
             quizPZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
 
-                if (quizPZuweisungen.IsNullOrEmpty())
-                {
-                    MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
-                    return;
-                }         
+            if (quizPZuweisungen.IsNullOrEmpty())
+            {
+                MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
+                return;
+            }
 
             List<Pflanze> tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
 
