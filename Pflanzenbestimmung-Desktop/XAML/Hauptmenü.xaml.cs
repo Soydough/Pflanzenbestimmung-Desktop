@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop
@@ -38,6 +39,9 @@ namespace Pflanzenbestimmung_Desktop
 
             if (!Main.quiz.IsNullOrEmpty())
             {
+                Main.quizAngefangenZeit = DateTime.Now;
+                Main.quizTimer.Start();
+
                 //Main.PflanzenbilderBekommen();
                 ////Das erste Pflanzenbild anzeigen
                 MainWindow.changeContent(new QuizBildanzeige());
@@ -48,6 +52,24 @@ namespace Pflanzenbestimmung_Desktop
         private void StatistikButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.changeContent(new Statistik());
+        }
+
+        private void ZufälligesQuizButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.StartLoading();
+            Main.ZufälligesQuizBekommen();
+
+            Main.Laden();
+
+            if (!Main.quiz.IsNullOrEmpty())
+            {
+                Main.quizAngefangenZeit = DateTime.Now;
+                Main.quizTimer.Start();
+
+                ////Das erste Pflanzenbild anzeigen
+                MainWindow.changeContent(new QuizBildanzeige());
+                //MainWindow.changeContent(new QuizDateneingabe());
+            }
         }
     }
 }

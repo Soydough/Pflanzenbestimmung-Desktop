@@ -7,6 +7,8 @@ using System.Windows;
 using System.Windows.Media;
 using System.Drawing;
 using Newtonsoft.Json;
+using System.IO;
+using System.Diagnostics;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -54,17 +56,31 @@ namespace Pflanzenbestimmung_Desktop
 
         public static QuizPZuweisung[] quizPZuweisungen;
 
+        public static QuizPZuweisung[] azubiQuizZuweisungen;
+
+        //Zeitpunkt des Beginns des Quiz
+        public static DateTime quizAngefangenZeit;
+
+        //Timer für das gesamtes Quiz
+        public static Stopwatch quizTimer = new Stopwatch();
+
+        //Einzelstatistiken
+        public static StatistikPflanze[] einzelStatistiken;
+
+        public static int fehlersumme;
+
         #endregion
 
         public static void Initialize()
         {
             //datenbankverbindung.BekommeAllePflanzenTest();
-            //
 
             //Platzhalter-Bilder hochladen
-            //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter.jpg");
+            //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter a.jpg");
             //api_anbindung.BildHochladen(1, platzhalter);
+            //platzhalter = File.ReadAllBytes(@"..\..\platzhalter b.jpg");
             //api_anbindung.BildHochladen(2, platzhalter);
+            //platzhalter = File.ReadAllBytes(@"..\..\platzhalter c.jpg");
             //api_anbindung.BildHochladen(3, platzhalter);
 
             ausbildungsarten = api_anbindung.Bekommen<Ausbildungsart>("Ausbildungsart").ToDictionary();
@@ -83,6 +99,38 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
+        public static void LadeStatistikenHoch()
+        {
+            fehlersumme = 0;
+
+            for(int i = 0; i < einzelStatistiken.Length; i++)
+            {
+                for(int j = 0; j < kategorien.Length; j++)
+                {
+                    StatistikPflanzeAntwort temp = einzelStatistiken[i].antworten[j];
+
+                    //if (temp.eingabe != temp.korrekt)
+                    if (IstRichtig(temp.eingabe, temp.korrekt))
+                    {
+                        fehlersumme++;
+                    }
+                }
+
+                int fehlerquote = 100 * (int)(quiz.Length * 1.0 * kategorien.Length / fehlersumme);
+                api_anbindung.ErstelleStatistik(benutzer.id, fehlerquote, quizAngefangenZeit, quiz[i].pflanze.id_pflanze);
+
+                LadeStatistiken();
+
+                for (int j = 0; j < kategorien.Length; j++)
+                {
+                    //statistiken.Length ist die neuste, also hoffentlich die gerade hinzugefügte?
+                    api_anbindung.ErstelleEinzelStatistik(statistiken.Length, j + 1, quiz[i].pflanze.id_pflanze, einzelStatistiken[i].antworten[j].eingabe);
+                }
+
+                fehlersumme = 0;
+            }
+        }
+
         public static void QuizBekommen()
         {
             if (benutzer.istAdmin)
@@ -93,23 +141,80 @@ namespace Pflanzenbestimmung_Desktop
 
             quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt")[0];
             int anzahl = quizArt.quizgröße;
-            quiz = new QuizPflanze[anzahl];
+            //quiz = new QuizPflanze[anzahl];
+            List<QuizPflanze> tempQuiz = new List<QuizPflanze>();
 
-            quizPZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
+            azubiQuizZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
 
-            if (quizPZuweisungen.IsNullOrEmpty())
+            if (azubiQuizZuweisungen.IsNullOrEmpty())
+            {
+                MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
+                return;
+            }
+            else
+            {
+                einzelStatistiken = new StatistikPflanze[anzahl];
+                //List<Pflanze> tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
+                List<Pflanze> tempPflanzen = new List<Pflanze>();
+
+                for (int i = 0; i < azubiQuizZuweisungen.Length; i++)
+                {
+                    tempPflanzen.Add(pflanzen[azubiQuizZuweisungen[i].id_pflanze - 1]);
+                }
+
+                for (int i = 0; i < anzahl; i++)
+                {
+                    //quiz[i] = new QuizPflanze();
+                    int index = random.Next(tempPflanzen.Count);
+                    //quiz[i].pflanze = tempPflanzen[index];
+                    tempQuiz.Add(new QuizPflanze());
+                    tempQuiz[i].pflanze = tempPflanzen[index];
+
+                    //Enfernt die hinzugefügte Pflanze, damit jede Pflanzen nur einmal vorkommt
+                    tempPflanzen.Remove(tempQuiz[i].pflanze);
+                    //Beendet den for-loop, wenn keine Pflanzen mehr verfügbar sind
+                    if (tempPflanzen.IsNullOrEmpty())
+                    {
+                        break;
+                    }
+                }
+
+                quiz = tempQuiz.ToArray();
+                einzelStatistiken = new StatistikPflanze[quiz.Length];
+            }
+        }
+
+        public static void ZufälligesQuizBekommen()
+        {
+            if (benutzer.istAdmin)
             {
                 MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
                 return;
             }
 
-            List<Pflanze> tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
+            quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt")[0];
+            int anzahl = quizArt.quizgröße;
+            //quiz = new QuizPflanze[anzahl];
+            List<QuizPflanze> tempQuiz = new List<QuizPflanze>();
+
+            azubiQuizZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
+
+            einzelStatistiken = new StatistikPflanze[anzahl];
+            //List<Pflanze> tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
+            List<Pflanze> tempPflanzen = new List<Pflanze>();
+
+            for (int i = 0; i < anzahl; i++)
+            {
+                tempPflanzen.Add(pflanzen[azubiQuizZuweisungen[i].id_pflanze - 1]);
+            }
 
             for (int i = 0; i < quiz.Length; i++)
             {
                 quiz[i] = new QuizPflanze();
-                int index = random.Next(quizPZuweisungen.Length - 1);
-                quiz[i].pflanze = pflanzen[quizPZuweisungen[index].id_pflanze];
+                int index = random.Next(tempPflanzen.Count);
+                //quiz[i].pflanze = tempPflanzen[index];
+                tempQuiz.Add(new QuizPflanze());
+                tempQuiz[i].pflanze = tempPflanzen[index];
 
                 //Enfernt die hinzugefügte Pflanze, damit jede Pflanzen nur einmal vorkommt
                 tempPflanzen.Remove(quiz[i].pflanze);
@@ -119,6 +224,9 @@ namespace Pflanzenbestimmung_Desktop
                     break;
                 }
             }
+
+            quiz = tempQuiz.ToArray();
+            einzelStatistiken = new StatistikPflanze[quiz.Length];
         }
 
         public static void PflanzenbilderBekommen()
@@ -184,58 +292,27 @@ namespace Pflanzenbestimmung_Desktop
             MainWindow.StopLoading();
         }
 
-
         /// <summary>
-        /// Finds a Child of a given item in the visual tree. 
+        /// Gibt zurück, ob eine gegebene Antwort "richtig genug" ist
         /// </summary>
-        /// <param name="parent">A direct parent of the queried item.</param>
-        /// <typeparam name="T">The type of the queried item.</typeparam>
-        /// <param name="childName">x:Name or Name of child. </param>
-        /// <returns>The first parent item that matches the submitted type parameter. 
-        /// If not matching item can be found, 
-        /// a null parent is being returned.</returns>
-        public static T FindChild<T>(DependencyObject parent, string childName)
-           where T : DependencyObject
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static bool IstRichtig(string a, string b)
         {
-            // Confirm parent and childName are valid. 
-            if (parent == null) return null;
+            string[] tempArr = b.Split(',');
+            string[] tempArr2 = a.Split(',');
 
-            T foundChild = null;
-
-            int childrenCount = VisualTreeHelper.GetChildrenCount(parent);
-            for (int i = 0; i < childrenCount; i++)
+            for (int i = 0; i < tempArr.Length; i++)
             {
-                var child = VisualTreeHelper.GetChild(parent, i);
-                // If the child is not of the request child type child
-                T childType = child as T;
-                if (childType == null)
+                for (int j = 0; j < tempArr2.Length; j++)
                 {
-                    // recursively drill down the tree
-                    foundChild = FindChild<T>(child, childName);
-
-                    // If the child is found, break so we do not overwrite the found child. 
-                    if (foundChild != null) break;
-                }
-                else if (!string.IsNullOrEmpty(childName))
-                {
-                    var frameworkElement = child as FrameworkElement;
-                    // If the child's name is set for search
-                    if (frameworkElement != null && frameworkElement.Name == childName)
-                    {
-                        // if the child's name is of the request name
-                        foundChild = (T)child;
-                        break;
-                    }
-                }
-                else
-                {
-                    // child element found.
-                    foundChild = (T)child;
-                    break;
+                    if (tempArr[i].Trim().ToLower().Equals(tempArr[j].Trim().ToLower()))
+                        return true;
                 }
             }
 
-            return foundChild;
+            return false;
         }
     }
 }

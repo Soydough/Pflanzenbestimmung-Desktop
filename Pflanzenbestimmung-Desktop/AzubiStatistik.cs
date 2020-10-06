@@ -10,10 +10,10 @@ namespace Pflanzenbestimmung_Desktop
     {
         public int id_statistik;
         //format: yyyy-mm-dd hh:mm:ss
-        public string erstellt;
+        public DateTime erstellt;
         public int fehlerquote;
         //format: hh:mm:ss
-        public string zeit;
+        public TimeSpan zeit;
         public int id_beste_pflanze;
         public StatistikPflanze[] pflanzen;
     }

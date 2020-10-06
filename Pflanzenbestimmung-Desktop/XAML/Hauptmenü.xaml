@@ -24,7 +24,7 @@
             <ToggleButton Content="1 min pro Pflanze" Margin="250, 0"/>
 
             <Button Name="AktuellesQuizButton" Click="AktuellesQuizButton_Click" Content="Aktuelles Quiz starten" />
-            <Button Content="Eigenes Quiz starten" />
+            <Button Name="ZufälligesQuizButton" Click="ZufälligesQuizButton_Click" Content="Zufälliges Quiz starten" />
             <Button Name="StatistikButton" Click="StatistikButton_Click" Content="Statistik" />
             <Button Name="AdministrationButton" Click="AdministrationButton_Click" Content="Administratives" Visibility="Visible" />
             <Button Name="AusloggenButton" Click="AusloggenButton_Click" Content="Ausloggen" />

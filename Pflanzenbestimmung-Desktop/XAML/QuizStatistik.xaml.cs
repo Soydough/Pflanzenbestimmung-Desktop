@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -11,8 +12,6 @@ namespace Pflanzenbestimmung_Desktop
         public QuizStatistik()
         {
             InitializeComponent();
-
-            //Zeige an, welche Antworten richtig waren
 
             StackPanel.Children.Clear();
 
@@ -28,7 +27,8 @@ namespace Pflanzenbestimmung_Desktop
                 Label gegebeneAntwortLabel = new Label();
                 gegebeneAntwortLabel.Content = Main.quiz[pflanzenIndex].pflanze.kategorieAbfragen[i].gegebeneAntwort;
 
-                if(korrekteAntwortLabel.Content.Equals(gegebeneAntwortLabel.Content))
+                //if(korrekteAntwortLabel.Content.Equals(gegebeneAntwortLabel.Content))
+                if(Main.IstRichtig(korrekteAntwortLabel.Content.ToString(), gegebeneAntwortLabel.Content.ToString()))
                 {
                     gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.LimeGreen;
                     gegebeneAntwortLabel.Content += " ✓";

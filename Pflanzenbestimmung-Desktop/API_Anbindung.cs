@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net;
@@ -137,7 +138,8 @@ namespace Pflanzenbestimmung_Desktop
 
                     values["method"] = "createPBild";
                     values["IDp"] = IDp.ToString();
-                    values["Bild"] = bild.GetString();
+                    //values["Bild"] = bild.GetString();
+                    values["Bild"] = MySql.Data.MySqlClient.MySqlHelper.EscapeString(bild.GetString());
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
@@ -200,7 +202,7 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
-        public void ErstelleStatistik(int IDaz, int FQuote, string Zeit, int IDp)
+        public void ErstelleStatistik(int IDaz, int FQuote, DateTime Zeit, int IDp)
         {
             try
             {
@@ -211,7 +213,7 @@ namespace Pflanzenbestimmung_Desktop
                         ["method"] = "createStatistik",
                         ["IDaz"] = IDaz.ToString(),
                         ["FQuote"] = FQuote.ToString(),
-                        ["Zeit"] = Zeit,
+                        ["Zeit"] = Zeit.ToString("yyyy-MM-dd HH:mm:ss"),
                         ["IDp"] = IDp.ToString()
                     };
 
