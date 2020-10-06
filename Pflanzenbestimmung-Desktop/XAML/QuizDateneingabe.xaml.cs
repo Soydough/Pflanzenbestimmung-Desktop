@@ -72,8 +72,10 @@ namespace Pflanzenbestimmung_Desktop
 
                 //Einzelstatistik speichern
                 Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].eingabe = eingabe;
+                Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].korrekt = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[i].antwort;
+                Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].kategorie = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[i].kategorie_name;
             }
-            //Speichere ID von Pflanze der Einzelstatistik
+            //Speichere ID weitere Daten für die Einzelstatistik
             Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].id_pflanze = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.id_pflanze;
 
             if(Main.momentanePflanzeAusQuiz >= Main.quiz.Length - 1)

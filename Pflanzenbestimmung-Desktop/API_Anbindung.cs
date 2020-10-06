@@ -156,8 +156,6 @@ namespace Pflanzenbestimmung_Desktop
             {
                 using (var client = new WebClient())
                 {
-                  
-
                     var values = new NameValueCollection();
                     values["User"] = benutzername;
                     values["PW"] = passwort;
@@ -177,24 +175,19 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         values["method"] = "createAdmin";
                     }
-                        var response = client.UploadValues(url, values);
-                        var responseString = Encoding.Default.GetString(response);
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
 
-                        if (responseString != null || responseString != "")
-                        {
-                            MessageBox.Show(responseString);
-                        }
-                    
-
+                    if (responseString != null || responseString != "")
+                    {
+                        MessageBox.Show(responseString);
+                    }
                 }
             }
             catch (System.Exception e)
             {
                 MessageBox.Show(e + "");
             }
-
-
-
         }
 
         public AzubiStatistik[] BekommeStatistiken(int IDaz)
@@ -219,7 +212,7 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
-        public void ErstelleStatistik(int IDaz, int FQuote, DateTime Zeit, int IDp)
+        public void ErstelleStatistik(int IDaz, int FQuote, TimeSpan Zeit, int IDp)
         {
             try
             {
@@ -234,7 +227,8 @@ namespace Pflanzenbestimmung_Desktop
                         ["IDp"] = IDp.ToString()
                     };
 
-                    client.UploadValues(url, values);
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
                 }
             }
             catch { }
@@ -256,7 +250,8 @@ namespace Pflanzenbestimmung_Desktop
                         ["Eingabe"] = Eingabe
                     };
 
-                    client.UploadValues(url, values);
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
                 }
             }
             catch { }

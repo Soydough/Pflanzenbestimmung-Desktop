@@ -106,6 +106,7 @@
         </StackPanel>
     </StackPanel>
         
-        <Button Name="HauptmenüButton" Click="HauptmenüButton_Click" Content="Hauptmenü" Width="200" Height="30" Margin="100,20" VerticalAlignment="Bottom"/>
+        <Button Name="HauptmenüButton" Click="HauptmenüButton_Click" Content="Hauptmenü" Width="200" Height="30" Margin="100,20" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+        <Button Name="WeiterButton" Click="WeiterButton_Click" Content="Weiter" Width="200" Height="30" Margin="100,20" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
     </Grid>
 </UserControl>

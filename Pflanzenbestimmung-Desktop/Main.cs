@@ -116,14 +116,14 @@ namespace Pflanzenbestimmung_Desktop
                     StatistikPflanzeAntwort temp = einzelStatistiken[i].antworten[j];
 
                     //if (temp.eingabe != temp.korrekt)
-                    if (IstRichtig(temp.eingabe, temp.korrekt))
+                    if (!IstRichtig(temp.eingabe, temp.korrekt))
                     {
                         fehlersumme++;
                     }
                 }
 
-                int fehlerquote = 100 * (int)(quiz.Length * 1.0 * kategorien.Length / fehlersumme);
-                api_anbindung.ErstelleStatistik(benutzer.id, fehlerquote, quizAngefangenZeit, quiz[i].pflanze.id_pflanze);
+                int fehlerquote = (int)(100.0 * kategorien.Length / fehlersumme);
+                api_anbindung.ErstelleStatistik(benutzer.id, fehlerquote, quizTimer.Elapsed, quiz[i].pflanze.id_pflanze);
 
                 LadeStatistiken();
 
@@ -177,7 +177,7 @@ namespace Pflanzenbestimmung_Desktop
                     tempQuiz[i].pflanze = tempPflanzen[index];
 
                     //Enfernt die hinzugefügte Pflanze, damit jede Pflanzen nur einmal vorkommt
-                    tempPflanzen.Remove(tempQuiz[i].pflanze);
+                    tempPflanzen.RemoveAt(index);
                     //Beendet den for-loop, wenn keine Pflanzen mehr verfügbar sind
                     if (tempPflanzen.IsNullOrEmpty())
                     {
@@ -223,7 +223,7 @@ namespace Pflanzenbestimmung_Desktop
                 tempQuiz[i].pflanze = tempPflanzen[index];
 
                 //Enfernt die hinzugefügte Pflanze, damit jede Pflanzen nur einmal vorkommt
-                tempPflanzen.Remove(quiz[i].pflanze);
+                tempPflanzen.RemoveAt(index);
                 //Beendet den for-loop, wenn keine Pflanzen mehr verfügbar sind
                 if (tempPflanzen.IsNullOrEmpty())
                 {
@@ -307,13 +307,21 @@ namespace Pflanzenbestimmung_Desktop
         public static bool IstRichtig(string a, string b)
         {
             string[] tempArr = b.Split(',');
-            string[] tempArr2 = a.Split(',');
+            string[] tempArr2;
+            if(tempArr.Length > 1)
+            {
+                tempArr2 = a.Split(',');
+            }
+            else
+            {
+                tempArr2 = new string[]{ a };
+            }
 
             for (int i = 0; i < tempArr.Length; i++)
             {
                 for (int j = 0; j < tempArr2.Length; j++)
                 {
-                    if (tempArr[i].Trim().ToLower().Equals(tempArr[j].Trim().ToLower()))
+                    if (tempArr[i].Trim().ToLower().Equals(tempArr2[j].Trim().ToLower()))
                         return true;
                 }
             }

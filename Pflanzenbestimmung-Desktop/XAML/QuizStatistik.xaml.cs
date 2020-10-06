@@ -28,7 +28,7 @@ namespace Pflanzenbestimmung_Desktop
                 gegebeneAntwortLabel.Content = Main.quiz[pflanzenIndex].pflanze.kategorieAbfragen[i].gegebeneAntwort;
 
                 //if(korrekteAntwortLabel.Content.Equals(gegebeneAntwortLabel.Content))
-                if(Main.IstRichtig(korrekteAntwortLabel.Content.ToString(), gegebeneAntwortLabel.Content.ToString()))
+                if (Main.IstRichtig(Main.quiz[pflanzenIndex].pflanze.kategorieAbfragen[i].antwort, Main.quiz[pflanzenIndex].pflanze.kategorieAbfragen[i].gegebeneAntwort))
                 {
                     gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.LimeGreen;
                     gegebeneAntwortLabel.Content += " ✓";
@@ -57,6 +57,11 @@ namespace Pflanzenbestimmung_Desktop
         private void ZurückButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             // Momentan deaktiviert :)
+        }
+
+        private void WeiterButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
         }
     }
 }
