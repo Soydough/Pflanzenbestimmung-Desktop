@@ -26,9 +26,15 @@ namespace Pflanzenbestimmung_Desktop
 
         public static Dictionary<int, Ausbildungsart> ausbildungsarten;
 
+        // public static Ausbildungsart[] ausbildungsarten;
+
         public static Dictionary<int, Fachrichtung> fachrichtungen;
 
+        // public static Fachrichtung[] fachrichtungen;
+
         public static Dictionary<int, Administrator> ausbilder;
+
+      //  public static Administrator[] ausbilder;
 
         public static int ausbilderId;
 

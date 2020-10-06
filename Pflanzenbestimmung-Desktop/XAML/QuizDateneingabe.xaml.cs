@@ -61,10 +61,10 @@ namespace Pflanzenbestimmung_Desktop
             {
                 string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;
 
-                if(string.IsNullOrWhiteSpace(eingabe))
+              /*  if(string.IsNullOrWhiteSpace(eingabe))
                 {
                     eingabe = "kеine Eingabe gemacht!";
-                }
+                } */ // Soll prüfungsvorbereitend sein und da sagt dir auch keiner wenn du ein Feld nicht ausgefüllt hast.
 
                 Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[i].gegebeneAntwort = eingabe;
 

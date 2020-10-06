@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net;
 using System.Text;
+using System.Windows;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -148,36 +149,52 @@ namespace Pflanzenbestimmung_Desktop
             catch { }
         }
 
-        public bool BenutzerErstellen(string benutzername, string passwort,string name, string vorname, string ausbilderBenutzername, int ausbildungsart, int fachrichtung, int ausbilder)
+        public void BenutzerErstellen(bool admin, string benutzername, string passwort, string name, string vorname, int ausbildungsart, int fachrichtung, int ausbilder)
         {
+
             try
             {
                 using (var client = new WebClient())
                 {
+                  
+
                     var values = new NameValueCollection();
-                    values["method"] = "createAzubi";
                     values["User"] = benutzername;
                     values["PW"] = passwort;
                     values["Name"] = name;
                     values["Vorname"] = vorname;
-                    values["IDaa"] = ausbildungsart.ToString();
-                    values["IDf"] = fachrichtung.ToString();
-                    values["IDab"] = ausbilder.ToString();
+                    if (!admin)
+                    {
+                        values["method"] = "createAzubi";
+                        int ausbildungarten = ausbildungsart + 1;
+                        int fachrichtungen = fachrichtung + 1;
+                        int ausb = ausbilder + 1;
+                        values["IDaa"] = ausbildungarten.ToString();
+                        values["IDf"] = fachrichtungen.ToString();
+                        values["IDab"] = ausb.ToString();
+                    }
+                    else
+                    {
+                        values["method"] = "createAdmin";
+                    }
+                        var response = client.UploadValues(url, values);
+                        var responseString = Encoding.Default.GetString(response);
 
-                    var response = client.UploadValues(url, values);
-                    var responseString = Encoding.Default.GetString(response);
+                        if (responseString != null || responseString != "")
+                        {
+                            MessageBox.Show(responseString);
+                        }
+                    
 
-                    BenutzerTemplate[] benutzerTempArr = JsonConvert.DeserializeObject<BenutzerTemplate[]>(responseString);
-                    BenutzerTemplate b = benutzerTempArr[0];
-                    b.nutzername = benutzername;
-                    return true;
                 }
             }
-            catch
+            catch (System.Exception e)
             {
+                MessageBox.Show(e + "");
             }
 
-            return !true;
+
+
         }
 
         public AzubiStatistik[] BekommeStatistiken(int IDaz)
