@@ -101,7 +101,7 @@ namespace Pflanzenbestimmung_Desktop
         {
             if (!benutzer.istAdmin)
             {
-                statistiken = api_anbindung.BekommeStatistiken(benutzer.id);
+                statistiken = api_anbindung.BekommeStatistikenListe(benutzer.id);
             }
         }
 

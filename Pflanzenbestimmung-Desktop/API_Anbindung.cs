@@ -235,7 +235,7 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public AzubiStatistik[] BekommeStatistiken(int IDaz)
+        public AzubiStatistik[] BekommeStatistikenListe(int IDaz)
         {
             try
             {
@@ -243,8 +243,30 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     var values = new NameValueCollection
                     {
-                        ["method"] = "getQuizPZuweisung",
+                        ["method"] = "getStatList",
                         ["IDaz"] = IDaz.ToString()
+                    };
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    return JsonConvert.DeserializeObject<AzubiStatistik[]>(responseString);
+                }
+            }
+            catch (Exception e) { throw e; }
+            return null;
+        }
+
+        public AzubiStatistik[] BekommeStatistik(int IDs)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "getStatistik",
+                        ["IDaz"] = IDs.ToString()
                     };
 
                     var response = client.UploadValues(url, values);
