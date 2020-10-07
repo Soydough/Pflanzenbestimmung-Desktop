@@ -35,14 +35,17 @@ namespace Pflanzenbestimmung_Desktop
 
                 for (int i = 0; i < Main.pflanzenbilder.Length; i++)
                 {
-                    //TODO: Convert try to convert image to bitmap
                     try
                     {
+                        // Erstelle neues Bild
                         Image image = new Image();
+                        // Bekomme Bytes von String aus API
                         byte[] b = Main.pflanzenbilder[i].bild.ToBytes();
 
+                        // Erstelle neue Bitmap
                         BitmapImage bmp = new BitmapImage();
 
+                        // Konvertiere Bytes zu Bitmap
                         using (MemoryStream mem = new MemoryStream(b))
                         {
                             bmp.BeginInit();
@@ -53,12 +56,17 @@ namespace Pflanzenbestimmung_Desktop
                             bmp.EndInit();
                         }
                         bmp.Freeze();
+
+                        // Setze Bitmap als Quelle für Bild
                         image.Source = bmp;
 
+                        // Setze Margin für Bild
                         image.Margin = new Thickness(10);
 
+                        // Füge Click-Event hinzu (Bild wird beim Klicken im Vollbildmodus angezeigt)
                         image.MouseUp += ImageClickEvent;
 
+                        // Bild wird StackPanel hinzugefügt
                         stackPanel.Children.Add(image);
                     }
                     catch { }
@@ -67,31 +75,12 @@ namespace Pflanzenbestimmung_Desktop
 
             void ImageClickEvent(object sender, EventArgs e)
             {
-                //MessageBox.Show("Opening second window.");
                 Image image = sender as Image;
                 Main.fullscreenImage = image.Source;
                 var popup = new BildanzeigeVollbild();
                 popup.Show();
-
-                //var myPopup = new Popup
-                //{
-                //    Child = new Image
-                //    {
-                //        Source = image.Source,
-                //        Stretch = Stretch.UniformToFill,
-                //        Height = SystemParameters.PrimaryScreenHeight,
-                //        Width = SystemParameters.PrimaryScreenWidth
-                //    }
-                //};
-                //myPopup.IsOpen = true;
             }
 
-
-        }
-
-        private void Image_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         private void Weiter_Click(object sender, RoutedEventArgs e)

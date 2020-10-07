@@ -106,7 +106,6 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
-
         public QuizPZuweisung[] BekommeQuizPZuweisung(int IDaz)
         {
             try
@@ -139,7 +138,7 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         ["method"] = "createPBild",
                         ["IDp"] = IDp.ToString(),
-                        //values["Bild"] = bild.GetString();
+                        //["Bild"] = bild.GetString()
                         ["Bild"] = MySql.Data.MySqlClient.MySqlHelper.EscapeString(bild.GetString())
                     };
                     var response = client.UploadValues(url, values);

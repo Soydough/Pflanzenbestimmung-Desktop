@@ -6,12 +6,15 @@ using System.Windows;
 
 namespace Pflanzenbestimmung_Desktop
 {
-    [Obsolete("Bitte stattdessen API-Anbdingung verwenden", true)]
+    [Obsolete("Bitte stattdessen API-Anbindung verwenden", true)]
     public class Datenbankverbindung
     {
         /// <summary>
         /// Diese Datei wird später wahrscheinlich gelöscht. Hier gibt es also nichts wichtiges zu sehen
         /// </summary>
+        /// 
+
+        //ACHTUNG: DATEI IGNORIEREN!
 
 
         public MySqlConnection connection;
