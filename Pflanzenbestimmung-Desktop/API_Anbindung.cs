@@ -261,7 +261,6 @@ namespace Pflanzenbestimmung_Desktop
                 }
             }
             catch { }
-            return;
         }
 
         public void ErstelleEinzelStatistik(int IDs, int IDk, int IDp, string Eingabe)
@@ -284,7 +283,6 @@ namespace Pflanzenbestimmung_Desktop
                 }
             }
             catch { }
-            return;
         }
 
 
