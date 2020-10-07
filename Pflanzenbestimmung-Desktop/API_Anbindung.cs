@@ -79,7 +79,7 @@ namespace Pflanzenbestimmung_Desktop
                     return JsonConvert.DeserializeObject<T[]>(responseString);
                 }
             }
-            catch { }
+            catch (System.Exception e) { MessageBox.Show("" + e); }
             return new T[0];
         }
 
@@ -147,14 +147,13 @@ namespace Pflanzenbestimmung_Desktop
             catch { }
         }
 
-        public void BenutzerErstellen(bool admin, string benutzername, string passwort, string name, string vorname, int ausbildungsart, int fachrichtung, int ausbilder)
+        public void BenutzerErstellen(bool admin, string benutzername, string passwort, string name, string vorname, int ausbildungsart, int fachrichtung, int ausbilder, int pruefung, int groeßeQuizArt)
         {
 
             try
             {
                 using (var client = new WebClient())
                 {
-                  
 
                     var values = new NameValueCollection();
                     values["User"] = benutzername;
@@ -167,22 +166,25 @@ namespace Pflanzenbestimmung_Desktop
                         int ausbildungarten = ausbildungsart + 1;
                         int fachrichtungen = fachrichtung + 1;
                         int ausb = ausbilder + 1;
+                        int quizgroeßeArt = groeßeQuizArt + 1;
                         values["IDaa"] = ausbildungarten.ToString();
                         values["IDf"] = fachrichtungen.ToString();
                         values["IDab"] = ausb.ToString();
+                        values["IDqa"] = quizgroeßeArt.ToString();
+                        values["Pruefung"] = pruefung.ToString();
                     }
                     else
                     {
                         values["method"] = "createAdmin";
                     }
-                        var response = client.UploadValues(url, values);
-                        var responseString = Encoding.Default.GetString(response);
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
 
-                        if (responseString != null || responseString != "")
-                        {
-                            MessageBox.Show(responseString);
-                        }
-                    
+                    if (responseString != null || responseString != "")
+                    {
+                        MessageBox.Show(responseString);
+                    }
+
 
                 }
             }
@@ -261,49 +263,79 @@ namespace Pflanzenbestimmung_Desktop
             return;
         }
 
-
-        public Ausbildungsart[] BekommeAusbildungsart()
+        public void BenutzerAendern(bool admin, int id, string benutzername, string passwort, string name, string vorname, int ausbildungsart, int fachrichtung, int ausbilder, int pruefung, int groeßeQuizArt)
         {
             try
             {
                 using (var client = new WebClient())
                 {
-                    var values = new NameValueCollection
+                    Azubis Azubidaten = new Azubis();
+                    var values = new NameValueCollection();
+                    values["method"] = "updateAzubi";
+                    values["IDaz"] = id.ToString();
+                    if (benutzername != null)
                     {
-                        ["method"] = "getAusbildungsart",
-                        // ["IDaB"] = IDaB.ToString()
-                    };
+                        values["User"] = benutzername;
+                    }
+                    if (passwort != "")
+                    {
+                        values["PW"] = passwort;
+                    }
+                    if (name != null)
+                    {
+                        values["Name"] = name;
+                    }
+                    if (vorname != null)
+                    {
+                        values["Vorname"] = vorname;
+                    }
+                    if (!admin)
+                    {
 
+                        if (ausbildungsart != -1)
+                        {
+                            int ausbildungarten = ausbildungsart + 1;
+                            values["IDaa"] = ausbildungarten.ToString();
+                        }
+                        if (fachrichtung != -1)
+                        {
+                            int fachrichtungen = fachrichtung + 1;
+                            values["IDf"] = fachrichtungen.ToString();
+                        }
+                        if (ausbilder != -1)
+                        {
+                            int ausb = ausbilder + 1;
+                            values["IDab"] = ausb.ToString();
+                        }
+                        if (groeßeQuizArt != -1)
+                        {
+                            int art = groeßeQuizArt + 1;
+                            values["IDqa"] = art.ToString();
+                        }
+                        values["Pruefung"] = pruefung.ToString();
+                        
+                    }
+                    //else
+                    //{
+                    //    values["method"] = "createAdmin";
+                    //}
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
-                    // return JsonConvert.DeserializeObject<Ausbildungsart[]>(responseString);
+                    if (responseString != null || responseString != "")
+                    {
+                        MessageBox.Show(responseString);
+                    }
                 }
             }
-            catch { }
-            return null;
-        }
-
-        public Fachrichtung[] BekommeFachrichtung()
-        {
-            try
+            catch (System.Exception e)
             {
-                using (var client = new WebClient())
-                {
-                    var values = new NameValueCollection
-                    {
-                        ["method"] = "getFachrichtung",
-                        //["IDpb"] = IDpb.ToString()
-                    };
-
-                    var response = client.UploadValues(url, values);
-                    var responseString = Encoding.Default.GetString(response);
-
-                    //  return JsonConvert.DeserializeObject<Fachrichtung[]>(responseString);
-                }
+                MessageBox.Show(e + "");
             }
-            catch { }
-            return null;
+
+
+
         }
-    }
-}
+
+    }//End Class
+}//End Namespace

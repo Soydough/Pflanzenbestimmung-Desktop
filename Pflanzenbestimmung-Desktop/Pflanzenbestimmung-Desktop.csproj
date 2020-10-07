@@ -120,6 +120,7 @@
     <Compile Include="Administrator.cs" />
     <Compile Include="API_Anbindung.cs" />
     <Compile Include="Ausbildungsart.cs" />
+    <Compile Include="Azubis.cs" />
     <Compile Include="AzubiStatistik.cs" />
     <Compile Include="Benutzer.cs" />
     <Compile Include="BenutzerTemplate.cs" />
@@ -145,6 +146,9 @@
     </Compile>
     <Compile Include="XAML\AdminStatistikBenutzerAuswahl.xaml.cs">
       <DependentUpon>AdminStatistikBenutzerAuswahl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XAML\BenutzerVerwalten.xaml.cs">
+      <DependentUpon>BenutzerVerwalten.xaml</DependentUpon>
     </Compile>
     <Compile Include="XAML\BildanzeigeVollbild.xaml.cs">
       <DependentUpon>BildanzeigeVollbild.xaml</DependentUpon>
@@ -196,6 +200,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="XAML\Anmeldung.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\BenutzerVerwalten.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

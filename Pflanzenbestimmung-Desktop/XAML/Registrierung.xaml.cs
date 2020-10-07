@@ -14,6 +14,7 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
             dieses = this;
+            Main.LadeAzubiDaten();
         }
         bool admin = true;
         public void Initialize()
@@ -29,6 +30,10 @@ namespace Pflanzenbestimmung_Desktop
             FachrichtungComboBox.ItemsSource = Main.fachrichtungen;
             FachrichtungComboBox.DisplayMemberPath = "Value";
             FachrichtungComboBox.SelectedIndex = 0;
+
+            QuizartenComboBox.ItemsSource = Main.quizArt;
+            QuizartenComboBox.DisplayMemberPath = "Value";
+            QuizartenComboBox.SelectedIndex = 0;
         }
 
         private void AbbrechenButton_Click(object sender, RoutedEventArgs e)
@@ -42,6 +47,7 @@ namespace Pflanzenbestimmung_Desktop
             string passwort = null;
             string name = null;
             string vorname = null;
+            int pruefung;
             if (!admin)
             {
                 benutzername = BenutzernameTextBox.Text.Trim();
@@ -65,13 +71,22 @@ namespace Pflanzenbestimmung_Desktop
             {
                 passwort = Main.GetHashWithSalt(passwort, benutzername);
 
+                if (PruefungsmodusCheckbox.IsChecked == true)
+                {
+                    pruefung = 1;
+                }
+                else
+                {
+                    pruefung = 0;
+                }
                 int ausbildungsart = ((KeyValuePair<int, Ausbildungsart>)dieses.AubildungsartComboBox.SelectedItem).Key;
                 int fachrichtung = ((KeyValuePair<int, Fachrichtung>)dieses.FachrichtungComboBox.SelectedItem).Key;
                 int ausbilderId = ((KeyValuePair<int, Administrator>)dieses.AusbilderComboBox.SelectedItem).Key;
+                int quizArtId =  ((KeyValuePair<int, QuizArt>)QuizartenComboBox.SelectedItem).Key;
 
                 try
                 {
-                    Main.api_anbindung.BenutzerErstellen(admin, benutzername, passwort, name, vorname, ausbilderId, ausbildungsart, fachrichtung);
+                    Main.api_anbindung.BenutzerErstellen(admin, benutzername, passwort, name, vorname, ausbilderId, ausbildungsart, fachrichtung, pruefung, quizArtId);
                     AbbrechenButton_Click(sender, e);
                 }
                 catch (System.Exception)

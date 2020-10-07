@@ -69,6 +69,14 @@
                         <Label Content="Ausbilder" />
                         <ComboBox Name="AusbilderComboBox" />
                     </Grid>
+                    <Grid>
+                        <Label Content="Quizgröße:" />
+                        <ComboBox Name="QuizartenComboBox" />
+                    </Grid>
+                    <Grid>
+                        <Label Content="Prüfungsmodus?"/>
+                        <CheckBox Name="PruefungsmodusCheckbox" FlowDirection="RightToLeft" VerticalAlignment="Center" />
+                    </Grid>
                 </StackPanel>
             </TabItem>
 

@@ -7,6 +7,9 @@ using System.Windows;
 using System.Windows.Media;
 using System.Drawing;
 using Newtonsoft.Json;
+using System.Data.Common;
+using System.Data;
+using System.Collections.ObjectModel;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -32,7 +35,7 @@ namespace Pflanzenbestimmung_Desktop
 
         public static Dictionary<int, Administrator> ausbilder;
 
-      //  public static Administrator[] ausbilder;
+        //  public static Administrator[] ausbilder;
 
         public static int ausbilderId;
 
@@ -40,7 +43,7 @@ namespace Pflanzenbestimmung_Desktop
 
         public static Pflanzenbild[] pflanzenbilder;
 
-        public static QuizArt quizArt;
+        public static Dictionary<int, QuizArt> quizArt;
 
         public static QuizPflanze[] quiz;
 
@@ -60,6 +63,8 @@ namespace Pflanzenbestimmung_Desktop
 
         public static QuizPZuweisung[] quizPZuweisungen;
 
+        public static Azubis[] azubi;
+
         #endregion
 
         public static void Initialize()
@@ -73,17 +78,40 @@ namespace Pflanzenbestimmung_Desktop
             //api_anbindung.BildHochladen(2, platzhalter);
             //api_anbindung.BildHochladen(3, platzhalter);
 
-            ausbildungsarten = api_anbindung.Bekommen<Ausbildungsart>("Ausbildungsart").ToDictionary();
-            fachrichtungen = api_anbindung.Bekommen<Fachrichtung>("Fachrichtung").ToDictionary();
             
-            ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
             pflanzen = api_anbindung.Bekommen<Pflanze>();
             kategorien = api_anbindung.Bekommen<Kategorie>();
+
+            
+
+        }
+        public static void LadeAzubiDaten()
+        {
+            ausbildungsarten = api_anbindung.Bekommen<Ausbildungsart>("Ausbildungsart").ToDictionary();
+            fachrichtungen = api_anbindung.Bekommen<Fachrichtung>("Fachrichtung").ToDictionary();
+            ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
+            azubi = api_anbindung.Bekommen<Azubis>("Azubis");
+            quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt").ToDictionary();
+        }
+
+        public static ObservableCollection<Azubis> MyList
+        {
+            get; set;
+        }
+
+        public static ObservableCollection<Azubis> InitializeMylist()
+        {
+            MyList = new ObservableCollection<Azubis>();
+            for (int i = 0; i < azubi.Length; i++)
+            {
+                MyList.Add(azubi[i]);
+            }
+            return MyList;
         }
 
         public static void LadeStatistiken()
         {
-            if(!benutzer.istAdmin)
+            if (!benutzer.istAdmin)
             {
                 statistiken = api_anbindung.BekommeStatistiken(benutzer.id);
             }
@@ -97,9 +125,9 @@ namespace Pflanzenbestimmung_Desktop
                 return;
             }
 
-            quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt")[0];
-            int anzahl = quizArt.quizgröße;
-            quiz = new QuizPflanze[anzahl];
+            
+            //int anzahl = quizArt.quizgröße;
+            //quiz = new QuizPflanze[anzahl];
 
             quizPZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
 
