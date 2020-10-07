@@ -18,7 +18,7 @@ namespace Pflanzenbestimmung_Desktop
 
         #region Variablen
         //Veraltet
-        public static Datenbankverbindung datenbankverbindung = new Datenbankverbindung();
+        //public static Datenbankverbindung datenbankverbindung = new Datenbankverbindung();
 
         public static API_Anbindung api_anbindung = new API_Anbindung();
 
@@ -145,7 +145,7 @@ namespace Pflanzenbestimmung_Desktop
                 return;
             }
 
-            quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt")[0];
+            quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt")[benutzer.quiz_art];
             int anzahl = quizArt.quizgröße;
             //quiz = new QuizPflanze[anzahl];
             List<QuizPflanze> tempQuiz = new List<QuizPflanze>();
@@ -243,7 +243,7 @@ namespace Pflanzenbestimmung_Desktop
 
         public static void AktualisiereAusbilderId()
         {
-            ausbilderId = datenbankverbindung.BekommeAusbilderId(benutzer.nutzername);
+            //ausbilderId = datenbankverbindung.BekommeAusbilderId(benutzer.nutzername);
         }
 
         public static Dictionary<int, T> ToDictionary<T>(this T[] arr)

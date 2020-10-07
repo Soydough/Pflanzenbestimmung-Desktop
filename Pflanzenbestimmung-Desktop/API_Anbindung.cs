@@ -135,13 +135,13 @@ namespace Pflanzenbestimmung_Desktop
             {
                 using (var client = new WebClient())
                 {
-                    var values = new NameValueCollection();
-
-                    values["method"] = "createPBild";
-                    values["IDp"] = IDp.ToString();
-                    //values["Bild"] = bild.GetString();
-                    values["Bild"] = MySql.Data.MySqlClient.MySqlHelper.EscapeString(bild.GetString());
-
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "createPBild",
+                        ["IDp"] = IDp.ToString(),
+                        //values["Bild"] = bild.GetString();
+                        ["Bild"] = MySql.Data.MySqlClient.MySqlHelper.EscapeString(bild.GetString())
+                    };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
                 }
@@ -187,6 +187,35 @@ namespace Pflanzenbestimmung_Desktop
             catch (System.Exception e)
             {
                 MessageBox.Show(e + "");
+            }
+        }
+
+        public void PflanzeErstellen(string gattung, string art, string dename,
+            string famname, string herkunft, string bluete, string bluetezeit,
+            string blatt, string wuchs, string besonderheiten)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection()
+                    {
+                        ["dbgattung"] = gattung,
+                        ["dbart"] = art,
+                        ["dbdename"] = dename,
+                        ["dbfamname"] = famname,
+                        ["herkunft"] = herkunft,
+                        ["bluete"] = bluete,
+                        ["bluetezeit"] = bluetezeit,
+                        ["blatt"] = blatt,
+                        ["wuchs"] = wuchs,
+                        ["besonderheiten"] = besonderheiten
+                    };
+                }
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
         }
 

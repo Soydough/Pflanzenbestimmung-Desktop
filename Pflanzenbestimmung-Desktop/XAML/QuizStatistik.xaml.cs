@@ -15,6 +15,8 @@ namespace Pflanzenbestimmung_Desktop
 
             StackPanel.Children.Clear();
 
+            pflanzenIndex = Main.momentanePflanzeAusQuiz++;
+
             for (int i = 0; i < Main.kategorien.Length; i++)
             {
                 Grid grid = new Grid();

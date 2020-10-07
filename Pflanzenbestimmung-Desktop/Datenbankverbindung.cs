@@ -6,6 +6,7 @@ using System.Windows;
 
 namespace Pflanzenbestimmung_Desktop
 {
+    [Obsolete("Bitte stattdessen API-Anbdingung verwenden", true)]
     public class Datenbankverbindung
     {
         /// <summary>
