@@ -17,7 +17,7 @@ namespace Pflanzenbestimmung_Desktop
 
             pflanzenIndex = Main.momentanePflanzeAusQuiz++;
 
-            for (int i = 0; i < Main.kategorien.Length; i++)
+            for (int i = 0; i < Main.kategorien.Count; i++)
             {
                 Grid grid = new Grid();
                 grid.ColumnDefinitions.Add(new ColumnDefinition());
@@ -58,12 +58,13 @@ namespace Pflanzenbestimmung_Desktop
 
         private void ZurückButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            // Momentan deaktiviert :)
+            // Dauerhaft deaktiviert :)
         }
 
         private void WeiterButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            Main.momentanePflanzeAusQuiz++;
+            MainWindow.changeContent(new QuizStatistik());
         }
     }
 }

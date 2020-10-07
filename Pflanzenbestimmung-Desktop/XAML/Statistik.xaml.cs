@@ -11,7 +11,10 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
 
-
+            for(int i = 0; i < Main.statistiken.Length; i++)
+            {
+                listView.Items.Add(Main.statistiken[i].ToString());
+            }
         }
 
         private void Hauptmenü_Click(object sender, System.Windows.RoutedEventArgs e)

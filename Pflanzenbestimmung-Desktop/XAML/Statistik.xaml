@@ -12,33 +12,15 @@
             <RowDefinition Height="9*" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        
-        <StackPanel>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Label Content="Fehlerquote:" HorizontalAlignment="Stretch"/>
-                <Label Name="FehlerquoteLabel" Content="10%" Grid.Column="1" HorizontalAlignment="Right" />
-            </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Label Content="Durchschnittliche Zeit:" HorizontalAlignment="Stretch"/>
-                <Label Name="DurchschnittZeitLabel" Content="10:23" Grid.Column="1" HorizontalAlignment="Right" />
-            </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Label Content="Pflanze mit wenigsten Fehlern:" HorizontalAlignment="Stretch"/>
-                <Label Name="BestePflanzeLabel" Content="Buche" Grid.Column="1" HorizontalAlignment="Right" />
-            </Grid>
-        </StackPanel>
+
+        <ListView Name="listView" HorizontalContentAlignment="Right">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Quiz">
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
         <Button Name="Hauptmenü" Click="Hauptmenü_Click" Grid.Row="1" Content="Zurück zum Hauptmenü" Margin="10, 2" />
     </Grid>

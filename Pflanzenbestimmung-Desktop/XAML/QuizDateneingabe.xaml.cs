@@ -18,7 +18,7 @@ namespace Pflanzenbestimmung_Desktop
 
             //MainWindow.DebugChangeTitle(Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[0].antwort);
 
-            for (int i = 0; i < Main.kategorien.Length; i++)
+            for (int i = 0; i < Main.kategorien.Count; i++)
             {
                 Kategorie k = Main.kategorien[i];
 
@@ -54,10 +54,10 @@ namespace Pflanzenbestimmung_Desktop
         private void Weiter_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Main.einzelStatistiken[Main.momentanePflanzeAusQuiz] = new StatistikPflanze();
-            Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten = new StatistikPflanzeAntwort[Main.kategorien.Length];
+            Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten = new StatistikPflanzeAntwort[Main.kategorien.Count];
 
             //Antworten speichern
-            for (int i = 0; i < Main.kategorien.Length; i++)
+            for (int i = 0; i < Main.kategorien.Count; i++)
             {
                 string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;
 

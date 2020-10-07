@@ -41,6 +41,13 @@ namespace Pflanzenbestimmung_Desktop
                     dieses.Title = "Pflanzenbestimmung";
                     if (!Main.benutzer.istAdmin)
                         ((Hauptmenü)o).AdministrationButton.Visibility = Visibility.Collapsed;
+                    else
+                    {
+                        ((Hauptmenü)o).AktuellesQuizButton.Visibility = Visibility.Collapsed;
+                        ((Hauptmenü)o).ZufälligesQuizButton.Visibility = Visibility.Collapsed;
+                        ((Hauptmenü)o).StatistikButton.Visibility = Visibility.Collapsed;
+                        ((Hauptmenü)o).EineMinuteProPflanzeButton.Visibility = Visibility.Collapsed;
+                    }
                     Main.AktualisiereAusbilderId();
                     break;
                 case "Registrierung":
