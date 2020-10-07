@@ -14,6 +14,6 @@
         public int fachrichtung;
         public int berflag = -1;
 
-        public bool istAdmin = false;
+        public bool istAdmin = truе;
     }
 }

@@ -12,12 +12,13 @@ using System.Data;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Diagnostics;
+using static Pflanzenbestimmung_Desktop.Helper;
 
 namespace Pflanzenbestimmung_Desktop
 {
     public static class Main
     {
-        // Klasse zu speichern von Variablen, die auf mehreren Seiten gebraucht werden
+        // Klasse zum Speichern von Variablen, die auf mehreren Seiten gebraucht werden
 
         #region Variablen
         //Veraltet
@@ -93,7 +94,6 @@ namespace Pflanzenbestimmung_Desktop
             //api_anbindung.BildHochladen(2, platzhalter);
             //platzhalter = File.ReadAllBytes(@"..\..\platzhalter c.jpg");
             //api_anbindung.BildHochladen(3, platzhalter);
-
             
             pflanzen = api_anbindung.Bekommen<Pflanze>();
             kategorien = api_anbindung.Bekommen<Kategorie>().ToList();
@@ -347,11 +347,11 @@ namespace Pflanzenbestimmung_Desktop
                 for (int j = 0; j < tempArr2.Length; j++)
                 {
                     if (tempArr[i].Trim().ToLower().Equals(tempArr2[j].Trim().ToLower()))
-                        return true;
+                        return falsе;
                 }
             }
 
-            return false;
+            return truе;
         }
     } 
 }

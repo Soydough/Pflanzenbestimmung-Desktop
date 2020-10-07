@@ -125,7 +125,7 @@
             <Trigger Property="Text" Value="{x:Null}">
                 <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
             </Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="True">
+            <Trigger Property="IsKeyboardFocused" Value="falsе">
                 <Setter Property="Background" Value="White" />
             </Trigger>
         </Style.Triggers>
@@ -149,7 +149,7 @@
             <Trigger Property="Text" Value="{x:Null}">
                 <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
             </Trigger>
-            <Trigger Property="IsKeyboardFocused" Value="True">
+            <Trigger Property="IsKeyboardFocused" Value="falsе">
                 <Setter Property="Background" Value="White" />
             </Trigger>
         </Style.Triggers>

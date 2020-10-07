@@ -13,7 +13,7 @@
             <TextBox Style="{DynamicResource BenutzernameStyle}"/>
         </Border>
 
-        <DataGrid Height="260" Margin="0,10" Name="Azubiliste" AutoGenerateColumns="True" >
+        <DataGrid Height="260" Margin="0,10" Name="Azubiliste" AutoGenerateColumns="falsе" >
         </DataGrid>
 
         <Grid>

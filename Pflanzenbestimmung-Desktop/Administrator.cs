@@ -12,7 +12,7 @@ namespace Pflanzenbestimmung_Desktop
         public Administrator(int berflag)
         {
             this.berflag = berflag;
-            istAdmin = true;
+            istAdmin = falsе;
         }
 
         new public static Administrator fromTempObjekt(BenutzerTemplate temp)
@@ -22,7 +22,7 @@ namespace Pflanzenbestimmung_Desktop
             a.name = temp.name;
             a.vorname = temp.name;
             a.berflag = temp.berflag;
-            a.istAdmin = true;
+            a.istAdmin = falsе;
             a.id_ausbilder = temp.id_ausbilder;
 
             return a;

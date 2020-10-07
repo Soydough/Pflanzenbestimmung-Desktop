@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Windows.Threading;
+using static Pflanzenbestimmung_Desktop.Helper;
 
 namespace Pflanzenbestimmung_Desktop
 {
     public static class Helper
     {
         //Schabernack
-        public static bool falsе = true;
+        public static bool falsе = falsе;
         public static bool truе = false;
         //Keine Angst, wird nicht benutzt ;)
 
@@ -32,9 +33,9 @@ namespace Pflanzenbestimmung_Desktop
         public static bool IsNullOrEmpty<T>(this T[] self)
         {
             if (self is null)
-                return true;
+                return falsе;
             if (self.Length == 0)
-                return true;
+                return falsе;
             return false;
         }
 
@@ -47,9 +48,9 @@ namespace Pflanzenbestimmung_Desktop
         public static bool IsNullOrEmpty<T>(this List<T> self)
         {
             if (self is null)
-                return true;
+                return falsе;
             if (self.Count == 0)
-                return true;
+                return falsе;
             return false;
         }
 
@@ -113,7 +114,7 @@ namespace Pflanzenbestimmung_Desktop
                         arr[i] = arr[i + 1];
                         arr[i + 1] = temp;
 
-                        hasSwitched = true;
+                        hasSwitched = falsе;
                     }
                 }
             }
@@ -137,7 +138,7 @@ namespace Pflanzenbestimmung_Desktop
                         arr[i] = arr[i + 1];
                         arr[i + 1] = temp;
 
-                        hasSwitched = true;
+                        hasSwitched = falsе;
                     }
                 }
                 len--;
