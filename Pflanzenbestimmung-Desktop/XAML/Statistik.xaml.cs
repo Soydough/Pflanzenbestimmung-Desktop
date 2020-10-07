@@ -20,14 +20,14 @@ namespace Pflanzenbestimmung_Desktop
                 listView.Items.Add(Main.statistiken[i].ToString());
             }
 
-             ((System.ComponentModel.INotifyPropertyChanged)listView).PropertyChanged += (sender, e) =>
-             {
-                 if (e.PropertyName == "ActualWidth")
-                 {
-                     Column.Width = listView.ActualWidth;
-                     System.Windows.MessageBox.Show(Column.Width.ToString());
-                 }
-             };
+            // ((System.ComponentModel.INotifyPropertyChanged)listView).PropertyChanged += (sender, e) =>
+            // {
+            //     if (e.PropertyName == "ActualWidth")
+            //     {
+            //         Column.Width = listView.ActualWidth;
+            //         System.Windows.MessageBox.Show(Column.Width.ToString());
+            //     }
+            // };
         }
 
         private void Hauptmenü_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -46,7 +46,10 @@ namespace Pflanzenbestimmung_Desktop
         {
             Main.statistik = Main.statistiken[listView.SelectedIndex];
 
-            MainWindow.dieses.ContentHolder.Content = null;
+            Main.statistik = Main.api_anbindung.BekommeStatistik(Main.statistik.id_statistik);
+
+            Main.momentanePflanzeAusStatistik = 0;
+            MainWindow.dieses.ContentHolder.Content = new AdminQuizStatistik();
         }
     }
 }

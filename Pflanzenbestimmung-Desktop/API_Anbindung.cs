@@ -265,7 +265,7 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
-        public AzubiStatistik[] BekommeStatistik(int IDs)
+        public AzubiStatistik BekommeStatistik(int IDs)
         {
             try
             {
@@ -274,20 +274,20 @@ namespace Pflanzenbestimmung_Desktop
                     var values = new NameValueCollection
                     {
                         ["method"] = "getStatistik",
-                        ["IDaz"] = IDs.ToString()
+                        ["IDs"] = IDs.ToString()
                     };
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
-                    return JsonConvert.DeserializeObject<AzubiStatistik[]>(responseString);
+                    return JsonConvert.DeserializeObject<AzubiStatistik[]>(responseString)[0];
                 }
             }
             catch { }
             return null;
         }
 
-        public void ErstelleStatistik(int IDaz, int FQuote, TimeSpan Zeit, int IDp)
+        public void ErstelleStatistik(int IDaz, string FQuote, TimeSpan Zeit, int IDp)
         {
             try
             {
@@ -297,7 +297,7 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         ["method"] = "createStatistik",
                         ["IDaz"] = IDaz.ToString(),
-                        ["FQuote"] = FQuote.ToString(),
+                        ["FQuote"] = FQuote,
                         ["Zeit"] = Zeit.ToString("yyyy-MM-dd HH:mm:ss"),
                         ["IDp"] = IDp.ToString()
                     };
