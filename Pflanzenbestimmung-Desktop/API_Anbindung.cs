@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net;
@@ -105,7 +107,6 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
-
         public QuizPZuweisung[] BekommeQuizPZuweisung(int IDaz)
         {
             try
@@ -134,18 +135,36 @@ namespace Pflanzenbestimmung_Desktop
             {
                 using (var client = new WebClient())
                 {
-                    var values = new NameValueCollection();
-
-                    values["method"] = "createPBild";
-                    values["IDp"] = IDp.ToString();
-                    values["Bild"] = bild.GetString();
-
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "createPBild",
+                        ["IDp"] = IDp.ToString(),
+                        //["Bild"] = bild.GetString()
+                        ["Bild"] = MySql.Data.MySqlClient.MySqlHelper.EscapeString(bild.GetString())
+                    };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
                 }
             }
             catch { }
         }
+
+        public void KategorieErstellen(string kategorie)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "createKategorie",
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                }
+            }
+            catch { }
+         }
 
         public void BenutzerErstellen(bool admin, string benutzername, string passwort, string name, string vorname, int ausbildungsart, int fachrichtung, int ausbilder, int pruefung, int groeßeQuizArt)
         {
@@ -154,7 +173,6 @@ namespace Pflanzenbestimmung_Desktop
             {
                 using (var client = new WebClient())
                 {
-
                     var values = new NameValueCollection();
                     values["User"] = benutzername;
                     values["PW"] = passwort;
@@ -184,20 +202,44 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         MessageBox.Show(responseString);
                     }
-
-
                 }
             }
             catch (System.Exception e)
             {
                 MessageBox.Show(e + "");
             }
-
-
-
         }
 
-        public AzubiStatistik[] BekommeStatistiken(int IDaz)
+        public void PflanzeErstellen(string gattung, string art, string dename,
+            string famname, string herkunft, string bluete, string bluetezeit,
+            string blatt, string wuchs, string besonderheiten)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection()
+                    {
+                        ["dbgattung"] = gattung,
+                        ["dbart"] = art,
+                        ["dbdename"] = dename,
+                        ["dbfamname"] = famname,
+                        ["herkunft"] = herkunft,
+                        ["bluete"] = bluete,
+                        ["bluetezeit"] = bluetezeit,
+                        ["blatt"] = blatt,
+                        ["wuchs"] = wuchs,
+                        ["besonderheiten"] = besonderheiten
+                    };
+                }
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        public AzubiStatistik[] BekommeStatistikenListe(int IDaz)
         {
             try
             {
@@ -205,8 +247,30 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     var values = new NameValueCollection
                     {
-                        ["method"] = "getQuizPZuweisung",
+                        ["method"] = "getStatList",
                         ["IDaz"] = IDaz.ToString()
+                    };
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    return JsonConvert.DeserializeObject<AzubiStatistik[]>(responseString);
+                }
+            }
+            catch (Exception e) { throw e; }
+            return null;
+        }
+
+        public AzubiStatistik[] BekommeStatistik(int IDs)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "getStatistik",
+                        ["IDaz"] = IDs.ToString()
                     };
 
                     var response = client.UploadValues(url, values);
@@ -219,7 +283,7 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
-        public void ErstelleStatistik(int IDaz, int FQuote, string Zeit, int IDp)
+        public void ErstelleStatistik(int IDaz, int FQuote, TimeSpan Zeit, int IDp)
         {
             try
             {
@@ -230,15 +294,15 @@ namespace Pflanzenbestimmung_Desktop
                         ["method"] = "createStatistik",
                         ["IDaz"] = IDaz.ToString(),
                         ["FQuote"] = FQuote.ToString(),
-                        ["Zeit"] = Zeit,
+                        ["Zeit"] = Zeit.ToString("yyyy-MM-dd HH:mm:ss"),
                         ["IDp"] = IDp.ToString()
                     };
 
-                    client.UploadValues(url, values);
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
                 }
             }
             catch { }
-            return;
         }
 
         public void ErstelleEinzelStatistik(int IDs, int IDk, int IDp, string Eingabe)
@@ -256,11 +320,11 @@ namespace Pflanzenbestimmung_Desktop
                         ["Eingabe"] = Eingabe
                     };
 
-                    client.UploadValues(url, values);
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
                 }
             }
             catch { }
-            return;
         }
 
         public void BenutzerAendern(bool admin, int id, string benutzername, string passwort, string name, string vorname, int ausbildungsart, int fachrichtung, int ausbilder, int pruefung, int groeßeQuizArt)

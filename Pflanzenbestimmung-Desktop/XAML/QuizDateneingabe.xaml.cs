@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using Flurl.Util;
+using System;
+using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -16,7 +18,7 @@ namespace Pflanzenbestimmung_Desktop
 
             //MainWindow.DebugChangeTitle(Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[0].antwort);
 
-            for (int i = 0; i < Main.kategorien.Length; i++)
+            for (int i = 0; i < Main.kategorien.Count; i++)
             {
                 Kategorie k = Main.kategorien[i];
 
@@ -51,8 +53,11 @@ namespace Pflanzenbestimmung_Desktop
 
         private void Weiter_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            Main.einzelStatistiken[Main.momentanePflanzeAusQuiz] = new StatistikPflanze();
+            Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten = new StatistikPflanzeAntwort[Main.kategorien.Count];
+
             //Antworten speichern
-            for (int i = 0; i < Main.kategorien.Length; i++)
+            for (int i = 0; i < Main.kategorien.Count; i++)
             {
                 string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;
 
@@ -62,9 +67,32 @@ namespace Pflanzenbestimmung_Desktop
                 } */ // Soll prüfungsvorbereitend sein und da sagt dir auch keiner wenn du ein Feld nicht ausgefüllt hast.
 
                 Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[i].gegebeneAntwort = eingabe;
-            }
 
-            MainWindow.changeContent(new QuizStatistik());
+                Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i] = new StatistikPflanzeAntwort();
+
+                //Einzelstatistik speichern
+                Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].eingabe = eingabe;
+                Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].korrekt = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[i].antwort;
+                Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].kategorie = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[i].kategorie_name;
+            }
+            //Speichere ID weitere Daten für die Einzelstatistik
+            Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].id_pflanze = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.id_pflanze;
+
+            if(Main.momentanePflanzeAusQuiz >= Main.quiz.Length - 1)
+            {
+                //Quiz ist zu Ende. Ergebnisse in Datenbank speichern
+                Main.quizTimer.Stop();
+                Main.LadeStatistikenHoch();
+
+                //Ergebnisse anzeigen
+                Main.momentanePflanzeAusQuiz = -1;
+                MainWindow.changeContent(new QuizStatistik());
+            }
+            else
+            {
+                //Quiz ist nicht zu Ende. Nächste Pflanze anzeigen
+                MainWindow.changeContent(new QuizBildanzeige());
+            }
         }
     }
 }

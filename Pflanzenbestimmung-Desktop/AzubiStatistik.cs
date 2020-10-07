@@ -10,11 +10,30 @@ namespace Pflanzenbestimmung_Desktop
     {
         public int id_statistik;
         //format: yyyy-mm-dd hh:mm:ss
-        public string erstellt;
-        public int fehlerquote;
+        //DateTime
+        public DateTime erstellt;
+        public string fehlerquote;
         //format: hh:mm:ss
-        public string zeit;
+        //TimeSpan
+        public TimeSpan zeit;
         public int id_beste_pflanze;
         public StatistikPflanze[] pflanzen;
+
+        //public DateTime Erstellt
+        //{
+        //    get
+        //    {
+        //        return DateTime.Parse(erstellt);
+        //    }
+        //    set
+        //    {
+        //        erstellt = value.ToString();
+        //    }
+        //}
+
+        public override string ToString()
+        {
+            return $"Quiz von {erstellt:yyyy.MM.dd HH:mm:ss} (Benötigte Zeit: {zeit}, Fehlerquote: {fehlerquote})";
+        }
     }
 }

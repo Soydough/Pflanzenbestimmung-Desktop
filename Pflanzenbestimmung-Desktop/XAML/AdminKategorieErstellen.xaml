@@ -1,0 +1,37 @@
+﻿<Window x:Class="Pflanzenbestimmung_Desktop.XAML.AdminKategorieErstellen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pflanzenbestimmung_Desktop.XAML"
+        mc:Ignorable="d"
+        Title="AdminKategorieErstellen" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="txtneuekategoriename" HorizontalAlignment="Left" Height="23" Margin="10,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="Name"/>
+        <Label Content="Neue Kategorie anlegen" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button x:Name="btnneuekategorie" Content="Speichern" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="200" Click="btnneuekategorie_Click"/>
+        <ListView x:Name="listvkategoriebearb" HorizontalAlignment="Left" Height="100" Margin="275,82,0,0" VerticalAlignment="Top" Width="200">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+            <ListBoxItem Content="Platzhalter Kategorie" Width="200"/>
+        </ListView>
+        <Label Content="Kategorie Bearbeiten" HorizontalAlignment="Left" Margin="275,21,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button x:Name="btnbearbeiten" Content="Bearbeiten" HorizontalAlignment="Left" Margin="275,205,0,0" VerticalAlignment="Top" Width="200"/>
+        <ListView x:Name="listvkategorieausw" HorizontalAlignment="Left" Height="100" Margin="576,82,0,0" VerticalAlignment="Top" Width="200">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+            <CheckBox Content="Platzhalter Kategorie" Width="200"/>
+        </ListView>
+        <Label Content="Abzufragende Kategorien Auswählen" HorizontalAlignment="Left" Margin="576,21,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button x:Name="btnkatauswahl" Content="Speichern" HorizontalAlignment="Left" Margin="576,205,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button x:Name="btnzurueck" Content="Zurück" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,389,0,0"/>
+        <Button x:Name="btnhomepage" Content="Homepage" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="110,389,0,0"/>
+
+    </Grid>
+</Window>

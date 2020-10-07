@@ -31,7 +31,7 @@ namespace Pflanzenbestimmung_Desktop
             string wuchs = HabitusTextBox.Text;
             string besonderheiten = BesonderheitenTextBox.Text;
 
-            Main.datenbankverbindung.FuegePflanzeHinzu(
+            Main.api_anbindung.PflanzeErstellen(
                 gattung, art, deName, famname, herkunft,
                 bluete, blueteZeit, blatt, wuchs, besonderheiten);
         }
