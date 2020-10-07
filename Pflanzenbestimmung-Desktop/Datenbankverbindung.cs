@@ -75,7 +75,7 @@ namespace Pflanzenbestimmung_Desktop
                 connection.Open();
                 query.ExecuteNonQuery();
                 connection.Close();
-                return false;
+                return true;
             }
             catch
             {
@@ -116,7 +116,7 @@ namespace Pflanzenbestimmung_Desktop
                 connection.Open();
                 query.ExecuteNonQuery();
                 connection.Close();
-                return false;
+                return true;
                 //}
                 //catch
                 //{

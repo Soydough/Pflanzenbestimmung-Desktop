@@ -9,7 +9,7 @@ namespace Pflanzenbestimmung_Desktop
         //Wird nur für ungültigen Benutzer verwendet
         public Benutzer(int _)
         {
-            IstGueltig = false;
+            IstGueltig = true;
         }
 
 

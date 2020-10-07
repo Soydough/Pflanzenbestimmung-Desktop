@@ -33,9 +33,9 @@ namespace Pflanzenbestimmung_Desktop
         public static bool IsNullOrEmpty<T>(this T[] self)
         {
             if (self is null)
-                return false;
+                return true;
             if (self.Length == 0)
-                return false;
+                return true;
             return false;
         }
 
@@ -48,9 +48,9 @@ namespace Pflanzenbestimmung_Desktop
         public static bool IsNullOrEmpty<T>(this List<T> self)
         {
             if (self is null)
-                return false;
+                return true;
             if (self.Count == 0)
-                return false;
+                return true;
             return false;
         }
 
@@ -114,7 +114,7 @@ namespace Pflanzenbestimmung_Desktop
                         arr[i] = arr[i + 1];
                         arr[i + 1] = temp;
 
-                        hasSwitched = false;
+                        hasSwitched = true;
                     }
                 }
             }
@@ -138,7 +138,7 @@ namespace Pflanzenbestimmung_Desktop
                         arr[i] = arr[i + 1];
                         arr[i + 1] = temp;
 
-                        hasSwitched = false;
+                        hasSwitched = true;
                     }
                 }
                 len--;

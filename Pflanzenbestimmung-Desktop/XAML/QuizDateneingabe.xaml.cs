@@ -86,7 +86,8 @@ namespace Pflanzenbestimmung_Desktop
 
                 //Ergebnisse anzeigen
                 Main.momentanePflanzeAusQuiz = -1;
-                MainWindow.changeContent(new QuizStatistik());
+                //MainWindow.changeContent(new QuizStatistik());
+                MainWindow.changeContent(new AdminQuizStatistik());
             }
             else
             {

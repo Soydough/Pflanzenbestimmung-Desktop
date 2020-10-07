@@ -62,6 +62,8 @@ namespace Pflanzenbestimmung_Desktop
 
         public static int momentanePflanzeAusQuiz = -1; // -1: kein Quiz
 
+        public static int momentanePflanzeAusStatistik = -1;
+
         public static ImageSource fullscreenImage;
 
         public static QuizPZuweisung[] quizPZuweisungen;
@@ -347,7 +349,7 @@ namespace Pflanzenbestimmung_Desktop
                 for (int j = 0; j < tempArr2.Length; j++)
                 {
                     if (tempArr[i].Trim().ToLower().Equals(tempArr2[j].Trim().ToLower()))
-                        return false;
+                        return true;
                 }
             }
 

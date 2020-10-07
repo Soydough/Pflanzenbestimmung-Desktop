@@ -41,5 +41,12 @@ namespace Pflanzenbestimmung_Desktop
                 return (int)listView.Width;
             }
         }
+
+        private void AnsehenButton_Click(object sender, RoutedEventArgs e)
+        {
+            Main.statistik = Main.statistiken[listView.SelectedIndex];
+
+            MainWindow.dieses.ContentHolder.Content = null;
+        }
     }
 }

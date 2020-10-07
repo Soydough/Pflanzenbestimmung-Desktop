@@ -14,6 +14,7 @@ namespace Pflanzenbestimmung_Desktop
         //private readonly string url = "http://localhost/dbSchnittstelle.php";
         private readonly string url = "http://10.33.11.142/API/dbSchnittstelle.php";
         //private readonly string url = "http://localhost/pflanzenbestimmung/api/dbSchnittstelle.php";
+        //private readonly string url = "http://karteigarten.rf.gd/API/dbSchnittstelle.php";
 
         public API_Anbindung()
         {
@@ -257,7 +258,10 @@ namespace Pflanzenbestimmung_Desktop
                     return JsonConvert.DeserializeObject<AzubiStatistik[]>(responseString);
                 }
             }
-            catch (Exception e) { throw e; }
+            catch
+            {
+                MessageBox.Show("Ein Fehler ist aufgetreten! Bitte stellen sie sicher, dass eine Internetverbindung besteht. Danke. Dies ist das Ende der Fehlermeldung.");
+            }
             return null;
         }
 
