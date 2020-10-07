@@ -149,6 +149,23 @@ namespace Pflanzenbestimmung_Desktop
             catch { }
         }
 
+        public void KategorieErstellen(string kategorie)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "createKategorie",
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                }
+            }
+            catch { }
+         }
+
         public void BenutzerErstellen(bool admin, string benutzername, string passwort, string name, string vorname, int ausbildungsart, int fachrichtung, int ausbilder)
         {
 
