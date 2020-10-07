@@ -34,7 +34,7 @@ namespace Pflanzenbestimmung_Desktop
 
         public static Dictionary<int, Administrator> ausbilder;
 
-      //  public static Administrator[] ausbilder;
+        //  public static Administrator[] ausbilder;
 
         public static int ausbilderId;
 
@@ -91,7 +91,7 @@ namespace Pflanzenbestimmung_Desktop
 
             ausbildungsarten = api_anbindung.Bekommen<Ausbildungsart>("Ausbildungsart").ToDictionary();
             fachrichtungen = api_anbindung.Bekommen<Fachrichtung>("Fachrichtung").ToDictionary();
-            
+
             ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
             pflanzen = api_anbindung.Bekommen<Pflanze>();
             kategorien = api_anbindung.Bekommen<Kategorie>();
@@ -99,7 +99,7 @@ namespace Pflanzenbestimmung_Desktop
 
         public static void LadeStatistiken()
         {
-            if(!benutzer.istAdmin)
+            if (!benutzer.istAdmin)
             {
                 statistiken = api_anbindung.BekommeStatistiken(benutzer.id);
             }
@@ -109,9 +109,9 @@ namespace Pflanzenbestimmung_Desktop
         {
             fehlersumme = 0;
 
-            for(int i = 0; i < einzelStatistiken.Length; i++)
+            for (int i = 0; i < einzelStatistiken.Length; i++)
             {
-                for(int j = 0; j < kategorien.Length; j++)
+                for (int j = 0; j < kategorien.Length; j++)
                 {
                     StatistikPflanzeAntwort temp = einzelStatistiken[i].antworten[j];
 
@@ -308,13 +308,13 @@ namespace Pflanzenbestimmung_Desktop
         {
             string[] tempArr = b.Split(',');
             string[] tempArr2;
-            if(tempArr.Length > 1)
+            if (tempArr.Length > 1)
             {
                 tempArr2 = a.Split(',');
             }
             else
             {
-                tempArr2 = new string[]{ a };
+                tempArr2 = new string[] { a };
             }
 
             for (int i = 0; i < tempArr.Length; i++)
@@ -328,5 +328,5 @@ namespace Pflanzenbestimmung_Desktop
 
             return false;
         }
-    }
+    } 
 }
