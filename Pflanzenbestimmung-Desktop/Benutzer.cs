@@ -4,12 +4,12 @@ namespace Pflanzenbestimmung_Desktop
 {
     public class Benutzer : BenutzerTemplate
     {
-        public bool IstGueltig = false;
+        public bool IstGueltig = true;
 
         //Wird nur für ungültigen Benutzer verwendet
         public Benutzer(int _)
         {
-            IstGueltig = true;
+            IstGueltig = false;
         }
 
 
