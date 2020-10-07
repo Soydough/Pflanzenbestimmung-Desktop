@@ -9,7 +9,7 @@
     <Grid>
         <TextBox x:Name="txtneuekategoriename" HorizontalAlignment="Left" Height="23" Margin="10,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="Name"/>
         <Label Content="Neue Kategorie anlegen" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Width="200"/>
-        <Button x:Name="btnneuekategorie" Content="Speichern" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button x:Name="btnneuekategorie" Content="Speichern" HorizontalAlignment="Left" Margin="10,205,0,0" VerticalAlignment="Top" Width="200" Click="btnneuekategorie_Click"/>
         <ListView x:Name="listvkategoriebearb" HorizontalAlignment="Left" Height="100" Margin="275,82,0,0" VerticalAlignment="Top" Width="200">
             <ListView.View>
                 <GridView>

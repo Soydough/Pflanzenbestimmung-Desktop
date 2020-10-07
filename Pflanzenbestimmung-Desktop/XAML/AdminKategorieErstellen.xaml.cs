@@ -22,6 +22,13 @@ namespace Pflanzenbestimmung_Desktop.XAML
         public AdminKategorieErstellen()
         {
             InitializeComponent();
+            Main.kategorien = Main.api_anbindung.Bekommen<Kategorie>().ToList();
+        }
+
+        private void btnneuekategorie_Click(object sender, RoutedEventArgs e)
+        {
+            string name = txtneuekategoriename.Text;
+            Main.api_anbindung.KategorieErstellen(name);
         }
     }
 }

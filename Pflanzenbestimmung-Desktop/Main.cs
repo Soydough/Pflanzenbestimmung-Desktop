@@ -46,7 +46,7 @@ namespace Pflanzenbestimmung_Desktop
 
         public static QuizPflanze[] quiz;
 
-        public static Kategorie[] kategorien;
+        public static List<Kategorie> kategorien;
 
         public static AzubiStatistik[] statistiken;
 
@@ -94,7 +94,7 @@ namespace Pflanzenbestimmung_Desktop
 
             ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
             pflanzen = api_anbindung.Bekommen<Pflanze>();
-            kategorien = api_anbindung.Bekommen<Kategorie>();
+            kategorien = api_anbindung.Bekommen<Kategorie>().ToList();
         }
 
         public static void LadeStatistiken()
@@ -111,7 +111,7 @@ namespace Pflanzenbestimmung_Desktop
 
             for (int i = 0; i < einzelStatistiken.Length; i++)
             {
-                for (int j = 0; j < kategorien.Length; j++)
+                for (int j = 0; j < kategorien.Count; j++)
                 {
                     StatistikPflanzeAntwort temp = einzelStatistiken[i].antworten[j];
 
@@ -122,12 +122,12 @@ namespace Pflanzenbestimmung_Desktop
                     }
                 }
 
-                int fehlerquote = (int)(100.0 * kategorien.Length / fehlersumme);
+                int fehlerquote = (int)(100.0 * kategorien.Count / fehlersumme);
                 api_anbindung.ErstelleStatistik(benutzer.id, fehlerquote, quizTimer.Elapsed, quiz[i].pflanze.id_pflanze);
 
                 LadeStatistiken();
 
-                for (int j = 0; j < kategorien.Length; j++)
+                for (int j = 0; j < kategorien.Count; j++)
                 {
                     //statistiken.Length ist die neuste, also hoffentlich die gerade hinzugefügte?
                     api_anbindung.ErstelleEinzelStatistik(statistiken.Length, j + 1, quiz[i].pflanze.id_pflanze, einzelStatistiken[i].antworten[j].eingabe);
