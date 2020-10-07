@@ -13,10 +13,12 @@ namespace Pflanzenbestimmung_Desktop
             InitializeComponent();
 
 #if DEBUG
-            AnmeldungBenutzernameTextBox.Text = "SysUserA";
-            //AnmeldungPasswordBox.Password = "KarteiAdmin321#";
+            //AnmeldungBenutzernameTextBox.Text = "SysUserA";
+            AnmeldungBenutzernameTextBox.Text = "SysAdmin";
+            AnmeldungPasswordBox.Password = "KarteiAdmin321#";
             //AnmeldungButton_Click(null, null);
-            AnmeldungPasswordBox.Password = "test";
+            //AnmeldungPasswordBox.Password = "test";
+            // TODO Löschen der Anmeldedaten vor dem Ausliefern.
 #endif
         }
 

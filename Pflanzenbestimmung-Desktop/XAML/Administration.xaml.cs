@@ -48,5 +48,10 @@ namespace Pflanzenbestimmung_Desktop
         {
             MainWindow.changeContent(new AdminStatistikBenutzerAuswahl());
         }
+
+        private void QuizGroeßeErstellen_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new QuizArtErstellen());
+        }
     }
 }

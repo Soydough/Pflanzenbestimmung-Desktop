@@ -165,7 +165,7 @@ namespace Pflanzenbestimmung_Desktop
                 }
             }
             catch { }
-         }
+        }
 
         public void BenutzerErstellen(bool admin, string benutzername, string passwort, string name, string vorname, int ausbildungsart, int fachrichtung, int ausbilder, int pruefung, int groeßeQuizArt)
         {
@@ -381,7 +381,7 @@ namespace Pflanzenbestimmung_Desktop
                             values["IDqa"] = art.ToString();
                         }
                         values["Pruefung"] = pruefung.ToString();
-                        
+
                     }
                     //else
                     //{
@@ -403,6 +403,33 @@ namespace Pflanzenbestimmung_Desktop
 
 
 
+        }
+
+        public void QuizArtErstellen(string quizName, string quizGroeße)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    Azubis Azubidaten = new Azubis();
+                    var values = new NameValueCollection();
+                    values["method"] = "createQuizArt";
+                    values["Quizname"] = quizName;
+                    values["Groeße"] = quizGroeße;
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    if (responseString != null || responseString != "")
+                    {
+                        MessageBox.Show(responseString);
+                    }
+                }
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e + "");
+            }
         }
 
     }//End Class

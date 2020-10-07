@@ -13,6 +13,7 @@
         <Button Name="Benutzerverwaltung" Click="Benutzerverwaltung_Click" Content="Vorhandene Nutzer verwalten"/>
         <Button Name="StatistikButton" Click="StatistikButton_Click" Content="Statistik" />
         <Button Name="ErscheinendePflanzen" Click="ErscheinendePflanzen_Click" Content="Erscheinende Pflanzen verwalten" />
+        <Button Name="QuizGroeßeErstellen" Click="QuizGroeßeErstellen_Click" Content="Quiz Größe erstellen"/>
         <Button Name="HauptmenüButton" Click="HauptmenüButton_Click" Content="Zurück zum Hauptmenü"/>
     </StackPanel>
 </UserControl>

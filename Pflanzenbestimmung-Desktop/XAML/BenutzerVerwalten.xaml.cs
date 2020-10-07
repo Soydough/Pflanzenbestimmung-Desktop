@@ -38,6 +38,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 if (azubi.Ausbilder.Equals(ausb))
                 {
                     AusbilderAendernComboBox.SelectedIndex = i;
+                    break;
                 }
                 else
                 {
@@ -52,6 +53,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 if (azubi.Ausbildungsart.Equals(Main.ausbildungsarten[i].ausbildungsart))
                 {
                     AubildungsartAendernComboBox.SelectedIndex = i;
+                    break;
                 }
                 else
                 {
@@ -66,6 +68,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 if (azubi.Fachrichtung.Equals(Main.fachrichtungen[i].fachrichtung))
                 {
                     FachrichtungAendernComboBox.SelectedIndex = i;
+                    break;
                 }
                 else
                 {
@@ -80,13 +83,13 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 if (azubi.ID_quiz_art.Equals(Main.quizArt[i].id))
                 {
                     QuizartenAendernComboBox.SelectedIndex = i;
+                    break;
                 }
                 else
                 {
                     QuizartenAendernComboBox.SelectedIndex = 0;
                 }
             }
-
             if (azubi.Pruefung.Equals(1))
             {
                 PruefungsmodusAendernCheckbox.IsChecked = false;
