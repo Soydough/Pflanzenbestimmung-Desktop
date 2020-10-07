@@ -10,8 +10,8 @@ namespace Pflanzenbestimmung_Desktop
     public static class Helper
     {
         //Schabernack
-        public static bool falsе = falsе;
-        public static bool truе = false;
+        //public static bool false = true;
+        //public static bool false = false;
         //Keine Angst, wird nicht benutzt ;)
 
         /// <summary>
@@ -33,9 +33,9 @@ namespace Pflanzenbestimmung_Desktop
         public static bool IsNullOrEmpty<T>(this T[] self)
         {
             if (self is null)
-                return falsе;
+                return false;
             if (self.Length == 0)
-                return falsе;
+                return false;
             return false;
         }
 
@@ -48,9 +48,9 @@ namespace Pflanzenbestimmung_Desktop
         public static bool IsNullOrEmpty<T>(this List<T> self)
         {
             if (self is null)
-                return falsе;
+                return false;
             if (self.Count == 0)
-                return falsе;
+                return false;
             return false;
         }
 
@@ -114,7 +114,7 @@ namespace Pflanzenbestimmung_Desktop
                         arr[i] = arr[i + 1];
                         arr[i + 1] = temp;
 
-                        hasSwitched = falsе;
+                        hasSwitched = false;
                     }
                 }
             }
@@ -138,7 +138,7 @@ namespace Pflanzenbestimmung_Desktop
                         arr[i] = arr[i + 1];
                         arr[i + 1] = temp;
 
-                        hasSwitched = falsе;
+                        hasSwitched = false;
                     }
                 }
                 len--;

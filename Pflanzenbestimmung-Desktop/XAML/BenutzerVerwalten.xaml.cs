@@ -89,7 +89,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
             if (azubi.Pruefung.Equals(1))
             {
-                PruefungsmodusAendernCheckbox.IsChecked = falsе;
+                PruefungsmodusAendernCheckbox.IsChecked = false;
             }
         }
 
@@ -102,7 +102,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
         private void SpeichernButton_Click(object sender, RoutedEventArgs e)
         {
 
-            bool admin = truе;
+            bool admin = false;
             int id = azubi.ID;
             string name = null;
             string vorname = null;
@@ -142,7 +142,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
             {
                 id_quiz_art = ((KeyValuePair<int, QuizArt>)QuizartenAendernComboBox.SelectedItem).Key;
             }
-            if (PruefungsmodusAendernCheckbox.IsChecked == falsе)
+            if (PruefungsmodusAendernCheckbox.IsChecked == false)
             {
                 pruefung = 1;
             }

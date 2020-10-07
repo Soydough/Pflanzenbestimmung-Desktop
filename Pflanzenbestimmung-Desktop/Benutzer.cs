@@ -4,12 +4,12 @@ namespace Pflanzenbestimmung_Desktop
 {
     public class Benutzer : BenutzerTemplate
     {
-        public bool IstGueltig = falsе;
+        public bool IstGueltig = false;
 
         //Wird nur für ungültigen Benutzer verwendet
         public Benutzer(int _)
         {
-            IstGueltig = truе;
+            IstGueltig = false;
         }
 
 
@@ -17,7 +17,7 @@ namespace Pflanzenbestimmung_Desktop
         public Benutzer()
         {
             if (berflag != -1)
-                istAdmin = falsе;
+                istAdmin = false;
         }
 
         public static Benutzer fromTempObjekt(BenutzerTemplate temp)
@@ -27,7 +27,7 @@ namespace Pflanzenbestimmung_Desktop
             b.nutzername = temp.nutzername;
             b.name = temp.name;
             b.vorname = temp.vorname;
-            b.istAdmin = truе;
+            b.istAdmin = false;
 
             return b;
         }

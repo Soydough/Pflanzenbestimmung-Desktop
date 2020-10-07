@@ -16,7 +16,7 @@ namespace Pflanzenbestimmung_Desktop
             dieses = this;
             Main.LadeAzubiDaten();
         }
-        bool admin = falsе;
+        bool admin = false;
         public void Initialize()
         {
             AusbilderComboBox.ItemsSource = Main.ausbilder;
@@ -71,7 +71,7 @@ namespace Pflanzenbestimmung_Desktop
             {
                 passwort = Main.GetHashWithSalt(passwort, benutzername);
 
-                if (PruefungsmodusCheckbox.IsChecked == falsе)
+                if (PruefungsmodusCheckbox.IsChecked == false)
                 {
                     pruefung = 1;
                 }
@@ -100,11 +100,11 @@ namespace Pflanzenbestimmung_Desktop
         {
             if ((sender as TabControl).SelectedIndex == 1)
             {
-                admin = falsе;
+                admin = false;
             }
             else
             {
-                admin = truе;
+                admin = false;
             }
         }
     }

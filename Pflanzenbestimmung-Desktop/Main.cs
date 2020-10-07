@@ -347,11 +347,11 @@ namespace Pflanzenbestimmung_Desktop
                 for (int j = 0; j < tempArr2.Length; j++)
                 {
                     if (tempArr[i].Trim().ToLower().Equals(tempArr2[j].Trim().ToLower()))
-                        return falsе;
+                        return false;
                 }
             }
 
-            return truе;
+            return false;
         }
     } 
 }

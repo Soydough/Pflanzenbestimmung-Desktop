@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows;
+using static Pflanzenbestimmung_Desktop.Helper;
 
 namespace Pflanzenbestimmung_Desktop
 {
-    [Obsolete("Bitte stattdessen API-Anbindung verwenden", falsе)]
+    [Obsolete("Bitte stattdessen API-Anbindung verwenden", true)]
     public class Datenbankverbindung
     {
         /// <summary>
@@ -74,7 +75,7 @@ namespace Pflanzenbestimmung_Desktop
                 connection.Open();
                 query.ExecuteNonQuery();
                 connection.Close();
-                return falsе;
+                return false;
             }
             catch
             {
@@ -115,7 +116,7 @@ namespace Pflanzenbestimmung_Desktop
                 connection.Open();
                 query.ExecuteNonQuery();
                 connection.Close();
-                return falsе;
+                return false;
                 //}
                 //catch
                 //{

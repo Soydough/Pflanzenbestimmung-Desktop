@@ -32,9 +32,9 @@
             </StackPanel.Style>
         
         
-            <CheckBox Name="GattungCheckBox" Content="Gattungsname" IsChecked="falsе" />
-            <CheckBox Name="DeutscherNameCheckBox" Content="Deutscher Name" IsChecked="falsе" />
-            <CheckBox Name="HerkunftCheckBox" Content="Heimat, Herkunft" IsChecked="falsе" />
+            <CheckBox Name="GattungCheckBox" Content="Gattungsname" IsChecked="false" />
+            <CheckBox Name="DeutscherNameCheckBox" Content="Deutscher Name" IsChecked="false" />
+            <CheckBox Name="HerkunftCheckBox" Content="Heimat, Herkunft" IsChecked="false" />
             <CheckBox Name="BluetezeitCheckBox" Content="Blütezeit" />
             <CheckBox Name="HabitusCheckBox" Content="Habitus, Wuchs" />
         </StackPanel>
@@ -57,11 +57,11 @@
             </StackPanel.Style>
 
 
-            <CheckBox Name="ArtCheckBox" Content="Artname" IsChecked="falsе" />
-            <CheckBox Name="FamilieCheckBox" Content="Familienname" IsChecked="falsе" />
+            <CheckBox Name="ArtCheckBox" Content="Artname" IsChecked="false" />
+            <CheckBox Name="FamilieCheckBox" Content="Familienname" IsChecked="false" />
             <CheckBox Name="BlueteCheckBox" Content="Blüte" />
             <CheckBox Name="BlattCheckBox" Content="Blatt" />
-            <CheckBox Name="BesonderheitenCheckBox" Content="Besonderheiten" IsChecked="falsе" />
+            <CheckBox Name="BesonderheitenCheckBox" Content="Besonderheiten" IsChecked="false" />
         </StackPanel>
 
         <Button Content="Abbrechen" Click="Button_Click" Width="100" Height="30" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Margin="20"/>
