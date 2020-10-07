@@ -149,7 +149,8 @@ namespace Pflanzenbestimmung_Desktop
                     }
                 }
 
-                int fehlerquote = (int)(100.0 * kategorien.Count / fehlersumme);
+                //int fehlerquote = (int)(100.0 * kategorien.Count / fehlersumme);
+                string fehlerquote = fehlersumme + "/" + kategorien.Count;
                 api_anbindung.ErstelleStatistik(benutzer.id, fehlerquote, quizTimer.Elapsed, quiz[i].pflanze.id_pflanze);
 
                 LadeStatistiken();
