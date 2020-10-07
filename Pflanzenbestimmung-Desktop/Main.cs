@@ -96,10 +96,7 @@ namespace Pflanzenbestimmung_Desktop
 
             
             pflanzen = api_anbindung.Bekommen<Pflanze>();
-            kategorien = api_anbindung.Bekommen<Kategorie>();
-
-            
-
+            kategorien = api_anbindung.Bekommen<Kategorie>().ToList();
         }
         public static void LadeAzubiDaten()
         {
@@ -173,8 +170,8 @@ namespace Pflanzenbestimmung_Desktop
                 return;
             }
 
-            quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt")[benutzer.quiz_art];
-            int anzahl = quizArt.quizgröße;
+            quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt").ToDictionary();
+            int anzahl = quizArt[benutzer.id].quizgröße;
             //quiz = new QuizPflanze[anzahl];
             List<QuizPflanze> tempQuiz = new List<QuizPflanze>();
 
@@ -226,8 +223,8 @@ namespace Pflanzenbestimmung_Desktop
                 return;
             }
 
-            quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt")[0];
-            int anzahl = quizArt.quizgröße;
+            quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt").ToDictionary();
+            int anzahl = quizArt[benutzer.id].quizgröße;
             //quiz = new QuizPflanze[anzahl];
             List<QuizPflanze> tempQuiz = new List<QuizPflanze>();
 

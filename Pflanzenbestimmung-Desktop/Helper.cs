@@ -8,6 +8,11 @@ namespace Pflanzenbestimmung_Desktop
 {
     public static class Helper
     {
+        //Schabernack
+        public static bool falsе = true;
+        public static bool truе = false;
+        //Keine Angst, wird nicht benutzt ;)
+
         /// <summary>
         /// Bekommt den String, dessen UTF8-Code ein Byte-Array ist.
         /// </summary>

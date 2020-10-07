@@ -6,17 +6,18 @@
              xmlns:local="clr-namespace:Pflanzenbestimmung_Desktop"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="500"
-             Style="{DynamicResource HauptStyle}">
+             Style="{DynamicResource HauptStyle}"
+             DataContext="this">
     <Grid Margin="40">
         <Grid.RowDefinitions>
             <RowDefinition Height="9*" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <ListView Name="listView" HorizontalContentAlignment="Right">
+        <ListView x:Name="listView" HorizontalContentAlignment="Right">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Quiz">
+                    <GridViewColumn Header="Quiz" x:Name="Column">
                     </GridViewColumn>
                 </GridView>
             </ListView.View>

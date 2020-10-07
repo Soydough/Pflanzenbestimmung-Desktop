@@ -21,7 +21,7 @@
 
 
         <StackPanel Margin="30" Style="{DynamicResource HauptmenüButtonsStyle}">
-            <ToggleButton Content="1 min pro Pflanze" Margin="250, 0"/>
+            <ToggleButton Name="EineMinuteProPflanzeButton" Content="1 min pro Pflanze" Margin="250, 0"/>
 
             <Button Name="AktuellesQuizButton" Click="AktuellesQuizButton_Click" Content="Aktuelles Quiz starten" />
             <Button Name="ZufälligesQuizButton" Click="ZufälligesQuizButton_Click" Content="Zufälliges Quiz starten" />
