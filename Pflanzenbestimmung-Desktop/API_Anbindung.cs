@@ -170,14 +170,11 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="kategorie"></param>
-        /// <param name="AnzeigeGala">Entweder als int oder als bool</param>
-        /// <param name="AnzeigeZier">Entweder als int oder als bool</param>
-        /// <param name="WertungWerker">Entweder als int oder als bool</param>
-        public void KategorieErstellen(string kategorie, object AnzeigeGala, object AnzeigeZier, object WertungWerker)
+        public void KategorieErstellen(string kategorie, bool AnzeigeGala, bool AnzeigeZier, bool WertungWerker)
+        {
+            KategorieErstellen(kategorie, AnzeigeGala.ToInt(), AnzeigeZier.ToInt(), WertungWerker.ToInt());
+        }
+        public void KategorieErstellen(string kategorie, int AnzeigeGala, int AnzeigeZier, int WertungWerker)
         {
             try
             {
@@ -187,9 +184,9 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         ["method"] = "createKategorie",
                         ["Kategorie"] = kategorie,
-                        ["AnzeigeGala"] = AnzeigeGala.ToIntString(),
-                        ["AnzeigeZier"] = AnzeigeZier.ToIntString(),
-                        ["WertungWerker"] = WertungWerker.ToIntString()
+                        ["AnzeigeGala"] = AnzeigeGala.ToString(),
+                        ["AnzeigeZier"] = AnzeigeZier.ToString(),
+                        ["WertungWerker"] = WertungWerker.ToString()
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
@@ -202,14 +199,12 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="kategorie"></param>
-        /// <param name="AnzeigeGala">Entweder als int oder als bool</param>
-        /// <param name="AnzeigeZier">Entweder als int oder als bool</param>
-        /// <param name="WertungWerker">Entweder als int oder als bool</param>
-        public void KategorieAktualisieren(string kategorie, object AnzeigeGala, object AnzeigeZier, object WertungWerker)
+
+        public void KategorieAktualisieren(string katerie, bool AnzeigeGala, bool AnzeigeZier, bool WertungWerker)
+        {
+            KategorieAktualisieren(katerie, AnzeigeGala.ToInt(), AnzeigeZier.ToInt(), WertungWerker.ToInt());
+        }
+        public void KategorieAktualisieren(string kategorie, int AnzeigeGala, int AnzeigeZier, int WertungWerker)
         {
             try
             {
@@ -219,9 +214,9 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         ["method"] = "updateKategorie",
                         ["Kategorie"] = kategorie,
-                        ["AnzeigeGala"] = AnzeigeGala.ToIntString(),
-                        ["AnzeigeZier"] = AnzeigeZier.ToIntString(),
-                        ["WertungWerker"] = WertungWerker.ToIntString()
+                        ["AnzeigeGala"] = AnzeigeGala.ToString(),
+                        ["AnzeigeZier"] = AnzeigeZier.ToString(),
+                        ["WertungWerker"] = WertungWerker.ToString()
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);

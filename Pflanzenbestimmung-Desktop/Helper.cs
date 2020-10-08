@@ -80,6 +80,13 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
+        public static int ToInt(this bool self)
+        {
+            if (self)
+                return 1;
+            return 0;
+        }
+
         public static string ToIntString(this int self)
         {
             return self.ToString();

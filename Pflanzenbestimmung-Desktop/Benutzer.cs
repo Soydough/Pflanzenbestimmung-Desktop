@@ -13,6 +13,38 @@ namespace Pflanzenbestimmung_Desktop
         }
 
 
+        public bool IstGala
+        {
+            get
+            {
+                return fachrichtung == 0;
+            }
+        }
+
+        public bool IstZier
+        {
+            get
+            {
+                return fachrichtung == 1;
+            }
+        }
+
+        public bool IstVollzeit
+        {
+            get
+            {
+                return ausbildung == 0;
+            }
+        }
+
+        public bool IstWerker
+        {
+            get
+            {
+                return ausbildung == 1;
+            }
+        }
+
         [JsonConstructor]
         public Benutzer()
         {
