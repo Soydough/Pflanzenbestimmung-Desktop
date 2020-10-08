@@ -25,10 +25,12 @@ namespace Pflanzenbestimmung_Desktop
             {
                 using (var client = new WebClient())
                 {
-                    var values = new NameValueCollection();
-                    values["method"] = "login";
-                    values["User"] = benutzername;
-                    values["PW"] = passwort;
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "login",
+                        ["User"] = benutzername,
+                        ["PW"] = passwort
+                    };
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
@@ -170,6 +172,7 @@ namespace Pflanzenbestimmung_Desktop
                     var values = new NameValueCollection
                     {
                         ["method"] = "createKategorie",
+                        ["Kategorie"] = kategorie
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
@@ -189,11 +192,13 @@ namespace Pflanzenbestimmung_Desktop
             {
                 using (var client = new WebClient())
                 {
-                    var values = new NameValueCollection();
-                    values["User"] = benutzername;
-                    values["PW"] = passwort;
-                    values["Name"] = name;
-                    values["Vorname"] = vorname;
+                    var values = new NameValueCollection
+                    {
+                        ["User"] = benutzername,
+                        ["PW"] = passwort,
+                        ["Name"] = name,
+                        ["Vorname"] = vorname
+                    };
                     if (!admin)
                     {
                         values["method"] = "createAzubi";
@@ -362,9 +367,11 @@ namespace Pflanzenbestimmung_Desktop
                 using (var client = new WebClient())
                 {
                     Azubis Azubidaten = new Azubis();
-                    var values = new NameValueCollection();
-                    values["method"] = "updateAzubi";
-                    values["IDaz"] = id.ToString();
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "updateAzubi",
+                        ["IDaz"] = id.ToString()
+                    };
                     if (benutzername != null)
                     {
                         values["User"] = benutzername;
@@ -444,10 +451,12 @@ namespace Pflanzenbestimmung_Desktop
                 using (var client = new WebClient())
                 {
                     Azubis Azubidaten = new Azubis();
-                    var values = new NameValueCollection();
-                    values["method"] = "createQuizArt";
-                    values["Quizname"] = quizName;
-                    values["Groeße"] = quizGroeße;
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "createQuizArt",
+                        ["Quizname"] = quizName,
+                        ["Groeße"] = quizGroeße
+                    };
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
