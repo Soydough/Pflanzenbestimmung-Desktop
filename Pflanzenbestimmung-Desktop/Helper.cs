@@ -21,7 +21,8 @@ namespace Pflanzenbestimmung_Desktop
         /// <returns>Ein String</returns>
         public static string GetString(this byte[] arr)
         {
-            return Encoding.Default.GetString(arr);
+            //return Encoding.Default.GetString(arr);
+            return Convert.ToBase64String(arr);
         }
 
         /// <summary>
@@ -61,7 +62,8 @@ namespace Pflanzenbestimmung_Desktop
         /// <returns>Ein Byte-Array</returns>
         public static byte[] ToBytes(this string str)
         {
-            return Encoding.Default.GetBytes(str);
+            //return Encoding.Default.GetBytes(str);
+            return Convert.FromBase64String(str);
         }
 
         public static string ToIntString<T>(this T self)
@@ -78,6 +80,13 @@ namespace Pflanzenbestimmung_Desktop
             {
                 throw new NotImplementedException();
             }
+        }
+
+        public static int ToInt(this bool self)
+        {
+            if (self)
+                return 1;
+            return 0;
         }
 
         public static string ToIntString(this int self)

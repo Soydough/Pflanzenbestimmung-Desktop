@@ -15,6 +15,7 @@ namespace Pflanzenbestimmung_Desktop
             if (!Main.benutzer.istAdmin)
             {
                 //ist mir doch egal, ob der Nutzer ein Admin ist
+                //Der Name war tatsächlich nur Clickbait. Diese Klasse ist für alle Benutzer gedacht
             }
 
             if(Main.azubiStatistik == null || Main.azubiStatistik.pflanzen == null || Main.azubiStatistik.pflanzen.Length == 0)
@@ -55,8 +56,18 @@ namespace Pflanzenbestimmung_Desktop
                 }
                 else
                 {
-                    gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Red;
-                    gegebeneAntwortLabel.Content += " ×";
+                    if (!Main.benutzer.IstWerker || Main.benutzer.IstWerker && antworten[i].WirdFürWerkGewertet)
+                    {
+                        //Antwort falsch
+                        gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Red;
+                        gegebeneAntwortLabel.Content += " ×";
+                    }
+                    else
+                    {
+                        //Antwort ist falsch, aber egal; weil Werker
+                        gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Orange;
+                        gegebeneAntwortLabel.Content += " /";
+                    }
                 }
 
                 //RegisterName(Main.kategorien[i].kategorie + "Label", gegebeneAntwortLabel);

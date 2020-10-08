@@ -13,7 +13,7 @@ namespace Pflanzenbestimmung_Desktop
         public int anzeige_zier;
         [Obsolete("Bitte stattdessen wirdFürZierAngezeigt verwenden")]
         public int anzeige_gala;
-        [Obsolete("Bitte stattdessen wirdFürZierAngezeigt verwenden")]
+        [Obsolete("Bitte stattdessen wirdFürWerkAngezeigt verwenden")]
         public int wertung_werker;
 
         public bool wirdFürGalaAngezeigt
@@ -36,7 +36,7 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public bool wirdFürWerkAngezeigt
+        public bool wirdFürWerkGewertet
         {
             get
             {

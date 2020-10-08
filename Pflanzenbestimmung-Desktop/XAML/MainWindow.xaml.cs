@@ -15,9 +15,7 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
 
-
-            //Test; lade erste Pflanze und bekomme String
-
+            //Test
             //string s = Main.api_anbindung.BekommePflanzenbilder(1)[0].bild;
 
 

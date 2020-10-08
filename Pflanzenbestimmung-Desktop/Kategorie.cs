@@ -2,6 +2,7 @@
 
 namespace Pflanzenbestimmung_Desktop
 {
+#pragma warning disable CS0618 // Nur damit VS nicht nervt
     public class Kategorie
     {
         /// <summary>
@@ -28,16 +29,18 @@ namespace Pflanzenbestimmung_Desktop
         /// <summary>
         /// Ob die Kategorie für den Ausbildungstyp Werk gewertet werden soll. Sicherlich sehr wichtig
         /// </summary>
-        [Obsolete("Bitte stattdessen wirdFürWerkAngezeigt verwenden")]
+        [Obsolete("Bitte stattdessen wirdFürWerkGewertet verwenden")]
         public int werker_gewertet;
 
         public bool wirdFürGalaAngezeigt
         {
             get
             {
-#pragma warning disable CS0618 // Nur damit VS nicht nervt
                 return anzeige_gartenlandschaftbau != 0;
-#pragma warning restore CS0618 // Nur damit VS nicht nervt
+            }
+            set
+            {
+                anzeige_gartenlandschaftbau = value.ToInt();
             }
         }
 
@@ -45,19 +48,23 @@ namespace Pflanzenbestimmung_Desktop
         {
             get
             {
-#pragma warning disable CS0618 // Nur damit VS nicht nervt
                 return anzeige_ziergartenbau != 0;
-#pragma warning restore CS0618 // Nur damit VS nicht nervt
+            }
+            set
+            {
+                anzeige_ziergartenbau = value.ToInt();
             }
         }
 
-        public bool wirdFürWerkAngezeigt
+        public bool wirdFürWerkGewertet
         {
             get
             {
-#pragma warning disable CS0618 // Nur damit VS nicht nervt
                 return werker_gewertet != 0;
-#pragma warning restore CS0618 // Nur damit VS nicht nervt
+            }
+            set
+            {
+                werker_gewertet = value.ToInt();
             }
         }
     }

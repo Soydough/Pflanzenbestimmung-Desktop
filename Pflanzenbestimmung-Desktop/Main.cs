@@ -84,6 +84,10 @@ namespace Pflanzenbestimmung_Desktop
         //Einzelstatistiken
         public static StatistikPflanze[] einzelStatistiken;
 
+        public static Abgefragt[] abgefragt;
+
+        public static Dictionary<int, bool> abgefragtZuweisung; //Ja, das gehört so.
+
         #endregion
 
         public static void Initialize()
@@ -91,12 +95,12 @@ namespace Pflanzenbestimmung_Desktop
             //datenbankverbindung.BekommeAllePflanzenTest();
 
             //Platzhalter-Bilder hochladen
-            byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter a.jpg");
-            api_anbindung.BildHochladen(1, platzhalter);
-            platzhalter = File.ReadAllBytes(@"..\..\platzhalter b.jpg");
-            api_anbindung.BildHochladen(2, platzhalter);
-            platzhalter = File.ReadAllBytes(@"..\..\platzhalter c.jpg");
-            api_anbindung.BildHochladen(3, platzhalter);
+            //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter a.jpg");
+            //api_anbindung.BildHochladen(1, platzhalter);
+            //platzhalter = File.ReadAllBytes(@"..\..\platzhalter b.jpg");
+            //api_anbindung.BildHochladen(2, platzhalter);
+            //platzhalter = File.ReadAllBytes(@"..\..\platzhalter c.jpg");
+            //api_anbindung.BildHochladen(3, platzhalter);
 
             pflanzen = api_anbindung.Bekommen<Pflanze>();
             kategorien = api_anbindung.Bekommen<Kategorie>().ToList();
@@ -108,6 +112,17 @@ namespace Pflanzenbestimmung_Desktop
             ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
             azubi = api_anbindung.Bekommen<Azubis>("Azubis");
             quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt").ToDictionary();
+        }
+
+        public static void LadeAbgefragt()
+        {
+            abgefragt = api_anbindung.BekommeAbgefragt(benutzer.id);
+            abgefragtZuweisung = new Dictionary<int, bool>();
+
+            for(int i = 0; i < abgefragt.Length; i++)
+            {
+                abgefragtZuweisung.Add(i, abgefragt[i].IstGelernt);
+            }
         }
 
         public static ObservableCollection<Azubis> MyList
@@ -141,6 +156,7 @@ namespace Pflanzenbestimmung_Desktop
 
             int wenigsteFehlerPflanzeId = -1;
 
+            LadeAbgefragt();
             for (int i = 0; i < einzelStatistiken.Length; i++)
             {
                 int tempFehlerSumme = 0;
@@ -153,6 +169,27 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         fehlersumme++;
                         tempFehlerSumme++;
+                    }
+                }
+
+                //Wenn Pflanze richtig war, Abgefragt speichern
+                if (tempFehlerSumme == 0) {
+                    bool found = false;
+                    for (int j = 0; j < abgefragt.Length; j++)
+                    {
+                        if (abgefragt[j].IDp == einzelStatistiken[i].id_pflanze)
+                        {
+                            abgefragt[0].Counter++;
+                            bool gelernt = abgefragt[0].Counter >= 7;
+                            api_anbindung.AbgefragtAktualisieren(benutzer.id, abgefragt[j].IDp, abgefragt[j].Counter, gelernt);
+                            found = true;
+                        }
+                    }
+
+                    //Wenn es noch keinen passenden Abgefrag-Eintrag gibt; erstellen
+                    if (!found)
+                    {
+                        api_anbindung.AbgefragtErstellen(benutzer.id, einzelStatistiken[i].id_pflanze, 1, false);
                     }
                 }
 
@@ -178,12 +215,11 @@ namespace Pflanzenbestimmung_Desktop
                     api_anbindung.ErstelleEinzelStatistik(azubiStatistik.id_statistik, j + 1, einzelStatistiken[i].id_pflanze, einzelStatistiken[i].antworten[j].eingabe);
                 }
             }
-
-            fehlersumme = 0;
         }
 
         public static void QuizBekommen()
         {
+            LadeAbgefragt();
             if (benutzer.istAdmin)
             {
                 MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
@@ -210,7 +246,21 @@ namespace Pflanzenbestimmung_Desktop
 
                 for (int i = 0; i < azubiQuizZuweisungen.Length; i++)
                 {
-                    tempPflanzen.Add(pflanzen[azubiQuizZuweisungen[i].id_pflanze - 1]);
+                    int index = azubiQuizZuweisungen[i].id_pflanze - 1;
+
+                    bool gelernt = false;
+                    abgefragtZuweisung.TryGetValue(index, out gelernt);
+
+                    if(!gelernt)
+                    tempPflanzen.Add(pflanzen[index]);
+                }
+
+                if(tempPflanzen.IsNullOrEmpty())
+                {
+                    MessageBox.Show("Sie haben bereits alle zugewiesenen Pflanzen gelernt!\n" +
+                        "\n" +
+                        "Sie können stattdessen ein zufälligen Quiz starten", "Herzlichen Glückwunsch");
+                    return;
                 }
 
                 for (int i = 0; i < anzahl; i++)

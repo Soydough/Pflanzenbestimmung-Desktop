@@ -10,7 +10,9 @@
         public string nutzername;
         public string vorname;
         public string name;
+        // 0: Vollzeit, 1 Werker
         public int ausbildung;
+        // 0: Gala, 1: Zier
         public int fachrichtung;
         public int berflag = -1;
 
