@@ -17,11 +17,11 @@ namespace Pflanzenbestimmung_Desktop
     public class API_Anbindung
     {
         //private readonly string url = "http://localhost/dbSchnittstelle.php";
-        private readonly string url = "http://10.33.11.142/API/dbSchnittstelle.php";
+        //private readonly string url = "http://10.33.11.142/API/dbSchnittstelle.php";
         //private readonly string url = "http://localhost/pflanzenbestimmung/api/dbSchnittstelle.php";
         //private readonly string url = "http://karteigarten.rf.gd/API/dbSchnittstelle.php";
 
-        //private readonly string url = "https://pflanzenbestimmung.000webhostapp.com/dbSchnittstelle.php";
+        private readonly string url = "https://pflanzenbestimmung.000webhostapp.com/dbSchnittstelle.php";
 
         public API_Anbindung()
         {
@@ -171,11 +171,11 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public void KategorieErstellen(string kategorie, bool AnzeigeGala, bool AnzeigeZier, bool WertungWerker)
+        public void KategorieErstellen(string kategorie, bool AnzeigeGala, bool AnzeigeZier, bool WertungWerker, bool imQuiz)
         {
-            KategorieErstellen(kategorie, AnzeigeGala.ToInt(), AnzeigeZier.ToInt(), WertungWerker.ToInt());
+            KategorieErstellen(kategorie, AnzeigeGala.ToInt(), AnzeigeZier.ToInt(), WertungWerker.ToInt(), imQuiz.ToInt());
         }
-        public void KategorieErstellen(string kategorie, int AnzeigeGala, int AnzeigeZier, int WertungWerker)
+        public void KategorieErstellen(string kategorie, int AnzeigeGala, int AnzeigeZier, int WertungWerker, int imQuiz)
         {
             try
             {
@@ -187,7 +187,8 @@ namespace Pflanzenbestimmung_Desktop
                         ["Kategorie"] = kategorie,
                         ["AnzeigeGala"] = AnzeigeGala.ToString(),
                         ["AnzeigeZier"] = AnzeigeZier.ToString(),
-                        ["WertungWerker"] = WertungWerker.ToString()
+                        ["WertungWerker"] = WertungWerker.ToString(),
+                        ["imQuiz"] = imQuiz.ToString()
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
@@ -201,11 +202,11 @@ namespace Pflanzenbestimmung_Desktop
         }
 
 
-        public void KategorieAktualisieren(string katerie, bool AnzeigeGala, bool AnzeigeZier, bool WertungWerker)
+        public void KategorieAktualisieren(string katerie, bool AnzeigeGala, bool AnzeigeZier, bool WertungWerker, bool imQuiz)
         {
-            KategorieAktualisieren(katerie, AnzeigeGala.ToInt(), AnzeigeZier.ToInt(), WertungWerker.ToInt());
+            KategorieAktualisieren(katerie, AnzeigeGala.ToInt(), AnzeigeZier.ToInt(), WertungWerker.ToInt(), imQuiz.ToInt());
         }
-        public void KategorieAktualisieren(string kategorie, int AnzeigeGala, int AnzeigeZier, int WertungWerker)
+        public void KategorieAktualisieren(string kategorie, int AnzeigeGala, int AnzeigeZier, int WertungWerker, int imQuiz)
         {
             try
             {
@@ -217,7 +218,8 @@ namespace Pflanzenbestimmung_Desktop
                         ["Kategorie"] = kategorie,
                         ["AnzeigeGala"] = AnzeigeGala.ToString(),
                         ["AnzeigeZier"] = AnzeigeZier.ToString(),
-                        ["WertungWerker"] = WertungWerker.ToString()
+                        ["WertungWerker"] = WertungWerker.ToString(),
+                        ["imQuiz"] = imQuiz.ToString()
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
@@ -597,7 +599,7 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     var values = new NameValueCollection
                     {
-                        ["method"] = "createKategorie",
+                        ["method"] = "getAbgefragt",
                         ["IDaz"] = IDaz.ToString()
                     };
                     var response = client.UploadValues(url, values);
@@ -626,7 +628,7 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     var values = new NameValueCollection
                     {
-                        ["method"] = "createKategorie",
+                        ["method"] = "createAbgefragt",
                         ["IDaz"] = IDaz.ToString(),
                         ["IDp"] = IDp.ToString(),
                         ["Counter"] = Counter.ToString(),
@@ -655,7 +657,7 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     var values = new NameValueCollection
                     {
-                        ["method"] = "updateKategorie",
+                        ["method"] = "updateAbgefragt",
                         ["IDaz"] = IDaz.ToString(),
                         ["IDp"] = IDp.ToString(),
                         ["Counter"] = Counter.ToString(),

@@ -4,6 +4,7 @@ namespace Pflanzenbestimmung_Desktop
 {
     public class KategorieAbfrage
     {
+#pragma warning disable CS0618 // Nur damit VS nicht nervt
         public int kategorie_id;
         public string kategorie_name;
         public int abfrage;
@@ -15,14 +16,14 @@ namespace Pflanzenbestimmung_Desktop
         public int anzeige_gala;
         [Obsolete("Bitte stattdessen wirdFürWerkAngezeigt verwenden")]
         public int wertung_werker;
+        [Obsolete("Bitte stattdessen IstImQuiz verwenden (aber wenn nicht ist auch nicht schlimm :) )")]
+        public int imQuiz;
 
         public bool wirdFürGalaAngezeigt
         {
             get
             {
-#pragma warning disable CS0618 // Nur damit VS nicht nervt
                 return anzeige_gala != 0;
-#pragma warning restore CS0618 // Nur damit VS nicht nervt
             }
         }
 
@@ -30,9 +31,7 @@ namespace Pflanzenbestimmung_Desktop
         {
             get
             {
-#pragma warning disable CS0618 // Nur damit VS nicht nervt
                 return anzeige_zier != 0;
-#pragma warning restore CS0618 // Nur damit VS nicht nervt
             }
         }
 
@@ -40,9 +39,15 @@ namespace Pflanzenbestimmung_Desktop
         {
             get
             {
-#pragma warning disable CS0618 // Nur damit VS nicht nervt
                 return wertung_werker != 0;
-#pragma warning restore CS0618 // Nur damit VS nicht nervt
+            }
+        }
+
+        public bool IstImQuiz
+        {
+            get
+            {
+                return imQuiz != 1;
             }
         }
 
