@@ -91,13 +91,13 @@ namespace Pflanzenbestimmung_Desktop
             //datenbankverbindung.BekommeAllePflanzenTest();
 
             //Platzhalter-Bilder hochladen
-            //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter a.jpg");
-            //api_anbindung.BildHochladen(1, platzhalter);
-            //platzhalter = File.ReadAllBytes(@"..\..\platzhalter b.jpg");
-            //api_anbindung.BildHochladen(2, platzhalter);
-            //platzhalter = File.ReadAllBytes(@"..\..\platzhalter c.jpg");
-            //api_anbindung.BildHochladen(3, platzhalter);
-            
+            byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter a.jpg");
+            api_anbindung.BildHochladen(1, platzhalter);
+            platzhalter = File.ReadAllBytes(@"..\..\platzhalter b.jpg");
+            api_anbindung.BildHochladen(2, platzhalter);
+            platzhalter = File.ReadAllBytes(@"..\..\platzhalter c.jpg");
+            api_anbindung.BildHochladen(3, platzhalter);
+
             pflanzen = api_anbindung.Bekommen<Pflanze>();
             kategorien = api_anbindung.Bekommen<Kategorie>().ToList();
         }

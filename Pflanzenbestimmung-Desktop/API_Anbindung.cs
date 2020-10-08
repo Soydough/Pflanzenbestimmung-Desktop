@@ -7,6 +7,9 @@ using System.Collections.Specialized;
 using System.Net;
 using System.Text;
 using System.Windows;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -16,6 +19,9 @@ namespace Pflanzenbestimmung_Desktop
         private readonly string url = "http://10.33.11.142/API/dbSchnittstelle.php";
         //private readonly string url = "http://localhost/pflanzenbestimmung/api/dbSchnittstelle.php";
         //private readonly string url = "http://karteigarten.rf.gd/API/dbSchnittstelle.php";
+
+        //private readonly string url = "https://pflanzenbestimmung.000webhostapp.com/dbSchnittstelle.php";
+
         public API_Anbindung()
         {
         }
@@ -164,7 +170,14 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public void KategorieErstellen(string kategorie)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="kategorie"></param>
+        /// <param name="AnzeigeGala">Entweder als int oder als bool</param>
+        /// <param name="AnzeigeZier">Entweder als int oder als bool</param>
+        /// <param name="WertungWerker">Entweder als int oder als bool</param>
+        public void KategorieErstellen(string kategorie, object AnzeigeGala, object AnzeigeZier, object WertungWerker)
         {
             try
             {
@@ -173,13 +186,69 @@ namespace Pflanzenbestimmung_Desktop
                     var values = new NameValueCollection
                     {
                         ["method"] = "createKategorie",
-                        ["Kategorie"] = kategorie
+                        ["Kategorie"] = kategorie,
+                        ["AnzeigeGala"] = AnzeigeGala.ToIntString(),
+                        ["AnzeigeZier"] = AnzeigeZier.ToIntString(),
+                        ["WertungWerker"] = WertungWerker.ToIntString()
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
                 }
             }
 
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="kategorie"></param>
+        /// <param name="AnzeigeGala">Entweder als int oder als bool</param>
+        /// <param name="AnzeigeZier">Entweder als int oder als bool</param>
+        /// <param name="WertungWerker">Entweder als int oder als bool</param>
+        public void KategorieAktualisieren(string kategorie, object AnzeigeGala, object AnzeigeZier, object WertungWerker)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "updateKategorie",
+                        ["Kategorie"] = kategorie,
+                        ["AnzeigeGala"] = AnzeigeGala.ToIntString(),
+                        ["AnzeigeZier"] = AnzeigeZier.ToIntString(),
+                        ["WertungWerker"] = WertungWerker.ToIntString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                }
+            }
+
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
+        public void KategorieLoeschen(int IDk)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "deleteKategorie",
+                        ["IDk"] = IDk.ToString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                }
+            }
             catch (System.Exception e)
             {
                 VerbindungsFehler(e);
@@ -428,10 +497,18 @@ namespace Pflanzenbestimmung_Desktop
         private void VerbindungsFehler(Exception e)
         {
 #if DEBUG
-            MessageBox.Show(e.Message);
+            MessageBox.Show(e.Message, e.HResult.ToString());
 #else
-            MessageBox.Show("Ein Fehler ist aufgetreten! Mögliche Ursachen:\n" +
-                "   • Es konnte keine Verbindung zur Datenbank hergestellt werden");
+            try
+            {
+                MessageBox.Show("Ein Fehler ist aufgetreten! Mögliche Ursachen:\n" +
+                    "   • Es konnte keine Verbindung zur Datenbank hergestellt werden", ((Win32Exception)e.InnerException).ErrorCode.ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Ein Fehler ist aufgetreten! Mögliche Ursachen:\n" +
+                    "   • Es konnte keine Verbindung zur Datenbank hergestellt werden");
+            }
 #endif
         }
 

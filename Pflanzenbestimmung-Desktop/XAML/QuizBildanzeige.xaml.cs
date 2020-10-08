@@ -25,7 +25,7 @@ namespace Pflanzenbestimmung_Desktop
 
             if (Main.pflanzenbilder.IsNullOrEmpty())
             {
-                string pflanze = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[3].antwort;
+                string pflanze = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorien[3].antwort;
                 MessageBox.Show($"Für die Pflanze {pflanze} sind keine Bilder hinterlegt!");
             }
             else
@@ -40,6 +40,21 @@ namespace Pflanzenbestimmung_Desktop
                         Image image = new Image();
                         // Bekomme Bytes von String aus API
                         byte[] b = Main.pflanzenbilder[i].bild.ToBytes();
+
+                        /*
+                        //System.Text.StringBuilder output = new System.Text.StringBuilder("[");
+                        //for(int j = 0; j < b.Length - 1; j++)
+                        //{
+                        //    output.Append(b[j].ToString());
+                        //    output.Append(", ");
+                        //}
+                        //output.Append(b[b.Length - 1]);
+                        //output.Append("]");
+
+                        //MessageBox.Show("test");
+
+                        //string test = output.ToString();
+                        */
 
                         // Erstelle neue Bitmap
                         BitmapImage bmp = new BitmapImage();

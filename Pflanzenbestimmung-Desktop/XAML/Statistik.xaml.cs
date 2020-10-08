@@ -19,15 +19,6 @@ namespace Pflanzenbestimmung_Desktop
             {
                 listView.Items.Add(Main.azubiStatistiken[i].ToString());
             }
-
-            // ((System.ComponentModel.INotifyPropertyChanged)listView).PropertyChanged += (sender, e) =>
-            // {
-            //     if (e.PropertyName == "ActualWidth")
-            //     {
-            //         Column.Width = listView.ActualWidth;
-            //         System.Windows.MessageBox.Show(Column.Width.ToString());
-            //     }
-            // };
         }
 
         private void Hauptmenü_Click(object sender, System.Windows.RoutedEventArgs e)

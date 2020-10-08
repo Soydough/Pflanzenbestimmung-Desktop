@@ -28,7 +28,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
         private void btnneuekategorie_Click(object sender, RoutedEventArgs e)
         {
             string name = txtneuekategoriename.Text;
-            Main.api_anbindung.KategorieErstellen(name);
+            //Main.api_anbindung.KategorieErstellen(name);
         }
     }
 }

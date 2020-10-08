@@ -66,14 +66,14 @@ namespace Pflanzenbestimmung_Desktop
                     eingabe = "kеine Eingabe gemacht!";
                 } */ // Soll prüfungsvorbereitend sein und da sagt dir auch keiner wenn du ein Feld nicht ausgefüllt hast.
 
-                Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[i].gegebeneAntwort = eingabe;
+                Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorien[i].gegebeneAntwort = eingabe;
 
                 Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i] = new StatistikPflanzeAntwort();
 
                 //Einzelstatistik speichern
                 Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].eingabe = eingabe;
-                Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].korrekt = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[i].antwort;
-                Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].kategorie = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[i].kategorie_name;
+                Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].korrekt = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorien[i].antwort;
+                Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].kategorie = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorien[i].kategorie_name;
             }
             //Speichere ID weitere Daten für die Einzelstatistik
             Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].id_pflanze = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.id_pflanze;

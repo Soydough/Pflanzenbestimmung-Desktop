@@ -27,13 +27,13 @@ namespace Pflanzenbestimmung_Desktop
                 grid.ColumnDefinitions.Add(new ColumnDefinition());
 
                 Label korrekteAntwortLabel = new Label();
-                korrekteAntwortLabel.Content = Main.quiz[pflanzenIndex].pflanze.kategorieAbfragen[i].antwort;
+                korrekteAntwortLabel.Content = Main.quiz[pflanzenIndex].pflanze.kategorien[i].antwort;
 
                 Label gegebeneAntwortLabel = new Label();
-                gegebeneAntwortLabel.Content = Main.quiz[pflanzenIndex].pflanze.kategorieAbfragen[i].gegebeneAntwort;
+                gegebeneAntwortLabel.Content = Main.quiz[pflanzenIndex].pflanze.kategorien[i].gegebeneAntwort;
 
                 //if(korrekteAntwortLabel.Content.Equals(gegebeneAntwortLabel.Content))
-                if (Main.IstRichtig(Main.quiz[pflanzenIndex].pflanze.kategorieAbfragen[i].antwort, Main.quiz[pflanzenIndex].pflanze.kategorieAbfragen[i].gegebeneAntwort))
+                if (Main.IstRichtig(Main.quiz[pflanzenIndex].pflanze.kategorien[i].antwort, Main.quiz[pflanzenIndex].pflanze.kategorien[i].gegebeneAntwort))
                 {
                     gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.LimeGreen;
                     gegebeneAntwortLabel.Content += " ✓";

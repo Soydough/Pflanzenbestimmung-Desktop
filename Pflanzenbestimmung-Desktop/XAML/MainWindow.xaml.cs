@@ -15,6 +15,14 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
 
+
+            //Test; lade erste Pflanze und bekomme String
+
+            string s = Main.api_anbindung.BekommePflanzenbilder(1)[0].bild;
+
+
+
+
             Mouse.SetCursor(Cursors.Wait);
             dieses = this;
             Main.Initialize();

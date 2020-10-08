@@ -63,6 +63,33 @@ namespace Pflanzenbestimmung_Desktop
         {
             return Encoding.Default.GetBytes(str);
         }
+
+        public static string ToIntString<T>(this T self)
+        {
+            if (self is int)
+            {
+                return Convert.ToInt32(self).ToIntString();
+            }
+            else if (self is bool)
+            {
+                return Convert.ToBoolean(self).ToIntString();
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public static string ToIntString(this int self)
+        {
+            return self.ToString();
+        }
+        public static string ToIntString(this bool self)
+        {
+            if (self)
+                return "1";
+            return "0";
+        }
     }
 
 

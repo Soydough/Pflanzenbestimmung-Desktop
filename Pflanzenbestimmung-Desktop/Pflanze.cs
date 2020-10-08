@@ -7,7 +7,7 @@ namespace Pflanzenbestimmung_Desktop
         public int id_pflanze;
         public int zierpflanzenbau;
         public int gartenlandschaftsbau;
-        [JsonProperty("0")]
-        public KategorieAbfrage[] kategorieAbfragen;
+        //[JsonProperty("0")]
+        public KategorieAbfrage[] kategorien;
     }
 }
