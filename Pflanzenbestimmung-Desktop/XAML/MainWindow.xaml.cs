@@ -63,7 +63,7 @@ namespace Pflanzenbestimmung_Desktop
                     break;
 
                 case "AdminQuizStatistik":
-                    dieses.Title = "Quiz-Auswertung: Pflanze " + (Main.momentanePflanzeAusStatistik + 1) + " von " + Main.statistik.pflanzen.Length;
+                    dieses.Title = "Quiz-Auswertung: Pflanze " + (Main.momentanePflanzeAusStatistik + 1) + " von " + Main.azubiStatistik.pflanzen.Length;
                     break;
 
                 default:

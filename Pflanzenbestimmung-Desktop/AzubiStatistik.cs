@@ -33,7 +33,7 @@ namespace Pflanzenbestimmung_Desktop
 
         public override string ToString()
         {
-            return $"Quiz von {erstellt:yyyy.MM.dd HH:mm:ss} (Benötigte Zeit: {zeit}, Fehlerquote: {fehlerquote})";
+            return $"Quiz von {erstellt:yyyy.MM.dd HH:mm:ss} (Benötigte Zeit: {zeit:hh\\:mm\\:ss}, Fehlerquote: {fehlerquote})";
         }
     }
 }

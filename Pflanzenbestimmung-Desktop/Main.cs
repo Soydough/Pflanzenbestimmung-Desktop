@@ -13,6 +13,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Diagnostics;
 using static Pflanzenbestimmung_Desktop.Helper;
+using System.Runtime.InteropServices;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -48,13 +49,15 @@ namespace Pflanzenbestimmung_Desktop
 
         public static Dictionary<int, QuizArt> quizArt;
 
+        public static QuizArt azubiQuizArt;
+
         public static QuizPflanze[] quiz;
 
         public static List<Kategorie> kategorien;
 
-        public static AzubiStatistik[] statistiken;
+        public static AzubiStatistik[] azubiStatistiken;
 
-        public static AzubiStatistik statistik;
+        public static AzubiStatistik azubiStatistik;
 
         public static Random random = new Random();
 
@@ -80,8 +83,6 @@ namespace Pflanzenbestimmung_Desktop
 
         //Einzelstatistiken
         public static StatistikPflanze[] einzelStatistiken;
-
-        public static int fehlersumme;
 
         #endregion
 
@@ -128,16 +129,21 @@ namespace Pflanzenbestimmung_Desktop
         {
             if (!benutzer.istAdmin)
             {
-                statistiken = api_anbindung.BekommeStatistikenListe(benutzer.id);
+                azubiStatistiken = api_anbindung.BekommeStatistikenListe(benutzer.id);
             }
         }
 
         public static void LadeStatistikenHoch()
         {
-            fehlersumme = 0;
+            int fehlersumme = 0;
+
+            int wenigsteFehler = int.MaxValue;
+
+            int wenigsteFehlerPflanzeId = -1;
 
             for (int i = 0; i < einzelStatistiken.Length; i++)
             {
+                int tempFehlerSumme = 0;
                 for (int j = 0; j < kategorien.Count; j++)
                 {
                     StatistikPflanzeAntwort temp = einzelStatistiken[i].antworten[j];
@@ -146,23 +152,34 @@ namespace Pflanzenbestimmung_Desktop
                     if (!IstRichtig(temp.eingabe, temp.korrekt))
                     {
                         fehlersumme++;
+                        tempFehlerSumme++;
                     }
                 }
 
-                //int fehlerquote = (int)(100.0 * kategorien.Count / fehlersumme);
-                string fehlerquote = fehlersumme + "/" + kategorien.Count;
-                api_anbindung.ErstelleStatistik(benutzer.id, fehlerquote, quizTimer.Elapsed, quiz[i].pflanze.id_pflanze);
+                if(tempFehlerSumme < wenigsteFehler)
+                {
+                    wenigsteFehler = tempFehlerSumme;
+                    wenigsteFehlerPflanzeId = einzelStatistiken[i].id_pflanze;
+                }
+            }
 
-                LadeStatistiken();
+            //int fehlerquote = (int)(100.0 * kategorien.Count / fehlersumme);
+            string fehlerquote = fehlersumme + "/" + (kategorien.Count * (einzelStatistiken.Length + 1));
+            api_anbindung.ErstelleStatistik(benutzer.id, fehlerquote, quizTimer.Elapsed, wenigsteFehlerPflanzeId);
 
+            LadeStatistiken();
+            azubiStatistik = azubiStatistiken[azubiStatistiken.Length - 1];
+
+            for (int i = 0; i < einzelStatistiken.Length; i++)
+            {
                 for (int j = 0; j < kategorien.Count; j++)
                 {
                     //statistiken.Length ist die neuste, also hoffentlich die gerade hinzugefügte?
-                    api_anbindung.ErstelleEinzelStatistik(statistiken.Length, j + 1, quiz[i].pflanze.id_pflanze, einzelStatistiken[i].antworten[j].eingabe);
+                    api_anbindung.ErstelleEinzelStatistik(azubiStatistik.id_statistik, j + 1, einzelStatistiken[i].id_pflanze, einzelStatistiken[i].antworten[j].eingabe);
                 }
-
-                fehlersumme = 0;
             }
+
+            fehlersumme = 0;
         }
 
         public static void QuizBekommen()
@@ -173,8 +190,8 @@ namespace Pflanzenbestimmung_Desktop
                 return;
             }
 
-            quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt").ToDictionary();
-            int anzahl = quizArt[benutzer.id].quizgröße;
+            azubiQuizArt = api_anbindung.BekommeQuizArt(benutzer.id);
+            int anzahl = azubiQuizArt.quizgröße;
             //quiz = new QuizPflanze[anzahl];
             List<QuizPflanze> tempQuiz = new List<QuizPflanze>();
 
@@ -329,22 +346,26 @@ namespace Pflanzenbestimmung_Desktop
         /// <summary>
         /// Gibt zurück, ob eine gegebene Antwort "richtig genug" ist
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
+        /// <param name="eingabe">Eingabe</param>
+        /// <param name="korrekt">Korrekter String</param>
         /// <returns></returns>
-        public static bool IstRichtig(string a, string b)
+        public static bool IstRichtig(string eingabe, string korrekt)
         {
-            string[] tempArr = b.Split(',');
+            //Bekommt alle möglichen Antworten (mit , getrennt)
+            string[] tempArr = korrekt.Split(',');
             string[] tempArr2;
+            
+            //Wenn es mehrere korrekte Antworten gibt: bekommt alle Eingaben (durch komma getrennt)
             if (tempArr.Length > 1)
             {
-                tempArr2 = a.Split(',');
+                tempArr2 = eingabe.Split(',');
             }
             else
             {
-                tempArr2 = new string[] { a };
+                tempArr2 = new string[] { eingabe };
             }
 
+            //Wenn mindestens einer der eingegebenen Werte = mindestens ein korrekter Wert ist, "true" ausgeben
             for (int i = 0; i < tempArr.Length; i++)
             {
                 for (int j = 0; j < tempArr2.Length; j++)
@@ -354,6 +375,7 @@ namespace Pflanzenbestimmung_Desktop
                 }
             }
 
+            //Ansonsten "false" ausgeben
             return false;
         }
     } 

@@ -11,7 +11,7 @@
         <StackPanel Name="StackPanel">
             <Grid Name="GattungsnameGrid">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
+                    <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 

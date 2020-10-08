@@ -19,7 +19,6 @@ namespace Pflanzenbestimmung_Desktop
             //Bilder laden und zu ScrollView hinzufügen
             StackPanel stackPanel = BilderScrollView;
 
-            Main.quiz[0].pflanze.id_pflanze = 1;
             //Bekomme aktuelle Bilder
             Main.PflanzenbilderBekommen();
 

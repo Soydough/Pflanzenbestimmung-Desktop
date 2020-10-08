@@ -83,9 +83,16 @@ namespace Pflanzenbestimmung_Desktop
                 //Quiz ist zu Ende. Ergebnisse in Datenbank speichern
                 Main.quizTimer.Stop();
                 Main.LadeStatistikenHoch();
+                Main.LadeStatistiken();
+                Main.azubiStatistik = Main.azubiStatistiken[Main.azubiStatistiken.Length - 1];
+
+                Main.azubiStatistik = Main.api_anbindung.BekommeStatistik(Main.azubiStatistik.id_statistik);
 
                 //Ergebnisse anzeigen
                 Main.momentanePflanzeAusQuiz = -1;
+
+                Main.momentanePflanzeAusStatistik = 0;
+
                 //MainWindow.changeContent(new QuizStatistik());
                 MainWindow.changeContent(new AdminQuizStatistik());
             }

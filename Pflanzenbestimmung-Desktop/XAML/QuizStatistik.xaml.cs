@@ -6,6 +6,9 @@ namespace Pflanzenbestimmung_Desktop
     /// <summary>
     /// Interaktionslogik für QuizStatistik.xaml
     /// </summary>
+    /// 
+
+    [Obsolete("Veraltet! Bitte stattdessen AdminStatistik verwenden (ja, der Name ist unpassend)", true)]
     public partial class QuizStatistik : UserControl
     {
         public static int pflanzenIndex = 0;

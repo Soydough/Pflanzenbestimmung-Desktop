@@ -19,6 +19,7 @@ namespace Pflanzenbestimmung_Desktop
             //AnmeldungButton_Click(null, null);
             //AnmeldungPasswordBox.Password = "test";
             // TODO Löschen der Anmeldedaten vor dem Ausliefern.
+            // Anmerkung Dirk: lol, das bringt sicher viel
 #endif
         }
 

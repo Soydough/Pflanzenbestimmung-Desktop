@@ -15,9 +15,9 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
 
-            for(int i = 0; i < Main.statistiken.Length; i++)
+            for(int i = 0; i < Main.azubiStatistiken.Length; i++)
             {
-                listView.Items.Add(Main.statistiken[i].ToString());
+                listView.Items.Add(Main.azubiStatistiken[i].ToString());
             }
 
             // ((System.ComponentModel.INotifyPropertyChanged)listView).PropertyChanged += (sender, e) =>
@@ -44,16 +44,15 @@ namespace Pflanzenbestimmung_Desktop
 
         private void AnsehenButton_Click(object sender, RoutedEventArgs e)
         {
-            Main.statistik = Main.statistiken[listView.SelectedIndex];
+            Main.azubiStatistik = Main.azubiStatistiken[listView.SelectedIndex];
+            Main.azubiStatistik = Main.api_anbindung.BekommeStatistik(Main.azubiStatistik.id_statistik);
 
-            Main.statistik = Main.api_anbindung.BekommeStatistik(Main.statistik.id_statistik);
-
-            if (Main.statistik.pflanzen.Length > 0)
+            if (Main.azubiStatistik.pflanzen.Length > 0)
             {
                 Main.momentanePflanzeAusStatistik = 0;
                 MainWindow.changeContent(new AdminQuizStatistik());
             }
-            else if (Main.statistik != null)
+            else if (Main.azubiStatistik != null)
             {
                 MessageBox.Show("Die gewählte Statistik enthält keine Pflanzen");
             }

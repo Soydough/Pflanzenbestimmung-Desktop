@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient.Memcached;
+﻿using Flurl.Http;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -316,7 +317,7 @@ namespace Pflanzenbestimmung_Desktop
                         ["method"] = "createStatistik",
                         ["IDaz"] = IDaz.ToString(),
                         ["FQuote"] = FQuote,
-                        ["Zeit"] = Zeit.ToString("yyyy-MM-dd HH:mm:ss"),
+                        ["Zeit"] = Zeit.ToString(@"hh\:mm\:ss"),
                         ["IDp"] = IDp.ToString()
                     };
 
@@ -338,7 +339,7 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     var values = new NameValueCollection
                     {
-                        ["method"] = "createStatistik",
+                        ["method"] = "createStatEinzel",
                         ["IDs"] = IDs.ToString(),
                         ["IDk"] = IDk.ToString(),
                         ["IDp"] = IDp.ToString(),
@@ -473,6 +474,7 @@ namespace Pflanzenbestimmung_Desktop
                         ["method"] = "deleteAzubi",
                         ["IDaz"] = id.ToString()
                     };
+                    Azubis Azubidaten = new Azubis();
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
@@ -488,6 +490,31 @@ namespace Pflanzenbestimmung_Desktop
 
                 throw;
             }
+        }
+
+        public QuizArt BekommeQuizArt(int IDaz)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "getQuizArt",
+                        ["IDaz"] = IDaz.ToString(),
+                    };
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    return JsonConvert.DeserializeObject<QuizArt[]>(responseString)[0];
+                }
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e + "");
+            }
+            return null;
         }
 
     }//End Class
