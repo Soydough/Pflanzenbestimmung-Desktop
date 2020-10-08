@@ -170,13 +170,6 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="kategorie"></param>
-        /// <param name="AnzeigeGala">Entweder als int oder als bool</param>
-        /// <param name="AnzeigeZier">Entweder als int oder als bool</param>
-        /// <param name="WertungWerker">Entweder als int oder als bool</param>
         public void KategorieErstellen(string kategorie, object AnzeigeGala, object AnzeigeZier, object WertungWerker)
         {
             try
@@ -193,6 +186,11 @@ namespace Pflanzenbestimmung_Desktop
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
+
+                    if (responseString != null || responseString != "")
+                    {
+                        MessageBox.Show(responseString);
+                    }
                 }
             }
 
@@ -202,13 +200,6 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="kategorie"></param>
-        /// <param name="AnzeigeGala">Entweder als int oder als bool</param>
-        /// <param name="AnzeigeZier">Entweder als int oder als bool</param>
-        /// <param name="WertungWerker">Entweder als int oder als bool</param>
         public void KategorieAktualisieren(string kategorie, object AnzeigeGala, object AnzeigeZier, object WertungWerker)
         {
             try

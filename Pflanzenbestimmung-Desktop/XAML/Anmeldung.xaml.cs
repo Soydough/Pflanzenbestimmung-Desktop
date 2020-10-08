@@ -14,10 +14,10 @@ namespace Pflanzenbestimmung_Desktop
 
 #if DEBUG
             //AnmeldungBenutzernameTextBox.Text = "SysUserA";
+            //AnmeldungPasswordBox.Password = "test";
             AnmeldungBenutzernameTextBox.Text = "SysAdmin";
             AnmeldungPasswordBox.Password = "KarteiAdmin321#";
             //AnmeldungButton_Click(null, null);
-            //AnmeldungPasswordBox.Password = "test";
             // TODO Löschen der Anmeldedaten vor dem Ausliefern.
             // Anmerkung Dirk: lol, das bringt sicher viel
 #endif

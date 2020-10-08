@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,18 +18,64 @@ namespace Pflanzenbestimmung_Desktop.XAML
     /// <summary>
     /// Interaktionslogik für AdminKategorieErstellen.xaml
     /// </summary>
-    public partial class AdminKategorieErstellen : Window
+    public partial class AdminKategorieErstellen : UserControl
     {
+
         public AdminKategorieErstellen()
         {
             InitializeComponent();
             Main.kategorien = Main.api_anbindung.Bekommen<Kategorie>().ToList();
+            dynamicCheckbox();
+        }
+     
+        private void dynamicCheckbox()
+        {            
+            var itemList = Main.kategorien.ToList();
+            foreach (var item in itemList)
+            {
+                CheckBox kat = new CheckBox();
+                kat.Content = item.kategorie.ToString();
+                stack.Children.Add(kat);
+            }
         }
 
         private void btnneuekategorie_Click(object sender, RoutedEventArgs e)
         {
             string name = txtneuekategoriename.Text;
-            //Main.api_anbindung.KategorieErstellen(name);
+            int gala = 0;
+            int zier = 0;
+            int werker = 0;
+            if (GalaCheckBox.IsChecked == true)
+            {
+                gala = 1;
+            }
+            if (ZierCheckBox.IsChecked == true)
+            {
+                zier = 1;
+            }
+            if (WerkerCheckBox.IsChecked == true)
+            {
+                werker = 1;
+            }
+            Main.api_anbindung.KategorieErstellen(name, gala, zier, werker);
+
+            txtneuekategoriename.Clear();
+            GalaCheckBox.IsChecked = false;
+            ZierCheckBox.IsChecked = false;
+            WerkerCheckBox.IsChecked = false;
+        }
+
+        private void btnhomepage_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnkatauswahl_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < stack.Children.Count; i++)
+            {
+                
+            }
         }
     }
 }

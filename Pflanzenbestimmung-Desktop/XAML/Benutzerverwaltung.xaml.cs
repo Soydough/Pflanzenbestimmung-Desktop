@@ -87,7 +87,6 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     throw;
                 }
-
             }
         }
     }
