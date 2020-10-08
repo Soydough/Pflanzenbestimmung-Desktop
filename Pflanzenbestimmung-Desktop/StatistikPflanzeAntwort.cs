@@ -14,6 +14,7 @@ namespace Pflanzenbestimmung_Desktop
         public string korrekt;
         [Obsolete("Bitte stattdessen WirdFürWerkerVerwendet verwenden")]
         public int wertung_werker;
+        public int imQuiz;
 
         public bool WirdFürWerkGewertet
         {
@@ -24,6 +25,18 @@ namespace Pflanzenbestimmung_Desktop
             set
             {
                 wertung_werker = value.ToInt();
+            }
+        }
+
+        public bool IstImQuiz
+        {
+            get
+            {
+                return imQuiz != 0;
+            }
+            set
+            {
+                imQuiz = value.ToInt();
             }
         }
     }
