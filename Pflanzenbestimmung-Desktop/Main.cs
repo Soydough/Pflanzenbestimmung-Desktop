@@ -86,6 +86,8 @@ namespace Pflanzenbestimmung_Desktop
 
         public static Abgefragt[] abgefragt;
 
+        public static Dictionary<int, bool> abgefragtZuweisung; //Ja, das gehört so.
+
         #endregion
 
         public static void Initialize()
@@ -115,6 +117,12 @@ namespace Pflanzenbestimmung_Desktop
         public static void LadeAbgefragt()
         {
             abgefragt = api_anbindung.BekommeAbgefragt(benutzer.id);
+            abgefragtZuweisung = new Dictionary<int, bool>();
+
+            for(int i = 0; i < abgefragt.Length; i++)
+            {
+                abgefragtZuweisung.Add(i, abgefragt[i].IstGelernt);
+            }
         }
 
         public static ObservableCollection<Azubis> MyList
@@ -164,7 +172,7 @@ namespace Pflanzenbestimmung_Desktop
                     }
                 }
 
-                //Wenn Pflanze richtig war, Abgefragt... machen
+                //Wenn Pflanze richtig war, Abgefragt speichern
                 if (tempFehlerSumme == 0) {
                     bool found = false;
                     for (int j = 0; j < abgefragt.Length; j++)
@@ -207,12 +215,11 @@ namespace Pflanzenbestimmung_Desktop
                     api_anbindung.ErstelleEinzelStatistik(azubiStatistik.id_statistik, j + 1, einzelStatistiken[i].id_pflanze, einzelStatistiken[i].antworten[j].eingabe);
                 }
             }
-
-            fehlersumme = 0;
         }
 
         public static void QuizBekommen()
         {
+            LadeAbgefragt();
             if (benutzer.istAdmin)
             {
                 MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
@@ -239,7 +246,21 @@ namespace Pflanzenbestimmung_Desktop
 
                 for (int i = 0; i < azubiQuizZuweisungen.Length; i++)
                 {
-                    tempPflanzen.Add(pflanzen[azubiQuizZuweisungen[i].id_pflanze - 1]);
+                    int index = azubiQuizZuweisungen[i].id_pflanze - 1;
+
+                    bool gelernt = false;
+                    abgefragtZuweisung.TryGetValue(index, out gelernt);
+
+                    if(!gelernt)
+                    tempPflanzen.Add(pflanzen[index]);
+                }
+
+                if(tempPflanzen.IsNullOrEmpty())
+                {
+                    MessageBox.Show("Sie haben bereits alle zugewiesenen Pflanzen gelernt!\n" +
+                        "\n" +
+                        "Sie können stattdessen ein zufälligen Quiz starten", "Herzlichen Glückwunsch");
+                    return;
                 }
 
                 for (int i = 0; i < anzahl; i++)
