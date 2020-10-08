@@ -158,7 +158,7 @@ namespace Pflanzenbestimmung_Desktop
                         ["method"] = "createPBild",
                         ["IDp"] = IDp.ToString(),
                         //["Bild"] = bild.GetString()
-                        ["Bild"] = MySql.Data.MySqlClient.MySqlHelper.EscapeString(bild.GetString())
+                        ["Bild"] = bild.GetString()
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
@@ -589,5 +589,54 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
+        public Abgefragt BekommeAbgefragt(int IDaz)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "createKategorie",
+                        ["IDaz"] = IDaz.ToString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    return JsonConvert.DeserializeObject<Abgefragt[]>(responseString)[0];
+                }
+            }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+
+            return null;
+        }
+
+        //public void AbgefragtErstellen()
+        //{
+        //    try
+        //    {
+        //        using (var client = new WebClient())
+        //        {
+        //            var values = new NameValueCollection
+        //            {
+        //                ["method"] = "createKategorie",
+        //                ["Kategorie"] = kategorie,
+        //                ["AnzeigeGala"] = AnzeigeGala.ToString(),
+        //                ["AnzeigeZier"] = AnzeigeZier.ToString(),
+        //                ["WertungWerker"] = WertungWerker.ToString()
+        //            };
+        //            var response = client.UploadValues(url, values);
+        //            var responseString = Encoding.Default.GetString(response);
+        //        }
+        //    }
+
+        //    catch (System.Exception e)
+        //    {
+        //        VerbindungsFehler(e);
+        //    }
+        //}
     }//End Class
 }//End Namespace

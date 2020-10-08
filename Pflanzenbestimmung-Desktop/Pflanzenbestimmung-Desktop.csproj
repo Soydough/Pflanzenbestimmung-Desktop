@@ -117,6 +117,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Abgefragt.cs" />
     <Compile Include="Administrator.cs" />
     <Compile Include="API_Anbindung.cs" />
     <Compile Include="Ausbildungsart.cs" />
