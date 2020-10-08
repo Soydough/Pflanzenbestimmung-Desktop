@@ -32,6 +32,9 @@ namespace Pflanzenbestimmung_Desktop
         [Obsolete("Bitte stattdessen wirdFürWerkGewertet verwenden")]
         public int werker_gewertet;
 
+        
+        public int imQuiz;
+
         public bool wirdFürGalaAngezeigt
         {
             get
