@@ -70,16 +70,13 @@
                 <Label Content="Prüfungsmodus?"/>
                 <CheckBox Name="PruefungsmodusAendernCheckbox" FlowDirection="RightToLeft" VerticalAlignment="Center" />
             </Grid>
+            <Grid>
+                <Button Name="VerwaltenAbbrechenButton" Click="AendernAbbrechenButton_Click" Content="Abbrechen" Margin="20" Height="30" Width="200" HorizontalAlignment="left"/>
+                <Button Name="VerwaltenSpeichernButton" Click="SpeichernButton_Click" Content="Speichern"   Height="30" Width="200" HorizontalAlignment="Right"/>
+            </Grid>
+            <Grid>
+                <Button Name="Loeschen" Click="Loeschen_Click" Content="Löschen" Height="30" Width="200" HorizontalAlignment="Center"/>
+            </Grid>
         </StackPanel>
-
-        <Grid VerticalAlignment="Bottom" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-
-            <Button Name="VerwaltenAbbrechenButton" Click="AendernAbbrechenButton_Click" Content="Abbrechen" Margin="10" Height="30"/>
-            <Button Name="VerwaltenSpeichernButton" Click="SpeichernButton_Click" Content="Speichern" Margin="10" Grid.Column="1" Height="30" />
-        </Grid>
     </Grid>
 </UserControl>

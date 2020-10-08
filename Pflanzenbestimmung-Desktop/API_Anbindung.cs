@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MySql.Data.MySqlClient.Memcached;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -14,7 +15,6 @@ namespace Pflanzenbestimmung_Desktop
         private readonly string url = "http://10.33.11.142/API/dbSchnittstelle.php";
         //private readonly string url = "http://localhost/pflanzenbestimmung/api/dbSchnittstelle.php";
         //private readonly string url = "http://karteigarten.rf.gd/API/dbSchnittstelle.php";
-
         public API_Anbindung()
         {
         }
@@ -218,11 +218,6 @@ namespace Pflanzenbestimmung_Desktop
                     }
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
-
-                    if (responseString != null || responseString != "")
-                    {
-                        MessageBox.Show(responseString);
-                    }
                 }
             }
             catch (System.Exception e)
@@ -420,11 +415,6 @@ namespace Pflanzenbestimmung_Desktop
                     //}
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
-
-                    if (responseString != null || responseString != "")
-                    {
-                        MessageBox.Show(responseString);
-                    }
                 }
             }
             catch (System.Exception e)
@@ -457,7 +447,6 @@ namespace Pflanzenbestimmung_Desktop
                         ["Quizname"] = quizName,
                         ["Groeße"] = quizGroeße
                     };
-
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
@@ -470,6 +459,34 @@ namespace Pflanzenbestimmung_Desktop
             catch (System.Exception e)
             {
                 MessageBox.Show(e + "");
+            }
+        }
+
+        public void BenutzerLoeschen(int id)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "deleteAzubi",
+                        ["IDaz"] = id.ToString()
+                    };
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    if (responseString != null || responseString != "")
+                    {
+                        MessageBox.Show(responseString);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 

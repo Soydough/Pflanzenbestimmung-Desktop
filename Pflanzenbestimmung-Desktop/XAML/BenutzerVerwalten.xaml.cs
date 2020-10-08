@@ -147,15 +147,16 @@ namespace Pflanzenbestimmung_Desktop.XAML
             }
             if (PruefungsmodusAendernCheckbox.IsChecked == false)
             {
-                pruefung = 1;
+                pruefung = 0;
             }
             else
             {
-                pruefung = 0;
+                pruefung = 1;
             }
             if (passwort != "")
             {
                 passwort = PasswortAenderndBox.Password;
+                passwort = Main.GetHashWithSalt(passwort, nutzername);
             }
 
             try
@@ -168,6 +169,33 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 throw;
             }
         }
+
+        private void Loeschen_Click(object sender, RoutedEventArgs e)
+        {
+            string azubiName;
+            string azubiVorname;
+            string nachricht;
+                try
+                {
+                    azubiName = azubi.Name;
+                    azubiVorname = azubi.Vorname;
+                    nachricht = "Sind sie sich sicher, dass der Benutzer:\n'" + azubiName + ", "
+                                     + azubiVorname + "'\n gelöscht werden soll?";
+                    string caption = "Löschen?";
+                    var result = MessageBox.Show(nachricht, caption, MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        Main.api_anbindung.BenutzerLoeschen(azubi.ID);
+                        MainWindow.changeContent(new Benutzerverwaltung());
+                    }
+
+                }
+                catch (System.Exception)
+                {
+                    throw;
+                }
+            }
+
     }//End Class
 }//End Namespace
 
