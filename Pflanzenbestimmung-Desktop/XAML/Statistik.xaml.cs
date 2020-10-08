@@ -48,8 +48,15 @@ namespace Pflanzenbestimmung_Desktop
 
             Main.statistik = Main.api_anbindung.BekommeStatistik(Main.statistik.id_statistik);
 
-            Main.momentanePflanzeAusStatistik = 0;
-            MainWindow.dieses.ContentHolder.Content = new AdminQuizStatistik();
+            if (Main.statistik.pflanzen.Length > 0)
+            {
+                Main.momentanePflanzeAusStatistik = 0;
+                MainWindow.changeContent(new AdminQuizStatistik());
+            }
+            else if (Main.statistik != null)
+            {
+                MessageBox.Show("Die gewählte Statistik enthält keine Pflanzen");
+            }
         }
     }
 }

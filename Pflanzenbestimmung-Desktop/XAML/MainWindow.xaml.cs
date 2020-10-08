@@ -34,9 +34,11 @@ namespace Pflanzenbestimmung_Desktop
                 case "Administration":
                     dieses.Title = "Administration";
                     break;
+
                 case "Anmeldung":
                     dieses.Title = "Anmeldung";
                     break;
+
                 case "Hauptmenü":
                     dieses.Title = "Pflanzenbestimmung";
                     if (!Main.benutzer.istAdmin)
@@ -50,13 +52,20 @@ namespace Pflanzenbestimmung_Desktop
                     }
                     Main.AktualisiereAusbilderId();
                     break;
+
                 case "Registrierung":
                     dieses.Title = "Registrierung";
                     ((Registrierung)o).Initialize();
                     break;
+
                 case "Benutzerverwaltung":
                     dieses.Title = "Benutzerverwaltung";
                     break;
+
+                case "AdminQuizStatistik":
+                    dieses.Title = "Quiz-Auswertung: Pflanze " + (Main.momentanePflanzeAusStatistik + 1) + " von " + Main.statistik.pflanzen.Length;
+                    break;
+
                 default:
                     dieses.Title = "Pflanzenbestimmung";
                     break;

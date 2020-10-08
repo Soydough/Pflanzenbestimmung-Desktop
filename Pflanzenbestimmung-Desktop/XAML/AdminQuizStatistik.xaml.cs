@@ -12,59 +12,49 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
 
-            MainWindow.dieses.Title = "Quiz-Auswertung: Pflanze " + (Main.momentanePflanzeAusStatistik + 1) + " von " + Main.statistik.pflanzen.Length;
-
-            if (Main.statistik.pflanzen.Length > 0)
+            if (!Main.benutzer.istAdmin)
             {
-
-                if (!Main.benutzer.istAdmin)
-                {
-                    //ist mir doch egal, ob der Nutzer ein Admin ist
-                }
-
-                //Entferne Platzhalter-Daten
-                StackPanel.Children.Clear();
-
-                //Bekomme die Antworten
-                StatistikPflanzeAntwort[] antworten = Main.statistik.pflanzen[Main.momentanePflanzeAusStatistik].antworten;
-
-                for (int i = 0; i < antworten.Length; i++)
-                {
-                    Grid grid = new Grid();
-                    grid.ColumnDefinitions.Add(new ColumnDefinition());
-                    grid.ColumnDefinitions.Add(new ColumnDefinition());
-
-                    //Setze den Inhalt für das "Korrekt"-Label
-                    Label korrekteAntwortLabel = new Label();
-                    korrekteAntwortLabel.Content = antworten[i].kategorie + ": " + antworten[i].korrekt;
-
-                    Label gegebeneAntwortLabel = new Label();
-                    gegebeneAntwortLabel.Content = antworten[i].eingabe;
-
-                    //if(korrekteAntwortLabel.Content.Equals(gegebeneAntwortLabel.Content))
-                    if (Main.IstRichtig(antworten[i].korrekt, antworten[i].eingabe))
-                    {
-                        gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.LimeGreen;
-                        gegebeneAntwortLabel.Content += " ✓";
-                    }
-                    else
-                    {
-                        gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Red;
-                        gegebeneAntwortLabel.Content += " ×";
-                    }
-
-                    //RegisterName(Main.kategorien[i].kategorie + "Label", gegebeneAntwortLabel);
-
-                    grid.Children.Add(korrekteAntwortLabel);
-                    grid.Children.Add(gegebeneAntwortLabel);
-                    Grid.SetColumn(gegebeneAntwortLabel, 1);
-
-                    StackPanel.Children.Add(grid);
-                }
+                //ist mir doch egal, ob der Nutzer ein Admin ist
             }
-            else
-            {
 
+            //Entferne Platzhalter-Daten
+            StackPanel.Children.Clear();
+
+            //Bekomme die Antworten
+            StatistikPflanzeAntwort[] antworten = Main.statistik.pflanzen[Main.momentanePflanzeAusStatistik].antworten;
+
+            for (int i = 0; i < antworten.Length; i++)
+            {
+                Grid grid = new Grid();
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+                grid.ColumnDefinitions.Add(new ColumnDefinition());
+
+                //Setze den Inhalt für das "Korrekt"-Label
+                Label korrekteAntwortLabel = new Label();
+                korrekteAntwortLabel.Content = antworten[i].kategorie + ": " + antworten[i].korrekt;
+
+                Label gegebeneAntwortLabel = new Label();
+                gegebeneAntwortLabel.Content = antworten[i].eingabe;
+
+                //if(korrekteAntwortLabel.Content.Equals(gegebeneAntwortLabel.Content))
+                if (Main.IstRichtig(antworten[i].korrekt, antworten[i].eingabe))
+                {
+                    gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.LimeGreen;
+                    gegebeneAntwortLabel.Content += " ✓";
+                }
+                else
+                {
+                    gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Red;
+                    gegebeneAntwortLabel.Content += " ×";
+                }
+
+                //RegisterName(Main.kategorien[i].kategorie + "Label", gegebeneAntwortLabel);
+
+                grid.Children.Add(korrekteAntwortLabel);
+                grid.Children.Add(gegebeneAntwortLabel);
+                Grid.SetColumn(gegebeneAntwortLabel, 1);
+
+                StackPanel.Children.Add(grid);
             }
         }
 

@@ -1,5 +1,4 @@
-﻿
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -82,7 +81,10 @@ namespace Pflanzenbestimmung_Desktop
                     return JsonConvert.DeserializeObject<T[]>(responseString);
                 }
             }
-            catch (System.Exception e) { MessageBox.Show("" + e); }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
             return new T[0];
         }
 
@@ -104,7 +106,10 @@ namespace Pflanzenbestimmung_Desktop
                     return JsonConvert.DeserializeObject<Pflanzenbild[]>(responseString);
                 }
             }
-            catch { }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
             return null;
         }
 
@@ -126,7 +131,10 @@ namespace Pflanzenbestimmung_Desktop
                     return JsonConvert.DeserializeObject<QuizPZuweisung[]>(responseString);
                 }
             }
-            catch { }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
             return null;
         }
 
@@ -147,7 +155,10 @@ namespace Pflanzenbestimmung_Desktop
                     var responseString = Encoding.Default.GetString(response);
                 }
             }
-            catch { }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
         }
 
         public void KategorieErstellen(string kategorie)
@@ -164,7 +175,11 @@ namespace Pflanzenbestimmung_Desktop
                     var responseString = Encoding.Default.GetString(response);
                 }
             }
-            catch { }
+
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
         }
 
         public void BenutzerErstellen(bool admin, string benutzername, string passwort, string name, string vorname, int ausbildungsart, int fachrichtung, int ausbilder, int pruefung, int groeßeQuizArt)
@@ -207,7 +222,7 @@ namespace Pflanzenbestimmung_Desktop
             }
             catch (System.Exception e)
             {
-                MessageBox.Show(e + "");
+                VerbindungsFehler(e);
             }
         }
 
@@ -236,7 +251,7 @@ namespace Pflanzenbestimmung_Desktop
             }
             catch (System.Exception e)
             {
-                MessageBox.Show(e.Message);
+                VerbindungsFehler(e);
             }
         }
 
@@ -258,9 +273,9 @@ namespace Pflanzenbestimmung_Desktop
                     return JsonConvert.DeserializeObject<AzubiStatistik[]>(responseString);
                 }
             }
-            catch
+            catch (System.Exception e)
             {
-                MessageBox.Show("Ein Fehler ist aufgetreten! Bitte stellen sie sicher, dass eine Internetverbindung besteht. Danke. Dies ist das Ende der Fehlermeldung.");
+                VerbindungsFehler(e);
             }
             return null;
         }
@@ -283,7 +298,10 @@ namespace Pflanzenbestimmung_Desktop
                     return JsonConvert.DeserializeObject<AzubiStatistik[]>(responseString)[0];
                 }
             }
-            catch { }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
             return null;
         }
 
@@ -306,7 +324,10 @@ namespace Pflanzenbestimmung_Desktop
                     var responseString = Encoding.Default.GetString(response);
                 }
             }
-            catch { }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
         }
 
         public void ErstelleEinzelStatistik(int IDs, int IDk, int IDp, string Eingabe)
@@ -328,7 +349,10 @@ namespace Pflanzenbestimmung_Desktop
                     var responseString = Encoding.Default.GetString(response);
                 }
             }
-            catch { }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
         }
 
         public void BenutzerAendern(bool admin, int id, string benutzername, string passwort, string name, string vorname, int ausbildungsart, int fachrichtung, int ausbilder, int pruefung, int groeßeQuizArt)
@@ -398,11 +422,19 @@ namespace Pflanzenbestimmung_Desktop
             }
             catch (System.Exception e)
             {
-                MessageBox.Show(e + "");
+                VerbindungsFehler(e);
             }
 
+        }
 
-
+        private void VerbindungsFehler(Exception e)
+        {
+#if DEBUG
+            MessageBox.Show(e.Message);
+#else
+            MessageBox.Show("Ein Fehler ist aufgetreten! Mögliche Ursachen:\n" +
+                "   • Es konnte keine Verbindung zur Datenbank hergestellt werden");
+#endif
         }
 
         public void QuizArtErstellen(string quizName, string quizGroeße)
