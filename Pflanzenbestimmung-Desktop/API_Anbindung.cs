@@ -123,6 +123,50 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
+        public void BildHochladen(int IDp, byte[] bild)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "createPBild",
+                        ["IDp"] = IDp.ToString(),
+                        ["Bild"] = bild.GetString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                }
+            }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
+        public void PflanzenbildLoeschen(int IDpb)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "deletePBild",
+                        ["IDpb"] = IDpb.ToString()
+                    };
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                }
+            }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
         public QuizPZuweisung[] BekommeQuizPZuweisung(int IDaz)
         {
             try
@@ -146,29 +190,6 @@ namespace Pflanzenbestimmung_Desktop
                 VerbindungsFehler(e);
             }
             return null;
-        }
-
-        public void BildHochladen(int IDp, byte[] bild)
-        {
-            try
-            {
-                using (var client = new WebClient())
-                {
-                    var values = new NameValueCollection
-                    {
-                        ["method"] = "createPBild",
-                        ["IDp"] = IDp.ToString(),
-                        //["Bild"] = bild.GetString()
-                        ["Bild"] = bild.GetString()
-                    };
-                    var response = client.UploadValues(url, values);
-                    var responseString = Encoding.Default.GetString(response);
-                }
-            }
-            catch (System.Exception e)
-            {
-                VerbindungsFehler(e);
-            }
         }
 
         public void KategorieErstellen(string kategorie, bool AnzeigeGala, bool AnzeigeZier, bool WertungWerker, bool imQuiz)
@@ -600,7 +621,7 @@ namespace Pflanzenbestimmung_Desktop
                     var values = new NameValueCollection
                     {
                         ["method"] = "getAbgefragt",
-                        ["IDaz"] = IDaz.ToString()
+                        ["IDa"] = IDaz.ToString() //Keine Ahnung, ob das IDaz sein sollte, aber jedenfalls ist es nicht so. Dies ist ein "call out". Ich calle die Schnittstelle out. ganz recht.
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
