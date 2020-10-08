@@ -10,6 +10,7 @@ using System.Windows;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Runtime.InteropServices;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -486,7 +487,6 @@ namespace Pflanzenbestimmung_Desktop
             {
                 VerbindungsFehler(e);
             }
-
         }
 
         private void VerbindungsFehler(Exception e)
@@ -589,7 +589,7 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
-        public Abgefragt BekommeAbgefragt(int IDaz)
+        public Abgefragt[] BekommeAbgefragt(int IDaz)
         {
             try
             {
@@ -603,7 +603,7 @@ namespace Pflanzenbestimmung_Desktop
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
-                    return JsonConvert.DeserializeObject<Abgefragt[]>(responseString)[0];
+                    return JsonConvert.DeserializeObject<Abgefragt[]>(responseString);
                 }
             }
             catch (System.Exception e)
@@ -614,29 +614,62 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
-        //public void AbgefragtErstellen()
-        //{
-        //    try
-        //    {
-        //        using (var client = new WebClient())
-        //        {
-        //            var values = new NameValueCollection
-        //            {
-        //                ["method"] = "createKategorie",
-        //                ["Kategorie"] = kategorie,
-        //                ["AnzeigeGala"] = AnzeigeGala.ToString(),
-        //                ["AnzeigeZier"] = AnzeigeZier.ToString(),
-        //                ["WertungWerker"] = WertungWerker.ToString()
-        //            };
-        //            var response = client.UploadValues(url, values);
-        //            var responseString = Encoding.Default.GetString(response);
-        //        }
-        //    }
+        public void AbgefragtErstellen(int IDaz, int IDp, int Counter, bool Gelernt)
+        {
+            AbgefragtErstellen(IDaz, IDp, Counter, Gelernt.ToInt());
+        }
+        public void AbgefragtErstellen(int IDaz, int IDp, int Counter, int Gelernt)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "createKategorie",
+                        ["IDaz"] = IDaz.ToString(),
+                        ["IDp"] = IDp.ToString(),
+                        ["Counter"] = Counter.ToString(),
+                        ["Gelernt"] = Gelernt.ToString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                }
+            }
 
-        //    catch (System.Exception e)
-        //    {
-        //        VerbindungsFehler(e);
-        //    }
-        //}
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
+        public void AbgefragtAktualisieren(int IDaz, int IDp, int Counter, bool Gelernt)
+        {
+            AbgefragtAktualisieren(IDaz, IDp, Counter, Gelernt.ToInt());
+        }
+        public void AbgefragtAktualisieren(int IDaz, int IDp, int Counter, int Gelernt)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "updateKategorie",
+                        ["IDaz"] = IDaz.ToString(),
+                        ["IDp"] = IDp.ToString(),
+                        ["Counter"] = Counter.ToString(),
+                        ["Gelernt"] = Gelernt.ToString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                }
+            }
+
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
     }//End Class
 }//End Namespace

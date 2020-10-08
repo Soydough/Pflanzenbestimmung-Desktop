@@ -84,6 +84,8 @@ namespace Pflanzenbestimmung_Desktop
         //Einzelstatistiken
         public static StatistikPflanze[] einzelStatistiken;
 
+        public static Abgefragt[] abgefragt;
+
         #endregion
 
         public static void Initialize()
@@ -108,6 +110,11 @@ namespace Pflanzenbestimmung_Desktop
             ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
             azubi = api_anbindung.Bekommen<Azubis>("Azubis");
             quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt").ToDictionary();
+        }
+
+        public static void LadeAbgefragt()
+        {
+            abgefragt = api_anbindung.BekommeAbgefragt(benutzer.id);
         }
 
         public static ObservableCollection<Azubis> MyList
@@ -141,6 +148,7 @@ namespace Pflanzenbestimmung_Desktop
 
             int wenigsteFehlerPflanzeId = -1;
 
+            LadeAbgefragt();
             for (int i = 0; i < einzelStatistiken.Length; i++)
             {
                 int tempFehlerSumme = 0;
@@ -153,6 +161,27 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         fehlersumme++;
                         tempFehlerSumme++;
+                    }
+                }
+
+                //Wenn Pflanze richtig war, Abgefragt... machen
+                if (tempFehlerSumme == 0) {
+                    bool found = false;
+                    for (int j = 0; j < abgefragt.Length; j++)
+                    {
+                        if (abgefragt[j].IDp == einzelStatistiken[i].id_pflanze)
+                        {
+                            abgefragt[0].Counter++;
+                            bool gelernt = abgefragt[0].Counter >= 7;
+                            api_anbindung.AbgefragtAktualisieren(benutzer.id, abgefragt[j].IDp, abgefragt[j].Counter, gelernt);
+                            found = true;
+                        }
+                    }
+
+                    //Wenn es noch keinen passenden Abgefrag-Eintrag gibt; erstellen
+                    if (!found)
+                    {
+                        api_anbindung.AbgefragtErstellen(benutzer.id, einzelStatistiken[i].id_pflanze, 1, false);
                     }
                 }
 

@@ -8,6 +8,7 @@ namespace Pflanzenbestimmung_Desktop
 {
     public class StatistikPflanzeAntwort
     {
+#pragma warning disable CS0618 // Nur damit VS nicht nervt
         public string kategorie;
         public string eingabe;
         public string korrekt;

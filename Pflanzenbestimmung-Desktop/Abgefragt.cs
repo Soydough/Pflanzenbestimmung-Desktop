@@ -9,6 +9,7 @@ namespace Pflanzenbestimmung_Desktop
 {
     public class Abgefragt
     {
+#pragma warning disable CS0618 // Nur damit VS nicht nervt
         public int IDp;
         public int Counter;
         [Obsolete("Stattdessen bitte IstGelernt verwenden")]
