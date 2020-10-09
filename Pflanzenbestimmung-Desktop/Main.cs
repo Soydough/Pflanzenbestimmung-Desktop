@@ -170,13 +170,24 @@ namespace Pflanzenbestimmung_Desktop
                     //if (temp.eingabe != temp.korrekt)
                     if (!IstRichtig(temp.eingabe, temp.korrekt))
                     {
-                        if (!benutzer.IstWerker || (benutzer.IstWerker && einzelStatistiken[i].antworten[j].WirdFürWerkGewertet))
+                        if (!benutzer.IstWerker)
                         {
+                            //Antwort falsch und kein Werker
                             fehlersumme++;
+                            gesamtSumme--;
                         }
                         else
                         {
-                            gesamtSumme--;
+                            if(!temp.WirdFürWerkGewertet)
+                            {
+                                //Antwort falsch, aber Werker
+                            }
+                            else
+                            {
+                                //Antwort falsch und Werker, Kategorie wird aber trotzdem gezählt
+                                fehlersumme++;
+                                gesamtSumme--;
+                            }
                         }
                         tempFehlerSumme++;
                     }
