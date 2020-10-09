@@ -292,6 +292,7 @@ namespace Pflanzenbestimmung_Desktop
 
                 quiz = tempQuiz.ToArray();
                 einzelStatistiken = new StatistikPflanze[quiz.Length];
+
             }
         }
 

@@ -20,7 +20,7 @@ namespace Pflanzenbestimmung_Desktop
         {
             get
             {
-                return wertung_werker != 0;
+                return wertung_werker == 1;
             }
             set
             {

@@ -19,7 +19,7 @@ namespace Pflanzenbestimmung_Desktop
         {
             get
             {
-                return Bool_Gelernt == 1;
+                return Bool_Gelernt != 0;
             }
         }
     }

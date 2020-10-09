@@ -56,7 +56,7 @@ namespace Pflanzenbestimmung_Desktop
                 }
                 else
                 {
-                    if (!Main.benutzer.IstWerker || Main.benutzer.IstWerker && antworten[i].WirdFürWerkGewertet)
+                    if (!Main.benutzer.IstWerker || (Main.benutzer.IstWerker && !antworten[i].WirdFürWerkGewertet))
                     {
                         //Antwort falsch
                         gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Red;
