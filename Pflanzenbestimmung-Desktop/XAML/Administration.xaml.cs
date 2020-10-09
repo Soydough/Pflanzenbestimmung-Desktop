@@ -26,7 +26,7 @@ namespace Pflanzenbestimmung_Desktop
 
         private void ZuLernendeKategorienEinstellungButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.changeContent(new ZuLernendeKategorienEinstellung());
+            MainWindow.changeContent(new AdminKategorieErstellen());
         }
 
         private void NeuePflanzeButton_Click(object sender, RoutedEventArgs e)

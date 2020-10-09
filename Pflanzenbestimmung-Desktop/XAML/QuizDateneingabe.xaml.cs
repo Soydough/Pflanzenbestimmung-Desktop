@@ -1,5 +1,6 @@
 ﻿using Flurl.Util;
 using System;
+using System.Runtime.InteropServices;
 using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop
@@ -16,9 +17,12 @@ namespace Pflanzenbestimmung_Desktop
             LinkesGrid.Children.Clear();
             RechtesGrid.Children.Clear();
 
+            LinkesGrid.RowDefinitions.Add(new RowDefinition());
+            RechtesGrid.RowDefinitions.Add(new RowDefinition());
+
             //MainWindow.DebugChangeTitle(Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorieAbfragen[0].antwort);
 
-            for (int i = 0; i < Main.kategorien.Count; i++)
+            for (int i = 0; i < Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorien.Length; i++)
             {
                 Kategorie k = Main.kategorien[i];
 
@@ -30,21 +34,39 @@ namespace Pflanzenbestimmung_Desktop
 
                 if (i % 2 == 0)
                 {
+                    LinkesGrid.RowDefinitions.Add(new RowDefinition());
+
                     LinkesGrid.Children.Add(kategorie);
                     LinkesGrid.Children.Add(eingabe);
 
-                    Grid.SetRow(kategorie, i / 2 + 1);
-                    Grid.SetRow(eingabe, i / 2 + 1);
+                    int zeile = 1;
+                    for (int j = 0; j < i; j += 2)
+                    {
+                        zeile++;
+                    }
+
+                    Grid.SetRow(kategorie, zeile);
+                    Grid.SetRow(eingabe, zeile);
 
                     Grid.SetColumn(eingabe, 1);
                 }
                 else
                 {
+                    RechtesGrid.RowDefinitions.Add(new RowDefinition());
+
                     RechtesGrid.Children.Add(kategorie);
                     RechtesGrid.Children.Add(eingabe);
 
-                    Grid.SetRow(kategorie, (i + 1) / 2 - 1);
-                    Grid.SetRow(eingabe, (i + 1) / 2 - 1);
+                    int zeile = 1;
+                    for(int j = 1; j < i; j += 2)
+                    {
+                        zeile++;
+                    }
+
+                    //Grid.SetRow(kategorie, (i - 1) / 2 + 1);
+                    //Grid.SetRow(eingabe, (i + 1) / 2 - 1);
+                    Grid.SetRow(kategorie, zeile);
+                    Grid.SetRow(eingabe, zeile);
 
                     Grid.SetColumn(eingabe, 1);
                 }
@@ -54,10 +76,10 @@ namespace Pflanzenbestimmung_Desktop
         private void Weiter_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Main.einzelStatistiken[Main.momentanePflanzeAusQuiz] = new StatistikPflanze();
-            Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten = new StatistikPflanzeAntwort[Main.kategorien.Count];
+            Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten = new StatistikPflanzeAntwort[Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorien.Length];
 
             //Antworten speichern
-            for (int i = 0; i < Main.kategorien.Count; i++)
+            for (int i = 0; i < Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten.Length; i++)
             {
                 string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;
 
@@ -74,6 +96,7 @@ namespace Pflanzenbestimmung_Desktop
                 Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].eingabe = eingabe;
                 Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].korrekt = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorien[i].antwort;
                 Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].kategorie = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorien[i].kategorie_name;
+                Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten[i].WirdFürWerkGewertet = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorien[i].wirdFürWerkGewertet;
             }
             //Speichere ID weitere Daten für die Einzelstatistik
             Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].id_pflanze = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.id_pflanze;

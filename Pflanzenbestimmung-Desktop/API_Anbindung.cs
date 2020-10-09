@@ -10,17 +10,18 @@ using System.Windows;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
+using System.Runtime.InteropServices;
 
 namespace Pflanzenbestimmung_Desktop
 {
     public class API_Anbindung
     {
         //private readonly string url = "http://localhost/dbSchnittstelle.php";
-        private readonly string url = "http://10.33.11.142/API/dbSchnittstelle.php";
+        //private readonly string url = "http://10.33.11.142/API/dbSchnittstelle.php";
         //private readonly string url = "http://localhost/pflanzenbestimmung/api/dbSchnittstelle.php";
         //private readonly string url = "http://karteigarten.rf.gd/API/dbSchnittstelle.php";
 
-        //private readonly string url = "https://pflanzenbestimmung.000webhostapp.com/dbSchnittstelle.php";
+        private readonly string url = "https://pflanzenbestimmung.000webhostapp.com/dbSchnittstelle.php";
 
         public API_Anbindung()
         {
@@ -122,6 +123,50 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
+        public void BildHochladen(int IDp, byte[] bild)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "createPBild",
+                        ["IDp"] = IDp.ToString(),
+                        ["Bild"] = bild.GetString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                }
+            }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
+        public void PflanzenbildLoeschen(int IDpb)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "deletePBild",
+                        ["IDpb"] = IDpb.ToString()
+                    };
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                }
+            }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
         public QuizPZuweisung[] BekommeQuizPZuweisung(int IDaz)
         {
             try
@@ -147,37 +192,7 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
-        public void BildHochladen(int IDp, byte[] bild)
-        {
-            try
-            {
-                using (var client = new WebClient())
-                {
-                    var values = new NameValueCollection
-                    {
-                        ["method"] = "createPBild",
-                        ["IDp"] = IDp.ToString(),
-                        //["Bild"] = bild.GetString()
-                        ["Bild"] = MySql.Data.MySqlClient.MySqlHelper.EscapeString(bild.GetString())
-                    };
-                    var response = client.UploadValues(url, values);
-                    var responseString = Encoding.Default.GetString(response);
-                }
-            }
-            catch (System.Exception e)
-            {
-                VerbindungsFehler(e);
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="kategorie"></param>
-        /// <param name="AnzeigeGala">Entweder als int oder als bool</param>
-        /// <param name="AnzeigeZier">Entweder als int oder als bool</param>
-        /// <param name="WertungWerker">Entweder als int oder als bool</param>
-        public void KategorieErstellen(string kategorie, object AnzeigeGala, object AnzeigeZier, object WertungWerker)
+        public void KategorieErstellen(string kategorie, int AnzeigeGala, int AnzeigeZier, int WertungWerker, int imQuiz)
         {
             try
             {
@@ -187,9 +202,10 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         ["method"] = "createKategorie",
                         ["Kategorie"] = kategorie,
-                        ["AnzeigeGala"] = AnzeigeGala.ToIntString(),
-                        ["AnzeigeZier"] = AnzeigeZier.ToIntString(),
-                        ["WertungWerker"] = WertungWerker.ToIntString()
+                        ["AnzeigeGala"] = AnzeigeGala.ToString(),
+                        ["AnzeigeZier"] = AnzeigeZier.ToString(),
+                        ["WertungWerker"] = WertungWerker.ToString(),
+                        ["ImQuiz"] = imQuiz.ToString()
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
@@ -202,14 +218,12 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="kategorie"></param>
-        /// <param name="AnzeigeGala">Entweder als int oder als bool</param>
-        /// <param name="AnzeigeZier">Entweder als int oder als bool</param>
-        /// <param name="WertungWerker">Entweder als int oder als bool</param>
-        public void KategorieAktualisieren(string kategorie, object AnzeigeGala, object AnzeigeZier, object WertungWerker)
+
+        public void KategorieAktualisieren(string katerie, bool AnzeigeGala, bool AnzeigeZier, bool WertungWerker, bool imQuiz)
+        {
+            KategorieAktualisieren(katerie, AnzeigeGala.ToInt(), AnzeigeZier.ToInt(), WertungWerker.ToInt(), imQuiz.ToInt());
+        }
+        public void KategorieAktualisieren(string kategorie, int AnzeigeGala, int AnzeigeZier, int WertungWerker, int imQuiz)
         {
             try
             {
@@ -219,9 +233,10 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         ["method"] = "updateKategorie",
                         ["Kategorie"] = kategorie,
-                        ["AnzeigeGala"] = AnzeigeGala.ToIntString(),
-                        ["AnzeigeZier"] = AnzeigeZier.ToIntString(),
-                        ["WertungWerker"] = WertungWerker.ToIntString()
+                        ["AnzeigeGala"] = AnzeigeGala.ToString(),
+                        ["AnzeigeZier"] = AnzeigeZier.ToString(),
+                        ["WertungWerker"] = WertungWerker.ToString(),
+                        ["imQuiz"] = imQuiz.ToString()
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
@@ -489,7 +504,6 @@ namespace Pflanzenbestimmung_Desktop
             {
                 VerbindungsFehler(e);
             }
-
         }
 
         private void VerbindungsFehler(Exception e)
@@ -592,5 +606,87 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
+        public Abgefragt[] BekommeAbgefragt(int IDaz)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "getAbgefragt",
+                        ["IDa"] = IDaz.ToString() //Keine Ahnung, ob das IDaz sein sollte, aber jedenfalls ist es nicht so. Dies ist ein "call out". Ich calle die Schnittstelle out. ganz recht.
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    return JsonConvert.DeserializeObject<Abgefragt[]>(responseString);
+                }
+            }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+
+            return null;
+        }
+
+        public void AbgefragtErstellen(int IDaz, int IDp, int Counter, bool Gelernt)
+        {
+            AbgefragtErstellen(IDaz, IDp, Counter, Gelernt.ToInt());
+        }
+        public void AbgefragtErstellen(int IDaz, int IDp, int Counter, int Gelernt)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "createAbgefragt",
+                        ["IDaz"] = IDaz.ToString(),
+                        ["IDp"] = IDp.ToString(),
+                        ["Counter"] = Counter.ToString(),
+                        ["Gelernt"] = Gelernt.ToString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                }
+            }
+
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
+        public void AbgefragtAktualisieren(int IDaz, int IDp, int Counter, bool Gelernt)
+        {
+            AbgefragtAktualisieren(IDaz, IDp, Counter, Gelernt.ToInt());
+        }
+        public void AbgefragtAktualisieren(int IDaz, int IDp, int Counter, int Gelernt)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "updateAbgefragt",
+                        ["IDaz"] = IDaz.ToString(),
+                        ["IDp"] = IDp.ToString(),
+                        ["Counter"] = Counter.ToString(),
+                        ["Gelernt"] = Gelernt.ToString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                }
+            }
+
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
     }//End Class
 }//End Namespace
