@@ -157,6 +157,8 @@ namespace Pflanzenbestimmung_Desktop
             int wenigsteFehlerPflanzeId = -1;
 
             LadeAbgefragt();
+
+            int gesamtSumme = 0;
             for (int i = 0; i < einzelStatistiken.Length; i++)
             {
                 int tempFehlerSumme = 0;
@@ -164,10 +166,18 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     StatistikPflanzeAntwort temp = einzelStatistiken[i].antworten[j];
 
+                    gesamtSumme++;
                     //if (temp.eingabe != temp.korrekt)
                     if (!IstRichtig(temp.eingabe, temp.korrekt))
                     {
-                        fehlersumme++;
+                        if (!benutzer.IstWerker || (benutzer.IstWerker && einzelStatistiken[i].antworten[j].WirdFürWerkGewertet))
+                        {
+                            fehlersumme++;
+                        }
+                        else
+                        {
+                            gesamtSumme--;
+                        }
                         tempFehlerSumme++;
                     }
                 }
@@ -201,7 +211,7 @@ namespace Pflanzenbestimmung_Desktop
             }
 
             //int fehlerquote = (int)(100.0 * kategorien.Count / fehlersumme);
-            string fehlerquote = fehlersumme + "/" + (kategorien.Count * (einzelStatistiken.Length + 1));
+            string fehlerquote = fehlersumme + "/" + (gesamtSumme);
             api_anbindung.ErstelleStatistik(benutzer.id, fehlerquote, quizTimer.Elapsed, wenigsteFehlerPflanzeId);
 
             LadeStatistiken();
@@ -251,8 +261,8 @@ namespace Pflanzenbestimmung_Desktop
                     bool gelernt = false;
                     abgefragtZuweisung.TryGetValue(index, out gelernt);
 
-                    if(!gelernt)
-                    tempPflanzen.Add(pflanzen[index]);
+                    if (!gelernt && ((benutzer.IstGala && pflanzen[index].IstGala) || (benutzer.IstZier && pflanzen[index].IstZier)))
+                        tempPflanzen.Add(pflanzen[index]);
                 }
 
                 if(tempPflanzen.IsNullOrEmpty())
@@ -401,6 +411,9 @@ namespace Pflanzenbestimmung_Desktop
         /// <returns></returns>
         public static bool IstRichtig(string eingabe, string korrekt)
         {
+            if (eingabe.ToArray().IsNullOrEmpty())
+                return false;
+
             //Bekommt alle möglichen Antworten (mit , getrennt)
             string[] tempArr = korrekt.Split(',');
             string[] tempArr2;
