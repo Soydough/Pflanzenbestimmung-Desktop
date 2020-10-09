@@ -139,6 +139,9 @@
     <Compile Include="QuizPZuweisung.cs" />
     <Compile Include="StatistikPflanze.cs" />
     <Compile Include="StatistikPflanzeAntwort.cs" />
+    <Compile Include="Uebersicht.xaml.cs">
+      <DependentUpon>Uebersicht.xaml</DependentUpon>
+    </Compile>
     <Compile Include="XAML\AdminGesamtStatistik.xaml.cs">
       <DependentUpon>AdminGesamtStatistik.xaml</DependentUpon>
     </Compile>
@@ -190,6 +193,10 @@
     <Compile Include="XAML\ZuLernendeKategorienEinstellung.xaml.cs">
       <DependentUpon>ZuLernendeKategorienEinstellung.xaml</DependentUpon>
     </Compile>
+    <Page Include="Uebersicht.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="XAML\AdminGesamtStatistik.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

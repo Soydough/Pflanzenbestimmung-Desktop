@@ -45,6 +45,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
             int gala = 0;
             int zier = 0;
             int werker = 0;
+            int imQuiz = 0;
             if (GalaCheckBox.IsChecked == true)
             {
                 gala = 1;
@@ -57,17 +58,22 @@ namespace Pflanzenbestimmung_Desktop.XAML
             {
                 werker = 1;
             }
-            Main.api_anbindung.KategorieErstellen(name, gala, zier, werker);
-
+            if (ImQuizCheckBox.IsChecked == true)
+            {
+                imQuiz = 1;
+            }
+            Main.api_anbindung.KategorieErstellen(name, gala, zier, werker, imQuiz);
             txtneuekategoriename.Clear();
             GalaCheckBox.IsChecked = false;
             ZierCheckBox.IsChecked = false;
             WerkerCheckBox.IsChecked = false;
+            ImQuizCheckBox.IsChecked = false;
+            MainWindow.changeContent(new AdminKategorieErstellen());
         }
 
         private void btnhomepage_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow.changeContent(new Administration());
         }
 
         private void btnkatauswahl_Click(object sender, RoutedEventArgs e)

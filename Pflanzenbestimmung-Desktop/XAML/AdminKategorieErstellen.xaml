@@ -24,7 +24,7 @@
         <Button x:Name="btnkatnamenbearbeiten" Content="Namen ändern" HorizontalAlignment="Left" Margin="275,325,0,0" VerticalAlignment="Top" Width="215"/>
         <ListView x:Name="listvkategorieausw" HorizontalAlignment="Left" Height="208" Margin="560,102,0,0" VerticalAlignment="Top" Width="215">
             <StackPanel Name="stack">
-                
+                <!-- Hier wird in der eigentliche Klasse die Checkboxen eingefügt.-->
             </StackPanel>
             <!--<ListView.View>
                 <GridView>
@@ -41,6 +41,7 @@
         <CheckBox Name="GalaCheckBox" Content="Gala" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Width="215"/>
         <CheckBox Name="ZierCheckBox" Content="Ziergarten" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Width="215"/>
         <CheckBox Name="WerkerCheckBox" Content="Wichtig für die Werker?" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Width="215"/>
+        <CheckBox Name="ImQuizCheckBox" Content="Direkt im Quiz verwenden?" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top" Width="215"/>
         <Label Content="Name der Kategorie:" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="215"/>
         <Button Content="Kategorie löschen" HorizontalAlignment="Left" Margin="275,350,0,0" VerticalAlignment="Top" Width="215"/>
     </Grid>
