@@ -56,17 +56,26 @@ namespace Pflanzenbestimmung_Desktop
                 }
                 else
                 {
-                    if (!Main.benutzer.IstWerker || (Main.benutzer.IstWerker && !antworten[i].WirdFürWerkGewertet))
+                    if (!Main.benutzer.IstWerker)
                     {
-                        //Antwort falsch
+                        //Antwort falsch und kein Werker
                         gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Red;
                         gegebeneAntwortLabel.Content += " ×";
                     }
                     else
                     {
-                        //Antwort ist falsch, aber egal; weil Werker
-                        gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Orange;
-                        gegebeneAntwortLabel.Content += " /";
+                        if (!antworten[i].WirdFürWerkGewertet)
+                        {
+                            //Antwort falsch, aber Werker
+                            gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Orange;
+                            gegebeneAntwortLabel.Content += " /";
+                        }
+                        else
+                        {
+                            //Antwort falsch und Werker, Kategorie wird aber trotzdem gezählt
+                            gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Red;
+                            gegebeneAntwortLabel.Content += " ×";
+                        }
                     }
                 }
 
