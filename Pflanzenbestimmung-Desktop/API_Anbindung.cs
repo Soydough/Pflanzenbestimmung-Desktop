@@ -192,10 +192,6 @@ namespace Pflanzenbestimmung_Desktop
             return null;
         }
 
-        public void KategorieErstellen(string kategorie, bool AnzeigeGala, bool AnzeigeZier, bool WertungWerker, bool imQuiz)
-        {
-            KategorieErstellen(kategorie, AnzeigeGala.ToInt(), AnzeigeZier.ToInt(), WertungWerker.ToInt(), imQuiz.ToInt());
-        }
         public void KategorieErstellen(string kategorie, int AnzeigeGala, int AnzeigeZier, int WertungWerker, int imQuiz)
         {
             try
@@ -209,7 +205,7 @@ namespace Pflanzenbestimmung_Desktop
                         ["AnzeigeGala"] = AnzeigeGala.ToString(),
                         ["AnzeigeZier"] = AnzeigeZier.ToString(),
                         ["WertungWerker"] = WertungWerker.ToString(),
-                        ["imQuiz"] = imQuiz.ToString()
+                        ["ImQuiz"] = imQuiz.ToString()
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
