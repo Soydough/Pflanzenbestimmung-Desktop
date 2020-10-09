@@ -296,9 +296,7 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public void PflanzeErstellen(string gattung, string art, string dename,
-            string famname, string herkunft, string bluete, string bluetezeit,
-            string blatt, string wuchs, string besonderheiten)
+        public void PflanzeErstellen()
         {
             try
             {
@@ -306,16 +304,16 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     var values = new NameValueCollection()
                     {
-                        ["dbgattung"] = gattung,
-                        ["dbart"] = art,
-                        ["dbdename"] = dename,
-                        ["dbfamname"] = famname,
-                        ["herkunft"] = herkunft,
-                        ["bluete"] = bluete,
-                        ["bluetezeit"] = bluetezeit,
-                        ["blatt"] = blatt,
-                        ["wuchs"] = wuchs,
-                        ["besonderheiten"] = besonderheiten
+                        //["dbgattung"] = gattung,
+                        //["dbart"] = art,
+                        //["dbdename"] = dename,
+                        //["dbfamname"] = famname,
+                        //["herkunft"] = herkunft,
+                        //["bluete"] = bluete,
+                        //["bluetezeit"] = bluetezeit,
+                        //["blatt"] = blatt,
+                        //["wuchs"] = wuchs,
+                        //["besonderheiten"] = besonderheiten
                     };
                 }
             }

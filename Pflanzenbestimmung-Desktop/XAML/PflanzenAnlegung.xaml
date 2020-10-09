@@ -31,36 +31,7 @@
             </StackPanel.Style>
 
             <ScrollViewer Height="400">
-                <StackPanel>
-                    <Label Content="Gattungsname:" />
-                    <TextBox Name="GattungTextBox" />
-
-                    <Label Content="Artname:" Grid.Row="1"/>
-                    <TextBox Name="ArtTextBox" Grid.Row="1"/>
-
-                    <Label Content="Deutscher Name:" Grid.Row="2"/>
-                    <TextBox Name="DeutscherNameTextBox" Grid.Row="2"/>
-
-                    <Label Content="Familienname:" Grid.Row="3"/>
-                    <TextBox Name="FamilienNameTextBox" Grid.Row="3"/>
-
-                    <Label Content="Heimat, Herkunft:" Grid.Row="4"/>
-                    <TextBox Name="HerkunftTextBox" Grid.Row="4"/>
-
-                    <Label Content="Blüte:" Grid.Row="5"/>
-                    <TextBox Name="BlueteTextBox" Grid.Row="5"/>
-
-                    <Label Content="Blütezeit:" Grid.Row="6"/>
-                    <TextBox Name="BluetezeitTextBox" Grid.Row="6"/>
-
-                    <Label Content="Blatt:" Grid.Row="7"/>
-                    <TextBox Name="BlattTextBox" Grid.Row="7"/>
-
-                    <Label Content="Habitus, Wuchs:" Grid.Row="8"/>
-                    <TextBox Name="HabitusTextBox" Grid.Row="8"/>
-
-                    <Label Content="Besonderheiten:" Grid.Row="9"/>
-                    <TextBox Name="BesonderheitenTextBox" Grid.Row="9"/>
+                <StackPanel Name="StackPanel_Quiz_Pflanze">
                 </StackPanel>
             </ScrollViewer>
         </StackPanel>

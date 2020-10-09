@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -8,9 +10,27 @@ namespace Pflanzenbestimmung_Desktop
     /// </summary>
     public partial class PflanzenAnlegung : UserControl
     {
+
         public PflanzenAnlegung()
         {
-            InitializeComponent();
+
+            InitializeComponent(); // TODO Design der Labels / Texboxen
+
+            for (int i = 0; i < Main.kategorien.Count; i++)
+            {
+                Label lb = new Label();
+                string name = "lb" + Main.kategorien[i].kategorie;
+                lb.Name = name;
+                lb.Content = Main.kategorien[i].kategorie;
+                RegisterName(name, lb);
+                
+                TextBox tb = new TextBox();
+                tb.Name = "tb" + Main.kategorien[i].kategorie;
+
+                StackPanel_Quiz_Pflanze.Children.Add(lb);
+                
+                StackPanel_Quiz_Pflanze.Children.Add(tb);
+            }
         }
 
         private void AbbrechenButton_Click(object sender, RoutedEventArgs e)
@@ -20,20 +40,16 @@ namespace Pflanzenbestimmung_Desktop
 
         private void SpeichernButton_Click(object sender, RoutedEventArgs e)
         {
-            string gattung = GattungTextBox.Text;
-            string art = ArtTextBox.Text;
-            string deName = DeutscherNameTextBox.Text;
-            string famname = FamilienNameTextBox.Text;
-            string herkunft = HerkunftTextBox.Text;
-            string bluete = BlueteTextBox.Text;
-            string blueteZeit = BluetezeitTextBox.Text;
-            string blatt = BlattTextBox.Text;
-            string wuchs = HabitusTextBox.Text;
-            string besonderheiten = BesonderheitenTextBox.Text;
+            List<string> werte = new List<string>();
 
-            Main.api_anbindung.PflanzeErstellen(
-                gattung, art, deName, famname, herkunft,
-                bluete, blueteZeit, blatt, wuchs, besonderheiten);
+            for (int i = 0; i < StackPanel_Quiz_Pflanze.Children.Count; i++)
+            {
+                object aktuellesObject = StackPanel_Quiz_Pflanze.FindName("tb" + Main.kategorien[i].kategorie);
+
+
+
+            }
+            //Main.api_anbindung.PflanzeErstellen();
         }
     }
 }
