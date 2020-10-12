@@ -73,5 +73,17 @@ namespace Pflanzenbestimmung_Desktop
                 werker_gewertet = value.ToInt();
             }
         }
+
+        public bool wirdImQuizAngezeigt
+        {
+            get
+            {
+                return imQuiz != 0;
+            }
+            set
+            {
+                imQuiz = value.ToInt();
+            }
+        }
     }
 }

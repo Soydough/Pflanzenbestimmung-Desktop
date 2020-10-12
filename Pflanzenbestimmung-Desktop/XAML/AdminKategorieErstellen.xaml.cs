@@ -26,19 +26,8 @@ namespace Pflanzenbestimmung_Desktop.XAML
             InitializeComponent();
             Main.kategorien = Main.api_anbindung.Bekommen<Kategorie>().ToList();
             var itemList = Main.kategorien.ToList();
-            dynamicCheckbox();
             GridKategorienBearbeiten.ItemsSource = Main.InitializeKategorieVerwaltungListe();
-        }
-     
-        private void dynamicCheckbox()
-        {
-            var itemList = Main.kategorien.ToList();
-            foreach (var item in itemList)
-            {
-                CheckBox kat = new CheckBox();
-                kat.Content = item.kategorie.ToString();
-                stack.Children.Add(kat);
-            }
+            listvkategorieausw.ItemsSource = Main.InitializeKategorieVerwaltungListe();
         }
 
         private void btnneuekategorie_Click(object sender, RoutedEventArgs e)
@@ -80,9 +69,30 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
         private void btnkatauswahl_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < stack.Children.Count; i++)
+
+        }
+
+        private void btnkatnamenbearbeiten_Click(object sender, RoutedEventArgs e)
+        {
+            if (GridKategorienBearbeiten.SelectedItem == null)
             {
-                
+                MessageBox.Show("Niemanden ausgewählt!");
+            }
+        }
+
+        private void GridKategorienBearbeiten_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            for (int i = 0; i < Main.kategorieVerwaltungListe.Count; i++)
+            {
+                if (GridKategorienBearbeiten.SelectedItem.Equals(Main.kategorieVerwaltungListe[i]))
+                {
+                    txtneuekategoriename.Text = Main.kategorieVerwaltungListe[i].kategorie;
+                    GalaCheckBox.IsChecked = Main.kategorieVerwaltungListe[i].wirdFürGalaAngezeigt;
+                    ZierCheckBox.IsChecked = Main.kategorieVerwaltungListe[i].wirdFürZierAngezeigt;
+                    WerkerCheckBox.IsChecked = Main.kategorieVerwaltungListe[i].wirdFürWerkGewertet;
+                    ImQuizCheckBox.IsChecked = Main.kategorieVerwaltungListe[i].wirdImQuizAngezeigt;
+                    break;
+                }
             }
         }
     }
