@@ -18,7 +18,7 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
             Main.LadeAzubiDaten();
-            Azubiliste.ItemsSource = Main.InitializeMylist();
+            Azubiliste.ItemsSource = Main.InitializeAzubiVerwaltungListe();
         }
 
         private void Zurück_Click(object sender, RoutedEventArgs e)
@@ -35,11 +35,11 @@ namespace Pflanzenbestimmung_Desktop
             }
             else
             {
-                for (int i = 0; i < Main.MyList.Count; i++)
+                for (int i = 0; i < Main.azubiVerwaltungListe.Count; i++)
                 {
-                    if (Azubiliste.SelectedItem.Equals(Main.MyList[i]))
+                    if (Azubiliste.SelectedItem.Equals(Main.azubiVerwaltungListe[i]))
                     {
-                        auswahl = Main.MyList[i];
+                        auswahl = Main.azubiVerwaltungListe[i];
                         break;
                     }
                 }
@@ -60,11 +60,11 @@ namespace Pflanzenbestimmung_Desktop
             }
             else
             {
-                for (int i = 0; i < Main.MyList.Count; i++)
+                for (int i = 0; i < Main.azubiVerwaltungListe.Count; i++)
                 {
-                    if (Azubiliste.SelectedItem.Equals(Main.MyList[i]))
+                    if (Azubiliste.SelectedItem.Equals(Main.azubiVerwaltungListe[i]))
                     {
-                        auswahl = Main.MyList[i];
+                        auswahl = Main.azubiVerwaltungListe[i];
                         break;
                     }
                 }

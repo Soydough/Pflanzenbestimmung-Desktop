@@ -25,11 +25,13 @@ namespace Pflanzenbestimmung_Desktop.XAML
         {
             InitializeComponent();
             Main.kategorien = Main.api_anbindung.Bekommen<Kategorie>().ToList();
+            var itemList = Main.kategorien.ToList();
             dynamicCheckbox();
+            GridKategorienBearbeiten.ItemsSource = Main.InitializeKategorieVerwaltungListe();
         }
      
         private void dynamicCheckbox()
-        {            
+        {
             var itemList = Main.kategorien.ToList();
             foreach (var item in itemList)
             {

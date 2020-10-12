@@ -125,19 +125,34 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public static ObservableCollection<Azubis> MyList
+        public static ObservableCollection<Azubis> azubiVerwaltungListe
         {
             get; set;
         }
 
-        public static ObservableCollection<Azubis> InitializeMylist()
+        public static ObservableCollection<Azubis> InitializeAzubiVerwaltungListe()
         {
-            MyList = new ObservableCollection<Azubis>();
+            azubiVerwaltungListe = new ObservableCollection<Azubis>();
             for (int i = 0; i < azubi.Length; i++)
             {
-                MyList.Add(azubi[i]);
+                azubiVerwaltungListe.Add(azubi[i]);
             }
-            return MyList;
+            return azubiVerwaltungListe;
+        }
+
+        public static ObservableCollection<Kategorie> kategorieVerwaltungListe
+        {
+            get; set;
+        }
+
+        public static ObservableCollection<Kategorie> InitializeKategorieVerwaltungListe()
+        {
+            kategorieVerwaltungListe = new ObservableCollection<Kategorie>();
+            for (int i = 0; i < kategorien.Count; i++)
+            {
+                kategorieVerwaltungListe.Add(kategorien[i]);
+            }
+            return kategorieVerwaltungListe;
         }
 
         public static void LadeStatistiken()
