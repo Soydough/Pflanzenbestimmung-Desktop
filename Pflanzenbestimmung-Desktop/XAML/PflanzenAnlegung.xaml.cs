@@ -33,6 +33,20 @@ namespace Pflanzenbestimmung_Desktop
                 StackPanelPflanzenAnlegung.Children.Add(tb);
             }
 
+            CheckBox galaCheckBox = new CheckBox();
+            galaCheckBox.Content = "Gilt für Gala";
+            galaCheckBox.Margin = new Thickness(0, 0, 0, 60);
+
+            CheckBox zierCheckBox = new CheckBox();
+            zierCheckBox.Content = "Gilt für Zier";
+            zierCheckBox.Margin = new Thickness(0, 0, 0, 60);
+
+            RegisterName("galaCheckBox", galaCheckBox);
+            RegisterName("zierCheckBox", zierCheckBox);
+
+            StackPanelPflanzenAnlegung.Children.Add(galaCheckBox);
+            StackPanelPflanzenAnlegung.Children.Add(zierCheckBox);
+
             BilderHochladenFlaeche.DragEnter += new DragEventHandler(DragEnter);
             BilderHochladenFlaeche.Drop += new DragEventHandler(DragDrop);
         }
@@ -94,7 +108,10 @@ namespace Pflanzenbestimmung_Desktop
                 werte.Add(aktuellesObject.Text);
             }
 
-            Main.api_anbindung.PflanzeErstellen(werte);
+            bool istGala = (StackPanelPflanzenAnlegung.FindName("galaCheckBox") as CheckBox).IsChecked.Value;
+            bool istZier = (StackPanelPflanzenAnlegung.FindName("zierCheckBox") as CheckBox).IsChecked.Value;
+
+            Main.api_anbindung.PflanzeErstellen(istGala, istZier, werte);
             Main.pflanzen = Main.api_anbindung.Bekommen<Pflanze>();
 
             foreach (string s in bilder)
@@ -102,6 +119,10 @@ namespace Pflanzenbestimmung_Desktop
                 byte[] b = File.ReadAllBytes(s);
                 Main.api_anbindung.BildHochladen(Main.pflanzen[Main.pflanzen.Length].id_pflanze, b);
             }
+
+            bilder = new List<string>();
+
+            MainWindow.changeContent(new Hauptmenü());
         }
     }
 }

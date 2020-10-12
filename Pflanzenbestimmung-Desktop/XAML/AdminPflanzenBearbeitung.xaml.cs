@@ -48,6 +48,20 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 StackPanelPflanzenBearbeitung.Children.Add(tb);
             }
 
+            CheckBox galaCheckBox = new CheckBox();
+            galaCheckBox.Content = "Gilt für Gala";
+            galaCheckBox.Margin = new Thickness(0, 0, 0, 60);
+
+            CheckBox zierCheckBox = new CheckBox();
+            zierCheckBox.Content = "Gilt für Zier";
+            zierCheckBox.Margin = new Thickness(0, 0, 0, 60);
+
+            RegisterName("galaCheckBox", galaCheckBox);
+            RegisterName("zierCheckBox", zierCheckBox);
+
+            StackPanelPflanzenBearbeitung.Children.Add(galaCheckBox);
+            StackPanelPflanzenBearbeitung.Children.Add(zierCheckBox);
+
             BilderHochladenFlaeche.DragEnter += new DragEventHandler(DragEnter);
             BilderHochladenFlaeche.Drop += new DragEventHandler(DragDrop);
 
@@ -58,6 +72,12 @@ namespace Pflanzenbestimmung_Desktop.XAML
         public void aktualisiere()
         {
             aktualisiereAnzahlDerBereitsVorhandenenBilder();
+
+            for(int i = 0; i <  Main.kategorien.Count; i++)
+            {
+                TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
+                aktuellesObject.Text = "";
+            }
 
             try
             {
@@ -104,7 +124,8 @@ namespace Pflanzenbestimmung_Desktop.XAML
                     else
                     {
                         //Schon 10 Bilder da
-                        MessageBox.Show("Die Maximalanzahl der Bilder wurde erreicht!");
+                        MessageBox.Show("Die Maximalanzahl der Bilder wurde erreicht!\n" +
+                            "Bitte kontaktieren Sie den System-Administrator, um Bilder zu löschen");
                     }
                 }
                 else
@@ -135,7 +156,10 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 werte.Add(aktuellesObject.Text);
             }
 
-            Main.api_anbindung.PflanzeAktualisieren(werte);
+            bool istGala = (StackPanelPflanzenBearbeitung.FindName("galaCheckBox") as CheckBox).IsChecked.Value;
+            bool istZier = (StackPanelPflanzenBearbeitung.FindName("zierCheckBox") as CheckBox).IsChecked.Value;
+
+            //Main.api_anbindung.PflanzeAktualisieren(Main.pflanzen[ausgewaehltePflanze].id_pflanze, istGala, istZier, werte);
             Main.pflanzen = Main.api_anbindung.Bekommen<Pflanze>();
 
             foreach (string s in bilder)
@@ -143,6 +167,9 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 byte[] b = File.ReadAllBytes(s);
                 Main.api_anbindung.BildHochladen(Main.pflanzen[ausgewaehltePflanze].id_pflanze, b);
             }
+            bilder = new List<string>();
+
+            aktualisiere();
 
             MessageBox.Show("Gespeichert!");
         }

@@ -312,7 +312,7 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public void PflanzeErstellen(List<string> liste)
+        public void PflanzeErstellen(bool istGala, bool istZier, List<string> liste)
         {
             try
             {
@@ -320,7 +320,8 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     var values = new NameValueCollection()
                     {
-                        ["method"] = "createPflanzen"
+                        ["method"] = "createPflanzen",
+                        ["zierbau"] = istZier.ToString(),
                         //["dbgattung"] = gattung,
                         //["dbart"] = art,
                         //["dbdename"] = dename,

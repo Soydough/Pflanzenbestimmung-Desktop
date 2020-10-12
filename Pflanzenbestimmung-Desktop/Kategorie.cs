@@ -36,7 +36,7 @@ namespace Pflanzenbestimmung_Desktop
         public int werker_gewertet;
 
         
-        public int imQuiz;
+        public int im_quiz;
 
         public bool wirdFürGalaAngezeigt
         {
@@ -78,11 +78,11 @@ namespace Pflanzenbestimmung_Desktop
         {
             get
             {
-                return imQuiz != 0;
+                return im_quiz != 0;
             }
             set
             {
-                imQuiz = value.ToInt();
+                im_quiz = value.ToInt();
             }
         }
     }
