@@ -17,15 +17,17 @@ namespace Pflanzenbestimmung_Desktop
 
         new public static Administrator fromTempObjekt(BenutzerTemplate temp)
         {
-            Administrator a = new Administrator();
-            a.nutzername = temp.nutzername;
-            a.name = temp.name;
-            a.vorname = temp.name;
-            a.berflag = temp.berflag;
-            a.istAdmin = true;
-            a.id_ausbilder = temp.id_ausbilder;
+            Administrator administrator = new Administrator()
+            {
+                nutzername = temp.nutzername,
+                name = temp.name,
+                vorname = temp.name,
+                berflag = temp.berflag,
+                istAdmin = true,
+                id_ausbilder = temp.id_ausbilder
+            };
 
-            return a;
+            return administrator;
         }
         public override string ToString()
         {

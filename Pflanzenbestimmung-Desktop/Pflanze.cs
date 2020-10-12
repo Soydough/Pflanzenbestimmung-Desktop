@@ -26,5 +26,10 @@ namespace Pflanzenbestimmung_Desktop
                 return zierpflanzenbau != 0;
             }
         }
+
+        public override string ToString()
+        {
+            return $"{kategorien[0].antwort} {kategorien[1].antwort} {kategorien[2].antwort}";
+        }
     }
 }

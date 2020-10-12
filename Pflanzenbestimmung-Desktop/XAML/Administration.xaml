@@ -6,14 +6,23 @@
              xmlns:local="clr-namespace:Pflanzenbestimmung_Desktop"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="800">
-    <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
-        <Button Name="NeuePflanzeButton" Click="NeuePflanzeButton_Click" Content="Neue Pflanze anlegen"/>
-        <Button Name="ZuLernendeKategorienEinstellungButton" Click="ZuLernendeKategorienEinstellungButton_Click" Content="Zu lernende Kategorien"/>
-        <Button Name="NeuerBenutzer" Click="NeuerBenutzer_Click" Content="Neuen Benutzer anlegen"/>
-        <Button Name="Benutzerverwaltung" Click="Benutzerverwaltung_Click" Content="Vorhandene Nutzer verwalten"/>
-        <Button Name="StatistikButton" Click="StatistikButton_Click" Content="Statistik" />
-        <Button Name="ErscheinendePflanzen" Click="ErscheinendePflanzen_Click" Content="Erscheinende Pflanzen verwalten" />
-        <Button Name="QuizGroeßeErstellen" Click="QuizGroeßeErstellen_Click" Content="Quiz Größe erstellen"/>
-        <Button Name="HauptmenüButton" Click="HauptmenüButton_Click" Content="Zurück zum Hauptmenü"/>
-    </StackPanel>
+    <TabControl>
+        <TabItem Header="Generell">
+            <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
+                <Button Name="NeuePflanzeButton" Click="NeuePflanzeButton_Click" Content="Neue Pflanze anlegen"/>
+                <Button Name="ZuLernendeKategorienEinstellungButton" Click="ZuLernendeKategorienEinstellungButton_Click" Content="Zu lernende Kategorien"/>
+                <Button Name="NeuerBenutzer" Click="NeuerBenutzer_Click" Content="Neuen Benutzer anlegen"/>
+                <Button Name="Benutzerverwaltung" Click="Benutzerverwaltung_Click" Content="Vorhandene Nutzer verwalten"/>
+                <Button Name="StatistikButton" Click="StatistikButton_Click" Content="Statistik" />
+                <Button Name="ErscheinendePflanzen" Click="ErscheinendePflanzen_Click" Content="Erscheinende Pflanzen verwalten" />
+                <Button Name="QuizGroeßeErstellen" Click="QuizGroeßeErstellen_Click" Content="Quiz Größe erstellen"/>
+                <Button Name="HauptmenüButton" Click="HauptmenüButton_Click" Content="Zurück zum Hauptmenü"/>
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Pflanzen">
+            <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
+                <Button Name="Pflanzenbearbeiten" Click="Pflanzenbearbeiten_Click" Content="Pflanzen bearbeiten" />
+            </StackPanel>
+        </TabItem>
+    </TabControl>
 </UserControl>

@@ -63,8 +63,6 @@ namespace Pflanzenbestimmung_Desktop
             get { return pruefung; }
             set { pruefung = value; }
         }
-
-
     }
 
 }

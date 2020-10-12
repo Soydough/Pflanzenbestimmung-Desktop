@@ -53,5 +53,10 @@ namespace Pflanzenbestimmung_Desktop
         {
             MainWindow.changeContent(new QuizArtErstellen());
         }
+
+        private void Pflanzenbearbeiten_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new AdminPflanzenBearbeitung());
+        }
     }
 }

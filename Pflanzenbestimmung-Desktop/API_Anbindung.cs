@@ -312,7 +312,7 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public void PflanzeErstellen()
+        public void PflanzeErstellen(List<string> liste)
         {
             try
             {
@@ -331,6 +331,49 @@ namespace Pflanzenbestimmung_Desktop
                         //["wuchs"] = wuchs,
                         //["besonderheiten"] = besonderheiten
                     };
+
+                    for(int i = 0; i < liste.Count && i < Main.kategorien.Count; i++)
+                    {
+                        values[Main.kategorien[i].kategorie] = liste[i];
+                    }
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    if(responseString.Length > 0)
+                    {
+                        throw new Exception(responseString);
+                    }
+                }
+            }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
+        public void PflanzeAktualisieren(List<string> liste)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection();
+
+                    values["method"] = "updatePflanze";
+
+                    for (int i = 0; i < liste.Count && i < Main.kategorien.Count; i++)
+                    {
+                        values[Main.kategorien[i].kategorie] = liste[i];
+                    }
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    if (responseString.Length > 0)
+                    {
+                        throw new Exception(responseString);
+                    }
                 }
             }
             catch (System.Exception e)
