@@ -373,5 +373,11 @@
   <ItemGroup>
     <Resource Include="XAML\bild_hochladen_platzhalter.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bilder\hochladenplatzhalter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="XAML\hochladenplatzhalter.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
