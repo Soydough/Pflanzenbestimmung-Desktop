@@ -20,8 +20,8 @@ namespace Pflanzenbestimmung_Desktop
         //private readonly string url = "http://10.33.11.142/API/dbSchnittstelle.php";
         //private readonly string url = "http://localhost/pflanzenbestimmung/api/dbSchnittstelle.php";
         //private readonly string url = "http://karteigarten.rf.gd/API/dbSchnittstelle.php";
-
-        private readonly string url = "https://pflanzenbestimmung.000webhostapp.com/dbSchnittstelle.php";
+        private readonly string url = "http://10.33.11.134/API/dbSchnittstelle.php";
+        //private readonly string url = "https://pflanzenbestimmung.000webhostapp.com/dbSchnittstelle.php";
 
         public API_Anbindung()
         {
@@ -210,6 +210,7 @@ namespace Pflanzenbestimmung_Desktop
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
                 }
+                MessageBox.Show("Kategorie erfolgreich hinzugefügt. Bitte aktualisieren Sie die Pflanzen bevor Sie die Kategorie benutzen.");
             }
 
             catch (System.Exception e)

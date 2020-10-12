@@ -9,10 +9,13 @@ namespace Pflanzenbestimmung_Desktop
         /// Die ID
         /// </summary>
         public int id;
+
         /// <summary>
         /// Die Kategorie
         /// </summary>
         public string kategorie;
+
+        public string Kategorien { get {return kategorie;} set {kategorie = value;} }
 
         /// <summary>
         /// Ob die Kategorie für Gartenlandschaftsbauer angezeigt werden soll
