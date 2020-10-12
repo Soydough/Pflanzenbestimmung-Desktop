@@ -204,7 +204,6 @@ namespace Pflanzenbestimmung_Desktop
                         {
                             //Antwort falsch und kein Werker
                             fehlersumme++;
-                            gesamtSumme--;
                             tempFehlerSumme++;
                         }
                         else
@@ -212,12 +211,12 @@ namespace Pflanzenbestimmung_Desktop
                             if(!temp.WirdFürWerkGewertet)
                             {
                                 //Antwort falsch, aber Werker
+                                gesamtSumme--;
                             }
                             else
                             {
                                 //Antwort falsch und Werker, Kategorie wird aber trotzdem gezählt
                                 fehlersumme++;
-                                gesamtSumme--;
                                 tempFehlerSumme++;
                             }
                         }

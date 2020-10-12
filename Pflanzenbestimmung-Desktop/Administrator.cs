@@ -4,6 +4,12 @@ namespace Pflanzenbestimmung_Desktop
 {
     public class Administrator : Benutzer
     {
+        public int ID { get { return id; } set { } }
+        public string Nutzername { get { return nutzername; } set { } }
+
+        public string Vorname { get { return vorname; } set { } }
+        public string Name { get { return name; } set { } }
+
         public Administrator()
         {
         }
