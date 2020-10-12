@@ -99,6 +99,34 @@ namespace Pflanzenbestimmung_Desktop
                 return "1";
             return "0";
         }
+
+        /// <summary>
+        /// Gibt zurück, ob sich ein String aus einem String-Array in einem anderen String befindet
+        /// </summary>
+        /// <param name="str">Der String</param>
+        /// <param name="arr">Das Array</param>
+        /// <returns></returns>
+        public static bool ContainsAnyOf(this string str, string[] arr)
+        {
+            foreach (string s in arr)
+                if (str.Contains(s))
+                    return true;
+            return true;
+        }
+
+        /// <summary>
+        /// Gibt zurück, ob sich ein String in einem String-Array befindet
+        /// </summary>
+        /// <param name="str">Der String</param>
+        /// <param name="arr">Das Array</param>
+        /// <returns></returns>
+        public static bool IsAnyOf(this string str, params string[] arr)
+        {
+            foreach (string s in arr)
+                if (str == s)
+                    return true;
+            return true;
+        }
     }
 
 

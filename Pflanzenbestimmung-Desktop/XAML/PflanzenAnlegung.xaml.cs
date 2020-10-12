@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -10,6 +10,7 @@ namespace Pflanzenbestimmung_Desktop
     /// </summary>
     public partial class PflanzenAnlegung : UserControl
     {
+        List<string> bilder = new List<string>();
 
         public PflanzenAnlegung()
         {
@@ -27,9 +28,48 @@ namespace Pflanzenbestimmung_Desktop
                 TextBox tb = new TextBox();
                 tb.Name = "tb" + Main.kategorien[i].kategorie;
 
-                StackPanel_Quiz_Pflanze.Children.Add(lb);
-                
-                StackPanel_Quiz_Pflanze.Children.Add(tb);
+                StackPanelPflanzenAnlegung.Children.Add(lb);
+
+                StackPanelPflanzenAnlegung.Children.Add(tb);
+            }
+
+            BilderHochladenFlaeche.DragEnter += new DragEventHandler(DragEnter);
+            BilderHochladenFlaeche.Drop += new DragEventHandler(DragDrop);
+        }
+
+        void DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effects = DragDropEffects.Copy;
+        }
+
+        bool erstesBild = true;
+
+        void DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (string file in files)
+            {
+                if(Path.GetExtension(file).ToLower().IsAnyOf(".png", ".jpg", ".jpeg", ".gif", ".bmp"))
+                {
+                    if (bilder.Count < 10)
+                    {
+                        bilder.Add(file);
+                        if (erstesBild)
+                        {
+                            erstesBild = false;
+                            MessageBox.Show("Bilder werden Speichern der Pflanze hochgeladen");
+                        }
+                    }
+                    else
+                    {
+                        //Schon 10 Bilder da
+                        MessageBox.Show("Die Maximalanzahl der Bilder wurde erreicht!");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Dateiformat wird nicht unterstützt!");
+                }
             }
         }
 
@@ -42,14 +82,21 @@ namespace Pflanzenbestimmung_Desktop
         {
             List<string> werte = new List<string>();
 
-            for (int i = 0; i < StackPanel_Quiz_Pflanze.Children.Count; i++)
+            for (int i = 0; i < StackPanelPflanzenAnlegung.Children.Count; i++)
             {
-                object aktuellesObject = StackPanel_Quiz_Pflanze.FindName("tb" + Main.kategorien[i].kategorie);
+                TextBox aktuellesObject = StackPanelPflanzenAnlegung.FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
 
-
-
+                werte.Add(aktuellesObject.Text);
             }
-            //Main.api_anbindung.PflanzeErstellen();
+
+            Main.api_anbindung.PflanzeErstellen(werte);
+            Main.pflanzen = Main.api_anbindung.Bekommen<Pflanze>();
+
+            foreach (string s in bilder)
+            {
+                byte[] b = File.ReadAllBytes(s);
+                Main.api_anbindung.BildHochladen(Main.pflanzen[Main.pflanzen.Length].id_pflanze, b);
+            }
         }
     }
 }
