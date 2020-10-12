@@ -31,5 +31,27 @@ namespace Pflanzenbestimmung_Desktop
         {
             return nutzername;
         }
+
+
+        //string name;
+        //string vorname;
+        //string nutzername;
+
+        //public string Name
+        //{
+        //    get { return name; }
+        //    set { name = value; }
+        //}
+        //public string Vorname
+        //{
+        //    get { return vorname; }
+        //    set { vorname = value; }
+        //}
+        //public string Nutzername
+        //{
+        //    get { return nutzername; }
+        //    set { nutzername = value; }
+        //}
+
     }
 }

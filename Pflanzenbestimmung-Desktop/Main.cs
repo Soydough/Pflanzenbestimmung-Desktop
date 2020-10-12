@@ -140,6 +140,21 @@ namespace Pflanzenbestimmung_Desktop
             return MyList;
         }
 
+        public static ObservableCollection<Administrator> MyListAdmin
+        {
+            get; set;
+        }
+
+        public static ObservableCollection<Administrator> InitializeMylistAdmin()
+        {
+            MyListAdmin = new ObservableCollection<Administrator>();
+            for (int i = 0; i < ausbilder.Count; i++)
+            {
+                MyListAdmin.Add(ausbilder[i]);
+            }
+            return MyListAdmin;
+        }
+
         public static void LadeStatistiken()
         {
             if (!benutzer.istAdmin)

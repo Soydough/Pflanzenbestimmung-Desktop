@@ -14,11 +14,16 @@ namespace Pflanzenbestimmung_Desktop
     /// </summary>
     public partial class Benutzerverwaltung : UserControl
     {
+        private bool azubiReiter;
         public Benutzerverwaltung()
         {
             InitializeComponent();
             Main.LadeAzubiDaten();
             Azubiliste.ItemsSource = Main.InitializeMylist();
+
+            Adminliste.ItemsSource = Main.InitializeMylistAdmin();
+            
+            azubiReiter = true;
         }
 
         private void Zurück_Click(object sender, RoutedEventArgs e)
@@ -87,6 +92,18 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     throw;
                 }
+            }
+        }
+
+        private void TabHolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(TabHolder.SelectedIndex==0)
+            {
+                azubiReiter = true;
+            }
+            else
+            {
+                azubiReiter = false;
             }
         }
     }
