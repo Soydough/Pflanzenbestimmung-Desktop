@@ -99,13 +99,13 @@ namespace Pflanzenbestimmung_Desktop
 
         private void SpeichernButton_Click(object sender, RoutedEventArgs e)
         {
-            List<string> werte = new List<string>();
+            List<(int, string)> werte = new List<(int, string)>();
 
             for (int i = 0; i < StackPanelPflanzenAnlegung.Children.Count; i++)
             {
                 TextBox aktuellesObject = StackPanelPflanzenAnlegung.FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
 
-                werte.Add(aktuellesObject.Text);
+                werte.Add((Main.kategorien[i].id, aktuellesObject.Text));
             }
 
             bool istGala = (StackPanelPflanzenAnlegung.FindName("galaCheckBox") as CheckBox).IsChecked.Value;

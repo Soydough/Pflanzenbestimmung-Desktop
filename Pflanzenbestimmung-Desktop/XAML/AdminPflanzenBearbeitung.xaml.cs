@@ -147,19 +147,19 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
         private void SpeichernButton_Click(object sender, RoutedEventArgs e)
         {
-            List<string> werte = new List<string>();
+            List<(int, string)> werte = new List<(int, string)>();
 
             for (int i = 0; i < Main.kategorien.Count; i++)
             {
                 TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
 
-                werte.Add(aktuellesObject.Text);
+                werte.Add((Main.kategorien[i].id, aktuellesObject.Text));
             }
 
             bool istGala = (StackPanelPflanzenBearbeitung.FindName("galaCheckBox") as CheckBox).IsChecked.Value;
             bool istZier = (StackPanelPflanzenBearbeitung.FindName("zierCheckBox") as CheckBox).IsChecked.Value;
 
-            //Main.api_anbindung.PflanzeAktualisieren(Main.pflanzen[ausgewaehltePflanze].id_pflanze, istGala, istZier, werte);
+            Main.api_anbindung.PflanzeAktualisieren(Main.pflanzen[ausgewaehltePflanze].id_pflanze, istGala, istZier, werte);
             Main.pflanzen = Main.api_anbindung.Bekommen<Pflanze>();
 
             foreach (string s in bilder)

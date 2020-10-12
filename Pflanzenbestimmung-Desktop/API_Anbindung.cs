@@ -312,7 +312,7 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public void PflanzeErstellen(bool istGala, bool istZier, List<string> liste)
+        public void PflanzeErstellen(bool istGala, bool istZier, List<(int, string)> liste)
         {
             try
             {
@@ -322,6 +322,7 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         ["method"] = "createPflanzen",
                         ["zierbau"] = istZier.ToString(),
+                        ["galabau"] = istGala.ToString(),
                         //["dbgattung"] = gattung,
                         //["dbart"] = art,
                         //["dbdename"] = dename,
@@ -336,7 +337,8 @@ namespace Pflanzenbestimmung_Desktop
 
                     for(int i = 0; i < liste.Count && i < Main.kategorien.Count; i++)
                     {
-                        values[Main.kategorien[i].kategorie] = liste[i];
+                        values["id_kategorie"] = liste[i].Item1.ToString();
+                        values["antwort"] = liste[i].Item2;
                     }
 
                     var response = client.UploadValues(url, values);
@@ -354,19 +356,23 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public void PflanzeAktualisieren(List<string> liste)
+        public void PflanzeAktualisieren(int id_pflanze, bool istGala, bool istZier, List<(int, string)> liste)
         {
             try
             {
                 using (var client = new WebClient())
                 {
-                    var values = new NameValueCollection();
-
-                    values["method"] = "updatePflanze";
+                    var values = new NameValueCollection()
+                    {
+                        ["method"] = "updatePflanze",
+                        ["galabau"] = istGala.ToString(),
+                        ["istzier"] = istZier.ToString()
+                    };
 
                     for (int i = 0; i < liste.Count && i < Main.kategorien.Count; i++)
                     {
-                        values[Main.kategorien[i].kategorie] = liste[i];
+                        values["id_kategorie"] = liste[i].Item1.ToString();
+                        values["antwort"] = liste[i].Item2;
                     }
 
                     var response = client.UploadValues(url, values);
