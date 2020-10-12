@@ -57,7 +57,7 @@ namespace Pflanzenbestimmung_Desktop
                         if (erstesBild)
                         {
                             erstesBild = false;
-                            MessageBox.Show("Bilder werden Speichern der Pflanze hochgeladen");
+                            MessageBox.Show("Bilder werden beim Speichern der Pflanze hochgeladen");
                         }
                     }
                     else
@@ -68,7 +68,12 @@ namespace Pflanzenbestimmung_Desktop
                 }
                 else
                 {
-                    MessageBox.Show("Dateiformat wird nicht unterstützt!");
+                    MessageBox.Show("Dateiformat wird nicht unterstützt!\n" +
+                        "Die Folgenden Bildformate werden unterstützt:\n" +
+                        " • PNG\n" +
+                        " • JPEG\n" +
+                        " • GIF (derzeit nicht animiert)\n" +
+                        " • BMP\n");
                 }
             }
         }

@@ -320,6 +320,7 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     var values = new NameValueCollection()
                     {
+                        ["method"] = "createPflanzen"
                         //["dbgattung"] = gattung,
                         //["dbart"] = art,
                         //["dbdename"] = dename,

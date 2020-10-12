@@ -92,13 +92,13 @@ namespace Pflanzenbestimmung_Desktop.XAML
             {
                 if (Path.GetExtension(file).ToLower().IsAnyOf(".png", ".jpg", ".jpeg", ".gif", ".bmp"))
                 {
-                    if (bilder.Count < 10)
+                    if (bilder.Count + anzahlDerBereitsVorhandenenPflanzen < 10)
                     {
                         bilder.Add(file);
                         if (erstesBild)
                         {
                             erstesBild = false;
-                            MessageBox.Show("Bilder werden Speichern der Pflanze hochgeladen");
+                            MessageBox.Show("Bilder werden beim Speichern der Pflanze hochgeladen");
                         }
                     }
                     else
@@ -109,7 +109,12 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 }
                 else
                 {
-                    MessageBox.Show("Dateiformat wird nicht unterstützt!");
+                    MessageBox.Show("Dateiformat wird nicht unterstützt!\n" +
+                        "Die Folgenden Bildformate werden unterstützt:\n" +
+                        " • PNG\n" +
+                        " • JPEG\n" +
+                        " • GIF (derzeit nicht animiert)\n" +
+                        " • BMP\n");
                 }
             }
         }
@@ -123,26 +128,34 @@ namespace Pflanzenbestimmung_Desktop.XAML
         {
             List<string> werte = new List<string>();
 
-            for (int i = 0; i < StackPanelPflanzenBearbeitung.Children.Count; i++)
+            for (int i = 0; i < Main.kategorien.Count; i++)
             {
                 TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
 
                 werte.Add(aktuellesObject.Text);
             }
 
-            Main.api_anbindung.PflanzeErstellen(werte);
+            Main.api_anbindung.PflanzeAktualisieren(werte);
             Main.pflanzen = Main.api_anbindung.Bekommen<Pflanze>();
 
             foreach (string s in bilder)
             {
                 byte[] b = File.ReadAllBytes(s);
-                Main.api_anbindung.BildHochladen(Main.pflanzen[Main.pflanzen.Length].id_pflanze, b);
+                Main.api_anbindung.BildHochladen(Main.pflanzen[Main.pflanzen.Length - 1].id_pflanze, b);
             }
+
+            MessageBox.Show("Gespeichert!");
         }
 
         private void PflanzenComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ausgewaehltePflanze = (sender as ComboBox).SelectedIndex;
+            if (!bilder.IsNullOrEmpty())
+            {
+                bilder = new List<string>();
+                MessageBox.Show("Hochladen von Bildern abgebrochen");
+                erstesBild = true;
+            }
             aktualisiere();
         }
     }
