@@ -141,7 +141,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
             foreach (string s in bilder)
             {
                 byte[] b = File.ReadAllBytes(s);
-                Main.api_anbindung.BildHochladen(Main.pflanzen[Main.pflanzen.Length - 1].id_pflanze, b);
+                Main.api_anbindung.BildHochladen(Main.pflanzen[ausgewaehltePflanze].id_pflanze, b);
             }
 
             MessageBox.Show("Gespeichert!");
