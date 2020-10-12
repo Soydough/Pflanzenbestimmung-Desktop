@@ -20,6 +20,8 @@ namespace Pflanzenbestimmung_Desktop
 
             if(Main.azubiStatistik == null || Main.azubiStatistik.pflanzen == null || Main.azubiStatistik.pflanzen.Length == 0)
             {
+                //Das sollte im Übrigen nicht passieren. Aber jetzt ist es halt im Code. Ist wahrscheinlich besser, als wenn das Programm abstürzt.
+                //Eventuell sollte man auch damit umgehen können, wenn während des Quiz das Internet ausgeht. Aber das ist etwas für die Zukunft (wenn überhaupt)
                 System.Windows.MessageBox.Show("Ein Fehler ist aufgetreten! Weiter zum Hauptmenü...");
                 MainWindow.changeContent(new Hauptmenü());
                 return;
