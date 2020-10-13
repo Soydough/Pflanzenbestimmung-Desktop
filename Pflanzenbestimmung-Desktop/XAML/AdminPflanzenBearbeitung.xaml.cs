@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.IO;
+using Flurl.Util;
 
 namespace Pflanzenbestimmung_Desktop.XAML
 {
@@ -50,11 +51,11 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
             CheckBox galaCheckBox = new CheckBox();
             galaCheckBox.Content = "Gilt für Gala";
-            galaCheckBox.Margin = new Thickness(0, 0, 0, 60);
+            galaCheckBox.Margin = new Thickness(0, 10, 0, 10);
 
             CheckBox zierCheckBox = new CheckBox();
             zierCheckBox.Content = "Gilt für Zier";
-            zierCheckBox.Margin = new Thickness(0, 0, 0, 60);
+            zierCheckBox.Margin = new Thickness(0, 10, 0, 10);
 
             RegisterName("galaCheckBox", galaCheckBox);
             RegisterName("zierCheckBox", zierCheckBox);
@@ -91,6 +92,12 @@ namespace Pflanzenbestimmung_Desktop.XAML
             {
                 //Wahrscheinlich ein unwichtiger Fehler (kein Eintrag für die Kategorie etc.), also ignorieren
             }
+
+            CheckBox galaCheckBox = FindName("galaCheckBox") as CheckBox;
+            CheckBox zierCheckBox = FindName("zierCheckBox") as CheckBox;
+
+            galaCheckBox.IsChecked = Main.pflanzen[ausgewaehltePflanze].IstGala;
+            zierCheckBox.IsChecked = Main.pflanzen[ausgewaehltePflanze].IstZier;
         }
 
         public void aktualisiereAnzahlDerBereitsVorhandenenBilder()
@@ -98,7 +105,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
             anzahlDerBereitsVorhandenenPflanzen = Main.api_anbindung.BekommePflanzenbilder(Main.pflanzen[ausgewaehltePflanze].id_pflanze).Length;
         }
 
-        void DragEnter(object sender, DragEventArgs e)
+        new void DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effects = DragDropEffects.Copy;
         }
