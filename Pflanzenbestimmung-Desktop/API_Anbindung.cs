@@ -17,11 +17,18 @@ namespace Pflanzenbestimmung_Desktop
     public class API_Anbindung
     {
         //private readonly string url = "http://localhost/dbSchnittstelle.php";
-        //private readonly string url = "http://10.33.11.142/API/dbSchnittstelle.php";
-        //private readonly string url = "http://localhost/pflanzenbestimmung/api/dbSchnittstelle.php";
         //private readonly string url = "http://karteigarten.rf.gd/API/dbSchnittstelle.php";
-        private readonly string url = "http://10.33.11.134/API/dbSchnittstelle.php";
+
         //private readonly string url = "https://pflanzenbestimmung.000webhostapp.com/dbSchnittstelle.php";
+
+        //Steven
+        //private readonly string url = "http://10.33.11.142/API/dbSchnittstelle.php";
+
+        //Jan
+        private readonly string url = "http://10.33.11.134/API/dbSchnittstelle.php";
+
+        //Dirk
+        //private readonly string url = "http://10.33.156.144/API/dbSchnittstelle.php";
 
         public API_Anbindung()
         {
@@ -312,7 +319,7 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public void PflanzeErstellen(bool istGala, bool istZier, List<string> liste)
+        public void PflanzeErstellen(bool istGala, bool istZier, List<(int, string)> liste)
         {
             try
             {
@@ -320,8 +327,9 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     var values = new NameValueCollection()
                     {
-                        ["method"] = "createPflanzen",
-                        ["zierbau"] = istZier.ToString(),
+                        ["method"] = "createPflanze",
+                        ["zierbau"] = istZier.ToInt().ToString(),
+                        ["galabau"] = istGala.ToInt().ToString(),
                         //["dbgattung"] = gattung,
                         //["dbart"] = art,
                         //["dbdename"] = dename,
@@ -336,7 +344,8 @@ namespace Pflanzenbestimmung_Desktop
 
                     for (int i = 0; i < liste.Count && i < Main.kategorien.Count; i++)
                     {
-                        values[Main.kategorien[i].kategorie] = liste[i];
+                        values["id_kategorie"] = liste[i].Item1.ToString();
+                        values["antwort"] = liste[i].Item2;
                     }
 
                     var response = client.UploadValues(url, values);
@@ -354,19 +363,24 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public void PflanzeAktualisieren(List<string> liste)
+        public void PflanzeAktualisieren(int id_pflanze, bool istGala, bool istZier, List<(int, string)> liste)
         {
             try
             {
                 using (var client = new WebClient())
                 {
-                    var values = new NameValueCollection();
-
-                    values["method"] = "updatePflanze";
+                    var values = new NameValueCollection()
+                    {
+                        ["method"] = "updatePflanze",
+                        ["id_pflanze"] = id_pflanze.ToString(),
+                        ["galabau"] = istGala.ToInt().ToString(),
+                        ["istzier"] = istZier.ToInt().ToString()
+                    };
 
                     for (int i = 0; i < liste.Count && i < Main.kategorien.Count; i++)
                     {
-                        values[Main.kategorien[i].kategorie] = liste[i];
+                        values["id_kategorie"] = liste[i].Item1.ToString();
+                        values["antwort"] = liste[i].Item2;
                     }
 
                     var response = client.UploadValues(url, values);

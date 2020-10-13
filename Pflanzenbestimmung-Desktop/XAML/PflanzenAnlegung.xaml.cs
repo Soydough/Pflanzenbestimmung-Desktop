@@ -17,6 +17,8 @@ namespace Pflanzenbestimmung_Desktop
 
             InitializeComponent(); // TODO Design der Labels / Texboxen
 
+            StackPanelPflanzenAnlegung.Children.Clear();
+
             for (int i = 0; i < Main.kategorien.Count; i++)
             {
                 Label lb = new Label();
@@ -26,7 +28,9 @@ namespace Pflanzenbestimmung_Desktop
                 RegisterName(name, lb);
                 
                 TextBox tb = new TextBox();
-                tb.Name = "tb" + Main.kategorien[i].kategorie;
+                RegisterName("tb" + Main.kategorien[i].kategorie, tb);
+
+                tb.Text = Main.kategorien[i].kategorie + " D";
 
                 StackPanelPflanzenAnlegung.Children.Add(lb);
 
@@ -35,11 +39,11 @@ namespace Pflanzenbestimmung_Desktop
 
             CheckBox galaCheckBox = new CheckBox();
             galaCheckBox.Content = "Gilt für Gala";
-            galaCheckBox.Margin = new Thickness(0, 0, 0, 60);
+            galaCheckBox.Margin = new Thickness(0, 10, 0, 10);
 
             CheckBox zierCheckBox = new CheckBox();
             zierCheckBox.Content = "Gilt für Zier";
-            zierCheckBox.Margin = new Thickness(0, 0, 0, 60);
+            zierCheckBox.Margin = new Thickness(0, 10, 0, 10);
 
             RegisterName("galaCheckBox", galaCheckBox);
             RegisterName("zierCheckBox", zierCheckBox);
@@ -51,7 +55,7 @@ namespace Pflanzenbestimmung_Desktop
             BilderHochladenFlaeche.Drop += new DragEventHandler(DragDrop);
         }
 
-        void DragEnter(object sender, DragEventArgs e)
+        new void DragEnter(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effects = DragDropEffects.Copy;
         }
@@ -99,13 +103,13 @@ namespace Pflanzenbestimmung_Desktop
 
         private void SpeichernButton_Click(object sender, RoutedEventArgs e)
         {
-            List<string> werte = new List<string>();
+            List<(int, string)> werte = new List<(int, string)>();
 
-            for (int i = 0; i < StackPanelPflanzenAnlegung.Children.Count; i++)
+            for (int i = 0; i < Main.kategorien.Count; i++)
             {
-                TextBox aktuellesObject = StackPanelPflanzenAnlegung.FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
+                TextBox aktuellesObject = FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
 
-                werte.Add(aktuellesObject.Text);
+                werte.Add((Main.kategorien[i].id, aktuellesObject.Text));
             }
 
             bool istGala = (StackPanelPflanzenAnlegung.FindName("galaCheckBox") as CheckBox).IsChecked.Value;
@@ -121,6 +125,8 @@ namespace Pflanzenbestimmung_Desktop
             }
 
             bilder = new List<string>();
+
+            MessageBox.Show("Gespeichert!");
 
             MainWindow.changeContent(new Hauptmenü());
         }

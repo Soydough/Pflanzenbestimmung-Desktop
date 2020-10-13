@@ -17,5 +17,14 @@
         public int berflag = -1;
 
         public bool istAdmin = false;
+
+        public bool IstSysAdmin
+        {
+            get
+            {
+                return berflag == 1;
+            }
+            set { }
+        }
     }
 }

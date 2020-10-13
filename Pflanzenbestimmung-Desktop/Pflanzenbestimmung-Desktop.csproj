@@ -359,25 +359,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="platzhalter.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="bild_hochladen_platzhalter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="XAML\platzhalter.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="XAML\flowey_tanzt.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="XAML\bild_hochladen_platzhalter.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Bilder\hochladenplatzhalter.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="XAML\hochladenplatzhalter.png" />
+    <Resource Include="XAML\flowey_tanzt.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
