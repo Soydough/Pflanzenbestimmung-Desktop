@@ -19,11 +19,9 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
             Main.LadeAzubiDaten();
-
-            Adminliste.ItemsSource = Main.InitializeMylistAdmin();
-            
-            azubiReiter = true;
+            Adminliste.ItemsSource = Main.InitializeAdminVerwaltungListe();
             Azubiliste.ItemsSource = Main.InitializeAzubiVerwaltungListe();
+            azubiReiter = true;
         }
 
         private void Zurück_Click(object sender, RoutedEventArgs e)
@@ -33,22 +31,44 @@ namespace Pflanzenbestimmung_Desktop
 
         private void Bearbeiten_Click(object sender, RoutedEventArgs e)
         {
-            Azubis auswahl = null;
-            if (Azubiliste.SelectedItem == null)
+            if (azubiReiter)
             {
-                MessageBox.Show("Niemanden ausgewählt!");
-            }
-            else
-            {
-                for (int i = 0; i < Main.azubiVerwaltungListe.Count; i++)
+                Azubis auswahl = null;
+                if (Azubiliste.SelectedItem == null)
                 {
-                    if (Azubiliste.SelectedItem.Equals(Main.azubiVerwaltungListe[i]))
+                    MessageBox.Show("Niemanden ausgewählt!");
+                }
+                else
+                {
+                    for (int i = 0; i < Main.azubiVerwaltungListe.Count; i++)
                     {
-                        auswahl = Main.azubiVerwaltungListe[i];
-                        break;
+                        if (Azubiliste.SelectedItem.Equals(Main.azubiVerwaltungListe[i]))
+                        {
+                            auswahl = Main.azubiVerwaltungListe[i];
+                            break;
+                        }
+                    }
+                    MainWindow.changeContent(new BenutzerVerwalten(auswahl));
+                }
+            }
+            else if (!azubiReiter)
+            {
+                Administrator auswahl = null;
+                if (Adminliste.SelectedItem == null)
+                {
+                    MessageBox.Show("Niemanden ausgewählt!");
+                }
+                else
+                {
+                    for (int l = 0; l < Main.AdminVerwaltungListe.Count; l++)
+                    {
+                        if (Adminliste.SelectedItem.Equals(Main.AdminVerwaltungListe[l]))
+                        {
+                            auswahl = Main.AdminVerwaltungListe[l];
+                            break;
+                        }
                     }
                 }
-                MainWindow.changeContent(new BenutzerVerwalten(auswahl));
             }
         }
 
@@ -80,13 +100,13 @@ namespace Pflanzenbestimmung_Desktop
                     nachricht = "Sind sie sich sicher, dass der Benutzer:\n'" + azubiName + ", "
                                      + azubiVorname + "'\n gelöscht werden soll?";
                     string caption = "Löschen?";
-                 var result =   MessageBox.Show(nachricht, caption, MessageBoxButton.YesNo);
+                    var result = MessageBox.Show(nachricht, caption, MessageBoxButton.YesNo);
                     if (result == MessageBoxResult.Yes)
                     {
                         Main.api_anbindung.BenutzerLoeschen(auswahl.ID);
                         MainWindow.changeContent(new Benutzerverwaltung());
                     }
-                    
+
                 }
                 catch (System.Exception)
                 {
@@ -97,7 +117,7 @@ namespace Pflanzenbestimmung_Desktop
 
         private void TabHolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(TabHolder.SelectedIndex==0)
+            if (TabHolder.SelectedIndex == 0)
             {
                 azubiReiter = true;
             }
