@@ -443,7 +443,7 @@ namespace Pflanzenbestimmung_Desktop
         /// </summary>
         /// <param name="pass">Passwort</param>
         /// <param name="ben">Benutzername</param>
-        /// <returns></returns>
+        /// <returns>Gehashtes Passwort</returns>
         public static string GetHashWithSalt(string pass, string ben)
         {
             //Add salt to string
