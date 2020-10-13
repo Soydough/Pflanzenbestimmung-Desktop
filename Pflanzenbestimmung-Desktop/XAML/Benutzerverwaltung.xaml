@@ -24,7 +24,7 @@
                 <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="Adminliste" AutoGenerateColumns="True">
                     <!--True benötigt, sonst keine Tabelle mit Daten da-->
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Nutzername" Binding="{Binding Nutzername}"/>
+                        <!--<DataGridTextColumn Header="Nutzername" Binding="{Binding Nutzername}"/>-->
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
