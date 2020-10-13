@@ -151,9 +151,17 @@ namespace Pflanzenbestimmung_Desktop
             for (int i = 0; i < kategorien.Count; i++)
             {
                 kategorieVerwaltungListe.Add(kategorien[i]);
+                if (kategorien[i].im_quiz == 0)
+                {
+                    kategorien[i].quizAuswahl = "Nein";
+                }
+                else
+                {
+                    kategorien[i].quizAuswahl = "Ja";
+                }
             }
             return kategorieVerwaltungListe;
-        }
+        }      
 
         public static ObservableCollection<Administrator> AdminVerwaltungListe
         {
