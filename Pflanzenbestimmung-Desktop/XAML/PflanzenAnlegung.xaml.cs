@@ -33,6 +33,20 @@ namespace Pflanzenbestimmung_Desktop
                 StackPanelPflanzenAnlegung.Children.Add(tb);
             }
 
+            CheckBox galaCheckBox = new CheckBox();
+            galaCheckBox.Content = "Gilt für Gala";
+            galaCheckBox.Margin = new Thickness(0, 0, 0, 60);
+
+            CheckBox zierCheckBox = new CheckBox();
+            zierCheckBox.Content = "Gilt für Zier";
+            zierCheckBox.Margin = new Thickness(0, 0, 0, 60);
+
+            RegisterName("galaCheckBox", galaCheckBox);
+            RegisterName("zierCheckBox", zierCheckBox);
+
+            StackPanelPflanzenAnlegung.Children.Add(galaCheckBox);
+            StackPanelPflanzenAnlegung.Children.Add(zierCheckBox);
+
             BilderHochladenFlaeche.DragEnter += new DragEventHandler(DragEnter);
             BilderHochladenFlaeche.Drop += new DragEventHandler(DragDrop);
         }
@@ -57,7 +71,7 @@ namespace Pflanzenbestimmung_Desktop
                         if (erstesBild)
                         {
                             erstesBild = false;
-                            MessageBox.Show("Bilder werden Speichern der Pflanze hochgeladen");
+                            MessageBox.Show("Bilder werden beim Speichern der Pflanze hochgeladen");
                         }
                     }
                     else
@@ -68,7 +82,12 @@ namespace Pflanzenbestimmung_Desktop
                 }
                 else
                 {
-                    MessageBox.Show("Dateiformat wird nicht unterstützt!");
+                    MessageBox.Show("Dateiformat wird nicht unterstützt!\n" +
+                        "Die Folgenden Bildformate werden unterstützt:\n" +
+                        " • PNG\n" +
+                        " • JPEG\n" +
+                        " • GIF (derzeit nicht animiert)\n" +
+                        " • BMP\n");
                 }
             }
         }
@@ -80,16 +99,19 @@ namespace Pflanzenbestimmung_Desktop
 
         private void SpeichernButton_Click(object sender, RoutedEventArgs e)
         {
-            List<string> werte = new List<string>();
+            List<(int, string)> werte = new List<(int, string)>();
 
             for (int i = 0; i < StackPanelPflanzenAnlegung.Children.Count; i++)
             {
                 TextBox aktuellesObject = StackPanelPflanzenAnlegung.FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
 
-                werte.Add(aktuellesObject.Text);
+                werte.Add((Main.kategorien[i].id, aktuellesObject.Text));
             }
 
-            Main.api_anbindung.PflanzeErstellen(werte);
+            bool istGala = (StackPanelPflanzenAnlegung.FindName("galaCheckBox") as CheckBox).IsChecked.Value;
+            bool istZier = (StackPanelPflanzenAnlegung.FindName("zierCheckBox") as CheckBox).IsChecked.Value;
+
+            Main.api_anbindung.PflanzeErstellen(istGala, istZier, werte);
             Main.pflanzen = Main.api_anbindung.Bekommen<Pflanze>();
 
             foreach (string s in bilder)
@@ -97,6 +119,10 @@ namespace Pflanzenbestimmung_Desktop
                 byte[] b = File.ReadAllBytes(s);
                 Main.api_anbindung.BildHochladen(Main.pflanzen[Main.pflanzen.Length].id_pflanze, b);
             }
+
+            bilder = new List<string>();
+
+            MainWindow.changeContent(new Hauptmenü());
         }
     }
 }

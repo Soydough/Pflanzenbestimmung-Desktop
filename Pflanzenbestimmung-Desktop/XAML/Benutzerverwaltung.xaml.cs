@@ -20,7 +20,6 @@ namespace Pflanzenbestimmung_Desktop
             InitializeComponent();
             Main.LadeAzubiDaten();
 
-            Adminliste.Columns.Clear();
             Adminliste.ItemsSource = Main.InitializeMylistAdmin();
             
             azubiReiter = true;

@@ -21,7 +21,7 @@ namespace Pflanzenbestimmung_Desktop
         /// Ob die Kategorie für Gartenlandschaftsbauer angezeigt werden soll
         /// </summary> 
         [Obsolete("Bitte stattdessen wirdFürGalaAngezeigt verwenden.")]
-        public int anzeige_gartenlandschaftbau;
+        public int anzeige_gartenlandschaftsbau;
 
         /// <summary>
         /// Ob die Kategorie für Ziergartenbauer angezeigt werden soll
@@ -36,17 +36,17 @@ namespace Pflanzenbestimmung_Desktop
         public int werker_gewertet;
 
         
-        public int imQuiz;
+        public int im_quiz;
 
         public bool wirdFürGalaAngezeigt
         {
             get
             {
-                return anzeige_gartenlandschaftbau != 0;
+                return anzeige_gartenlandschaftsbau != 0;
             }
             set
             {
-                anzeige_gartenlandschaftbau = value.ToInt();
+                anzeige_gartenlandschaftsbau = value.ToInt();
             }
         }
 
@@ -71,6 +71,18 @@ namespace Pflanzenbestimmung_Desktop
             set
             {
                 werker_gewertet = value.ToInt();
+            }
+        }
+
+        public bool wirdImQuizAngezeigt
+        {
+            get
+            {
+                return im_quiz != 0;
+            }
+            set
+            {
+                im_quiz = value.ToInt();
             }
         }
     }
