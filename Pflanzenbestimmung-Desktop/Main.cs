@@ -421,6 +421,11 @@ namespace Pflanzenbestimmung_Desktop
             return result.ToString();
         }
 
+        /// <summary>
+        /// Diese Funktion nicht benutzen
+        /// </summary>
+        /// <param name="StringIn"></param>
+        /// <returns></returns>
         private static string SHA256HexHashString(string StringIn)
         {
             string hashString;
@@ -433,6 +438,12 @@ namespace Pflanzenbestimmung_Desktop
             return hashString;
         }
 
+        /// <summary>
+        /// Diese Funktion benutzen, um den Hash zu bekommen
+        /// </summary>
+        /// <param name="pass">Passwort</param>
+        /// <param name="ben">Benutzername</param>
+        /// <returns></returns>
         public static string GetHashWithSalt(string pass, string ben)
         {
             //Add salt to string
