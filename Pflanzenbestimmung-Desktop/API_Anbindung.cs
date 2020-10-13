@@ -344,8 +344,8 @@ namespace Pflanzenbestimmung_Desktop
 
                     for (int i = 0; i < liste.Count && i < Main.kategorien.Count; i++)
                     {
-                        values["id_kategorie"] = liste[i].Item1.ToString();
-                        values["antwort"] = liste[i].Item2;
+                        values[$"id_kategorie_{i}"] = liste[i].Item1.ToString();
+                        values[$"antwort_{i}"] = liste[i].Item2;
                     }
 
                     var response = client.UploadValues(url, values);
@@ -379,8 +379,8 @@ namespace Pflanzenbestimmung_Desktop
 
                     for (int i = 0; i < liste.Count && i < Main.kategorien.Count; i++)
                     {
-                        values["id_kategorie"] = liste[i].Item1.ToString();
-                        values["antwort"] = liste[i].Item2;
+                        values[$"id_kategorie_{i}"] = liste[i].Item1.ToString();
+                        values[$"antwort_{i}"] = liste[i].Item2;
                     }
 
                     var response = client.UploadValues(url, values);

@@ -367,5 +367,8 @@
   <ItemGroup>
     <Resource Include="XAML\flowey_tanzt.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bilder\hochladen.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
