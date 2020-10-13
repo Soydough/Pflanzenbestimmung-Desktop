@@ -20,7 +20,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-            <TabItem Header="Administratoren">
+            <TabItem Header="Administratoren" Name="tabitemAdmin">
                 <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="Adminliste" AutoGenerateColumns="False">
                     <!--True benötigt, sonst keine Tabelle mit Daten da-->
                     <DataGrid.Columns>

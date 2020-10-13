@@ -15,6 +15,7 @@ namespace Pflanzenbestimmung_Desktop
     public partial class Benutzerverwaltung : UserControl
     {
         private bool azubiReiter;
+        private bool istsysking;
         public Benutzerverwaltung()
         {
             InitializeComponent();
@@ -22,6 +23,20 @@ namespace Pflanzenbestimmung_Desktop
             Adminliste.ItemsSource = Main.InitializeAdminVerwaltungListe();
             Azubiliste.ItemsSource = Main.InitializeAzubiVerwaltungListe();
             azubiReiter = true;
+            KeinAdminAlsoVerstecken();
+        }
+
+        private void KeinAdminAlsoVerstecken()
+        {
+            if (!Main.benutzer.IstSysAdmin)
+            {
+                //tabitemAdmin.IsEnabled = false;
+                istsysking = false;
+            }
+            else
+            {
+                istsysking = true;
+            }
         }
 
         private void Zurück_Click(object sender, RoutedEventArgs e)
@@ -120,10 +135,19 @@ namespace Pflanzenbestimmung_Desktop
             if (TabHolder.SelectedIndex == 0)
             {
                 azubiReiter = true;
+
             }
             else
             {
                 azubiReiter = false;
+                if (!istsysking)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        MessageBox.Show("Nein");
+                    }
+                    MessageBox.Show("In Nordfriesland ist die Welt noch in Ordnung");
+                }
             }
         }
     }
