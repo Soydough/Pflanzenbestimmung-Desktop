@@ -1,5 +1,5 @@
 ﻿using MySql.Data.MySqlClient.Memcached;
-﻿using Flurl.Http;
+using Flurl.Http;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -334,7 +334,7 @@ namespace Pflanzenbestimmung_Desktop
                         //["besonderheiten"] = besonderheiten
                     };
 
-                    for(int i = 0; i < liste.Count && i < Main.kategorien.Count; i++)
+                    for (int i = 0; i < liste.Count && i < Main.kategorien.Count; i++)
                     {
                         values[Main.kategorien[i].kategorie] = liste[i];
                     }
@@ -342,7 +342,7 @@ namespace Pflanzenbestimmung_Desktop
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
-                    if(responseString.Length > 0)
+                    if (responseString.Length > 0)
                     {
                         throw new Exception(responseString);
                     }
@@ -585,11 +585,7 @@ namespace Pflanzenbestimmung_Desktop
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
-
-                    if (responseString != null || responseString != "")
-                    {
-                        MessageBox.Show(responseString);
-                    }
+                   
                 }
             }
             catch (System.Exception e)
@@ -613,11 +609,7 @@ namespace Pflanzenbestimmung_Desktop
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
-
-                    if (responseString != null || responseString != "")
-                    {
-                        MessageBox.Show(responseString);
-                    }
+               
                 }
             }
             catch (Exception)
@@ -734,5 +726,63 @@ namespace Pflanzenbestimmung_Desktop
                 VerbindungsFehler(e);
             }
         }
+
+        public void LoescheKategorie(int id)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "deleteKategorien",
+                        ["IDk"] = id.ToString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                   
+                }
+            }
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
+
+        public void UpdateKategorie(int id, string kategorie, int anzeigeGala, int anzeigeZier, int wertungWerker, int imQuiz)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "updateKategorie",
+                        ["IDk"] = id.ToString(),
+                        ["Kategorie"] = kategorie,
+                        ["AnzeigeGala"] = anzeigeGala.ToString(),
+                        ["AnzeigeZier"] = anzeigeZier.ToString(),
+                        ["WertungWerker"] = wertungWerker.ToString(),
+                        ["ImQuiz"] = imQuiz.ToString()
+
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    if (responseString != null || responseString != "")
+                    {
+                        MessageBox.Show(responseString);
+                    }
+                }
+            }
+
+            catch (System.Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
     }//End Class
 }//End Namespace
