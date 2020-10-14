@@ -12,7 +12,6 @@ namespace Pflanzenbestimmung_Desktop
             IstGueltig = false;
         }
 
-
         public bool IstGala
         {
             get

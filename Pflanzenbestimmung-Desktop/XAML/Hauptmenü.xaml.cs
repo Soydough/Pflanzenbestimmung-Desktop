@@ -71,5 +71,15 @@ namespace Pflanzenbestimmung_Desktop
                 //MainWindow.changeContent(new QuizDateneingabe());
             }
         }
+
+        bool eineminuteErstesMal = true;
+        private void EineMinuteProPflanzeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (eineminuteErstesMal)
+            {
+                MessageBox.Show("Dieser Button macht gar nichts. lol", "You just got pranked!");
+                eineminuteErstesMal = false;
+            }
+        }
     }
 }

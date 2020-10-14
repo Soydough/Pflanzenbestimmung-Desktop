@@ -32,6 +32,11 @@ namespace Pflanzenbestimmung_Desktop.XAML
         {
             InitializeComponent();
 
+            Initialize();
+        }
+
+        public void Initialize()
+        {
             StackPanelPflanzenBearbeitung.Children.Clear();
 
             for (int i = 0; i < Main.kategorien.Count; i++)
@@ -40,10 +45,24 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 string name = "lb" + Main.kategorien[i].kategorie;
                 lb.Name = name;
                 lb.Content = Main.kategorien[i].kategorie;
+
+                try
+                {
+                    UnregisterName(name);
+                }
+                catch { }
+
                 RegisterName(name, lb);
 
                 TextBox tb = new TextBox();
                 //tb.Name = "tb" + Main.kategorien[i].kategorie;
+
+                try
+                {
+                    UnregisterName("tb" + Main.kategorien[i].kategorie);
+                }
+                catch { }
+
                 RegisterName("tb" + Main.kategorien[i].kategorie, tb);
 
                 StackPanelPflanzenBearbeitung.Children.Add(lb);
@@ -291,6 +310,10 @@ namespace Pflanzenbestimmung_Desktop.XAML
             if (messageBoxResult == MessageBoxResult.Yes)
             {
                 Main.api_anbindung.LoeschePflanze(Main.pflanzen[PflanzenDataGrid.SelectedIndex].id_pflanze);
+
+                Main.Initialize();
+                Initialize();
+                //MessageBox.Show("Wenn das Löschen nicht erfolreich war; dieser Fehler ist durchaus bekannt");
             }
         }
     }
