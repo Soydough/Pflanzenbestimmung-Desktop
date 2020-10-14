@@ -66,8 +66,11 @@ namespace Pflanzenbestimmung_Desktop.XAML
             BilderHochladenFlaeche.DragEnter += new DragEventHandler(DragEnter);
             BilderHochladenFlaeche.Drop += new DragEventHandler(DragDrop);
 
-            PflanzenComboBox.ItemsSource = Main.pflanzen;
-            PflanzenComboBox.SelectedIndex = 0;
+            //string[] pflanzennamen = Main.pflanzen.Select(pflanze => pflanze.ToString()).ToArray();
+
+            //PflanzenDataGrid.ItemsSource = Main.pflanzen;
+            PflanzenDataGrid.ItemsSource = Main.pflanzen;
+            PflanzenDataGrid.SelectedIndex = 0;
         }
 
         public void aktualisiere()
@@ -184,6 +187,18 @@ namespace Pflanzenbestimmung_Desktop.XAML
         private void PflanzenComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ausgewaehltePflanze = (sender as ComboBox).SelectedIndex;
+            if (!bilder.IsNullOrEmpty())
+            {
+                bilder = new List<string>();
+                MessageBox.Show("Hochladen von Bildern abgebrochen");
+                erstesBild = true;
+            }
+            aktualisiere();
+        }
+
+        private void PflanzenDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ausgewaehltePflanze = (sender as DataGrid).SelectedIndex;
             if (!bilder.IsNullOrEmpty())
             {
                 bilder = new List<string>();

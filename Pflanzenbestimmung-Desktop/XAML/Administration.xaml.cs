@@ -9,9 +9,13 @@ namespace Pflanzenbestimmung_Desktop
     /// </summary>
     public partial class Administration : UserControl
     {
+        public static int currentTab = 0;
+
         public Administration()
         {
             InitializeComponent();
+
+            TabHolder.SelectedIndex = currentTab;
         }
 
         private void HauptmenüButton_Click(object sender, RoutedEventArgs e)
@@ -57,6 +61,11 @@ namespace Pflanzenbestimmung_Desktop
         private void Pflanzenbearbeiten_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.changeContent(new AdminPflanzenBearbeitung());
+        }
+
+        private void TabChanged(object sender, RoutedEventArgs e)
+        {
+            currentTab = (sender as TabControl).SelectedIndex;
         }
     }
 }

@@ -106,8 +106,6 @@ namespace Pflanzenbestimmung_Desktop
             kategorien = api_anbindung.Bekommen<Kategorie>().ToList();
         }
 
-
-
         public static void LadeAzubiDaten()
         {
             ausbildungsarten = api_anbindung.Bekommen<Ausbildungsart>("Ausbildungsart").ToDictionary();
@@ -424,6 +422,11 @@ namespace Pflanzenbestimmung_Desktop
             return result.ToString();
         }
 
+        /// <summary>
+        /// Diese Funktion nicht benutzen
+        /// </summary>
+        /// <param name="StringIn"></param>
+        /// <returns></returns>
         private static string SHA256HexHashString(string StringIn)
         {
             string hashString;
@@ -436,6 +439,12 @@ namespace Pflanzenbestimmung_Desktop
             return hashString;
         }
 
+        /// <summary>
+        /// Diese Funktion benutzen, um den Hash zu bekommen
+        /// </summary>
+        /// <param name="pass">Passwort</param>
+        /// <param name="ben">Benutzername</param>
+        /// <returns>Gehashtes Passwort</returns>
         public static string GetHashWithSalt(string pass, string ben)
         {
             //Add salt to string
@@ -444,11 +453,18 @@ namespace Pflanzenbestimmung_Desktop
             return SHA256HexHashString(StringIn);
         }
 
+        /// <summary>
+        /// Startet das Laden
+        /// </summary>
         public static void LadenStart()
         {
             MainWindow.StartLoading();
         }
 
+        /// <summary>
+        /// Führt das Laden fort und Beendet das Laden
+        /// </summary>
+        /// <param name="amount">(Optional) wie viel geladen werden soll (für mehr Infos Herzog kontaktieren ;) )</param>
         public static void Laden(int amount = 10000)
         {
             //MainWindow.StartLoading();

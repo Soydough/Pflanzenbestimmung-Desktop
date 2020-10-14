@@ -10,6 +10,16 @@ namespace Pflanzenbestimmung_Desktop
         //[JsonProperty("0")]
         public KategorieAbfrage[] kategorien;
 
+        public string Name
+        {
+            get
+            {
+                return ToString();
+            }
+            set
+            { }
+        }
+
 
         public bool IstGala
         {
