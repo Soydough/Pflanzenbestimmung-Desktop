@@ -9,19 +9,23 @@
     <TabControl>
         <TabItem Header="Generell">
             <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
-                <Button Name="NeuePflanzeButton" Click="NeuePflanzeButton_Click" Content="Neue Pflanze anlegen"/>
-                <Button Name="ZuLernendeKategorienEinstellungButton" Click="ZuLernendeKategorienEinstellungButton_Click" Content="Zu lernende Kategorien"/>
-                <Button Name="NeuerBenutzer" Click="NeuerBenutzer_Click" Content="Neuen Benutzer anlegen"/>
-                <Button Name="Benutzerverwaltung" Click="Benutzerverwaltung_Click" Content="Vorhandene Nutzer verwalten"/>
+                <Button Name="ZuLernendeKategorienEinstellungButton" Click="ZuLernendeKategorienEinstellungButton_Click" Content="Kategorien verwalten"/>
                 <Button Name="StatistikButton" Click="StatistikButton_Click" Content="Statistik" />
-                <Button Name="ErscheinendePflanzen" Click="ErscheinendePflanzen_Click" Content="Erscheinende Pflanzen verwalten" />
                 <Button Name="QuizGroeßeErstellen" Click="QuizGroeßeErstellen_Click" Content="Quiz Größe erstellen"/>
                 <Button Name="HauptmenüButton" Click="HauptmenüButton_Click" Content="Zurück zum Hauptmenü"/>
             </StackPanel>
         </TabItem>
-        <TabItem Header="Pflanzen">
+        <TabItem Header="Pflanzen" HorizontalAlignment="Right" Width="61">
             <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
+                <Button Name="NeuePflanzeButton" Click="NeuePflanzeButton_Click" Content="Neue Pflanze anlegen"/>
                 <Button Name="Pflanzenbearbeiten" Click="Pflanzenbearbeiten_Click" Content="Pflanzen bearbeiten" />
+                <Button Name="ErscheinendePflanzen" Click="ErscheinendePflanzen_Click" Content="Erscheinende Pflanzen verwalten" />
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Benutzer">
+            <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
+                <Button Name="NeuerBenutzer" Click="NeuerBenutzer_Click" Content="Neuen Benutzer anlegen"/>
+                <Button Name="Benutzerverwaltung" Click="Benutzerverwaltung_Click" Content="Vorhandene Nutzer verwalten"/>
             </StackPanel>
         </TabItem>
     </TabControl>
