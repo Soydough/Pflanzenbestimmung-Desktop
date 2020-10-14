@@ -224,7 +224,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
             {
                 bilderGeladen = true;
 
-                Main.pflanzenbilder = Main.api_anbindung.BekommePflanzenbilder(PflanzenDataGrid.SelectedIndex + 1);
+                Main.pflanzenbilder = Main.api_anbindung.BekommePflanzenbilder(Main.pflanzen[PflanzenDataGrid.SelectedIndex].id_pflanze);
 
                 bilderArr = new Image[Main.pflanzenbilder.Length];
 
@@ -282,6 +282,15 @@ namespace Pflanzenbestimmung_Desktop.XAML
             else
             {
                 MessageBox.Show("Löschen der Bilder abgebrochen");
+            }
+        }
+
+        private void PflanzeLoeschenButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("Sind Sie sich sicher, dass Sie die ausgewählten Bilder endgültig löschen wollen? Also so, dass die Bilder wirklich ganz echt richtig nicht mehr zu retten gelöscht werden? Und so, dass man die nicht mehr aufrufen kann? Also in echt jetzt?", "Lösch-Bestätigung", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                Main.api_anbindung.LoeschePflanze(Main.pflanzen[PflanzenDataGrid.SelectedIndex].id_pflanze);
             }
         }
     }

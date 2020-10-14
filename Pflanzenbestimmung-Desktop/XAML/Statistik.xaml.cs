@@ -19,6 +19,8 @@ namespace Pflanzenbestimmung_Desktop
             {
                 listView.Items.Add(Main.azubiStatistiken[i].ToString());
             }
+
+            listView.SelectedIndex = 0;
         }
 
         private void Hauptmenü_Click(object sender, System.Windows.RoutedEventArgs e)
