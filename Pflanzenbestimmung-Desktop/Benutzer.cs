@@ -54,14 +54,16 @@ namespace Pflanzenbestimmung_Desktop
 
         public static Benutzer fromTempObjekt(BenutzerTemplate temp)
         {
-            Benutzer b = new Benutzer();
-            b.id = temp.id;
-            b.nutzername = temp.nutzername;
-            b.name = temp.name;
-            b.vorname = temp.vorname;
-            b.istAdmin = false;
-
-            return b;
+            Benutzer benutzer = new Benutzer()
+            {
+                id = temp.id,
+                nutzername = temp.nutzername,
+                name = temp.name,
+                vorname = temp.vorname,
+                istAdmin = false
+            };
+        
+            return benutzer;
         }
 
         public static Benutzer ungueltigerBenutzer = new Benutzer(-1);

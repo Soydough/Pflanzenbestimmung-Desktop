@@ -264,7 +264,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 int bildIndex = 0;
                 for (int i = 0; i < BilderListView.SelectedItems.Count; i++)
                 {
-                    if(bilderArr[bildIndex] != (BilderListView.SelectedItems[i] as Image))
+                    if (bilderArr[bildIndex] != (BilderListView.SelectedItems[i] as Image))
                     {
                         bildIndex++;
                         continue;
@@ -287,7 +287,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
         private void PflanzeLoeschenButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult messageBoxResult = MessageBox.Show("Sind Sie sich sicher, dass Sie die ausgewählten Bilder endgültig löschen wollen? Also so, dass die Bilder wirklich ganz echt richtig nicht mehr zu retten gelöscht werden? Und so, dass man die nicht mehr aufrufen kann? Also in echt jetzt?", "Lösch-Bestätigung", MessageBoxButton.YesNo);
+            MessageBoxResult messageBoxResult = MessageBox.Show("Sind Sie sich sicher, dass Sie die ausgewählte Pflanze endgültig löschen möchten?", "Lösch-Bestätigung", MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
                 Main.api_anbindung.LoeschePflanze(Main.pflanzen[PflanzenDataGrid.SelectedIndex].id_pflanze);
