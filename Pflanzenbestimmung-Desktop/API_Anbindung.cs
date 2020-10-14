@@ -597,7 +597,7 @@ namespace Pflanzenbestimmung_Desktop
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
-                   
+
                 }
             }
             catch (System.Exception e)
@@ -606,22 +606,29 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-        public void BenutzerLoeschen(int id)
+        public void BenutzerLoeschen(int id, bool istAdmin)
         {
+
             try
             {
                 using (var client = new WebClient())
                 {
-                    var values = new NameValueCollection
+                    var values = new NameValueCollection { };
+                    if (!istAdmin)
                     {
-                        ["method"] = "deleteAzubi",
-                        ["IDaz"] = id.ToString()
-                    };
-                    Azubis Azubidaten = new Azubis();
-
+                        values["method"] = "deleteAzubi";
+                        values["IDaz"] = id.ToString();
+                        Azubis Azubidaten = new Azubis();
+                    }
+                    else
+                    {
+                        values["method"] = "deleteAdmin";
+                        values["IDad"] = id.ToString();
+                    }
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
-               
+
+
                 }
             }
             catch (Exception)
@@ -753,7 +760,7 @@ namespace Pflanzenbestimmung_Desktop
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
-                   
+
                 }
             }
             catch (System.Exception e)

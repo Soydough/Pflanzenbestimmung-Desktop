@@ -123,7 +123,7 @@ namespace Pflanzenbestimmung_Desktop
                         var result = MessageBox.Show(nachricht, caption, MessageBoxButton.YesNo);
                         if (result == MessageBoxResult.Yes)
                         {
-                            Main.api_anbindung.BenutzerLoeschen(auswahl.ID);
+                            Main.api_anbindung.BenutzerLoeschen(auswahl.ID, false);
                             MainWindow.changeContent(new Benutzerverwaltung());
                         }
 
@@ -136,7 +136,45 @@ namespace Pflanzenbestimmung_Desktop
             }
             else
             {
+                string nachricht = null;
+                Administrator bestätigen = new Administrator();
+                Administrator auswahl = null;
+                string adminName = null;
+                string adminVorname = null;
+                if (Adminliste.SelectedItem == null)
+                {
+                    MessageBox.Show("Niemanden ausgewählt!");
+                }
+                else
+                {
+                    for (int i = 0; i < Main.AdminVerwaltungListe.Count; i++)
+                    {
+                        if (Adminliste.SelectedItem.Equals(Main.AdminVerwaltungListe[i]))
+                        {
+                            auswahl = Main.AdminVerwaltungListe[i];
+                            break;
+                        }
+                    }
+                    try
+                    {
+                        adminName = auswahl.Name;
+                        adminVorname = auswahl.Vorname;
+                        nachricht = "Sind sie sich sicher, dass der Benutzer:\n'" + adminName + ", "
+                                         + adminVorname + "'\n gelöscht werden soll?";
+                        string caption = "Löschen?";
+                        var result = MessageBox.Show(nachricht, caption, MessageBoxButton.YesNo);
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            Main.api_anbindung.BenutzerLoeschen(auswahl.ID, true);
+                            MainWindow.changeContent(new Benutzerverwaltung());
+                        }
 
+                    }
+                    catch (System.Exception)
+                    {
+                        throw;
+                    }
+                }
             }
         }
 

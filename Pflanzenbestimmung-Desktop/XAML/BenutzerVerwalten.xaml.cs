@@ -185,7 +185,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                     var result = MessageBox.Show(nachricht, caption, MessageBoxButton.YesNo);
                     if (result == MessageBoxResult.Yes)
                     {
-                        Main.api_anbindung.BenutzerLoeschen(azubi.ID);
+                        Main.api_anbindung.BenutzerLoeschen(azubi.ID, false);
                         MainWindow.changeContent(new Benutzerverwaltung());
                     }
 
