@@ -26,6 +26,8 @@ namespace Pflanzenbestimmung_Desktop.XAML
         int ausgewaehltePflanze = 0;
         int anzahlDerBereitsVorhandenenPflanzen = 0;
 
+        Image[] bilderArr;
+
         public AdminPflanzenBearbeitung()
         {
             InitializeComponent();
@@ -76,8 +78,9 @@ namespace Pflanzenbestimmung_Desktop.XAML
         public void aktualisiere()
         {
             aktualisiereAnzahlDerBereitsVorhandenenBilder();
+            aktualisiereBilder(true);
 
-            for(int i = 0; i <  Main.kategorien.Count; i++)
+            for (int i = 0; i <  Main.kategorien.Count; i++)
             {
                 TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
                 aktuellesObject.Text = "";
@@ -205,7 +208,81 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 MessageBox.Show("Hochladen von Bildern abgebrochen");
                 erstesBild = true;
             }
+            bilderGeladen = false;
             aktualisiere();
+        }
+
+        bool bilderGeladen = false;
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            aktualisiereBilder();
+        }
+
+        public void aktualisiereBilder(bool force = false)
+        {
+            if (!bilderGeladen || force)
+            {
+                bilderGeladen = true;
+
+                Main.pflanzenbilder = Main.api_anbindung.BekommePflanzenbilder(PflanzenDataGrid.SelectedIndex + 1);
+
+                bilderArr = new Image[Main.pflanzenbilder.Length];
+
+                for (int i = 0; i < bilderArr.Length; i++)
+                {
+                    bilderArr[i] = new Image();
+
+                    // Erstelle neue Bitmap
+                    BitmapImage bmp = new BitmapImage();
+
+                    // Konvertiere Bytes zu Bitmap
+                    using (MemoryStream mem = new MemoryStream(Main.pflanzenbilder[i].bild.ToBytes()))
+                    {
+                        bmp.BeginInit();
+                        bmp.CreateOptions = BitmapCreateOptions.PreservePixelFormat;
+                        bmp.CacheOption = BitmapCacheOption.OnLoad;
+                        bmp.UriSource = null;
+                        bmp.StreamSource = mem;
+                        bmp.EndInit();
+                    }
+                    bmp.Freeze();
+
+                    bilderArr[i].Source = bmp;
+
+                    bilderArr[i].Height = 100;
+                }
+
+                BilderListView.ItemsSource = bilderArr;
+            }
+        }
+
+        private void LoeschenButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = MessageBox.Show("Sind Sie sich sicher, dass Sie die ausgewählten Bilder endgültig löschen wollen? Also so, dass die Bilder wirklich ganz echt richtig nicht mehr zu retten gelöscht werden? Und so, dass man die nicht mehr aufrufen kann? Also in echt jetzt?", "Lösch-Bestätigung", MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                int bildIndex = 0;
+                for (int i = 0; i < BilderListView.SelectedItems.Count; i++)
+                {
+                    if(bilderArr[bildIndex] != (BilderListView.SelectedItems[i] as Image))
+                    {
+                        bildIndex++;
+                        continue;
+                    }
+                    //Main.api_anbindung.
+                    //BitmapImage bmp = (BilderListView.SelectedItems[i] as Image).Source as BitmapImage;
+                    //int byteInt = bmp.StreamSource;
+
+                    Main.api_anbindung.PflanzenbildLoeschen(Main.pflanzenbilder[bildIndex].id_bild);
+                    bildIndex++;
+                }
+
+                aktualisiereBilder(true);
+            }
+            else
+            {
+                MessageBox.Show("Löschen der Bilder abgebrochen");
+            }
         }
     }
 }

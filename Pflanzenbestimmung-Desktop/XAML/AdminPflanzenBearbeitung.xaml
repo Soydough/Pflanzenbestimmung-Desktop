@@ -24,40 +24,63 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <StackPanel Grid.Column="1">
-            <StackPanel.Style>
-                <Style>
-                    <Style.Resources>
-                        <Style TargetType="Grid">
-                            <Style.Resources>
-                                <Style TargetType="TextBox">
-                                    <Setter Property="Grid.Column" Value="1" />
-                                    <Setter Property="Width" Value="200" />
-                                    <Setter Property="Height" Value="30" />
-                                </Style>
-                            </Style.Resources>
-                        </Style>
-                    </Style.Resources>
-                </Style>
-            </StackPanel.Style>
+        <TabControl Grid.Column="1" Grid.ColumnSpan="2" SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Header="Daten">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
 
-            <ScrollViewer Height="400">
-                <StackPanel Name="StackPanelPflanzenBearbeitung">
-                    <Grid Margin="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Label Content="Gattungsname:"/>
-                        <TextBox Width="Auto" />
-                    </Grid>
-                </StackPanel>
-            </ScrollViewer>
-        </StackPanel>
+                    <StackPanel Grid.Column="0">
+                        <StackPanel.Style>
+                            <Style>
+                                <Style.Resources>
+                                    <Style TargetType="Grid">
+                                        <Style.Resources>
+                                            <Style TargetType="TextBox">
+                                                <Setter Property="Grid.Column" Value="1" />
+                                                <Setter Property="Width" Value="200" />
+                                                <Setter Property="Height" Value="30" />
+                                            </Style>
+                                        </Style.Resources>
+                                    </Style>
+                                </Style.Resources>
+                            </Style>
+                        </StackPanel.Style>
 
-        <Image Name="BilderHochladenFlaeche" Grid.Column="2" Source="..\Bilder\hochladen.png"  Height="300" VerticalAlignment="Top" AllowDrop="True" />
+                        <ScrollViewer Height="400">
+                            <StackPanel Name="StackPanelPflanzenBearbeitung">
+                                <Grid Margin="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Content="Gattungsname:"/>
+                                    <TextBox Width="Auto" />
+                                </Grid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </StackPanel>
 
-        <Button Name="AbbrechenButton" Click="AbbrechenButton_Click" Content="Abbrechen" Grid.Column="2" Height="30" Width="120" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="20"/>
-        <Button Name="SpeichernButton" Click="SpeichernButton_Click" Content="Speichern" Grid.Column="2" Height="30" Width="120" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20"/>
+                    <Image Name="BilderHochladenFlaeche" Grid.Column="1" Source="..\Bilder\hochladen.png"  Height="300" VerticalAlignment="Top" AllowDrop="True" />
+
+                    <Button Name="AbbrechenButton" Click="AbbrechenButton_Click" Content="Abbrechen" Grid.Column="2" Height="30" Width="120" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="20"/>
+                    <Button Name="SpeichernButton" Click="SpeichernButton_Click" Content="Speichern" Grid.Column="2" Height="30" Width="120" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Bilder">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <ListView Name="BilderListView" />
+
+                    <Button Name="LoeschenButton" Grid.Row="1" Content="Ausgewählte Bilder endgültig LÖSCHEN" Margin="10, 5" Click="LoeschenButton_Click" />
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </UserControl>

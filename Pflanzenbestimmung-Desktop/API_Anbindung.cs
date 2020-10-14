@@ -146,6 +146,11 @@ namespace Pflanzenbestimmung_Desktop
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
+
+                    if (responseString.Length > 0)
+                    {
+                        throw new Exception(responseString);
+                    }
                 }
             }
             catch (System.Exception e)
@@ -168,6 +173,11 @@ namespace Pflanzenbestimmung_Desktop
 
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
+
+                    if(responseString.Length > 0)
+                    {
+                        throw new Exception(responseString);
+                    }
                 }
             }
             catch (System.Exception e)
