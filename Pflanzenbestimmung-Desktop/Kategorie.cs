@@ -38,6 +38,11 @@ namespace Pflanzenbestimmung_Desktop
         
         public int im_quiz;
 
+        public string quizAuswahl;
+        public string QuizAuswahl { get { return quizAuswahl; } set { quizAuswahl = value; } }
+
+
+
         public bool wirdFürGalaAngezeigt
         {
             get
