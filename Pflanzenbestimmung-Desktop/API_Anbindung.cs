@@ -505,11 +505,7 @@ namespace Pflanzenbestimmung_Desktop
                 using (var client = new WebClient())
                 {
                     Azubis Azubidaten = new Azubis();
-                    var values = new NameValueCollection
-                    {
-                        ["method"] = "updateAzubi",
-                        ["IDaz"] = id.ToString()
-                    };
+                    var values = new NameValueCollection { };
                     if (benutzername != null)
                     {
                         values["User"] = benutzername;
@@ -528,7 +524,8 @@ namespace Pflanzenbestimmung_Desktop
                     }
                     if (!admin)
                     {
-
+                        values["method"] = "updateAzubi";
+                        values["IDaz"] = id.ToString();
                         if (ausbildungsart != -1)
                         {
                             int ausbildungarten = ausbildungsart + 1;
@@ -552,10 +549,11 @@ namespace Pflanzenbestimmung_Desktop
                         values["Pruefung"] = pruefung.ToString();
 
                     }
-                    //else
-                    //{
-                    //    values["method"] = "createAdmin";
-                    //}
+                    else
+                    {
+                        values["IDad"] = id.ToString();
+                        values["method"] = "updateAdmin";
+                    }
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
                 }

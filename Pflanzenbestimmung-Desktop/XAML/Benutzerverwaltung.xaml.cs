@@ -46,6 +46,7 @@ namespace Pflanzenbestimmung_Desktop
 
         private void Bearbeiten_Click(object sender, RoutedEventArgs e)
         {
+            //Bearbeiten der Azubis
             if (azubiReiter)
             {
                 Azubis auswahl = null;
@@ -66,6 +67,7 @@ namespace Pflanzenbestimmung_Desktop
                     MainWindow.changeContent(new BenutzerVerwalten(auswahl));
                 }
             }
+            //Bearbeiten der Admins/Ausbilder
             else if (!azubiReiter)
             {
                 Administrator auswahl = null;
@@ -83,50 +85,58 @@ namespace Pflanzenbestimmung_Desktop
                             break;
                         }
                     }
+                    MainWindow.changeContent(new AdminVerwalten(auswahl));
                 }
             }
         }
 
         private void Loeschen_Click(object sender, RoutedEventArgs e)
         {
-            string nachricht = null;
-            Azubis bestätigen = new Azubis();
-            Azubis auswahl = null;
-            string azubiName = null;
-            string azubiVorname = null;
-            if (Azubiliste.SelectedItem == null)
+            if (azubiReiter)
             {
-                MessageBox.Show("Niemanden ausgewählt!");
+                string nachricht = null;
+                Azubis bestätigen = new Azubis();
+                Azubis auswahl = null;
+                string azubiName = null;
+                string azubiVorname = null;
+                if (Azubiliste.SelectedItem == null)
+                {
+                    MessageBox.Show("Niemanden ausgewählt!");
+                }
+                else
+                {
+                    for (int i = 0; i < Main.azubiVerwaltungListe.Count; i++)
+                    {
+                        if (Azubiliste.SelectedItem.Equals(Main.azubiVerwaltungListe[i]))
+                        {
+                            auswahl = Main.azubiVerwaltungListe[i];
+                            break;
+                        }
+                    }
+                    try
+                    {
+                        azubiName = auswahl.Name;
+                        azubiVorname = auswahl.Vorname;
+                        nachricht = "Sind sie sich sicher, dass der Benutzer:\n'" + azubiName + ", "
+                                         + azubiVorname + "'\n gelöscht werden soll?";
+                        string caption = "Löschen?";
+                        var result = MessageBox.Show(nachricht, caption, MessageBoxButton.YesNo);
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            Main.api_anbindung.BenutzerLoeschen(auswahl.ID);
+                            MainWindow.changeContent(new Benutzerverwaltung());
+                        }
+
+                    }
+                    catch (System.Exception)
+                    {
+                        throw;
+                    }
+                }
             }
             else
             {
-                for (int i = 0; i < Main.azubiVerwaltungListe.Count; i++)
-                {
-                    if (Azubiliste.SelectedItem.Equals(Main.azubiVerwaltungListe[i]))
-                    {
-                        auswahl = Main.azubiVerwaltungListe[i];
-                        break;
-                    }
-                }
-                try
-                {
-                    azubiName = auswahl.Name;
-                    azubiVorname = auswahl.Vorname;
-                    nachricht = "Sind sie sich sicher, dass der Benutzer:\n'" + azubiName + ", "
-                                     + azubiVorname + "'\n gelöscht werden soll?";
-                    string caption = "Löschen?";
-                    var result = MessageBox.Show(nachricht, caption, MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        Main.api_anbindung.BenutzerLoeschen(auswahl.ID);
-                        MainWindow.changeContent(new Benutzerverwaltung());
-                    }
 
-                }
-                catch (System.Exception)
-                {
-                    throw;
-                }
             }
         }
 
@@ -142,11 +152,12 @@ namespace Pflanzenbestimmung_Desktop
                 azubiReiter = false;
                 if (!istsysking)
                 {
+                    TabHolder.SelectedIndex = 0;
                     for (int i = 0; i < 4; i++)
                     {
                         MessageBox.Show("Nein");
                     }
-                    MessageBox.Show("In Nordfriesland ist die Welt noch in Ordnung");
+                    MessageBox.Show("In Nordfriesland ist die Welt noch in Ordnung. Sie haben nicht die ausreichenden Berechtigungen um diesen Reiter zu öffnen.");
                 }
             }
         }

@@ -109,7 +109,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
             int id = azubi.ID;
             string name = null;
             string vorname = null;
-            string nutzername = null;
+            string nutzername = azubi.Nutzername;
             string passwort = PasswortAenderndBox.Password.Trim();
             int ausbildungsart = -1;
             int ausbilder = -1;

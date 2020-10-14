@@ -100,7 +100,7 @@ namespace Pflanzenbestimmung_Desktop
         {
             if ((sender as TabControl).SelectedIndex == 1)
             {
-                admin = false;
+                admin = true;
             }
             else
             {
