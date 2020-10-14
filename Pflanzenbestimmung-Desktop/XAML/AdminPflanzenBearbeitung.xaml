@@ -14,8 +14,15 @@
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
-        <ComboBox Name="PflanzenComboBox" Width="130" Height="30" VerticalAlignment="Top" Margin="10"
-                  SelectionChanged="PflanzenComboBox_SelectionChanged"/>
+        <ComboBox Name="PflanzenComboBox_alt" Width="130" Height="30" VerticalAlignment="Top" Margin="10"
+                  SelectionChanged="PflanzenComboBox_SelectionChanged" Visibility="Collapsed" />
+        <DataGrid Name="PflanzenDataGrid" ColumnWidth="*"
+                  CanUserAddRows="False" SelectionChanged="PflanzenDataGrid_SelectionChanged"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
         <StackPanel Grid.Column="1">
             <StackPanel.Style>
@@ -50,7 +57,7 @@
 
         <Image Name="BilderHochladenFlaeche" Grid.Column="2" Source="..\Bilder\hochladen.png"  Height="300" VerticalAlignment="Top" AllowDrop="True" />
 
-        <Button Name="AbbrechenButton" Click="AbbrechenButton_Click" Content="Abbrechen" Grid.Column="2" Height="30" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="20"/>
-        <Button Name="SpeichernButton" Click="SpeichernButton_Click" Content="Speichern" Grid.Column="2" Height="30" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20"/>
+        <Button Name="AbbrechenButton" Click="AbbrechenButton_Click" Content="Abbrechen" Grid.Column="2" Height="30" Width="120" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="20"/>
+        <Button Name="SpeichernButton" Click="SpeichernButton_Click" Content="Speichern" Grid.Column="2" Height="30" Width="120" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20"/>
     </Grid>
 </UserControl>

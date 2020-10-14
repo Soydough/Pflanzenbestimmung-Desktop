@@ -130,6 +130,7 @@
     <Compile Include="Helper.cs" />
     <Compile Include="Kategorie.cs" />
     <Compile Include="KategorieAbfrage.cs" />
+    <Compile Include="Kredit.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Pflanze.cs" />
     <Compile Include="Pflanzenantwort.cs" />

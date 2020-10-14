@@ -106,8 +106,6 @@ namespace Pflanzenbestimmung_Desktop
             kategorien = api_anbindung.Bekommen<Kategorie>().ToList();
         }
 
-
-
         public static void LadeAzubiDaten()
         {
             ausbildungsarten = api_anbindung.Bekommen<Ausbildungsart>("Ausbildungsart").ToDictionary();
@@ -455,11 +453,18 @@ namespace Pflanzenbestimmung_Desktop
             return SHA256HexHashString(StringIn);
         }
 
+        /// <summary>
+        /// Startet das Laden
+        /// </summary>
         public static void LadenStart()
         {
             MainWindow.StartLoading();
         }
 
+        /// <summary>
+        /// Führt das Laden fort und Beendet das Laden
+        /// </summary>
+        /// <param name="amount">(Optional) wie viel geladen werden soll (für mehr Infos Herzog kontaktieren ;) )</param>
         public static void Laden(int amount = 10000)
         {
             //MainWindow.StartLoading();

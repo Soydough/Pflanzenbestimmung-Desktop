@@ -30,6 +30,8 @@ namespace Pflanzenbestimmung_Desktop
         //Dirk
         //private readonly string url = "http://10.33.156.144/API/dbSchnittstelle.php";
 
+        //private readonly string url = "https://karteigarten.000webhostapp.com/API/dbSchnittstelle.php";
+
         public API_Anbindung()
         {
         }
