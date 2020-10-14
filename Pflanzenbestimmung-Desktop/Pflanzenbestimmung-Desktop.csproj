@@ -142,9 +142,6 @@
     <Compile Include="Uebersicht.xaml.cs">
       <DependentUpon>Uebersicht.xaml</DependentUpon>
     </Compile>
-    <Compile Include="XAML\AdminAdminsBearbeiten.xaml.cs">
-      <DependentUpon>AdminAdminsBearbeiten.xaml</DependentUpon>
-    </Compile>
     <Compile Include="XAML\AdminGesamtStatistik.xaml.cs">
       <DependentUpon>AdminGesamtStatistik.xaml</DependentUpon>
     </Compile>
@@ -159,6 +156,9 @@
     </Compile>
     <Compile Include="XAML\AdminStatistikBenutzerAuswahl.xaml.cs">
       <DependentUpon>AdminStatistikBenutzerAuswahl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XAML\AdminVerwalten.xaml.cs">
+      <DependentUpon>AdminVerwalten.xaml</DependentUpon>
     </Compile>
     <Compile Include="XAML\BenutzerVerwalten.xaml.cs">
       <DependentUpon>BenutzerVerwalten.xaml</DependentUpon>
@@ -203,10 +203,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="XAML\AdminAdminsBearbeiten.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="XAML\AdminGesamtStatistik.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -228,6 +224,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="XAML\AdminStatistikBenutzerAuswahl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\AdminVerwalten.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

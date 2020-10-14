@@ -105,6 +105,9 @@ namespace Pflanzenbestimmung_Desktop
             pflanzen = api_anbindung.Bekommen<Pflanze>();
             kategorien = api_anbindung.Bekommen<Kategorie>().ToList();
         }
+
+
+
         public static void LadeAzubiDaten()
         {
             ausbildungsarten = api_anbindung.Bekommen<Ausbildungsart>("Ausbildungsart").ToDictionary();
