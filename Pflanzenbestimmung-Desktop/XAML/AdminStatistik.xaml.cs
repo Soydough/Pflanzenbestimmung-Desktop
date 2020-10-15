@@ -15,7 +15,11 @@ namespace Pflanzenbestimmung_Desktop.XAML
             this.azubi = azubi;
             InitializeComponent();
             Main.LadeStatistiken(azubi.ID);
-            StatistikSelectedAzubi.Items.Add(Main.azubiStatistiken[azubi.ID]);
+            for (int i = 0; i < Main.azubiStatistiken.Length; i++)
+            {
+                StatistikSelectedAzubi.Items.Add(Main.azubiStatistiken[i]);
+            }
+
         }
 
         private void Ansehen_Click(object sender, RoutedEventArgs e)

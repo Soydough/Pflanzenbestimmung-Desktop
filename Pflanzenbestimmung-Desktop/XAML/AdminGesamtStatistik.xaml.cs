@@ -81,7 +81,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
         void Hauptmenü_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.changeContent(new Hauptmenü());
+            MainWindow.changeContent(new Administration());
         }
 
         private void Weiter_Click(object sender, RoutedEventArgs e)
