@@ -8,19 +8,27 @@ namespace Pflanzenbestimmung_Desktop.XAML
     /// </summary>
     public partial class AdminGesamtStatistik : UserControl
     {
-        public AdminGesamtStatistik()
+        Azubis azubi;
+        public AdminGesamtStatistik(Azubis azubi)
         {
+            this.azubi = azubi;
             InitializeComponent();
         }
 
-        private void Zurück_Click(object sender, RoutedEventArgs e)
+        void Zurück_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.changeContent(new AdminStatistikBenutzerAuswahl());
+            MainWindow.changeContent(new AdminStatistik(azubi));
         }
 
-        private void Hauptmenü_Click(object sender, RoutedEventArgs e)
+        void Hauptmenü_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.changeContent(new Hauptmenü());
         }
+
+        private void ZurückButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
+

@@ -104,6 +104,7 @@ namespace Pflanzenbestimmung_Desktop
 
             pflanzen = api_anbindung.Bekommen<Pflanze>();
             kategorien = api_anbindung.Bekommen<Kategorie>().ToList();
+            azubi = api_anbindung.Bekommen<Azubis>("Azubis");
         }
 
         public static void LadeAzubiDaten()
@@ -162,7 +163,9 @@ namespace Pflanzenbestimmung_Desktop
                 }
             }
             return kategorieVerwaltungListe;
-        }      
+        }
+
+       
 
         public static ObservableCollection<Administrator> AdminVerwaltungListe
         {
@@ -179,11 +182,15 @@ namespace Pflanzenbestimmung_Desktop
             return AdminVerwaltungListe;
         }
 
-        public static void LadeStatistiken()
+        public static void LadeStatistiken(int id = 0)
         {
             if (!benutzer.istAdmin)
-            {
+            {               
                 azubiStatistiken = api_anbindung.BekommeStatistikenListe(benutzer.id);
+            }
+            else
+            {
+                azubiStatistiken = api_anbindung.BekommeStatistikenListe(id);
             }
         }
 

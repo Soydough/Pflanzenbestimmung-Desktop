@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
+using System.Linq;
+using System;
 
 namespace Pflanzenbestimmung_Desktop.XAML
 {
@@ -11,11 +14,56 @@ namespace Pflanzenbestimmung_Desktop.XAML
         public AdminStatistikBenutzerAuswahl()
         {
             InitializeComponent();
+            Main.InitializeAzubiVerwaltungListe();
+            ObservableCollection<Azubis> selectAzubiForStatistic = new ObservableCollection<Azubis>();
+            for (int i = 0; i < Main.azubiVerwaltungListe.Count; i++)
+            {
+                string adminName = Main.azubiVerwaltungListe[i].Ausbilder.Replace(" ", "");
+
+                if (adminName == Main.benutzer.nutzername)
+                {
+                    selectAzubiForStatistic.Add(Main.azubiVerwaltungListe[i]);
+                }
+            }
+            SelctUserForStatisticDataGrid.ItemsSource = selectAzubiForStatistic;
         }
 
         private void Weiter_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.changeContent(new AdminStatistik());
+            try
+            {
+                Azubis auswahl = null;
+                if (SelctUserForStatisticDataGrid.SelectedItem == null)
+                {
+                    MessageBox.Show("Es wurde kein Auszubildender ausgewählt.");
+                }
+                else
+                {
+                    for (int i = 0; i < Main.azubiVerwaltungListe.Count; i++)
+                    {
+                        if (SelctUserForStatisticDataGrid.SelectedItem.Equals(Main.azubiVerwaltungListe[i]))
+                        {
+                            auswahl = Main.azubiVerwaltungListe[i];
+                            break;
+                        }
+                    }
+                    if (Main.azubiStatistiken[auswahl.ID] == null)
+                    {
+                        MessageBox.Show("Es sind keine Statistiken vorhanden.");
+                    }
+                    else
+                    {
+                        MainWindow.changeContent(new AdminStatistik(auswahl));
+                    }
+
+                }
+            }
+            catch (Exception )
+            {
+
+                MessageBox.Show("Ein unerwarteter Fehler ist aufgetreten. Vergewissern Sie sich das eine Statistik für den Auszubildenden vorhanden ist. Wenn der Fehler wiederholt auftritt wenden Sie sich an den System-Administrator.");
+            }
+          
         }
 
         private void Zurück_Click(object sender, RoutedEventArgs e)

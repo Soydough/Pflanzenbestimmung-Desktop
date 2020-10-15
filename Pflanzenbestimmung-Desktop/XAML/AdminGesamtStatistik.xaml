@@ -7,37 +7,107 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="800"
              Style="{DynamicResource HauptStyle}">
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
+        <StackPanel Name="StackPanel">
+            <Grid Name="GattungsnameGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
-        <Grid.Style>
-            <Style>
-                <Style.Resources>
-                    <Style TargetType="Label">
-                        <Setter Property="HorizontalAlignment" Value="Center" />
-                    </Style>
-                </Style.Resources>
-            </Style>
-        </Grid.Style>
+                <Label Content="Gattungsname:" />
+                <Label Name="GattungsnameLabel" Grid.Column="1" Content="Euphorbia" Foreground="Red" />
+            </Grid>
+            <Grid Name="ArtnameGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
-        <StackPanel>
-            <Label Content="Fehlerquote:" />
-            <Label Content="Beste Pflanze" />
-            <Label Content="Absolvierte Quiz" />
+                <Label Content="Artname:" />
+                <Label Grid.Column="1" Name="ArtnameLabel" Content="Pulcherrima" Foreground="Green" />
+            </Grid>
+            <Grid Name="DeutscherNameGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
 
+                <Label Content="Deutscher Name:" />
+                <Label Grid.Column="1" Name="DeutscherNameLabel" Content="Weihnachtsstern, Christstern" Foreground="Green" />
+            </Grid>
+            <Grid Name="FamilieGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Familie:" />
+                <Label Grid.Column="1" Name="FamilieLabel" Content="Euphorbiacae, Wolfsmilchgewächse" Foreground="Red" />
+            </Grid>
+            <Grid Name="HerkunftGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Heimat, Herkunft" />
+                <Label Grid.Column="1" Name="HerkunftLabel" Content="Mexiko, Mittelamerika" Foreground="Red" />
+            </Grid>
+            <Grid Name="BlueteGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Blüte:" />
+                <Label Grid.Column="1" Name="BlueteLabel" Content="zymöse Cyathien" Foreground="Green" />
+            </Grid>
+            <Grid Name="BluetezeitGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Blütezeit:" />
+                <Label Grid.Column="1" Name="BluetezeitLabel" Content="photoperiodische Reaktion" Foreground="Green" />
+            </Grid>
+            <Grid Name="BlattGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Blatt:" />
+                <Label Grid.Column="1" Name="BlattLabel" Content="wechselständig, länglich oval, teilweise gezähnt" Foreground="Red" />
+            </Grid>
+            <Grid Name="HabitusGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Habitus, Wuchs:" />
+                <Label Grid.Column="1" Name="HabitusLabel" Content="aufrecht, verzweigt" Foreground="Green" />
+            </Grid>
+            <Grid Name="BesonderheitenGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Besonderheiten:" />
+                <Label Grid.Column="1" Name="BesonderheitenLabel" Content="farbige Blattmetamorphosen (Hochblätter/Brakteen)" Foreground="Green" />
+            </Grid>
+
+            <StackPanel Orientation="Horizontal">
+                <Button Visibility="Collapsed" Name="ZurückButton" Click="ZurückButton_Click" Content="Zurück" Width="200" Height="30" Margin="100"/>
+
+            </StackPanel>
         </StackPanel>
 
-        <Button Name="Zurück" Click="Zurück_Click" Content="Zurück" Height="30" Width="200" VerticalAlignment="Bottom" Margin="10"/>
-
-        <StackPanel Grid.Column="1">
-            <Label Content="23%" />
-            <Label Content="Euphorbia pulcherrima" />
-            <Label Content="5" />
-        </StackPanel>
-
-        <Button Name="Hauptmenü" Click="Hauptmenü_Click" Content="Hauptmenü" Grid.Column="1" Height="30" Width="200" VerticalAlignment="Bottom" Margin="10"/>
+        <Button Name="Zurück" Click="Zurück_Click" Content="Zurück" Height="30" Width="200" VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Left"/>
+        <Button Name="Hauptmenü" Click="Hauptmenü_Click" Content="Hauptmenü" Grid.Column="1" Height="30" Width="200" VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Right"/>
     </Grid>
 </UserControl>

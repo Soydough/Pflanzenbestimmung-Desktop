@@ -13,42 +13,12 @@
             <TextBox Style="{DynamicResource BenutzernameStyle}"/>
         </Border>
 
-        <ScrollViewer Height="260" Margin="0,10">
-            <StackPanel>
-                <StackPanel.Style>
-                    <Style>
-                        <Style.Resources>
-                            <Style TargetType="Border">
-                                <Style.Setters>
-                                    <Setter Property="Margin" Value="0,5" />
-                                </Style.Setters>
-                            </Style>
-                        </Style.Resources>
-                    </Style>
-                </StackPanel.Style>
-                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
-                    <Label Content="Gesamtstatistik"/>
-                </Border>
-                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
-                    <Label Content="Testbenutzer"/>
-                </Border>
-                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
-                    <Label Content="Testbenutzer"/>
-                </Border>
-                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
-                    <Label Content="Testbenutzer"/>
-                </Border>
-                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
-                    <Label Content="Testbenutzer"/>
-                </Border>
-                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
-                    <Label Content="Testbenutzer"/>
-                </Border>
-                <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Top">
-                    <Label Content="Testbenutzer"/>
-                </Border>
-            </StackPanel>
-        </ScrollViewer>
+        <DataGrid Height="260" Margin="0,10" Name="SelctUserForStatisticDataGrid" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Vorname" Binding="{Binding Vorname}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
         <Grid>
             <Button Name="Zurück" Click="Zurück_Click" Content="Abbrechen" VerticalAlignment="Bottom" Height="30" Width="200" HorizontalAlignment="Left"/>
