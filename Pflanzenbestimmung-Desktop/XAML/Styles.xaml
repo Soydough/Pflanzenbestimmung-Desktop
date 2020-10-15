@@ -27,8 +27,16 @@
                 <Setter Property="Background" Value="White" />
             </Style>
         </Style.Resources>
+        
         -->
-        <Setter Property="Background" Value="White" />
+
+        <Style.Resources>
+            <Style TargetType="TabControl">
+                <Setter Property="Background" Value="YellowGreen" />
+            </Style>
+        </Style.Resources>
+        
+        <Setter Property="Background" Value="LightGreen" />
     </Style>
 
     <Style x:Key="StackpanelStyle" TargetType="StackPanel">

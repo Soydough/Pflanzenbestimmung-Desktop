@@ -363,10 +363,14 @@ namespace Pflanzenbestimmung_Desktop
 
             quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt").ToDictionary();
             int anzahl = quizArt[benutzer.id].quizgröße;
-            //quiz = new QuizPflanze[anzahl];
+            
             List<QuizPflanze> tempQuiz = new List<QuizPflanze>();
 
             azubiQuizZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
+
+            anzahl = Math.Min(anzahl, azubiQuizZuweisungen.Length);
+            
+            quiz = new QuizPflanze[anzahl];
 
             einzelStatistiken = new StatistikPflanze[anzahl];
             //List<Pflanze> tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();

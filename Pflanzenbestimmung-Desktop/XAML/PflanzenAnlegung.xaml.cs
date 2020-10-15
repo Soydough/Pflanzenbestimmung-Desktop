@@ -128,7 +128,8 @@ namespace Pflanzenbestimmung_Desktop
 
             MessageBox.Show("Gespeichert!");
 
-            MainWindow.changeContent(new Hauptmenü());
+            //MainWindow.changeContent(new Hauptmenü());
+            MainWindow.changeContent(new Administration());
         }
     }
 }

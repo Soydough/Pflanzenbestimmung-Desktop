@@ -94,7 +94,6 @@ namespace Pflanzenbestimmung_Desktop
                 var popup = new BildanzeigeVollbild();
                 popup.Show();
             }
-
         }
 
         private void Weiter_Click(object sender, RoutedEventArgs e)

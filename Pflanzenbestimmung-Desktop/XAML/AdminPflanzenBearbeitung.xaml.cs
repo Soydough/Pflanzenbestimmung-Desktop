@@ -31,7 +31,6 @@ namespace Pflanzenbestimmung_Desktop.XAML
         public AdminPflanzenBearbeitung()
         {
             InitializeComponent();
-
             Initialize();
         }
 
@@ -78,6 +77,13 @@ namespace Pflanzenbestimmung_Desktop.XAML
             zierCheckBox.Content = "Gilt für Zier";
             zierCheckBox.Margin = new Thickness(0, 10, 0, 10);
 
+
+            try
+            {
+                UnregisterName("galaCheckBox");
+                UnregisterName("zierCheckBox");
+            }
+            catch { }
             RegisterName("galaCheckBox", galaCheckBox);
             RegisterName("zierCheckBox", zierCheckBox);
 
@@ -296,7 +302,11 @@ namespace Pflanzenbestimmung_Desktop.XAML
                     bildIndex++;
                 }
 
-                aktualisiereBilder(true);
+                try
+                {
+                    aktualisiereBilder(true);
+                }
+                catch { }
             }
             else
             {
@@ -312,6 +322,8 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 Main.api_anbindung.LoeschePflanze(Main.pflanzen[PflanzenDataGrid.SelectedIndex].id_pflanze);
 
                 Main.Initialize();
+                PflanzenDataGrid.SelectedIndex = 0;
+                ausgewaehltePflanze = 0;
                 Initialize();
                 //MessageBox.Show("Wenn das Löschen nicht erfolreich war; dieser Fehler ist durchaus bekannt");
             }
