@@ -42,40 +42,40 @@
                         </Style>
                     </StackPanel.Style>
                     <Grid>
-                        <Label Content="Benutzername:" />
-                        <TextBox Name="BenutzernameTextBox" />
+                        <Label Content="Benutzername:" ToolTip="Nicht hier! Die TextBox ist doch gleich nebenan" />
+                        <TextBox Name="BenutzernameTextBox" ToolTip="Benutzernamen hier eingeben" />
                     </Grid>
                     <Grid>
-                        <Label Content="Passwort:" />
-                        <PasswordBox Name="PasswordBox" />
+                        <Label Content="Passwort:" ToolTip="Nicht hier! Die PasswordBox ist doch gleich nebenan" />
+                        <PasswordBox Name="PasswordBox" ToolTip="Passwort hier eingeben" />
                     </Grid>
                     <Grid>
-                        <Label Content="Name:"/>
-                        <TextBox Name="NachnameTextBox" />
+                        <Label Content="Name:" ToolTip="Nicht hier! Die TextBox ist doch gleich nebenan" />
+                        <TextBox Name="NachnameTextBox" ToolTip="Nachnamen hier eingeben" />
                     </Grid>
                     <Grid>
-                        <Label Content="Vorname:"/>
-                        <TextBox Name="VornameTextBox" />
+                        <Label Content="Vorname:" ToolTip="Nicht hier! Die TextBox ist doch gleich nebenan" />
+                        <TextBox Name="VornameTextBox" ToolTip="Vornamen hier eingeben" />
                     </Grid>
                     <Grid>
-                        <Label Content="Ausbildungsart"/>
-                        <ComboBox Name="AubildungsartComboBox" />
+                        <Label Content="Ausbildungsart" ToolTip="Nicht hier! Die ComboBox ist doch gleich nebenan" />
+                        <ComboBox Name="AubildungsartComboBox" ToolTip="Ausbildungsart hier auswählen" />
                     </Grid>
                     <Grid>
-                        <Label Content="Fachrichtung" />
-                        <ComboBox Name="FachrichtungComboBox" />
+                        <Label Content="Fachrichtung" ToolTip="Nicht hier! Die ComboBox ist doch gleich nebenan" />
+                        <ComboBox Name="FachrichtungComboBox" ToolTip="Fachrichtung hier auswählen" />
                     </Grid>
                     <Grid>
-                        <Label Content="Ausbilder" />
-                        <ComboBox Name="AusbilderComboBox" />
+                        <Label Content="Ausbilder" ToolTip="Nicht hier! Die ComboBox ist doch gleich nebenan" />
+                        <ComboBox Name="AusbilderComboBox" ToolTip="Ausbilder hier auswählen" />
                     </Grid>
                     <Grid>
-                        <Label Content="Quizgröße:" />
-                        <ComboBox Name="QuizartenComboBox" />
+                        <Label Content="Quizgröße:" ToolTip="Nicht hier! Die ComboBox ist doch gleich nebenan" />
+                        <ComboBox Name="QuizartenComboBox" ToolTip="Quizgröße hier auswählen" />
                     </Grid>
                     <Grid>
-                        <Label Content="Prüfungsmodus?"/>
-                        <CheckBox Name="PruefungsmodusCheckbox" FlowDirection="RightToLeft" VerticalAlignment="Center" />
+                        <Label Content="Prüfungsmodus?" ToolTip="Nicht hier! Die CheckBox ist doch gleich nebenan" />
+                        <CheckBox Name="PruefungsmodusCheckbox" FlowDirection="RightToLeft" VerticalAlignment="Center" ToolTip="Hier auswählen, ob der Prüfungsmodus aktiviert werden soll" />
                     </Grid>
                 </StackPanel>
             </TabItem>
@@ -108,20 +108,20 @@
                         </Style>
                     </StackPanel.Style>
                     <Grid>
-                        <Label Content="Benutzername:" />
-                        <TextBox Name="AdminBenutzernameTextBox" />
+                        <Label Content="Benutzername:" ToolTip="Nicht hier! Die TextBox ist doch gleich nebenan" />
+                        <TextBox Name="AdminBenutzernameTextBox" ToolTip="Benutzernamen hier eingeben" />
                     </Grid>
                     <Grid>
-                        <Label Content="Passwort:" />
-                        <PasswordBox Name="AdminPasswordBox" />
+                        <Label Content="Passwort:" ToolTip="Nicht hier! Die PasswordBox ist doch gleich nebenan" />
+                        <PasswordBox Name="AdminPasswordBox" ToolTip="Passwort hier eingeben" />
                     </Grid>
                     <Grid>
-                        <Label Content="Name:"/>
-                        <TextBox Name="AdminNachnameTextBox" />
+                        <Label Content="Name:" ToolTip="Nicht hier! Die TextBox ist doch gleich nebenan" />
+                        <TextBox Name="AdminNachnameTextBox" ToolTip="Nachnamen hier eingeben" />
                     </Grid>
                     <Grid>
-                        <Label Content="Vorname:"/>
-                        <TextBox Name="AdminVornameTextBox" />
+                        <Label Content="Vorname:" ToolTip="Nicht hier! Die TextBox ist doch gleich nebenan" />
+                        <TextBox Name="AdminVornameTextBox" ToolTip="Vornamen hier eingeben" />
                     </Grid>
                 </StackPanel>
             </TabItem>

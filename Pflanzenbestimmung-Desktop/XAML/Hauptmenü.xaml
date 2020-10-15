@@ -23,11 +23,11 @@
         <StackPanel Margin="30" Style="{DynamicResource HauptmenüButtonsStyle}">
             <ToggleButton Name="EineMinuteProPflanzeButton" Click="EineMinuteProPflanzeButton_Click" Content="1 min pro Pflanze" Margin="250, 0"/>
 
-            <Button Name="AktuellesQuizButton" Click="AktuellesQuizButton_Click" Content="Aktuelles Quiz starten" />
-            <Button Name="ZufälligesQuizButton" Click="ZufälligesQuizButton_Click" Content="Zufälliges Quiz starten" />
-            <Button Name="StatistikButton" Click="StatistikButton_Click" Content="Statistik" />
-            <Button Name="AdministrationButton" Click="AdministrationButton_Click" Content="Administratives" Visibility="Visible" />
-            <Button Name="AusloggenButton" Click="AusloggenButton_Click" Content="Ausloggen" />
+            <Button Name="AktuellesQuizButton" Click="AktuellesQuizButton_Click" Content="Aktuelles Quiz starten" ToolTip="Startet das Ihnen zugeteilte Quiz" />
+            <Button Name="ZufälligesQuizButton" Click="ZufälligesQuizButton_Click" Content="Zufälliges Quiz starten" ToolTip="Startet ein Zufälliges Quiz" />
+            <Button Name="StatistikButton" Click="StatistikButton_Click" Content="Statistik" ToolTip="Öffnet Ihre Statistik-Seite" />
+            <Button Name="AdministrationButton" Click="AdministrationButton_Click" Content="Administratives" Visibility="Visible" ToolTip="Öffnet die Administrations-Seite" />
+            <Button Name="AusloggenButton" Click="AusloggenButton_Click" Content="Ausloggen" ToolTip="Meldet Sie ab" />
 
             
         </StackPanel>

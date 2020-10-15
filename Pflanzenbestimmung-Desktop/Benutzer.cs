@@ -61,7 +61,7 @@ namespace Pflanzenbestimmung_Desktop
                 vorname = temp.vorname,
                 istAdmin = false
             };
-        
+
             return benutzer;
         }
 

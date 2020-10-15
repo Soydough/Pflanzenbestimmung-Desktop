@@ -1,5 +1,4 @@
-﻿using Pflanzenbestimmung_Desktop.XAML;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -18,7 +17,7 @@ namespace Pflanzenbestimmung_Desktop
                 //Der Name war tatsächlich nur Clickbait. Diese Klasse ist für alle Benutzer gedacht
             }
 
-            if(Main.azubiStatistik == null || Main.azubiStatistik.pflanzen == null || Main.azubiStatistik.pflanzen.Length == 0)
+            if (Main.azubiStatistik == null || Main.azubiStatistik.pflanzen == null || Main.azubiStatistik.pflanzen.Length == 0)
             {
                 //Das sollte im Übrigen nicht passieren. Aber jetzt ist es halt im Code. Ist wahrscheinlich besser, als wenn das Programm abstürzt.
                 //Eventuell sollte man auch damit umgehen können, wenn während des Quiz das Internet ausgeht. Aber das ist etwas für die Zukunft (wenn überhaupt)

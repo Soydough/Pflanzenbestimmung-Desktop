@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Pflanzenbestimmung_Desktop.XAML
 {
@@ -73,8 +62,9 @@ namespace Pflanzenbestimmung_Desktop.XAML
         }
 
         private void btnkatAenderungSpeich_Click(object sender, RoutedEventArgs e)
-        { int a = 0;
-            
+        {
+            int a = 0;
+
             if (GridKategorienBearbeiten.SelectedItem == null)
             {
                 MessageBox.Show("Niemanden ausgewählt!");
@@ -138,7 +128,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
         private void loeschen_click(object sender, RoutedEventArgs e)
         {
             int id = 0;
-            string Kategorie= null;
+            string Kategorie = null;
             if (GridKategorienBearbeiten.SelectedItem == null)
             {
                 MessageBox.Show("Niemanden ausgewählt!");
@@ -155,8 +145,8 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 }
                 API_Anbindung loeschen = new API_Anbindung();
 
-              string  nachricht = "Sind sie sich sicher, dass der Benutzer:\n'" + Kategorie
-                                 + "'\n gelöscht werden soll?";
+                string nachricht = "Sind sie sich sicher, dass der Benutzer:\n'" + Kategorie
+                                   + "'\n gelöscht werden soll?";
                 string caption = "Löschen?";
                 var result = MessageBox.Show(nachricht, caption, MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
@@ -164,8 +154,8 @@ namespace Pflanzenbestimmung_Desktop.XAML
                     loeschen.LoescheKategorie(id);
                     MainWindow.changeContent(new AdminKategorieErstellen());
                 }
-                    
-            }          
+
+            }
         }
     }
 }

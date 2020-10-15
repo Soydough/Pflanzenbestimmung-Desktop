@@ -41,21 +41,6 @@ namespace Pflanzenbestimmung_Desktop
                         // Bekomme Bytes von String aus API
                         byte[] b = Main.pflanzenbilder[i].bild.ToBytes();
 
-                        /*
-                        //System.Text.StringBuilder output = new System.Text.StringBuilder("[");
-                        //for(int j = 0; j < b.Length - 1; j++)
-                        //{
-                        //    output.Append(b[j].ToString());
-                        //    output.Append(", ");
-                        //}
-                        //output.Append(b[b.Length - 1]);
-                        //output.Append("]");
-
-                        //MessageBox.Show("test");
-
-                        //string test = output.ToString();
-                        */
-
                         // Erstelle neue Bitmap
                         BitmapImage bmp = new BitmapImage();
 
@@ -79,6 +64,8 @@ namespace Pflanzenbestimmung_Desktop
 
                         // Füge Click-Event hinzu (Bild wird beim Klicken im Vollbildmodus angezeigt)
                         image.MouseUp += ImageClickEvent;
+
+                        image.ToolTip = "Zum Vergrößern auf das Bild klicken";
 
                         // Bild wird StackPanel hinzugefügt
                         stackPanel.Children.Add(image);

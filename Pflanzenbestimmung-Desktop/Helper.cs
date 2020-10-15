@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Windows.Threading;
-using static Pflanzenbestimmung_Desktop.Helper;
 
 namespace Pflanzenbestimmung_Desktop
 {

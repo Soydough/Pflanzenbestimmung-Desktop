@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.IO;
-using Flurl.Util;
 
 namespace Pflanzenbestimmung_Desktop.XAML
 {
@@ -105,7 +95,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
             aktualisiereAnzahlDerBereitsVorhandenenBilder();
             aktualisiereBilder(true);
 
-            for (int i = 0; i <  Main.kategorien.Count; i++)
+            for (int i = 0; i < Main.kategorien.Count; i++)
             {
                 TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
                 aktuellesObject.Text = "";

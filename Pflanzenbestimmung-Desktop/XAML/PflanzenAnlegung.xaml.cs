@@ -26,7 +26,7 @@ namespace Pflanzenbestimmung_Desktop
                 lb.Name = name;
                 lb.Content = Main.kategorien[i].kategorie;
                 RegisterName(name, lb);
-                
+
                 TextBox tb = new TextBox();
                 RegisterName("tb" + Main.kategorien[i].kategorie, tb);
 
@@ -67,7 +67,7 @@ namespace Pflanzenbestimmung_Desktop
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (string file in files)
             {
-                if(Path.GetExtension(file).ToLower().IsAnyOf(".png", ".jpg", ".jpeg", ".gif", ".bmp"))
+                if (Path.GetExtension(file).ToLower().IsAnyOf(".png", ".jpg", ".jpeg", ".gif", ".bmp"))
                 {
                     if (bilder.Count < 10)
                     {

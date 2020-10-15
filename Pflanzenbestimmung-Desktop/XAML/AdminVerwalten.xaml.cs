@@ -1,18 +1,5 @@
-﻿using Org.BouncyCastle.Asn1.Cmp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using static Pflanzenbestimmung_Desktop.Helper;
 
 namespace Pflanzenbestimmung_Desktop.XAML
 {
@@ -58,7 +45,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
             {
                 name = NachnameAendernTextBox.Text;
             }
-            
+
             if (passwort != "")
             {
                 passwort = PasswortAenderndBox.Password;
@@ -94,7 +81,6 @@ namespace Pflanzenbestimmung_Desktop.XAML
                     Main.api_anbindung.BenutzerLoeschen(admin.ID, true);
                     MainWindow.changeContent(new Benutzerverwaltung());
                 }
-
             }
             catch (System.Exception)
             {

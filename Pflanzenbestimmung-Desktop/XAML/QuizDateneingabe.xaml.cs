@@ -1,7 +1,4 @@
-﻿using Flurl.Util;
-using System;
-using System.Runtime.InteropServices;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -58,7 +55,7 @@ namespace Pflanzenbestimmung_Desktop
                     RechtesGrid.Children.Add(eingabe);
 
                     int zeile = 1;
-                    for(int j = 1; j < i; j += 2)
+                    for (int j = 1; j < i; j += 2)
                     {
                         zeile++;
                     }
@@ -83,10 +80,10 @@ namespace Pflanzenbestimmung_Desktop
             {
                 string eingabe = ((TextBox)FindName(Main.kategorien[i].kategorie + "TextBox")).Text;
 
-              /*  if(string.IsNullOrWhiteSpace(eingabe))
-                {
-                    eingabe = "kеine Eingabe gemacht!";
-                } */ // Soll prüfungsvorbereitend sein und da sagt dir auch keiner wenn du ein Feld nicht ausgefüllt hast.
+                /*  if(string.IsNullOrWhiteSpace(eingabe))
+                  {
+                      eingabe = "kеine Eingabe gemacht!";
+                  } */ // Soll prüfungsvorbereitend sein und da sagt dir auch keiner wenn du ein Feld nicht ausgefüllt hast.
 
                 Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorien[i].gegebeneAntwort = eingabe;
 
@@ -101,7 +98,7 @@ namespace Pflanzenbestimmung_Desktop
             //Speichere ID weitere Daten für die Einzelstatistik
             Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].id_pflanze = Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.id_pflanze;
 
-            if(Main.momentanePflanzeAusQuiz >= Main.quiz.Length - 1)
+            if (Main.momentanePflanzeAusQuiz >= Main.quiz.Length - 1)
             {
                 //Quiz ist zu Ende. Ergebnisse in Datenbank speichern
                 Main.quizTimer.Stop();

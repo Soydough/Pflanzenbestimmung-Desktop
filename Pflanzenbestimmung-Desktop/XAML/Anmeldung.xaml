@@ -12,13 +12,15 @@
         <Label Content="Benutzername"/>
         <Border>
             <TextBox x:Name="AnmeldungBenutzernameTextBox"
-                     Style="{DynamicResource ResourceKey=BenutzernameStyle}"/>
+                     Style="{DynamicResource ResourceKey=BenutzernameStyle}"
+                     ToolTip="Hier bitte den Benutzernamen eingeben (oder einen Code? Coming soon...)"/>
         </Border>
 
         <Label Content="Passwort:"/>
         <PasswordBox x:Name="AnmeldungPasswordBox"/>
 
         <Button x:Name="AnmeldungButton" Content="Anmelden" Margin="0,30,0,0"
-                Click="AnmeldungButton_Click" Height="30" Width="200"/>
+                Click="AnmeldungButton_Click" Height="30" Width="200"
+                ToolTip="Hier bitte den Benutzernamen eingeben (oder einen Code? Coming soon...)"/>
     </StackPanel>
 </UserControl>

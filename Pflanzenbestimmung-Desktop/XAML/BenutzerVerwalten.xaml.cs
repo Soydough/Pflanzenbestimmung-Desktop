@@ -1,18 +1,6 @@
-﻿using Org.BouncyCastle.Asn1.Cmp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using static Pflanzenbestimmung_Desktop.Helper;
 
 namespace Pflanzenbestimmung_Desktop.XAML
 {
@@ -121,11 +109,11 @@ namespace Pflanzenbestimmung_Desktop.XAML
             {
                 nutzername = BenutzernameAendernTextBox.Text;
             }
-            if (azubi.Vorname!=(VornameAendernTextBox.Text))
+            if (azubi.Vorname != (VornameAendernTextBox.Text))
             {
                 vorname = VornameAendernTextBox.Text;
             }
-            if (azubi.Name !=(NachnameAendernTextBox.Text))
+            if (azubi.Name != (NachnameAendernTextBox.Text))
             {
                 name = NachnameAendernTextBox.Text;
             }
@@ -137,10 +125,10 @@ namespace Pflanzenbestimmung_Desktop.XAML
             {
                 fachrichtung = ((KeyValuePair<int, Fachrichtung>)FachrichtungAendernComboBox.SelectedItem).Key;
             }
-          //  if (azubi.Ausbilder != (Main.ausbilder[AusbilderAendernComboBox.SelectedIndex].vorname +" "+ Main.ausbilder[AusbilderAendernComboBox.SelectedIndex].name))
-          //  {
-                ausbilder = ((KeyValuePair<int, Administrator>)AusbilderAendernComboBox.SelectedItem).Key;
-          //  }
+            //  if (azubi.Ausbilder != (Main.ausbilder[AusbilderAendernComboBox.SelectedIndex].vorname +" "+ Main.ausbilder[AusbilderAendernComboBox.SelectedIndex].name))
+            //  {
+            ausbilder = ((KeyValuePair<int, Administrator>)AusbilderAendernComboBox.SelectedItem).Key;
+            //  }
             if (azubi.ID_quiz_art != (Main.quizArt[QuizartenAendernComboBox.SelectedIndex].id))
             {
                 id_quiz_art = ((KeyValuePair<int, QuizArt>)QuizartenAendernComboBox.SelectedItem).Key;
@@ -175,26 +163,26 @@ namespace Pflanzenbestimmung_Desktop.XAML
             string azubiName;
             string azubiVorname;
             string nachricht;
-                try
+            try
+            {
+                azubiName = azubi.Name;
+                azubiVorname = azubi.Vorname;
+                nachricht = "Sind sie sich sicher, dass der Benutzer:\n'" + azubiName + ", "
+                                 + azubiVorname + "'\n gelöscht werden soll?";
+                string caption = "Löschen?";
+                var result = MessageBox.Show(nachricht, caption, MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
                 {
-                    azubiName = azubi.Name;
-                    azubiVorname = azubi.Vorname;
-                    nachricht = "Sind sie sich sicher, dass der Benutzer:\n'" + azubiName + ", "
-                                     + azubiVorname + "'\n gelöscht werden soll?";
-                    string caption = "Löschen?";
-                    var result = MessageBox.Show(nachricht, caption, MessageBoxButton.YesNo);
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        Main.api_anbindung.BenutzerLoeschen(azubi.ID, false);
-                        MainWindow.changeContent(new Benutzerverwaltung());
-                    }
+                    Main.api_anbindung.BenutzerLoeschen(azubi.ID, false);
+                    MainWindow.changeContent(new Benutzerverwaltung());
+                }
 
-                }
-                catch (System.Exception)
-                {
-                    throw;
-                }
             }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
 
     }//End Class
 }//End Namespace

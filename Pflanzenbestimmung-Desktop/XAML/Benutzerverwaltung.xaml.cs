@@ -1,9 +1,4 @@
-﻿using Flurl.Util;
-using MySqlX.XDevAPI.Common;
-using Pflanzenbestimmung_Desktop.XAML;
-using System.Collections.ObjectModel;
-using System.Data;
-using System.Linq;
+﻿using Pflanzenbestimmung_Desktop.XAML;
 using System.Windows;
 using System.Windows.Controls;
 

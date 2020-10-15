@@ -82,7 +82,7 @@ namespace Pflanzenbestimmung_Desktop
                 int ausbildungsart = ((KeyValuePair<int, Ausbildungsart>)dieses.AubildungsartComboBox.SelectedItem).Key;
                 int fachrichtung = ((KeyValuePair<int, Fachrichtung>)dieses.FachrichtungComboBox.SelectedItem).Key;
                 int ausbilderId = ((KeyValuePair<int, Administrator>)dieses.AusbilderComboBox.SelectedItem).Key;
-                int quizArtId =  ((KeyValuePair<int, QuizArt>)QuizartenComboBox.SelectedItem).Key;
+                int quizArtId = ((KeyValuePair<int, QuizArt>)QuizartenComboBox.SelectedItem).Key;
 
                 try
                 {

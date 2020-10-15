@@ -15,7 +15,7 @@ namespace Pflanzenbestimmung_Desktop
         /// </summary>
         public string kategorie;
 
-        public string Kategorien { get {return kategorie;} set {kategorie = value;} }
+        public string Kategorien { get { return kategorie; } set { kategorie = value; } }
 
         /// <summary>
         /// Ob die Kategorie für Gartenlandschaftsbauer angezeigt werden soll
@@ -35,7 +35,7 @@ namespace Pflanzenbestimmung_Desktop
         [Obsolete("Bitte stattdessen wirdFürWerkGewertet verwenden")]
         public int werker_gewertet;
 
-        
+
         public int im_quiz;
 
         public string quizAuswahl;

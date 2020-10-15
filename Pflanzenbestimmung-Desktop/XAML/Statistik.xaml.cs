@@ -1,8 +1,5 @@
-﻿using System;
-using System.Globalization;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -15,7 +12,7 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
 
-            for(int i = 0; i < Main.azubiStatistiken.Length; i++)
+            for (int i = 0; i < Main.azubiStatistiken.Length; i++)
             {
                 listView.Items.Add(Main.azubiStatistiken[i].ToString());
             }
@@ -28,8 +25,9 @@ namespace Pflanzenbestimmung_Desktop
             MainWindow.changeContent(new Hauptmenü());
         }
 
-        public int TitelBreite {
-            get 
+        public int TitelBreite
+        {
+            get
             {
                 return (int)listView.Width;
             }

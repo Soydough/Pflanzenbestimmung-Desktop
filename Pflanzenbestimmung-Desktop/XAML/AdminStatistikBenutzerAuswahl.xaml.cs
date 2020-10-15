@@ -1,8 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Linq;
-using System;
 
 namespace Pflanzenbestimmung_Desktop.XAML
 {
@@ -13,7 +12,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
     {
         public AdminStatistikBenutzerAuswahl()
         {
-            InitializeComponent();            
+            InitializeComponent();
             Main.InitializeAzubiVerwaltungListe();
             ObservableCollection<Azubis> selectAzubiForStatistic = new ObservableCollection<Azubis>();
             for (int i = 0; i < Main.azubiVerwaltungListe.Count; i++)
@@ -46,15 +45,15 @@ namespace Pflanzenbestimmung_Desktop.XAML
                             auswahl = Main.azubiVerwaltungListe[i];
                             break;
                         }
-                    }                 
-                        MainWindow.changeContent(new AdminStatistik(auswahl));
+                    }
+                    MainWindow.changeContent(new AdminStatistik(auswahl));
                 }
             }
-            catch (Exception t )
+            catch (Exception t)
             {
                 MessageBox.Show("Ein unerwarteter Fehler ist aufgetreten. Vergewissern Sie sich das eine Statistik für den Auszubildenden vorhanden ist. Wenn der Fehler wiederholt auftritt wenden Sie sich an den System-Administrator.");
             }
-          
+
         }
 
         private void Zurück_Click(object sender, RoutedEventArgs e)

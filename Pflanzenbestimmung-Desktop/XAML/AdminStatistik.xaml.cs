@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop.XAML
@@ -53,7 +52,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 MessageBox.Show(@as + "");
                 throw;
             }
-            
+
         }
 
         private void Zurück_Click(object sender, RoutedEventArgs e)

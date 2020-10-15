@@ -1,16 +1,10 @@
-﻿using MySql.Data.MySqlClient.Memcached;
-using Flurl.Http;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net;
 using System.Text;
 using System.Windows;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Runtime.InteropServices;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -25,12 +19,12 @@ namespace Pflanzenbestimmung_Desktop
         //private readonly string url = "http://10.33.11.142/API/dbSchnittstelle.php";
 
         //Jan
-        private readonly string url = "http://10.33.11.134/API/dbSchnittstelle.php";
+        //private readonly string url = "http://10.33.11.134/API/dbSchnittstelle.php";
 
         //Dirk
         //private readonly string url = "http://10.33.156.144/API/dbSchnittstelle.php";
 
-        //private readonly string url = "https://karteigarten.000webhostapp.com/API/dbSchnittstelle.php";
+        private readonly string url = "https://karteigarten.000webhostapp.com/API/dbSchnittstelle.php";
 
         public API_Anbindung()
         {
@@ -174,7 +168,7 @@ namespace Pflanzenbestimmung_Desktop
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
-                    if(responseString.Length > 0)
+                    if (responseString.Length > 0)
                     {
                         throw new Exception(responseString);
                     }

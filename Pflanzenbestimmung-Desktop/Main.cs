@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
 using System.Windows.Media;
-using System.Drawing;
-using Newtonsoft.Json;
-using System.Data.Common;
-using System.Data;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Diagnostics;
-using static Pflanzenbestimmung_Desktop.Helper;
-using System.Runtime.InteropServices;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -72,7 +65,7 @@ namespace Pflanzenbestimmung_Desktop
         public static QuizPZuweisung[] quizPZuweisungen;
 
         public static Azubis[] azubi;
-        
+
         public static QuizPZuweisung[] azubiQuizZuweisungen;
 
         //Zeitpunkt des Beginns des Quiz
@@ -121,7 +114,7 @@ namespace Pflanzenbestimmung_Desktop
             abgefragt = api_anbindung.BekommeAbgefragt(benutzer.id);
             abgefragtZuweisung = new Dictionary<int, bool>();
 
-            for(int i = 0; i < abgefragt.Length; i++)
+            for (int i = 0; i < abgefragt.Length; i++)
             {
                 abgefragtZuweisung.Add(i, abgefragt[i].IstGelernt);
             }
@@ -183,7 +176,7 @@ namespace Pflanzenbestimmung_Desktop
         public static void LadeStatistiken(int id = 0)
         {
             if (!benutzer.istAdmin)
-            {               
+            {
                 azubiStatistiken = api_anbindung.BekommeStatistikenListe(benutzer.id);
             }
             else
@@ -222,7 +215,7 @@ namespace Pflanzenbestimmung_Desktop
                         }
                         else
                         {
-                            if(!temp.WirdFürWerkGewertet)
+                            if (!temp.WirdFürWerkGewertet)
                             {
                                 //Antwort falsch, aber Werker
                                 gesamtSumme--;
@@ -238,7 +231,8 @@ namespace Pflanzenbestimmung_Desktop
                 }
 
                 //Wenn Pflanze richtig war, Abgefragt speichern
-                if (tempFehlerSumme == 0) {
+                if (tempFehlerSumme == 0)
+                {
                     bool found = false;
                     for (int j = 0; j < abgefragt.Length; j++)
                     {
@@ -258,7 +252,7 @@ namespace Pflanzenbestimmung_Desktop
                     }
                 }
 
-                if(tempFehlerSumme < wenigsteFehler)
+                if (tempFehlerSumme < wenigsteFehler)
                 {
                     wenigsteFehler = tempFehlerSumme;
                     wenigsteFehlerPflanzeId = einzelStatistiken[i].id_pflanze;
@@ -320,7 +314,7 @@ namespace Pflanzenbestimmung_Desktop
                         tempPflanzen.Add(pflanzen[index]);
                 }
 
-                if(tempPflanzen.IsNullOrEmpty())
+                if (tempPflanzen.IsNullOrEmpty())
                 {
                     MessageBox.Show("Sie haben bereits alle zugewiesenen Pflanzen gelernt!\n" +
                         "\n" +
@@ -361,13 +355,13 @@ namespace Pflanzenbestimmung_Desktop
 
             quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt").ToDictionary();
             int anzahl = quizArt[benutzer.id].quizgröße;
-            
+
             List<QuizPflanze> tempQuiz = new List<QuizPflanze>();
 
             azubiQuizZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
 
             anzahl = Math.Min(anzahl, azubiQuizZuweisungen.Length);
-            
+
             quiz = new QuizPflanze[anzahl];
 
             einzelStatistiken = new StatistikPflanze[anzahl];
@@ -495,7 +489,7 @@ namespace Pflanzenbestimmung_Desktop
             //Bekommt alle möglichen Antworten (mit , getrennt)
             string[] tempArr = korrekt.Split(',');
             string[] tempArr2;
-            
+
             //Wenn es mehrere korrekte Antworten gibt: bekommt alle Eingaben (durch komma getrennt)
             if (tempArr.Length > 1)
             {
@@ -519,5 +513,5 @@ namespace Pflanzenbestimmung_Desktop
             //Ansonsten "false" ausgeben
             return false;
         }
-    } 
+    }
 }

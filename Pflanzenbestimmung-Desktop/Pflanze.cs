@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Pflanzenbestimmung_Desktop
+﻿namespace Pflanzenbestimmung_Desktop
 {
     public class Pflanze
     {

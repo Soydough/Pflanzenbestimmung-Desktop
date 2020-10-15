@@ -10,6 +10,6 @@
         WindowState="Maximized"
         Background="#313141">
     <Grid>
-        <Image Name="Bild"/>
+        <Image Name="Bild" ToolTip="Zum schließen auf das Bild klicken"/>
     </Grid>
 </Window>

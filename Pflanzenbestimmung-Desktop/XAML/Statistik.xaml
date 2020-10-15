@@ -23,7 +23,7 @@
             </ListView.View>
         </ListView>
 
-        <Button Name="Hauptmenü" Click="Hauptmenü_Click" Grid.Row="1" Content="Zurück zum Hauptmenü" Margin="10, 2" Width="200" Height="30" HorizontalAlignment="Left" />
-        <Button Name="AnsehenButton" Click="AnsehenButton_Click" Grid.Row="1" Content="Im Detail ansehen" Margin="10, 2" Width="200" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        <Button Name="Hauptmenü" Click="Hauptmenü_Click" Grid.Row="1" Content="Zurück zum Hauptmenü" Margin="10,9,0,2" Width="200" Height="30" HorizontalAlignment="Left" ToolTip="Geht zurück zum Hauptmenü" />
+        <Button Name="AnsehenButton" Click="AnsehenButton_Click" Grid.Row="1" Content="Im Detail ansehen" Margin="0,0,10,2" Width="200" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" ToolTip="Öffnet die Detail-Ansicht für diese Statistik" />
     </Grid>
 </UserControl>
