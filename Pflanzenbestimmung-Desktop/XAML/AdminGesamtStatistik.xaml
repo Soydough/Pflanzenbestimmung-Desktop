@@ -102,12 +102,10 @@
             </Grid>
 
             <StackPanel Orientation="Horizontal">
-                <Button Visibility="Collapsed" Name="ZurückButton" Click="ZurückButton_Click" Content="Zurück" Width="200" Height="30" Margin="100"/>
 
             </StackPanel>
         </StackPanel>
-
-        <Button Name="Zurück" Click="Zurück_Click" Content="Zurück" Height="30" Width="200" VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Left"/>
-        <Button Name="Hauptmenü" Click="Hauptmenü_Click" Content="Hauptmenü" Grid.Column="1" Height="30" Width="200" VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Right"/>
+        <Button Name="Weiter" Click="Weiter_Click" Content="Weiter" Height="30" Width="200" VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Right"/>
+        <Button Name="Hauptmenü" Click="Hauptmenü_Click" Content="Hauptmenü" Grid.Column="1" Height="30" Width="200" VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Left"/>
     </Grid>
 </UserControl>

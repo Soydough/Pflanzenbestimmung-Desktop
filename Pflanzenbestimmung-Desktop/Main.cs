@@ -165,8 +165,6 @@ namespace Pflanzenbestimmung_Desktop
             return kategorieVerwaltungListe;
         }
 
-       
-
         public static ObservableCollection<Administrator> AdminVerwaltungListe
         {
             get; set;

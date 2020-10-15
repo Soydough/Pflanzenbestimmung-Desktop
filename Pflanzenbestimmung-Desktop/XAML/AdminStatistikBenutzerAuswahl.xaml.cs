@@ -13,7 +13,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
     {
         public AdminStatistikBenutzerAuswahl()
         {
-            InitializeComponent();
+            InitializeComponent();            
             Main.InitializeAzubiVerwaltungListe();
             ObservableCollection<Azubis> selectAzubiForStatistic = new ObservableCollection<Azubis>();
             for (int i = 0; i < Main.azubiVerwaltungListe.Count; i++)
@@ -46,21 +46,12 @@ namespace Pflanzenbestimmung_Desktop.XAML
                             auswahl = Main.azubiVerwaltungListe[i];
                             break;
                         }
-                    }
-                    if (Main.azubiStatistiken[auswahl.ID] == null)
-                    {
-                        MessageBox.Show("Es sind keine Statistiken vorhanden.");
-                    }
-                    else
-                    {
+                    }                 
                         MainWindow.changeContent(new AdminStatistik(auswahl));
-                    }
-
                 }
             }
-            catch (Exception )
+            catch (Exception t )
             {
-
                 MessageBox.Show("Ein unerwarteter Fehler ist aufgetreten. Vergewissern Sie sich das eine Statistik für den Auszubildenden vorhanden ist. Wenn der Fehler wiederholt auftritt wenden Sie sich an den System-Administrator.");
             }
           

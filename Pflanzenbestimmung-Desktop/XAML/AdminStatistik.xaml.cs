@@ -20,18 +20,36 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
         private void Ansehen_Click(object sender, RoutedEventArgs e)
         {
-            Main.azubiStatistik = Main.azubiStatistiken[StatistikSelectedAzubi.SelectedIndex];
-            Main.azubiStatistik = Main.api_anbindung.BekommeStatistik(Main.azubiStatistik.id_statistik);
+            try
+            {
+                if (StatistikSelectedAzubi.SelectedIndex == -1)
+                {
+                    StatistikSelectedAzubi.SelectedIndex = 0;
+                    Main.azubiStatistik = Main.azubiStatistiken[StatistikSelectedAzubi.SelectedIndex];
+                    Main.azubiStatistik = Main.api_anbindung.BekommeStatistik(Main.azubiStatistik.id_statistik);
+                }
+                else
+                {
+                    Main.azubiStatistik = Main.azubiStatistiken[StatistikSelectedAzubi.SelectedIndex];
+                    Main.azubiStatistik = Main.api_anbindung.BekommeStatistik(Main.azubiStatistik.id_statistik);
+                }
 
-            if (Main.azubiStatistik.pflanzen.Length > 0)
-            {
-                Main.momentanePflanzeAusStatistik = 0;
-                MainWindow.changeContent(new AdminGesamtStatistik(azubi));
+                if (Main.azubiStatistik.pflanzen.Length > 0)
+                {
+                    Main.momentanePflanzeAusStatistik = 0;
+                    MainWindow.changeContent(new AdminGesamtStatistik(azubi));
+                }
+                else if (Main.azubiStatistik != null)
+                {
+                    MessageBox.Show("Die gewählte Statistik enthält keine Pflanzen");
+                }
             }
-            else if (Main.azubiStatistik != null)
+            catch (System.Exception @as)
             {
-                MessageBox.Show("Die gewählte Statistik enthält keine Pflanzen");
+                MessageBox.Show(@as + "");
+                throw;
             }
+            
         }
 
         private void Zurück_Click(object sender, RoutedEventArgs e)
