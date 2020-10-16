@@ -25,7 +25,7 @@ namespace Pflanzenbestimmung_Desktop
         {
             if (!Main.benutzer.IstSysAdmin)
             {
-                tabitemAdmin.IsEnabled = false;
+                //tabitemAdmin.IsEnabled = false;
                 istsysking = false;
             }
             else
@@ -175,26 +175,24 @@ namespace Pflanzenbestimmung_Desktop
 
         private void TabHolder_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //UNFUG
+            if (TabHolder.SelectedIndex == 0)
+            {
+                azubiReiter = true;
 
-            //if (TabHolder.SelectedIndex == 0)
-            //{
-            //    azubiReiter = true;
-
-            //}
-            //else
-            //{
-            //    azubiReiter = false;
-            //    if (!istsysking)
-            //    {
-            //        TabHolder.SelectedIndex = 0;
-            //        for (int i = 0; i < 4; i++)
-            //        {
-            //            MessageBox.Show("Nein");
-            //        }
-            //        MessageBox.Show("In Nordfriesland ist die Welt noch in Ordnung. Sie haben nicht die ausreichenden Berechtigungen um diesen Reiter zu öffnen.");
-            //    }
-            //}
+            }
+            else
+            {
+                azubiReiter = false;
+                if (!istsysking)
+                {
+                    TabHolder.SelectedIndex = 0;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        MessageBox.Show("Nein");
+                    }
+                    MessageBox.Show("In Nordfriesland ist die Welt noch in Ordnung. Sie haben nicht die ausreichenden Berechtigungen um diesen Reiter zu öffnen.");
+                }
+            }
         }
     }
 }
