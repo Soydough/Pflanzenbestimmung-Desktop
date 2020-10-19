@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -11,9 +14,12 @@ namespace Pflanzenbestimmung_Desktop
     {
         public static MainWindow dieses;
 
+        Point GetMousePos() => PointToScreen(Mouse.GetPosition(this));
+
         public MainWindow()
         {
             InitializeComponent();
+
 
             //Test
             //string s = Main.api_anbindung.BekommePflanzenbilder(1)[0].bild;
@@ -27,9 +33,94 @@ namespace Pflanzenbestimmung_Desktop
             Mouse.SetCursor(Cursors.None);
 
             //Main.EinloggenLaden();
+
+#if geheim
+            MouseMove += MausBewegt;
+            Pupille.Visibility = Visibility.Visible;
+            Nicht_Pupille.Visibility = Visibility.Visible;
+#else
+            Pupille.Visibility = Visibility.Collapsed;
+            Nicht_Pupille.Visibility = Visibility.Collapsed;
+#endif
         }
 
-        public static void changeContent(object o)
+        private void MausBewegt(object sender, MouseEventArgs e)
+        {
+            var center = PointToScreen(new Point(0, 0));
+
+            center.X += Width / 2;
+            center.Y += Height / 2;
+
+            //var pupilPos = PupilleKopie.PointToScreen(new Point(0, 0));
+
+
+
+            //pupilPos.X += Pupille.Width / 2;
+            //pupilPos.Y += Pupille.Height / 2;
+
+            //var x1 = pupilPos.X;
+            //var y1 = pupilPos.Y;
+
+            var x1 = center.X;
+            var y1 = center.Y;
+
+            //var x2 = Mouse.GetPosition(this).X;
+            //var y2 = Mouse.GetPosition(this).Y;
+
+            var x2 = GetMousePos().X;
+            var y2 = GetMousePos().Y;
+
+            //var xDiff = x2 - x1 + PupilleKopie.ActualWidth / 2;
+            //var yDiff = y2 - y1 + PupilleKopie.ActualHeight / 2;
+
+            var xDiff = x2 - x1;
+            var yDiff = y2 - y1;
+
+            //var angle = Math.Atan2(yDiff, xDiff) * 180.0 / Math.PI;
+            var angle = Math.Atan2(yDiff, xDiff);
+
+            var r = 40d;
+
+            var dist = Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2));
+
+            dist = Math.Abs(dist);
+
+            if (dist < r)
+            {
+                r = dist;
+            }
+
+            var xoff = r * Math.Cos(angle);
+            var yoff = r * Math.Sin(angle);
+
+            double xoff1 = 0;
+            double xoff2 = 0;
+            double yoff1 = 0;
+            double yoff2 = 0;
+
+            if(xoff < 0)
+            {
+                xoff2 = -1 * xoff;
+            }
+            else
+            {
+                xoff1 = xoff;
+            }
+
+            if(yoff < 0)
+            {
+                yoff2 = -1 * yoff;
+            }
+            else
+            {
+                yoff1 = yoff;
+            }
+
+            Pupille.Margin = new Thickness(xoff1, yoff1, xoff2, yoff2);
+        }
+
+
+        public static void changeContent(UserControl o)
         {
             dieses.ContentHolder.Content = o;
 
@@ -49,10 +140,11 @@ namespace Pflanzenbestimmung_Desktop
                         ((Hauptmenü)o).AdministrationButton.Visibility = Visibility.Collapsed;
                     else
                     {
-                        ((Hauptmenü)o).AktuellesQuizButton.Visibility = Visibility.Collapsed;
-                        ((Hauptmenü)o).ZufälligesQuizButton.Visibility = Visibility.Collapsed;
-                        ((Hauptmenü)o).StatistikButton.Visibility = Visibility.Collapsed;
-                        ((Hauptmenü)o).EineMinuteProPflanzeButton.Visibility = Visibility.Collapsed;
+                        Hauptmenü h = o as Hauptmenü;
+                        h.AktuellesQuizButton.Visibility = Visibility.Collapsed;
+                        h.ZufälligesQuizButton.Visibility = Visibility.Collapsed;
+                        h.StatistikButton.Visibility = Visibility.Collapsed;
+                        h.EineMinuteProPflanzeButton.Visibility = Visibility.Collapsed;
                     }
                     Main.AktualisiereAusbilderId();
                     break;

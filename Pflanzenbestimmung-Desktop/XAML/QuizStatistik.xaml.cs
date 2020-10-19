@@ -35,13 +35,32 @@ namespace Pflanzenbestimmung_Desktop
                 //if(korrekteAntwortLabel.Content.Equals(gegebeneAntwortLabel.Content))
                 if (Main.IstRichtig(Main.quiz[pflanzenIndex].pflanze.kategorien[i].antwort, Main.quiz[pflanzenIndex].pflanze.kategorien[i].gegebeneAntwort))
                 {
-                    gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.LimeGreen;
+                    gegebeneAntwortLabel.Foreground = Main.RichtigFarbe;
                     gegebeneAntwortLabel.Content += " ✓";
                 }
                 else
                 {
-                    gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Red;
-                    gegebeneAntwortLabel.Content += " ×";
+                    if (!Main.benutzer.IstWerker)
+                    {
+                        //Antwort falsch und kein Werker
+                        gegebeneAntwortLabel.Foreground = Main.FalschFarbe;
+                        gegebeneAntwortLabel.Content += " ×";
+                    }
+                    else
+                    {
+                        if (!Main.quiz[pflanzenIndex].pflanze.kategorien[i].wirdFürWerkGewertet)
+                        {
+                            //Antwort falsch, aber Werker
+                            gegebeneAntwortLabel.Foreground = Main.FalschAberWerkerFarbe;
+                            gegebeneAntwortLabel.Content += " /";
+                        }
+                        else
+                        {
+                            //Antwort falsch und Werker, Kategorie wird aber trotzdem gezählt
+                            gegebeneAntwortLabel.Foreground = Main.FalschFarbe;
+                            gegebeneAntwortLabel.Content += " ×";
+                        }
+                    }
                 }
 
                 //RegisterName(Main.kategorien[i].kategorie + "Label", gegebeneAntwortLabel);

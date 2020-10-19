@@ -374,5 +374,15 @@
   <ItemGroup>
     <Resource Include="XAML\platzhalter.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bilder\nicht-pupille.png" />
+    <Resource Include="Bilder\pupille.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="XAML\nicht-pupille.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="XAML\pupille.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

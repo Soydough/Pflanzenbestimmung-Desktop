@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define GEHEIM
+
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -81,6 +83,12 @@ namespace Pflanzenbestimmung_Desktop
         public static Abgefragt[] abgefragt;
 
         public static Dictionary<int, bool> abgefragtZuweisung; //Ja, das gehört so.
+
+        public static SolidColorBrush RichtigFarbe = Brushes.Aqua;
+
+        public static SolidColorBrush FalschFarbe = Brushes.Red;
+
+        public static SolidColorBrush FalschAberWerkerFarbe = Brushes.DarkOrange;
 
         #endregion
 

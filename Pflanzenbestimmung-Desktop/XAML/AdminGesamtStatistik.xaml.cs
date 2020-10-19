@@ -38,7 +38,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 //if(korrekteAntwortLabel.Content.Equals(gegebeneAntwortLabel.Content))
                 if (Main.IstRichtig(antworten[i].korrekt, antworten[i].eingabe))
                 {
-                    gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.LimeGreen;
+                    gegebeneAntwortLabel.Foreground = Main.RichtigFarbe;
                     gegebeneAntwortLabel.Content += " ✓";
                 }
                 else
@@ -46,7 +46,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                     if (!Main.benutzer.IstWerker)
                     {
                         //Antwort falsch und kein Werker
-                        gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Red;
+                        gegebeneAntwortLabel.Foreground = Main.FalschFarbe;
                         gegebeneAntwortLabel.Content += " ×";
                     }
                     else
@@ -54,13 +54,13 @@ namespace Pflanzenbestimmung_Desktop.XAML
                         if (!antworten[i].WirdFürWerkGewertet)
                         {
                             //Antwort falsch, aber Werker
-                            gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Orange;
+                            gegebeneAntwortLabel.Foreground = Main.FalschAberWerkerFarbe;
                             gegebeneAntwortLabel.Content += " /";
                         }
                         else
                         {
                             //Antwort falsch und Werker, Kategorie wird aber trotzdem gezählt
-                            gegebeneAntwortLabel.Foreground = System.Windows.Media.Brushes.Red;
+                            gegebeneAntwortLabel.Foreground = Main.FalschFarbe;
                             gegebeneAntwortLabel.Content += " ×";
                         }
                     }

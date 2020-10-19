@@ -13,5 +13,10 @@
         <Grid Name="Laden" Visibility="Hidden">
             <Image gif:ImageBehavior.AnimatedSource="flowey_tanzt.gif" />
         </Grid>
+
+        <Image Name="Nicht_Pupille" Source="nicht-pupille.png" Visibility="Collapsed" />
+        <Image Name="Pupille" Source="pupille.png" Visibility="Collapsed" />
+        <Image Name="PupilleKopie" Source="pupille.png" Visibility="Hidden" />
+
     </Grid>
 </Window>
