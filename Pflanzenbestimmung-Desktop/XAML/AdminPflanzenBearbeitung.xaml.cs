@@ -32,27 +32,27 @@ namespace Pflanzenbestimmung_Desktop.XAML
             {
                 Label lb = new Label();
                 string name = "lb" + Main.kategorien[i].kategorie;
-                lb.Name = name;
+                //lb.Name = name;
                 lb.Content = Main.kategorien[i].kategorie;
 
-                try
-                {
-                    UnregisterName(name);
-                }
-                catch { }
+                //try
+                //{
+                //    UnregisterName(name);
+                //}
+                //catch { }
 
-                RegisterName(name, lb);
+                //RegisterName(name, lb);
 
                 TextBox tb = new TextBox();
                 //tb.Name = "tb" + Main.kategorien[i].kategorie;
 
                 try
                 {
-                    UnregisterName("tb" + Main.kategorien[i].kategorie);
+                    UnregisterName("tb" + Main.kategorien[i].kategorie.Replace("-", "_"));
                 }
                 catch { }
 
-                RegisterName("tb" + Main.kategorien[i].kategorie, tb);
+                RegisterName("tb" + Main.kategorien[i].kategorie.Replace("-", "_"), tb);
 
                 StackPanelPflanzenBearbeitung.Children.Add(lb);
 
@@ -97,7 +97,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
             for (int i = 0; i < Main.kategorien.Count; i++)
             {
-                TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
+                TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie.Replace("-", "_")) as TextBox;
                 aktuellesObject.Text = "";
             }
 
@@ -179,7 +179,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
             for (int i = 0; i < Main.kategorien.Count; i++)
             {
-                TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
+                TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie.Replace("-", "_")) as TextBox;
 
                 werte.Add((Main.kategorien[i].id, aktuellesObject.Text));
             }

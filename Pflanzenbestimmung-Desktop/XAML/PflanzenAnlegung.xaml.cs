@@ -17,18 +17,21 @@ namespace Pflanzenbestimmung_Desktop
 
             InitializeComponent(); // TODO Design der Labels / Texboxen
 
+            //Entfernt die Platzhalter
             StackPanelPflanzenAnlegung.Children.Clear();
 
             for (int i = 0; i < Main.kategorien.Count; i++)
             {
+                //Label für die Anzeige der Kategorie-Namen
                 Label lb = new Label();
                 string name = "lb" + Main.kategorien[i].kategorie;
-                lb.Name = name;
+                //lb.Name = name;
                 lb.Content = Main.kategorien[i].kategorie;
-                RegisterName(name, lb);
+                //RegisterName(name, lb);
 
+                //TextBox für die Eingabe der Kategorie-Werte
                 TextBox tb = new TextBox();
-                RegisterName("tb" + Main.kategorien[i].kategorie, tb);
+                RegisterName("tb" + Main.kategorien[i].kategorie.Replace("-", "_"), tb);
 
                 tb.Text = Main.kategorien[i].kategorie + " D";
 
@@ -37,10 +40,12 @@ namespace Pflanzenbestimmung_Desktop
                 StackPanelPflanzenAnlegung.Children.Add(tb);
             }
 
+            //CheckBox für IstGala
             CheckBox galaCheckBox = new CheckBox();
             galaCheckBox.Content = "Gilt für Gala";
             galaCheckBox.Margin = new Thickness(0, 10, 0, 10);
 
+            //CheckBox für IstZier
             CheckBox zierCheckBox = new CheckBox();
             zierCheckBox.Content = "Gilt für Zier";
             zierCheckBox.Margin = new Thickness(0, 10, 0, 10);
@@ -51,6 +56,7 @@ namespace Pflanzenbestimmung_Desktop
             StackPanelPflanzenAnlegung.Children.Add(galaCheckBox);
             StackPanelPflanzenAnlegung.Children.Add(zierCheckBox);
 
+            //Event zum Hochladen der Bilder
             BilderHochladenFlaeche.DragEnter += new DragEventHandler(DragEnter);
             BilderHochladenFlaeche.Drop += new DragEventHandler(DragDrop);
         }
@@ -60,6 +66,7 @@ namespace Pflanzenbestimmung_Desktop
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effects = DragDropEffects.Copy;
         }
 
+        //Beim ersten Hereinziehen von Bildern soll eine Nachricht angezeigt werden
         bool erstesBild = true;
 
         void DragDrop(object sender, DragEventArgs e)
@@ -80,12 +87,13 @@ namespace Pflanzenbestimmung_Desktop
                     }
                     else
                     {
-                        //Schon 10 Bilder da
+                        //Schon 10 Bilder da; die Maximalanzahl der Bilder
                         MessageBox.Show("Die Maximalanzahl der Bilder wurde erreicht!");
                     }
                 }
                 else
                 {
+                    //Ungültiges oder noch nicht unterstütztes Bild
                     MessageBox.Show("Dateiformat wird nicht unterstützt!\n" +
                         "Die Folgenden Bildformate werden unterstützt:\n" +
                         " • PNG\n" +
@@ -103,6 +111,7 @@ namespace Pflanzenbestimmung_Desktop
 
         private void SpeichernButton_Click(object sender, RoutedEventArgs e)
         {
+            //Die Eingaben für die Kategorien
             List<(int, string)> werte = new List<(int, string)>();
 
             for (int i = 0; i < Main.kategorien.Count; i++)
@@ -118,6 +127,7 @@ namespace Pflanzenbestimmung_Desktop
             Main.api_anbindung.PflanzeErstellen(istGala, istZier, werte);
             Main.pflanzen = Main.api_anbindung.Bekommen<Pflanze>();
 
+            //Lädt die Bilder aus den Dateien und lädt sie hoch
             foreach (string s in bilder)
             {
                 byte[] b = File.ReadAllBytes(s);

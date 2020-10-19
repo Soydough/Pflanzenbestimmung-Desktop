@@ -73,7 +73,7 @@ namespace Pflanzenbestimmung_Desktop
         private void Weiter_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             Main.einzelStatistiken[Main.momentanePflanzeAusQuiz] = new StatistikPflanze();
-            Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten = new StatistikPflanzeAntwort[Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorien.Length];
+            Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten = new StatistikPflanzeAntwort[Main.quiz[Main.momentanePflanzeAusQuiz].pflanze.kategorien.Length - 1];
 
             //Antworten speichern
             for (int i = 0; i < Main.einzelStatistiken[Main.momentanePflanzeAusQuiz].antworten.Length; i++)

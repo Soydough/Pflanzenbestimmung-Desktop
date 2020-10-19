@@ -92,6 +92,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
         private void SpeichernButton_Click(object sender, RoutedEventArgs e)
         {
+            //Sollte irgendwann "refactored" werden
 
             bool admin = false;
             int id = azubi.ID;

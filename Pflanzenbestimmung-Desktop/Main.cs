@@ -60,6 +60,7 @@ namespace Pflanzenbestimmung_Desktop
 
         public static int momentanePflanzeAusStatistik = -1;
 
+        //Das Bild für die Anzeige in BildAnzeigeVollbild
         public static ImageSource fullscreenImage;
 
         public static QuizPZuweisung[] quizPZuweisungen;
@@ -199,7 +200,7 @@ namespace Pflanzenbestimmung_Desktop
             for (int i = 0; i < einzelStatistiken.Length; i++)
             {
                 int tempFehlerSumme = 0;
-                for (int j = 0; j < kategorien.Count; j++)
+                for (int j = 0; j < einzelStatistiken[i].antworten.Length; j++)
                 {
                     StatistikPflanzeAntwort temp = einzelStatistiken[i].antworten[j];
 
@@ -268,7 +269,7 @@ namespace Pflanzenbestimmung_Desktop
 
             for (int i = 0; i < einzelStatistiken.Length; i++)
             {
-                for (int j = 0; j < kategorien.Count; j++)
+                for (int j = 0; j < einzelStatistiken[i].antworten.Length; j++)
                 {
                     //statistiken.Length ist die neuste, also hoffentlich die gerade hinzugefügte?
                     api_anbindung.ErstelleEinzelStatistik(azubiStatistik.id_statistik, j + 1, einzelStatistiken[i].id_pflanze, einzelStatistiken[i].antworten[j].eingabe);

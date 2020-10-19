@@ -16,6 +16,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
             Main.LadeStatistiken(azubi.ID);
             for (int i = 0; i < Main.azubiStatistiken.Length; i++)
             {
+                //Lädt die Statistiken für den ausgewählten Azubi
                 StatistikSelectedAzubi.Items.Add(Main.azubiStatistiken[i]);
             }
 

@@ -26,7 +26,7 @@
         <TabItem Header="Benutzer">
             <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
                 <Button Name="NeuerBenutzer" Click="NeuerBenutzer_Click" Content="Neuen Benutzer anlegen" ToolTip="Öffnet das Fenster zum Erstellen von Benutzern" />
-                <Button Name="Benutzerverwaltung" Click="Benutzerverwaltung_Click" Content="Vorhandene Nutzer verwalten" ToolTip="Öffnet dass Fenster zum Bearbeiten von Benutzern" />
+                <Button Name="Benutzerverwaltung" Click="Benutzerverwaltung_Click" Content="Vorhandene Nutzer verwalten" ToolTip="Öffnet das Fenster zum Bearbeiten von Benutzern" />
             </StackPanel>
         </TabItem>
     </TabControl>
