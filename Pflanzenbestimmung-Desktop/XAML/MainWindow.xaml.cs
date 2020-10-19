@@ -51,27 +51,11 @@ namespace Pflanzenbestimmung_Desktop
             center.X += Width / 2;
             center.Y += Height / 2;
 
-            //var pupilPos = PupilleKopie.PointToScreen(new Point(0, 0));
-
-
-
-            //pupilPos.X += Pupille.Width / 2;
-            //pupilPos.Y += Pupille.Height / 2;
-
-            //var x1 = pupilPos.X;
-            //var y1 = pupilPos.Y;
-
             var x1 = center.X;
             var y1 = center.Y;
 
-            //var x2 = Mouse.GetPosition(this).X;
-            //var y2 = Mouse.GetPosition(this).Y;
-
             var x2 = GetMousePos().X;
             var y2 = GetMousePos().Y;
-
-            //var xDiff = x2 - x1 + PupilleKopie.ActualWidth / 2;
-            //var yDiff = y2 - y1 + PupilleKopie.ActualHeight / 2;
 
             var xDiff = x2 - x1;
             var yDiff = y2 - y1;
@@ -79,7 +63,7 @@ namespace Pflanzenbestimmung_Desktop
             //var angle = Math.Atan2(yDiff, xDiff) * 180.0 / Math.PI;
             var angle = Math.Atan2(yDiff, xDiff);
 
-            var r = 40d;
+            var r = 60d;
 
             var dist = Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2));
 

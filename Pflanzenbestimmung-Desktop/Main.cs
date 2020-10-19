@@ -86,7 +86,7 @@ namespace Pflanzenbestimmung_Desktop
 
         public static SolidColorBrush RichtigFarbe = Brushes.Aqua;
 
-        public static SolidColorBrush FalschFarbe = Brushes.Red;
+        public static SolidColorBrush FalschFarbe = Brushes.Crimson;
 
         public static SolidColorBrush FalschAberWerkerFarbe = Brushes.DarkOrange;
 
