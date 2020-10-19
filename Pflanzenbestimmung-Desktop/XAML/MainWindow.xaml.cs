@@ -101,7 +101,6 @@ namespace Pflanzenbestimmung_Desktop
             Pupille.Margin = new Thickness(xoff1, yoff1, xoff2, yoff2);
         }
 
-
         public static void changeContent(UserControl o)
         {
             dieses.ContentHolder.Content = o;
