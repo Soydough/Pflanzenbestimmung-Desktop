@@ -20,10 +20,8 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
 
-
             //Test
             //string s = Main.api_anbindung.BekommePflanzenbilder(1)[0].bild;
-
 
             Mouse.SetCursor(Cursors.Wait);
             dieses = this;
