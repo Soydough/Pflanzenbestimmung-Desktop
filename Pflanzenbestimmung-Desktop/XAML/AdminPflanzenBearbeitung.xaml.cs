@@ -198,6 +198,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
             bilder = new List<string>();
 
             aktualisiere();
+            zeigeBildVorschau();
 
             MessageBox.Show("Gespeichert!");
         }
@@ -212,6 +213,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 erstesBild = true;
             }
             aktualisiere();
+            zeigeBildVorschau();
         }
 
         private void PflanzenDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -225,12 +227,15 @@ namespace Pflanzenbestimmung_Desktop.XAML
             }
             bilderGeladen = false;
             aktualisiere();
+            zeigeBildVorschau();
         }
 
         bool bilderGeladen = false;
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             aktualisiereBilder();
+            aktualisiere();
+            //zeigeBildVorschau();
         }
 
         public void aktualisiereBilder(bool force = false)
@@ -265,10 +270,17 @@ namespace Pflanzenbestimmung_Desktop.XAML
                     bilderArr[i].Source = bmp;
 
                     bilderArr[i].Height = 100;
+                    bilderArr[i].Width = 150;
                 }
 
                 BilderListView.ItemsSource = bilderArr;
             }
+            zeigeBildVorschau();
+        }
+
+        private void zeigeBildVorschau()
+        {
+            BilderVorschau.ItemsSource = bilderArr;
         }
 
         private void LoeschenButton_Click(object sender, RoutedEventArgs e)

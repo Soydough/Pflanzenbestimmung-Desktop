@@ -11,6 +11,7 @@ namespace Pflanzenbestimmung_Desktop
     public partial class PflanzenAnlegung : UserControl
     {
         List<string> bilder = new List<string>();
+        
 
         public PflanzenAnlegung()
         {
@@ -103,6 +104,8 @@ namespace Pflanzenbestimmung_Desktop
                 }
             }
         }
+
+
 
         private void AbbrechenButton_Click(object sender, RoutedEventArgs e)
         {

@@ -135,6 +135,7 @@
     <Compile Include="Pflanze.cs" />
     <Compile Include="Pflanzenantwort.cs" />
     <Compile Include="Pflanzenbild.cs" />
+    <Compile Include="PflanzenVorschauTemplate.cs" />
     <Compile Include="QuizArt.cs" />
     <Compile Include="QuizPflanze.cs" />
     <Compile Include="QuizPZuweisung.cs" />

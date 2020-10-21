@@ -144,10 +144,11 @@ namespace Pflanzenbestimmung_Desktop
                 {
                     for (int i = 0; i < Main.AdminVerwaltungListe.Count; i++)
                     {
-                        if (Adminliste.SelectedItem.Equals(Main.AdminVerwaltungListe[i]))
+                        if (Adminliste.SelectedItem.ToString().Equals(Main.AdminVerwaltungListe[i].nutzername))
                         {
                             auswahl = Main.AdminVerwaltungListe[i];
                             break;
+                            
                         }
                     }
                     try
