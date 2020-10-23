@@ -15,11 +15,14 @@ namespace Pflanzenbestimmung_Desktop
 
         //private readonly string url = "https://pflanzenbestimmung.000webhostapp.com/dbSchnittstelle.php";
 
+        //it.tsbw
+        private readonly string url = "https://pbstsbw.000webhostapp.com/dbSchnittstelle.php";
+
         //Steven
         //private readonly string url = "http://10.33.11.142/API/dbSchnittstelle.php";
 
         //Jan
-        private readonly string url = "http://10.33.11.134/API/dbSchnittstelle.php";
+        //private readonly string url = "http://10.33.156.189/API/dbSchnittstelle.php";
 
         //Dirk
         //private readonly string url = "http://10.33.156.144/API/dbSchnittstelle.php";
