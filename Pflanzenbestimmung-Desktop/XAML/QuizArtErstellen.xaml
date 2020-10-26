@@ -37,8 +37,8 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Button Name="QuizArtErstellenAbbrechenButton" Click="ArtErstellenAbbrechenButton_Click" Content="Abbrechen" Margin="10" Height="30"/>
-            <Button Name="QuizArtErstellenSpeichernButton" Click="ArtErstellenSpeichernButton_Click" Content="Speichern" Margin="10" Grid.Column="1" Height="30" />
+            <Button Name="QuizArtErstellenAbbrechenButton" Click="ArtErstellenAbbrechenButton_Click" Content="Abbrechen" Margin="10" Height="30" ToolTip="Quiz erstellung abbrechen."/>
+            <Button Name="QuizArtErstellenSpeichernButton" Click="ArtErstellenSpeichernButton_Click" Content="Speichern" Margin="10" Grid.Column="1" Height="30" ToolTip="Quiz speichern."/>
         </Grid>
     </Grid>
 </UserControl>

@@ -17,6 +17,6 @@
             <Image Source="platzhalter.jpg" Width="400" Height="300"/>
         </StackPanel>
     </ScrollViewer>
-        <Button Name="Weiter" Click="Weiter_Click" Content="Weiter" Width="100" Height="30" Margin="20" VerticalAlignment="Bottom"/>
+        <Button Name="Weiter" Click="Weiter_Click" Content="Weiter" Width="100" Height="30" Margin="20" VerticalAlignment="Bottom" ToolTip="Weiter zur Dateneingabe."/>
     </Grid>
 </UserControl>

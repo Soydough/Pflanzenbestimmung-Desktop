@@ -36,7 +36,7 @@
             </StackPanel.Style>
             <Grid>
                 <Label Content="Benutzername:" />
-                <TextBox Name="BenutzernameAendernTextBox" />
+                <TextBox Name="BenutzernameAendernTextBox" ToolTip=""/>
             </Grid>
             <Grid>
                 <Label Content="Passwort:" />
@@ -51,9 +51,9 @@
                 <TextBox Name="VornameAendernTextBox" />
             </Grid>
             <Grid VerticalAlignment="Bottom">
-                <Button x:Name="VerwaltenAbbrechenButton" Click="AendernAbbrechenButton_Click" Content="Abbrechen" Margin="20" Height="30" Width="200" HorizontalAlignment="left"/>
-                <Button x:Name="VerwaltenSpeichernButton" Click="SpeichernButton_Click" Content="Speichern"   Height="30" Width="200" HorizontalAlignment="Right"/>
-                <Button x:Name="Loeschen" Click="Loeschen_Click" Content="Löschen" Height="30" Width="200" HorizontalAlignment="Center"/>
+                <Button x:Name="VerwaltenAbbrechenButton" Click="AendernAbbrechenButton_Click" Content="Abbrechen" Margin="20" Height="30" Width="200" HorizontalAlignment="left" ToolTip="Änderungen verwerfen und zurück zur Benutzerauswahl."/>
+                <Button x:Name="VerwaltenSpeichernButton" Click="SpeichernButton_Click" Content="Speichern"   Height="30" Width="200" HorizontalAlignment="Right" ToolTip="Änderungen speichern."/>
+                <Button x:Name="Loeschen" Click="Loeschen_Click" Content="Löschen" Height="30" Width="200" HorizontalAlignment="Center" ToolTip="Benutzer löschen."/>
             </Grid>
         </StackPanel>
     </Grid>

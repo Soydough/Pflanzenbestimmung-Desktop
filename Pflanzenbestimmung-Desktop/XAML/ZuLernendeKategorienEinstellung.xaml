@@ -64,7 +64,7 @@
             <CheckBox Name="BesonderheitenCheckBox" Content="Besonderheiten" IsChecked="false" />
         </StackPanel>
 
-        <Button Content="Abbrechen" Click="Button_Click" Width="100" Height="30" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Margin="20"/>
-        <Button Content="Speichern" Width="100" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Grid.Column="1"/>
+        <Button Content="Abbrechen" Click="Button_Click" Width="100" Height="30" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Margin="20" ToolTip="Einstellungen abbrechen."/>
+        <Button Content="Speichern" Width="100" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="20" Grid.Column="1" ToolTip="Einstellungen speichern."/>
     </Grid>
 </UserControl>

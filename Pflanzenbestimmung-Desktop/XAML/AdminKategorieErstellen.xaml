@@ -8,17 +8,18 @@
         d:DesignHeight="400" d:DesignWidth="800"
         Style="{DynamicResource HauptStyle}">
     <Grid>
-        <TextBox x:Name="txtneuekategoriename" HorizontalAlignment="Left" Height="23" Margin="10,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <TextBox x:Name="txtneuekategoriename" HorizontalAlignment="Left" Height="23" Margin="10,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" ToolTip="Hier den Namen der Kategorie eintragen."/>
         <Label Content="Neue Kategorie anlegen" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Width="215"/>
-        <Button x:Name="btnneuekategorie" Content="Speichern" HorizontalAlignment="Left" Margin="10,325,0,0" VerticalAlignment="Top" Width="215" Click="btnneuekategorie_Click"/>
-        <DataGrid x:Name="GridKategorienBearbeiten" HorizontalAlignment="Left" Height="208" Margin="275,82,0,0" VerticalAlignment="Top" Width="215" AutoGenerateColumns="False" SelectionChanged="GridKategorienBearbeiten_SelectionChanged">
+        <Button x:Name="btnneuekategorie" Content="Speichern" HorizontalAlignment="Left" Margin="10,325,0,0" VerticalAlignment="Top" Width="215" Click="btnneuekategorie_Click" ToolTip="Speicht die neue Kategorie."/>
+        <DataGrid x:Name="GridKategorienBearbeiten" HorizontalAlignment="Left" Height="208" Margin="275,82,0,0" VerticalAlignment="Top" Width="215" AutoGenerateColumns="False" SelectionChanged="GridKategorienBearbeiten_SelectionChanged" 
+                  ToolTip="Liste von Kategorien, zum ändern auf eine klicken und unter 'Neue Kategorie anlegen' bearbeiten." CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Kategorie" Binding="{Binding Kategorien}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Kategorie Bearbeiten" HorizontalAlignment="Left" Margin="275,21,0,0" VerticalAlignment="Top" Width="215"/>
-        <!--<Button x:Name="btnkatAenderungSpeich" Content="Änderung speichern" HorizontalAlignment="Left" Margin="275,305,0,0" VerticalAlignment="Top" Width="215" Click="btnkatAenderungSpeich_Click"/>-->
-        <DataGrid x:Name="listvkategorieausw" HorizontalAlignment="Left" Height="208" Margin="560,82,0,0" VerticalAlignment="Top" Width="215" AutoGenerateColumns="False" IsEnabled="False">
+        <Button x:Name="btnkatAenderungSpeich" Content="Änderung speichern" HorizontalAlignment="Left" Margin="275,305,0,0" VerticalAlignment="Top" Width="215" Click="btnkatAenderungSpeich_Click" ToolTip="Zum Speichern der geänderten Kategorie."/>
+        <DataGrid x:Name="listvkategorieausw" HorizontalAlignment="Left" Height="208" Margin="560,82,0,0" VerticalAlignment="Top" Width="215" AutoGenerateColumns="False" IsEnabled="False" ToolTip="Zeigt an ob eine Kategorie im abgefragt wird.">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Kategorie" Binding="{Binding Kategorien}"/>
                 <DataGridTextColumn Header="Ausgewählt" Binding="{Binding QuizAuswahl}"/>
@@ -26,13 +27,13 @@
         </DataGrid>
         <Label Content="Im Quiz verwendete Kategorien:" HorizontalAlignment="Left" Margin="560,21,0,0" VerticalAlignment="Top" Width="215"/>
         <!--<Button x:Name="btnkatauswahl" Content="Auswahl speichern" HorizontalAlignment="Left" Margin="560,305,0,0" VerticalAlignment="Top" Width="215" Click="btnkatauswahl_Click"/>-->
-        <Button x:Name="btnhomepage" Content="Zurück" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="700,379,0,0" Click="btnhomepage_Click"/>
-        <Label Content="Für wen ist die Kategorie wichtig?" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Width="215"/>
+        <Button x:Name="btnhomepage" Content="Zurück" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="700,379,0,0" Click="btnhomepage_Click" ToolTip="Zurück zum Administrationsbereich."/>
+        <Label Content="Für wen ist die Kategorie wichtig?" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Width="215" ToolTip="Bitte Gala, Ziergarten oder beides auswählen."/>
         <CheckBox Name="GalaCheckBox" Content="Gala" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Width="215"/>
         <CheckBox Name="ZierCheckBox" Content="Ziergarten" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Width="215"/>
-        <CheckBox Name="WerkerCheckBox" Content="Wichtig für die Werker?" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Width="215"/>
-        <CheckBox Name="ImQuizCheckBox" Content="Im Quiz verwenden?" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top" Width="215"/>
+        <CheckBox Name="WerkerCheckBox" Content="Wichtig für die Werker?" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Width="215" ToolTip="Müssen Werker die Kategorie auch lernen?"/>
+        <CheckBox Name="ImQuizCheckBox" Content="Im Quiz verwenden?" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top" Width="215" ToolTip="Soll diese Kategorie im Quiz verwendet werden?"/>
         <Label Content="Name der Kategorie:" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="215"/>
-        <Button Content="Kategorie löschen" HorizontalAlignment="Left" Margin="275,325,0,0" VerticalAlignment="Top" Width="215" Click="loeschen_click"/>
+        <Button Content="Kategorie löschen" HorizontalAlignment="Left" Margin="275,330,0,0" VerticalAlignment="Top" Width="215" Click="loeschen_click" ToolTip="Löscht die ausgewählte Kategorie."/>
     </Grid>
 </UserControl>

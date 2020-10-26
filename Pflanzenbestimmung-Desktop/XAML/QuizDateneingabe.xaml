@@ -72,6 +72,6 @@
             </Grid>
         </StackPanel>
 
-        <Button Name="Weiter" Click="Weiter_Click" Content="Weiter" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Width="100" Height="30"/>
+        <Button Name="Weiter" Click="Weiter_Click" Content="Weiter" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Width="100" Height="30" ToolTip="Nächste Pflanze."/>
     </Grid>
 </UserControl>

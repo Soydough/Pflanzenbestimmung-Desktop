@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <TabControl Name="TabHolder" SelectionChanged="TabHolder_SelectionChanged">
-            <TabItem Header="Normaler Benutzer">
+            <TabItem Header="Auszubildende" ToolTip="Auszubildenden anlegen.">
                 <StackPanel Margin="10" Name="BenutzerPanel" Visibility="Visible">
                     <StackPanel.Style>
                         <Style>
@@ -80,7 +80,7 @@
                 </StackPanel>
             </TabItem>
 
-            <TabItem Header="Administrator">
+            <TabItem Header="Ausbilder" ToolTip="Ausbilder anlegen.">
                 <StackPanel Margin="10" Name="AdminPanel" Visibility="Visible">
                     <StackPanel.Style>
                         <Style>
@@ -133,8 +133,8 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Button Name="AbbrechenButton" Click="AbbrechenButton_Click" Content="Abbrechen" Margin="10" Height="30"/>
-            <Button Name="AbsendenButton" Click="AbsendenButton_Click" Content="Absenden" Margin="10" Grid.Column="1" Height="30" />
+            <Button Name="AbbrechenButton" Click="AbbrechenButton_Click" Content="Abbrechen" Margin="10" Height="30" ToolTip="Erstellung abbrechen."/>
+            <Button Name="AbsendenButton" Click="AbsendenButton_Click" Content="Absenden" Margin="10" Grid.Column="1" Height="30" ToolTip="Benutzer erstellen."/>
         </Grid>
     </Grid>
 </UserControl>

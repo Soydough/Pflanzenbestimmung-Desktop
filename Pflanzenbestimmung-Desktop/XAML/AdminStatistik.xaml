@@ -13,13 +13,13 @@
             <TextBox />
         </Border>
 
-        <ListView Height="260" Margin="0,10" Name="StatistikSelectedAzubi" >
+        <ListView Height="260" Margin="0,10" Name="StatistikSelectedAzubi" ToolTip="Liste aller bisherigen Statistiken.">
 
         </ListView>
 
         <Grid>
-            <Button Name="Zurück" Click="Zurück_Click" Content="Zurück" VerticalAlignment="Bottom" Height="30" Width="200" HorizontalAlignment="Left"/>
-            <Button Name="Ansehen" Click="Ansehen_Click" Content="Ansehen" Height="30" Width="200" HorizontalAlignment="Right" />
+            <Button Name="Zurück" Click="Zurück_Click" Content="Zurück" VerticalAlignment="Bottom" Height="30" Width="200" HorizontalAlignment="Left" ToolTip="Zurück ins Menü."/>
+            <Button Name="Ansehen" Click="Ansehen_Click" Content="Ansehen" Height="30" Width="200" HorizontalAlignment="Right" ToolTip="Ausgewählte Statistik im Deatil angucken."/>
         </Grid>
     </StackPanel>
 </UserControl>

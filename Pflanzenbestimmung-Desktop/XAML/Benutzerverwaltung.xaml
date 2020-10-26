@@ -10,8 +10,8 @@
 
     <Grid>
         <TabControl x:Name="TabHolder" SelectionChanged="TabHolder_SelectionChanged">
-            <TabItem Header="Normaler Benutzer">
-                <DataGrid Margin="0,10,0,77" Name="Azubiliste"  AutoGenerateColumns="False" >
+            <TabItem Header="Auszubildende" ToolTip="Auszubildenden auswählen.">
+                <DataGrid Margin="0,10,0,77" Name="Azubiliste"  AutoGenerateColumns="False" ToolTip="Liste aller Auszubildenden">
                     <!--True benötigt, sonst keine Tabelle mit Daten da.-->
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Nutzername" Binding="{Binding Nutzername}"/>
@@ -20,8 +20,8 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-            <TabItem Header="Administratoren" Name="tabitemAdmin">
-                <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="Adminliste" AutoGenerateColumns="False">
+            <TabItem Header="Ausbilder" Name="tabitemAdmin" ToolTip="Ausbilder auswählen.">
+                <DataGrid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Name="Adminliste" AutoGenerateColumns="False" ToolTip="Liste aller Ausbilder.">
                     <!--True benötigt, sonst keine Tabelle mit Daten da-->
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Nutzername" Binding="{Binding Nutzername}"/>
@@ -33,9 +33,9 @@
         </TabControl>
 
         <Grid VerticalAlignment="Bottom" Height="75">
-            <Button Name="Zurück" Click="Zurück_Click" Content="Abbrechen" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20"/>
-            <Button Name="Bearbeiten" Click="Bearbeiten_Click" Content="Bearbeiten" Height="30" Width="200" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20"/>
-            <Button Name="Loeschen" Click="Loeschen_Click" Content="Löschen" Height="30" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20"/>
+            <Button Name="Zurück" Click="Zurück_Click" Content="Abbrechen" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20" ToolTip="Zurück zum Administrationsbereich."/>
+            <Button Name="Bearbeiten" Click="Bearbeiten_Click" Content="Bearbeiten" Height="30" Width="200" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20" ToolTip="Ausgewählten Benutzer bearbeiten."/>
+            <Button Name="Loeschen" Click="Loeschen_Click" Content="Löschen" Height="30" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" ToolTip="Ausgewählten Benutzer löschen."/>
         </Grid>
     </Grid>
 </UserControl>

@@ -52,7 +52,7 @@
 
         <Grid>
             <Button Name="Zurück" Click="Zurück_Click" Content="Abbrechen" VerticalAlignment="Bottom" Height="30" Width="200" HorizontalAlignment="Left" ToolTip="Geht zurück zum Administrationsfenster"/>
-            <Button Name="Bearbeiten" Click="Bearbeiten_Click" Content="Bearbeiten" Height="30" Width="200" HorizontalAlignment="Right" ToolTip="Öffnet die Pflanze zum Bearbeiten" />
+            <Button Name="Bearbeiten" Click="Bearbeiten_Click" Content="Bearbeiten" Height="30" Width="200" HorizontalAlignment="Right" ToolTip="Öffnet die ausgewählte Pflanze zum Bearbeiten" />
         </Grid>
     </StackPanel>
 </UserControl>

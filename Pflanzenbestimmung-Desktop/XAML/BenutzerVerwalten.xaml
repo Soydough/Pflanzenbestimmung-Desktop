@@ -36,23 +36,23 @@
             </StackPanel.Style>
             <Grid>
                 <Label Content="Benutzername:" />
-                <TextBox Name="BenutzernameAendernTextBox" />
+                <TextBox Name="BenutzernameAendernTextBox"/>
             </Grid>
             <Grid>
                 <Label Content="Passwort:" />
-                <PasswordBox Name="PasswortAenderndBox" />
+                <PasswordBox Name="PasswortAenderndBox"/>
             </Grid>
             <Grid>
                 <Label Content="Name:"/>
-                <TextBox Name="NachnameAendernTextBox" />
+                <TextBox Name="NachnameAendernTextBox"/>
             </Grid>
             <Grid>
                 <Label Content="Vorname:"/>
-                <TextBox Name="VornameAendernTextBox" />
+                <TextBox Name="VornameAendernTextBox"/>
             </Grid>
             <Grid>
                 <Label Content="Ausbildungsart"/>
-                <ComboBox Name="AubildungsartAendernComboBox" />
+                <ComboBox Name="AubildungsartAendernComboBox"/>
             </Grid>
             <Grid>
                 <Label Content="Fachrichtung" />
@@ -71,11 +71,11 @@
                 <CheckBox Name="PruefungsmodusAendernCheckbox" FlowDirection="RightToLeft" VerticalAlignment="Center" />
             </Grid>
             <Grid>
-                <Button Name="VerwaltenAbbrechenButton" Click="AendernAbbrechenButton_Click" Content="Abbrechen" Margin="20" Height="30" Width="200" HorizontalAlignment="left"/>
-                <Button Name="VerwaltenSpeichernButton" Click="SpeichernButton_Click" Content="Speichern"   Height="30" Width="200" HorizontalAlignment="Right"/>
+                <Button Name="VerwaltenAbbrechenButton" Click="AendernAbbrechenButton_Click" Content="Abbrechen" Margin="20" Height="30" Width="200" HorizontalAlignment="left" ToolTip="Änderungen verwerfen und zurück zur Benutzerverwaltung."/>
+                <Button Name="VerwaltenSpeichernButton" Click="SpeichernButton_Click" Content="Speichern"   Height="30" Width="200" HorizontalAlignment="Right" ToolTip="Änderungen speichern."/>
             </Grid>
             <Grid>
-                <Button Name="Loeschen" Click="Loeschen_Click" Content="Löschen" Height="30" Width="200" HorizontalAlignment="Center"/>
+                <Button Name="Loeschen" Click="Loeschen_Click" Content="Löschen" Height="30" Width="200" HorizontalAlignment="Center" ToolTip="Benutzer löschen."/>
             </Grid>
         </StackPanel>
     </Grid>

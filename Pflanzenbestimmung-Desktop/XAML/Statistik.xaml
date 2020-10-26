@@ -14,7 +14,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <ListView x:Name="listView" HorizontalContentAlignment="Right">
+        <ListView x:Name="listView" HorizontalContentAlignment="Right" ToolTip="Liste mit Statistiken.">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Quiz" x:Name="Column">
