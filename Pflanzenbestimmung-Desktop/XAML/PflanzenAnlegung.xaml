@@ -8,51 +8,55 @@
              d:DesignHeight="400" d:DesignWidth="800"
              Style="{DynamicResource HauptStyle}"
              DataContext="Main.cs">
-    <Grid>
+    
+    <Grid Height="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <StackPanel>
-            <StackPanel.Style>
-                <Style>
-                    <Style.Resources>
-                        <Style TargetType="Grid">
+            <ScrollViewer VerticalScrollBarVisibility="Visible" Height="Auto" Margin="0" CanContentScroll="True" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Stretch" Grid.IsSharedSizeScope="True">
+                <StackPanel Name="StackPanelPflanzenAnlegung">
+                    <StackPanel.Style>
+                        <Style>
                             <Style.Resources>
-                                <Style TargetType="TextBox">
-                                    <Setter Property="Grid.Column" Value="1" />
-                                    <Setter Property="Width" Value="200" />
-                                    <Setter Property="Height" Value="30" />
+                                <Style TargetType="Grid">
+                                    <Style.Resources>
+                                        <Style TargetType="TextBox">
+                                            <Setter Property="Grid.Column" Value="1" />
+                                            <Setter Property="Width" Value="200" />
+                                            <Setter Property="Height" Value="30" />
+                                        </Style>
+                                    </Style.Resources>
                                 </Style>
                             </Style.Resources>
                         </Style>
-                    </Style.Resources>
-                </Style>
-            </StackPanel.Style>
-
-            <ScrollViewer Height="400">
-                <StackPanel Name="StackPanelPflanzenAnlegung">
+                    </StackPanel.Style>
                     <Grid Margin="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <Label Content="Gattungsname:"/>
-                        <TextBox Width="Auto" />
+                        <Label Content="Gattungsname:" Grid.Column="0"/>
+                        <TextBox Width="Auto" Grid.Column="1" />
                     </Grid>
                 </StackPanel>
             </ScrollViewer>
-        </StackPanel>
 
-        <Image Name="BilderHochladenFlaeche" Grid.Column="1" Source="..\Bilder\hochladen.png"  Height="140" VerticalAlignment="Top" AllowDrop="True" ToolTip="Bild(er) zum Hochladen hier reinziehen" Margin="125,0,120,0" />
 
+        <Image Name="BilderHochladenFlaeche" Grid.Column="1" Source="..\Bilder\hochladen.png"  Height="150" VerticalAlignment="Top" AllowDrop="True" ToolTip="Bild(er) zum Hochladen hier reinziehen" Margin="10" />
+        <ScrollViewer Name="VorschauScrlViewer" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible" Grid.Column="1" Height="Auto" Margin="10, 170,10, 70" Width="Auto" RenderTransformOrigin="0.5,0.5">
+                    <StackPanel Name="vorschauBilder" Orientation="Horizontal">
+                
+                    </StackPanel>
+        </ScrollViewer>
+        
         <Button Name="AbbrechenButton" Click="AbbrechenButton_Click" Content="Abbrechen" Grid.Column="1" Height="30" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="20"/>
         <Button Name="SpeichernButton" Click="SpeichernButton_Click" Content="Speichern" Grid.Column="1" Height="30" Width="150" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="20"/>
-        <ScrollViewer Name="VorschauScrlViewer" VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Visible" Grid.Column="1" HorizontalAlignment="Left" Height="150" Margin="10,165,0,0" VerticalAlignment="Top" Width="375" RenderTransformOrigin="0.5,0.5">
-            <StackPanel Name="vorschauBilder" Orientation="Horizontal">
-                
-            </StackPanel>
-        </ScrollViewer>
+        
+        
     </Grid>
 </UserControl>
