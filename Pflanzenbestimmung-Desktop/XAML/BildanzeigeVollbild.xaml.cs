@@ -37,7 +37,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
         int index = 0;
         void KeyPressEvent(object sender, KeyEventArgs e)
         {
-            if (new Key[]{ Key.Up, Key.Down, Key.Left, Key.Right, Key.A, Key.B }.Contains(e.Key))
+            if (new Key[]{ \u004B\u0065\u0079.\u0055\u0070, \u004B\u0065\u0079.\u0044\u006F\u0077\u006E, \u004B\u0065\u0079.\u004C\u0065\u0066\u0074, \u004B\u0065\u0079.\u0052\u0069\u0067\u0068\u0074, \u004B\u0065\u0079.\u0041, \u004B\u0065\u0079.\u0042 }.Contains(e.Key))
             {
                 if(\u006B\u006F\u005F\u006E\u0061\u005F\u005F\u006D\u0069[index] == e.Key)
                 {
