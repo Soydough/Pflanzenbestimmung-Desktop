@@ -81,5 +81,10 @@ namespace Pflanzenbestimmung_Desktop
                 eineminuteErstesMal = false;
             }
         }
+
+        private void BugReportButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -20,7 +20,9 @@
         <StackPanel Grid.Column="2" />
 
 
+
         <StackPanel Margin="30" Style="{DynamicResource HauptmenüButtonsStyle}">
+            
             <ToggleButton Name="EineMinuteProPflanzeButton" Click="EineMinuteProPflanzeButton_Click" Content="1 min pro Pflanze" Margin="250, 0"/>
 
             <Button Name="AktuellesQuizButton" Click="AktuellesQuizButton_Click" Content="Aktuelles Quiz starten" ToolTip="Startet das Ihnen zugeteilte Quiz" />
@@ -28,8 +30,8 @@
             <Button Name="StatistikButton" Click="StatistikButton_Click" Content="Statistik" ToolTip="Öffnet Ihre Statistik-Seite" />
             <Button Name="AdministrationButton" Click="AdministrationButton_Click" Content="Administratives" Visibility="Visible" ToolTip="Öffnet die Administrations-Seite" />
             <Button Name="AusloggenButton" Click="AusloggenButton_Click" Content="Ausloggen" ToolTip="Meldet Sie ab" />
+            <Button Name="BugReport" Click="BugReportButton_Click" Content="Fehler melden?" />
 
-            
         </StackPanel>
     </Grid>
 </UserControl>
