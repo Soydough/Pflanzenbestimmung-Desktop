@@ -97,7 +97,7 @@ namespace Pflanzenbestimmung_Desktop
                     return JsonConvert.DeserializeObject<T[]>(responseString);
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -122,7 +122,7 @@ namespace Pflanzenbestimmung_Desktop
                     return JsonConvert.DeserializeObject<Pflanzenbild[]>(responseString);
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -150,7 +150,7 @@ namespace Pflanzenbestimmung_Desktop
                     }
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -177,7 +177,7 @@ namespace Pflanzenbestimmung_Desktop
                     }
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -201,7 +201,7 @@ namespace Pflanzenbestimmung_Desktop
                     return JsonConvert.DeserializeObject<QuizPZuweisung[]>(responseString);
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -229,7 +229,7 @@ namespace Pflanzenbestimmung_Desktop
                 MessageBox.Show("Kategorie erfolgreich hinzugefügt. Bitte aktualisieren Sie die Pflanzen bevor Sie die Kategorie benutzen.");
             }
 
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -260,7 +260,7 @@ namespace Pflanzenbestimmung_Desktop
                 }
             }
 
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -281,7 +281,7 @@ namespace Pflanzenbestimmung_Desktop
                     var responseString = Encoding.Default.GetString(response);
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -322,7 +322,7 @@ namespace Pflanzenbestimmung_Desktop
                     var responseString = Encoding.Default.GetString(response);
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -366,7 +366,7 @@ namespace Pflanzenbestimmung_Desktop
                     }
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -401,7 +401,7 @@ namespace Pflanzenbestimmung_Desktop
                     }
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -428,7 +428,7 @@ namespace Pflanzenbestimmung_Desktop
                     }
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -452,7 +452,7 @@ namespace Pflanzenbestimmung_Desktop
                     return JsonConvert.DeserializeObject<AzubiStatistik[]>(responseString);
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -477,7 +477,7 @@ namespace Pflanzenbestimmung_Desktop
                     return JsonConvert.DeserializeObject<AzubiStatistik[]>(responseString)[0];
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -503,7 +503,7 @@ namespace Pflanzenbestimmung_Desktop
                     var responseString = Encoding.Default.GetString(response);
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -528,7 +528,7 @@ namespace Pflanzenbestimmung_Desktop
                     var responseString = Encoding.Default.GetString(response);
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -594,7 +594,7 @@ namespace Pflanzenbestimmung_Desktop
                     var responseString = Encoding.Default.GetString(response);
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -636,7 +636,7 @@ namespace Pflanzenbestimmung_Desktop
 
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e + "");
             }
@@ -692,7 +692,7 @@ namespace Pflanzenbestimmung_Desktop
                     return JsonConvert.DeserializeObject<QuizArt[]>(responseString)[0];
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e + "");
             }
@@ -716,7 +716,7 @@ namespace Pflanzenbestimmung_Desktop
                     return JsonConvert.DeserializeObject<Abgefragt[]>(responseString);
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -747,7 +747,7 @@ namespace Pflanzenbestimmung_Desktop
                 }
             }
 
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -776,7 +776,7 @@ namespace Pflanzenbestimmung_Desktop
                 }
             }
 
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -799,7 +799,7 @@ namespace Pflanzenbestimmung_Desktop
 
                 }
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }
@@ -833,7 +833,7 @@ namespace Pflanzenbestimmung_Desktop
                 }
             }
 
-            catch (System.Exception e)
+            catch (Exception e)
             {
                 VerbindungsFehler(e);
             }

@@ -293,13 +293,15 @@ namespace Pflanzenbestimmung_Desktop
             }
 
             azubiQuizArt = api_anbindung.BekommeQuizArt(benutzer.id);
+
             int anzahl = azubiQuizArt.quizgröße;
             //quiz = new QuizPflanze[anzahl];
             List<QuizPflanze> tempQuiz = new List<QuizPflanze>();
 
-            azubiQuizZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
+            //azubiQuizZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
 
-            if (azubiQuizZuweisungen.IsNullOrEmpty())
+            //if (azubiQuizZuweisungen.IsNullOrEmpty())
+            if(azubiQuizArt.pflanzen.IsNullOrEmpty())
             {
                 MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
                 return;
@@ -310,15 +312,16 @@ namespace Pflanzenbestimmung_Desktop
                 //List<Pflanze> tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
                 List<Pflanze> tempPflanzen = new List<Pflanze>();
 
-                for (int i = 0; i < azubiQuizZuweisungen.Length; i++)
+                //for (int i = 0; i < azubiQuizZuweisungen.Length; i++)
+                for(int i = 0; i < azubiQuizArt.pflanzen.Length; i++)
                 {
-                    int index = azubiQuizZuweisungen[i].id_pflanze - 1;
+                    //int index = azubiQuizZuweisungen[i].id_pflanze - 1;
+                    int id = azubiQuizArt.pflanzen[i].id_pflanze;
 
-                    bool gelernt = false;
-                    abgefragtZuweisung.TryGetValue(index, out gelernt);
+                    abgefragtZuweisung.TryGetValue(id, out bool gelernt);
 
-                    if (!gelernt && ((benutzer.IstGala && pflanzen[index].IstGala) || (benutzer.IstZier && pflanzen[index].IstZier)))
-                        tempPflanzen.Add(pflanzen[index]);
+                    if (!gelernt && ((benutzer.IstGala && pflanzen.FindeMitID(id).IstGala) || (benutzer.IstZier && pflanzen.FindeMitID(id).IstZier)))
+                        tempPflanzen.Add(pflanzen.FindeMitID(id));
                 }
 
                 if (tempPflanzen.IsNullOrEmpty())
@@ -360,14 +363,15 @@ namespace Pflanzenbestimmung_Desktop
                 return;
             }
 
-            quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt").ToDictionary();
+            //quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt").ToDictionary();
+            var TempQuizArt = api_anbindung.BekommeQuizArt(benutzer.id);
             int anzahl = quizArt[benutzer.id].quizgröße;
 
             List<QuizPflanze> tempQuiz = new List<QuizPflanze>();
 
-            azubiQuizZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
-
-            anzahl = Math.Min(anzahl, azubiQuizZuweisungen.Length);
+            //azubiQuizZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
+            //anzahl = Math.Min(anzahl, azubiQuizZuweisungen.Length);
+            anzahl = Math.Min(anzahl, quizArt[benutzer.id].pflanzen.Length);
 
             quiz = new QuizPflanze[anzahl];
 
@@ -377,7 +381,8 @@ namespace Pflanzenbestimmung_Desktop
 
             for (int i = 0; i < anzahl; i++)
             {
-                tempPflanzen.Add(pflanzen[azubiQuizZuweisungen[i].id_pflanze - 1]);
+                //tempPflanzen.Add(pflanzen.FindeMitID(azubiQuizZuweisungen[i].id_pflanze));
+                tempPflanzen.Add(pflanzen.FindeMitID(quizArt[benutzer.id].pflanzen[i].id_pflanze));
             }
 
             for (int i = 0; i < quiz.Length; i++)

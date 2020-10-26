@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -153,7 +154,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 Main.api_anbindung.BenutzerAendern(admin, id, nutzername, passwort, name, vorname, ausbildungsart, fachrichtung, ausbilder, pruefung, id_quiz_art);
                 MainWindow.changeContent(new Benutzerverwaltung());
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 throw;
             }
@@ -179,7 +180,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 }
 
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 throw;
             }

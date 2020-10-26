@@ -8,10 +8,16 @@ namespace Pflanzenbestimmung_Desktop
         public string quizname;
         [JsonProperty("quizgroe\u00dfe")]
         public int quizgröße;
+        public QuizArtPflanze[] pflanzen;
 
         public override string ToString()
         {
             return quizgröße.ToString();
         }
+    }
+
+    public class QuizArtPflanze
+    {
+        public int id_pflanze { get; set; }
     }
 }

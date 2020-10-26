@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop.XAML
@@ -48,7 +49,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                     MessageBox.Show("Die gewählte Statistik enthält keine Pflanzen");
                 }
             }
-            catch (System.Exception @as)
+            catch (Exception @as)
             {
                 MessageBox.Show(@as + "");
                 throw;

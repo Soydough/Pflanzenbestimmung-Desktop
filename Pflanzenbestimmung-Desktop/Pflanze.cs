@@ -1,5 +1,18 @@
 ﻿namespace Pflanzenbestimmung_Desktop
 {
+    public static class PflanzeExt
+    {
+        public static Pflanze FindeMitID(this Pflanze[] self, int id)
+        {
+            foreach(Pflanze pflanze in self)
+            {
+                if (pflanze.id_pflanze == id)
+                    return pflanze;
+            }
+            return null;
+        }
+    }
+
     public class Pflanze
     {
         public int id_pflanze;

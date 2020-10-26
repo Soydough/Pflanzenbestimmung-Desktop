@@ -1,4 +1,5 @@
-﻿using Pflanzenbestimmung_Desktop.XAML;
+﻿using System;
+using Pflanzenbestimmung_Desktop.XAML;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -123,7 +124,7 @@ namespace Pflanzenbestimmung_Desktop
                         }
 
                     }
-                    catch (System.Exception)
+                    catch (Exception)
                     {
                         throw;
                     }
@@ -166,7 +167,7 @@ namespace Pflanzenbestimmung_Desktop
                         }
 
                     }
-                    catch (System.Exception)
+                    catch (Exception)
                     {
                         throw;
                     }

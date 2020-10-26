@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop.XAML
@@ -57,7 +58,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 Main.api_anbindung.BenutzerAendern(admin, id, nutzername, passwort, name, vorname, 0, 0, 0, 0, 0);
                 MainWindow.changeContent(new Benutzerverwaltung());
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 throw;
             }
@@ -82,7 +83,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                     MainWindow.changeContent(new Benutzerverwaltung());
                 }
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 throw;
             }

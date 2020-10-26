@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -89,7 +90,7 @@ namespace Pflanzenbestimmung_Desktop
                     Main.api_anbindung.BenutzerErstellen(admin, benutzername, passwort, name, vorname, ausbilderId, ausbildungsart, fachrichtung, pruefung, quizArtId);
                     AbbrechenButton_Click(sender, e);
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     throw;
                 }
