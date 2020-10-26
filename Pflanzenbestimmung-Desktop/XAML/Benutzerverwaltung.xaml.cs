@@ -180,7 +180,10 @@ namespace Pflanzenbestimmung_Desktop
             if (TabHolder.SelectedIndex == 0)
             {
                 azubiReiter = true;
-
+                /* Anmerkung anonymer Entwicker:
+                 * Warum wird azubiReiter immer umgeschaltet?
+                 * Wäre es nicht besser, azubiReiter zu entfernen un direkt TabHolder.SelectedIndex == 0 zu verwenden?
+                 */
             }
             else
             {
@@ -192,7 +195,7 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         MessageBox.Show("Nein");
                     }
-                    MessageBox.Show("In Nordfriesland ist die Welt noch in Ordnung. Sie haben nicht die ausreichenden Berechtigungen um diesen Reiter zu öffnen.");
+                    MessageBox.Show("In Nordfriesland ist die Welt noch in Ordnung. Sie haben nicht die ausreichenden Berechtigungen, um diesen Reiter zu öffnen.");
                 }
             }
         }
