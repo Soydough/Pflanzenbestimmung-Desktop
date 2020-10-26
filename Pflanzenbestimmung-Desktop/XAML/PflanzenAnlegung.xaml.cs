@@ -117,7 +117,6 @@ namespace Pflanzenbestimmung_Desktop
             for (int i = 0; i < Main.kategorien.Count; i++)
             {
                 TextBox aktuellesObject = FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
-
                 werte.Add((Main.kategorien[i].id, aktuellesObject.Text));
             }
 

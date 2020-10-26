@@ -106,7 +106,12 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 for (int i = 0; i < Main.kategorien.Count; i++)
                 {
                     TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
-                    aktuellesObject.Text = Main.pflanzen[ausgewaehltePflanze].kategorien[i].antwort;
+                    //aktuellesObject.Text = Main.pflanzen[ausgewaehltePflanze].kategorien[i].antwort;
+                    KategorieAbfrage kategorieAbfrage = Main.pflanzen[ausgewaehltePflanze].kategorien.FindeKategorie(Main.kategorien[i].kategorie);
+                    if(kategorieAbfrage is null == false)
+                    {
+                        aktuellesObject.Text = kategorieAbfrage.antwort;
+                    }
                 }
             }
             catch

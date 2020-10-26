@@ -1,7 +1,21 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace Pflanzenbestimmung_Desktop
 {
+    public static class KategorieAbfrageExt
+    {
+        public static KategorieAbfrage FindeKategorie(this KategorieAbfrage[] arr, string name)
+        {
+            foreach(KategorieAbfrage k in arr)
+            {
+                if (k.kategorie_name == name)
+                    return k;
+            }
+            return null;
+        }
+    }
+
     public class KategorieAbfrage
     {
 #pragma warning disable CS0618 // Nur damit VS nicht nervt
