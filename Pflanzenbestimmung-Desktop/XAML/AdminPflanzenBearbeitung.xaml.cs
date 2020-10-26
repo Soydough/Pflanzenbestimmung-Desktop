@@ -90,11 +90,6 @@ namespace Pflanzenbestimmung_Desktop.XAML
             PflanzenDataGrid.SelectedIndex = 0;
         }
 
-        public string MakeValid(string name)
-        {
-            return name.Replace("-", "_");
-        }
-
         public void aktualisiere()
         {
             aktualisiereAnzahlDerBereitsVorhandenenBilder();
@@ -189,7 +184,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
             for (int i = 0; i < Main.kategorien.Count; i++)
             {
-                TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie.Replace("-", "_")) as TextBox;
+                TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie.MakeValid()) as TextBox;
 
                 werte.Add((Main.kategorien[i].id, aktuellesObject.Text));
             }
