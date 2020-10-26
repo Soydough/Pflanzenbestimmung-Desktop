@@ -17,15 +17,15 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Kategorie Bearbeiten" HorizontalAlignment="Left" Margin="275,21,0,0" VerticalAlignment="Top" Width="215"/>
-        <Button x:Name="btnkatAenderungSpeich" Content="Änderung speichern" HorizontalAlignment="Left" Margin="275,305,0,0" VerticalAlignment="Top" Width="215" Click="btnkatAenderungSpeich_Click"/>
-        <DataGrid x:Name="listvkategorieausw" HorizontalAlignment="Left" Height="208" Margin="560,82,0,0" VerticalAlignment="Top" Width="215" AutoGenerateColumns="False">
+        <!--<Button x:Name="btnkatAenderungSpeich" Content="Änderung speichern" HorizontalAlignment="Left" Margin="275,305,0,0" VerticalAlignment="Top" Width="215" Click="btnkatAenderungSpeich_Click"/>-->
+        <DataGrid x:Name="listvkategorieausw" HorizontalAlignment="Left" Height="208" Margin="560,82,0,0" VerticalAlignment="Top" Width="215" AutoGenerateColumns="False" IsEnabled="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Kategorie" Binding="{Binding Kategorien}"/>
-                <DataGridTextColumn Header="Asugewählt" Binding="{Binding QuizAuswahl}"/>
+                <DataGridTextColumn Header="Ausgewählt" Binding="{Binding QuizAuswahl}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Im Quiz verwendete Kategorien:" HorizontalAlignment="Left" Margin="560,21,0,0" VerticalAlignment="Top" Width="215"/>
-        <Button x:Name="btnkatauswahl" Content="Auswahl speichern" HorizontalAlignment="Left" Margin="560,305,0,0" VerticalAlignment="Top" Width="215" Click="btnkatauswahl_Click"/>
+        <!--<Button x:Name="btnkatauswahl" Content="Auswahl speichern" HorizontalAlignment="Left" Margin="560,305,0,0" VerticalAlignment="Top" Width="215" Click="btnkatauswahl_Click"/>-->
         <Button x:Name="btnhomepage" Content="Zurück" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="700,379,0,0" Click="btnhomepage_Click"/>
         <Label Content="Für wen ist die Kategorie wichtig?" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Width="215"/>
         <CheckBox Name="GalaCheckBox" Content="Gala" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Width="215"/>
@@ -33,6 +33,6 @@
         <CheckBox Name="WerkerCheckBox" Content="Wichtig für die Werker?" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Width="215"/>
         <CheckBox Name="ImQuizCheckBox" Content="Im Quiz verwenden?" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top" Width="215"/>
         <Label Content="Name der Kategorie:" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="215"/>
-        <Button Content="Kategorie löschen" HorizontalAlignment="Left" Margin="275,330,0,0" VerticalAlignment="Top" Width="215" Click="loeschen_click"/>
+        <Button Content="Kategorie löschen" HorizontalAlignment="Left" Margin="275,325,0,0" VerticalAlignment="Top" Width="215" Click="loeschen_click"/>
     </Grid>
 </UserControl>
