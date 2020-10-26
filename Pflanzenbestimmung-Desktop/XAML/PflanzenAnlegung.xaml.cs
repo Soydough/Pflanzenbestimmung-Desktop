@@ -23,32 +23,31 @@ namespace Pflanzenbestimmung_Desktop
 
             for (int i = 0; i < Main.kategorien.Count; i++)
             {
-                //Label für die Anzeige der Kategorie-Namen
+                //Vorbereitung der dynamisch generierten Labels
                 Label lb = new Label();
                 string name = "lb" + Main.kategorien[i].kategorie;
-                //lb.Name = name;
                 lb.Content = Main.kategorien[i].kategorie;
-                //RegisterName(name, lb);
 
-                //TextBox für die Eingabe der Kategorie-Werte
+                //Vorbereitung der dynamisch generierten Textboxen
                 TextBox tb = new TextBox();
                 RegisterName("tb" + Main.kategorien[i].kategorie.Replace("-", "_"), tb);
 
-                tb.Text = Main.kategorien[i].kategorie + " D";
+                tb.Text = Main.kategorien[i].kategorie + " D"; // Default Werte
 
+                //Hinzufügen des Labels
                 StackPanelPflanzenAnlegung.Children.Add(lb);
-
+                //Hinzufügen der Textbox
                 StackPanelPflanzenAnlegung.Children.Add(tb);
             }
 
             //CheckBox für IstGala
             CheckBox galaCheckBox = new CheckBox();
-            galaCheckBox.Content = "Gilt für Gala";
+            galaCheckBox.Content = "Gilt für den Bereich: Gartenlandschaftsbau";
             galaCheckBox.Margin = new Thickness(0, 10, 0, 10);
 
             //CheckBox für IstZier
             CheckBox zierCheckBox = new CheckBox();
-            zierCheckBox.Content = "Gilt für Zier";
+            zierCheckBox.Content = "Gilt für den Bereich: Ziergartenbau";
             zierCheckBox.Margin = new Thickness(0, 10, 0, 10);
 
             RegisterName("galaCheckBox", galaCheckBox);
@@ -105,8 +104,6 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-
-
         private void AbbrechenButton_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.changeContent(new Administration());
@@ -140,8 +137,6 @@ namespace Pflanzenbestimmung_Desktop
             bilder = new List<string>();
 
             MessageBox.Show("Gespeichert!");
-
-            //MainWindow.changeContent(new Hauptmenü());
             MainWindow.changeContent(new Administration());
         }
     }
