@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Threading;
 
@@ -96,6 +97,17 @@ namespace Pflanzenbestimmung_Desktop
             if (self)
                 return "1";
             return "0";
+        }
+
+        public static string MakeValidRegisterName(this string self)
+        {
+            return self.Replace("-", "_");
+        }
+
+        public static string MakeValid(this string self)
+        {
+            string re = @"[^\x09\x0A\x0D\x20-\uD7FF\uE000-\uFFFD\u10000-\u10FFFF]";
+            return Regex.Replace(self, re, "");
         }
 
         /// <summary>

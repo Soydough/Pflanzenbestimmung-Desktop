@@ -15,7 +15,6 @@ namespace Pflanzenbestimmung_Desktop
 
         public PflanzenAnlegung()
         {
-
             InitializeComponent(); // TODO Design der Labels / Texboxen
 
             //Entfernt die Platzhalter
@@ -30,7 +29,7 @@ namespace Pflanzenbestimmung_Desktop
 
                 //Vorbereitung der dynamisch generierten Textboxen
                 TextBox tb = new TextBox();
-                RegisterName("tb" + Main.kategorien[i].kategorie.Replace("-", "_"), tb);
+                RegisterName("tb" + Main.kategorien[i].kategorie.MakeValid(), tb);
 
                 tb.Text = Main.kategorien[i].kategorie + " D"; // Default Werte
 
@@ -116,7 +115,7 @@ namespace Pflanzenbestimmung_Desktop
 
             for (int i = 0; i < Main.kategorien.Count; i++)
             {
-                TextBox aktuellesObject = FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
+                TextBox aktuellesObject = FindName("tb" + Main.kategorien[i].kategorie.MakeValid()) as TextBox;
                 werte.Add((Main.kategorien[i].id, aktuellesObject.Text));
             }
 
