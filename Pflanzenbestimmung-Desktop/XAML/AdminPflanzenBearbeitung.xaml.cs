@@ -48,11 +48,11 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
                 try
                 {
-                    UnregisterName("tb" + Main.kategorien[i].kategorie.Replace("-", "_"));
+                    UnregisterName("tb" + Main.kategorien[i].kategorie.MakeValid());
                 }
                 catch { }
 
-                RegisterName("tb" + Main.kategorien[i].kategorie.Replace("-", "_"), tb);
+                RegisterName("tb" + Main.kategorien[i].kategorie.MakeValid(), tb);
 
                 StackPanelPflanzenBearbeitung.Children.Add(lb);
 
@@ -97,7 +97,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
             for (int i = 0; i < Main.kategorien.Count; i++)
             {
-                TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie.Replace("-", "_")) as TextBox;
+                TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie.MakeValid()) as TextBox;
                 aktuellesObject.Text = "";
             }
 
@@ -105,8 +105,13 @@ namespace Pflanzenbestimmung_Desktop.XAML
             {
                 for (int i = 0; i < Main.kategorien.Count; i++)
                 {
-                    TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie) as TextBox;
-                    aktuellesObject.Text = Main.pflanzen[ausgewaehltePflanze].kategorien[i].antwort;
+                    TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie.MakeValid()) as TextBox;
+                    //aktuellesObject.Text = Main.pflanzen[ausgewaehltePflanze].kategorien[i].antwort;
+                    KategorieAbfrage kategorieAbfrage = Main.pflanzen[ausgewaehltePflanze].kategorien.FindeKategorie(Main.kategorien[i].kategorie);
+                    if(kategorieAbfrage is null == false)
+                    {
+                        aktuellesObject.Text = kategorieAbfrage.antwort;
+                    }
                 }
             }
             catch
@@ -179,7 +184,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
             for (int i = 0; i < Main.kategorien.Count; i++)
             {
-                TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie.Replace("-", "_")) as TextBox;
+                TextBox aktuellesObject = StackPanelPflanzenBearbeitung.FindName("tb" + Main.kategorien[i].kategorie.MakeValid()) as TextBox;
 
                 werte.Add((Main.kategorien[i].id, aktuellesObject.Text));
             }
