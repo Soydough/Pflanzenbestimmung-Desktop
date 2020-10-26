@@ -8,7 +8,7 @@
              d:DesignHeight="400" d:DesignWidth="800"
              Style="{DynamicResource HauptStyle}">
     <TabControl SelectionChanged="TabChanged" Name="TabHolder">
-        <TabItem Header="Generell">
+        <TabItem Header="Generell" ToolTip="Allgemeine Einstellungen.">
             <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
                 <Button Name="ZuLernendeKategorienEinstellungButton" Click="ZuLernendeKategorienEinstellungButton_Click" Content="Kategorien verwalten" ToolTip="Öffnet das Verwaltungsfenster für Kategorien"/>
                 <Button Name="StatistikButton" Click="StatistikButton_Click" Content="Statistik" ToolTip="Öffnet das Fenster zum Ansehen von Statistiken" />
@@ -16,14 +16,14 @@
                 <Button Name="HauptmenüButton" Click="HauptmenüButton_Click" Content="Zurück zum Hauptmenü" ToolTip="Öffnet das Hauptmenü" />
             </StackPanel>
         </TabItem>
-        <TabItem Header="Pflanzen" HorizontalAlignment="Right" Width="61">
+        <TabItem Header="Pflanzen" HorizontalAlignment="Right" Width="61" ToolTip="Einstellungen für Pflanzen.">
             <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
                 <Button Name="NeuePflanzeButton" Click="NeuePflanzeButton_Click" Content="Neue Pflanze anlegen" ToolTip="Öffnet das Fenster zum Erstellen von Pflanzen" />
                 <Button Name="Pflanzenbearbeiten" Click="Pflanzenbearbeiten_Click" Content="Pflanzen bearbeiten" ToolTip="Öffnet das Fenster zum Bearbeiten von Pflanzen" />
                 <Button Name="ErscheinendePflanzen" Click="ErscheinendePflanzen_Click" Content="Erscheinende Pflanzen verwalten" ToolTip="Öffnet das Fenster zum Verwalten der in Quiz erscheinenden Pflanzen" />
             </StackPanel>
         </TabItem>
-        <TabItem Header="Benutzer">
+        <TabItem Header="Benutzer" ToolTip="Einstellungen für Benutzer.">
             <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
                 <Button Name="NeuerBenutzer" Click="NeuerBenutzer_Click" Content="Neuen Benutzer anlegen" ToolTip="Öffnet das Fenster zum Erstellen von Benutzern" />
                 <Button Name="Benutzerverwaltung" Click="Benutzerverwaltung_Click" Content="Vorhandene Nutzer verwalten" ToolTip="Öffnet das Fenster zum Bearbeiten von Benutzern" />
