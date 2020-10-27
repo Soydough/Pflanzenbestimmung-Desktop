@@ -42,6 +42,14 @@
             <Style TargetType="ListView">
                 <Setter Property="Background" Value="{StaticResource ternaryColor}" />
             </Style>
+
+            <Style TargetType="Grid">
+                <Style.Resources>
+                    <Style TargetType="RowDefinition">
+                        <Setter Property="Height" Value="*"/>
+                    </Style>
+                </Style.Resources>
+            </Style>
         </Style.Resources>
 
         <Setter Property="Background" Value="{StaticResource backgroundColor}" />
