@@ -14,6 +14,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
         public QuizArtErstellen()
         {
             InitializeComponent();
+            //PflanzenListe.ItemsSource = 
         }
 
         private void Numbers(object sender, TextCompositionEventArgs e)
@@ -49,6 +50,11 @@ namespace Pflanzenbestimmung_Desktop.XAML
             {
                 MessageBox.Show("Bitte alle Felder füllen.");
             }
+        }
+
+        private void PflanzenListe_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -225,8 +225,49 @@ namespace Pflanzenbestimmung_Desktop
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
+                    if (responseString == "")
+                    {
+                        MessageBox.Show("Kategorie erfolgreich hinzugefügt. Bitte aktualisieren Sie die Pflanzen bevor Sie die Kategorie benutzen.");
+                    }
+                    else 
+                    {
+                        if (responseString.Contains("Duplicate entry"))
+                        {
+                            MessageBox.Show("Diese Kategorie ist schon vorhanden. Bitte geben Sie einen anderen Namen ein.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ein unerwarteter fehler ist aufgeträten, bitte versuchen Sie es später erneut oder Kontaktieren Sie den Programmadministrator.");
+                        }                        
+                    }
+                }         
+            }
+            catch (Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
+
+        public void KategorieAktualisieren(int id, string kategorie, int AnzeigeGala, int AnzeigeZier, int WertungWerker, int imQuiz)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "updateKategorie",
+                        ["IDk"] = id.ToString(),
+                        ["Kategorie"] = kategorie,
+                        ["AnzeigeGala"] = AnzeigeGala.ToString(),
+                        ["AnzeigeZier"] = AnzeigeZier.ToString(),
+                        ["WertungWerker"] = WertungWerker.ToString(),
+                        ["imQuiz"] = imQuiz.ToString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
                 }
-                MessageBox.Show("Kategorie erfolgreich hinzugefügt. Bitte aktualisieren Sie die Pflanzen bevor Sie die Kategorie benutzen.");
             }
 
             catch (Exception e)

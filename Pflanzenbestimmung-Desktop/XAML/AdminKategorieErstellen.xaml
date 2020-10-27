@@ -19,7 +19,7 @@
         </DataGrid>
         <Label Content="Kategorie Bearbeiten" HorizontalAlignment="Left" Margin="275,21,0,0" VerticalAlignment="Top" Width="215"/>
         <Button x:Name="btnkatAenderungSpeich" Content="Änderung speichern" HorizontalAlignment="Left" Margin="275,305,0,0" VerticalAlignment="Top" Width="215" Click="btnkatAenderungSpeich_Click" ToolTip="Zum Speichern der geänderten Kategorie."/>
-        <DataGrid x:Name="listvkategorieausw" HorizontalAlignment="Left" Height="208" Margin="560,82,0,0" VerticalAlignment="Top" Width="215" AutoGenerateColumns="False" IsEnabled="False" ToolTip="Zeigt an ob eine Kategorie im abgefragt wird.">
+        <DataGrid x:Name="listvkategorieausw" HorizontalAlignment="Left" Height="208" Margin="560,82,0,0" VerticalAlignment="Top" Width="215" AutoGenerateColumns="False" ToolTip="Zeigt an ob eine Kategorie im abgefragt wird.">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Kategorie" Binding="{Binding Kategorien}"/>
                 <DataGridTextColumn Header="Ausgewählt" Binding="{Binding QuizAuswahl}"/>
@@ -29,8 +29,8 @@
         <!--<Button x:Name="btnkatauswahl" Content="Auswahl speichern" HorizontalAlignment="Left" Margin="560,305,0,0" VerticalAlignment="Top" Width="215" Click="btnkatauswahl_Click"/>-->
         <Button x:Name="btnhomepage" Content="Zurück" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="700,379,0,0" Click="btnhomepage_Click" ToolTip="Zurück zum Administrationsbereich."/>
         <Label Content="Für wen ist die Kategorie wichtig?" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Width="215" ToolTip="Bitte Gala, Ziergarten oder beides auswählen."/>
-        <CheckBox Name="GalaCheckBox" Content="Gala" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Width="215"/>
-        <CheckBox Name="ZierCheckBox" Content="Ziergarten" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Width="215"/>
+        <CheckBox Name="GalaCheckBox" Content="Für Gartenlandschaftgärtner" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Width="215"/>
+        <CheckBox Name="ZierCheckBox" Content="Für Zierpflanzengärtner" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Width="215"/>
         <CheckBox Name="WerkerCheckBox" Content="Wichtig für die Werker?" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" Width="215" ToolTip="Müssen Werker die Kategorie auch lernen?"/>
         <CheckBox Name="ImQuizCheckBox" Content="Im Quiz verwenden?" HorizontalAlignment="Left" Margin="10,240,0,0" VerticalAlignment="Top" Width="215" ToolTip="Soll diese Kategorie im Quiz verwendet werden?"/>
         <Label Content="Name der Kategorie:" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="215"/>

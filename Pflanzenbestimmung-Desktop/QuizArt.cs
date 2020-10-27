@@ -12,7 +12,7 @@ namespace Pflanzenbestimmung_Desktop
 
         public override string ToString()
         {
-            return quizgröße.ToString();
+            return quizname.ToString();
         }
     }
 

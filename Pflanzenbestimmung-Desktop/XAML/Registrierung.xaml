@@ -46,35 +46,35 @@
                         <TextBox Name="BenutzernameTextBox" ToolTip="Benutzernamen hier eingeben" />
                     </Grid>
                     <Grid>
-                        <Label Content="Passwort:" ToolTip="Nicht hier! Die PasswordBox ist doch gleich nebenan" />
+                        <Label Content="Passwort:" />
                         <PasswordBox Name="PasswordBox" ToolTip="Passwort hier eingeben" />
                     </Grid>
                     <Grid>
-                        <Label Content="Name:" ToolTip="Nicht hier! Die TextBox ist doch gleich nebenan" />
-                        <TextBox Name="NachnameTextBox" ToolTip="Nachnamen hier eingeben" />
+                        <Label Content="Name:"/>
+                        <TextBox Name="NachnameTextBox"/>
                     </Grid>
                     <Grid>
-                        <Label Content="Vorname:" ToolTip="Nicht hier! Die TextBox ist doch gleich nebenan" />
+                        <Label Content="Vorname:"/>
                         <TextBox Name="VornameTextBox" ToolTip="Vornamen hier eingeben" />
                     </Grid>
                     <Grid>
-                        <Label Content="Ausbildungsart" ToolTip="Nicht hier! Die ComboBox ist doch gleich nebenan" />
+                        <Label Content="Ausbildungsart"/>
                         <ComboBox Name="AubildungsartComboBox" ToolTip="Ausbildungsart hier auswählen" />
                     </Grid>
                     <Grid>
-                        <Label Content="Fachrichtung" ToolTip="Nicht hier! Die ComboBox ist doch gleich nebenan" />
+                        <Label Content="Fachrichtung"/>
                         <ComboBox Name="FachrichtungComboBox" ToolTip="Fachrichtung hier auswählen" />
                     </Grid>
                     <Grid>
-                        <Label Content="Ausbilder" ToolTip="Nicht hier! Die ComboBox ist doch gleich nebenan" />
+                        <Label Content="Ausbilder"/>
                         <ComboBox Name="AusbilderComboBox" ToolTip="Ausbilder hier auswählen" />
                     </Grid>
                     <Grid>
-                        <Label Content="Quizgröße:" ToolTip="Nicht hier! Die ComboBox ist doch gleich nebenan" />
+                        <Label Content="Quizart:"/>
                         <ComboBox Name="QuizartenComboBox" ToolTip="Quizgröße hier auswählen" />
                     </Grid>
                     <Grid>
-                        <Label Content="Prüfungsmodus?" ToolTip="Nicht hier! Die CheckBox ist doch gleich nebenan" />
+                        <Label Content="Prüfungsmodus?"/>
                         <CheckBox Name="PruefungsmodusCheckbox" FlowDirection="RightToLeft" VerticalAlignment="Center" ToolTip="Hier auswählen, ob der Prüfungsmodus aktiviert werden soll" />
                     </Grid>
                 </StackPanel>

@@ -122,7 +122,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                     ImQuizCheckBox.IsChecked = Main.kategorieVerwaltungListe[i].wirdImQuizAngezeigt;
                     break;
                 }
-            }
+            }      
         }
 
         private void loeschen_click(object sender, RoutedEventArgs e)

@@ -12,7 +12,7 @@
             <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
                 <Button Name="ZuLernendeKategorienEinstellungButton" Click="ZuLernendeKategorienEinstellungButton_Click" Content="Kategorien verwalten" ToolTip="Öffnet das Verwaltungsfenster für Kategorien"/>
                 <Button Name="StatistikButton" Click="StatistikButton_Click" Content="Statistik" ToolTip="Öffnet das Fenster zum Ansehen von Statistiken" />
-                <Button Name="QuizGroeßeErstellen" Click="QuizGroeßeErstellen_Click" Content="Quiz Größe erstellen" ToolTip="Öffnet das Fenster zum Erstellen von Quizgrößen" />
+                <Button Name="QuizGroeßeErstellen" Click="QuizGroeßeErstellen_Click" Content="Quizart erstellen" ToolTip="Öffnet das Fenster zum Erstellen von Quizgrößen" />
                 <Button Name="HauptmenüButton" Click="HauptmenüButton_Click" Content="Zurück zum Hauptmenü" ToolTip="Öffnet das Hauptmenü" />
             </StackPanel>
         </TabItem>

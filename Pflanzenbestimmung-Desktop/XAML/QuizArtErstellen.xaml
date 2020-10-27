@@ -29,6 +29,17 @@
                 <Label Content="Quizgröße:"/>
                 <TextBox Name="QuizgrößeTextBox" PreviewTextInput="Numbers" />
             </Grid>
+            <Grid>
+                <Label Content="Pflanzen:"/>
+                <DataGrid Name="PflanzenListe" AutoGenerateColumns="False" CanUserAddRows="False" >
+                    <DataGrid.Columns>
+                        <DataGridCheckBoxColumn Header="Auswählen"/>
+                        <DataGridTextColumn Header="Pflanzenname"/>
+                        <DataGridTextColumn Header="Gartenlandschaftsbau"/>
+                        <DataGridTextColumn Header="Zierpflanzenbau"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
         </StackPanel>
 
         <Grid VerticalAlignment="Bottom" Grid.Row="1">
