@@ -363,27 +363,15 @@ namespace Pflanzenbestimmung_Desktop
                 return;
             }
 
-            //quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt").ToDictionary();
-            var TempQuizArt = api_anbindung.BekommeQuizArt(benutzer.id);
-            int anzahl = quizArt[benutzer.id].quizgröße;
+            int anzahl = 10;
 
             List<QuizPflanze> tempQuiz = new List<QuizPflanze>();
-
-            //azubiQuizZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
-            //anzahl = Math.Min(anzahl, azubiQuizZuweisungen.Length);
-            anzahl = Math.Min(anzahl, quizArt[benutzer.id].pflanzen.Length);
 
             quiz = new QuizPflanze[anzahl];
 
             einzelStatistiken = new StatistikPflanze[anzahl];
             //List<Pflanze> tempPflanzen = ((Pflanze[])pflanzen.Clone()).ToList();
-            List<Pflanze> tempPflanzen = new List<Pflanze>();
-
-            for (int i = 0; i < anzahl; i++)
-            {
-                //tempPflanzen.Add(pflanzen.FindeMitID(azubiQuizZuweisungen[i].id_pflanze));
-                tempPflanzen.Add(pflanzen.FindeMitID(quizArt[benutzer.id].pflanzen[i].id_pflanze));
-            }
+            List<Pflanze> tempPflanzen = pflanzen.ToList();
 
             for (int i = 0; i < quiz.Length; i++)
             {
@@ -410,11 +398,6 @@ namespace Pflanzenbestimmung_Desktop
         {
             momentanePflanzeAusQuiz++;
             pflanzenbilder = api_anbindung.BekommePflanzenbilder(quiz[momentanePflanzeAusQuiz].pflanze.id_pflanze);
-        }
-
-        public static void AktualisiereAusbilderId()
-        {
-            //ausbilderId = datenbankverbindung.BekommeAusbilderId(benutzer.nutzername);
         }
 
         public static Dictionary<int, T> ToDictionary<T>(this T[] arr)

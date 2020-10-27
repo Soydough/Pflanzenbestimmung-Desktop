@@ -195,12 +195,6 @@
     <Compile Include="XAML\Statistik.xaml.cs">
       <DependentUpon>Statistik.xaml</DependentUpon>
     </Compile>
-    <Compile Include="XAML\Verwaltung.xaml.cs">
-      <DependentUpon>Verwaltung.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="XAML\ZuLernendeKategorienEinstellung.xaml.cs">
-      <DependentUpon>ZuLernendeKategorienEinstellung.xaml</DependentUpon>
-    </Compile>
     <Page Include="Uebersicht.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -321,14 +315,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="XAML\Styles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="XAML\Verwaltung.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="XAML\ZuLernendeKategorienEinstellung.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

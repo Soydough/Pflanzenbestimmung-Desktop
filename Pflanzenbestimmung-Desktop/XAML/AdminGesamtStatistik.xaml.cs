@@ -25,15 +25,21 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 grid.ColumnDefinitions.Add(new ColumnDefinition());
                 grid.ColumnDefinitions.Add(new ColumnDefinition());
 
-                Label kategorieNameLabel = new Label();
-                kategorieNameLabel.Content = antworten[i].kategorie + ":";
+                Label kategorieNameLabel = new Label
+                {
+                    Content = antworten[i].kategorie + ":"
+                };
 
                 //Setze den Inhalt für das "Korrekt"-Label
-                Label korrekteAntwortLabel = new Label();
-                korrekteAntwortLabel.Content = antworten[i].korrekt;
+                Label korrekteAntwortLabel = new Label
+                {
+                    Content = antworten[i].korrekt
+                };
 
-                Label gegebeneAntwortLabel = new Label();
-                gegebeneAntwortLabel.Content = antworten[i].eingabe;
+                Label gegebeneAntwortLabel = new Label
+                {
+                    Content = antworten[i].eingabe
+                };
 
                 //if(korrekteAntwortLabel.Content.Equals(gegebeneAntwortLabel.Content))
                 if (Main.IstRichtig(antworten[i].korrekt, antworten[i].eingabe))

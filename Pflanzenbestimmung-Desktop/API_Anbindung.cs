@@ -235,37 +235,6 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
-
-        public void KategorieAktualisieren(string katerie, bool AnzeigeGala, bool AnzeigeZier, bool WertungWerker, bool imQuiz)
-        {
-            KategorieAktualisieren(katerie, AnzeigeGala.ToInt(), AnzeigeZier.ToInt(), WertungWerker.ToInt(), imQuiz.ToInt());
-        }
-        public void KategorieAktualisieren(string kategorie, int AnzeigeGala, int AnzeigeZier, int WertungWerker, int imQuiz)
-        {
-            try
-            {
-                using (var client = new WebClient())
-                {
-                    var values = new NameValueCollection
-                    {
-                        ["method"] = "updateKategorie",
-                        ["Kategorie"] = kategorie,
-                        ["AnzeigeGala"] = AnzeigeGala.ToString(),
-                        ["AnzeigeZier"] = AnzeigeZier.ToString(),
-                        ["WertungWerker"] = WertungWerker.ToString(),
-                        ["imQuiz"] = imQuiz.ToString()
-                    };
-                    var response = client.UploadValues(url, values);
-                    var responseString = Encoding.Default.GetString(response);
-                }
-            }
-
-            catch (Exception e)
-            {
-                VerbindungsFehler(e);
-            }
-        }
-
         public void KategorieLoeschen(int IDk)
         {
             try

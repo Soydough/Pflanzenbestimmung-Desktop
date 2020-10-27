@@ -32,11 +32,7 @@ namespace Pflanzenbestimmung_Desktop
         /// <returns></returns>
         public static bool IsNullOrEmpty<T>(this T[] self)
         {
-            if (self is null)
-                return true;
-            if (self.Length == 0)
-                return true;
-            return false;
+            return self is null ? true : self.Length == 0;
         }
 
         /// <summary>
@@ -47,11 +43,7 @@ namespace Pflanzenbestimmung_Desktop
         /// <returns></returns>
         public static bool IsNullOrEmpty<T>(this List<T> self)
         {
-            if (self is null)
-                return true;
-            if (self.Count == 0)
-                return true;
-            return false;
+            return self is null ? true : self.Count == 0;
         }
 
         /// <summary>
@@ -67,25 +59,14 @@ namespace Pflanzenbestimmung_Desktop
 
         public static string ToIntString<T>(this T self)
         {
-            if (self is int)
-            {
-                return Convert.ToInt32(self).ToIntString();
-            }
-            else if (self is bool)
-            {
-                return Convert.ToBoolean(self).ToIntString();
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
+            return self is int
+                ? Convert.ToInt32(self).ToIntString()
+                : self is bool ? Convert.ToBoolean(self).ToIntString() : throw new NotImplementedException();
         }
 
         public static int ToInt(this bool self)
         {
-            if (self)
-                return 1;
-            return 0;
+            return self ? 1 : 0;
         }
 
         public static string ToIntString(this int self)
@@ -94,9 +75,7 @@ namespace Pflanzenbestimmung_Desktop
         }
         public static string ToIntString(this bool self)
         {
-            if (self)
-                return "1";
-            return "0";
+            return self ? "1" : "0";
         }
 
         public static string MakeValid(this string self)

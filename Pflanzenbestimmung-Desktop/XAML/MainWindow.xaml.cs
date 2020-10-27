@@ -122,13 +122,12 @@ namespace Pflanzenbestimmung_Desktop
                     }
                     else
                     {
-                        Hauptmenü h = o as Hauptmenü;
-                        h.AktuellesQuizButton.Visibility = Visibility.Collapsed;
-                        h.ZufälligesQuizButton.Visibility = Visibility.Collapsed;
-                        h.StatistikButton.Visibility = Visibility.Collapsed;
-                        h.EineMinuteProPflanzeButton.Visibility = Visibility.Collapsed;
+                        Hauptmenü hauptmenü = o as Hauptmenü;
+                        hauptmenü.AktuellesQuizButton.Visibility = Visibility.Collapsed;
+                        hauptmenü.ZufälligesQuizButton.Visibility = Visibility.Collapsed;
+                        hauptmenü.StatistikButton.Visibility = Visibility.Collapsed;
+                        hauptmenü.EineMinuteProPflanzeButton.Visibility = Visibility.Collapsed;
                     }
-                    Main.AktualisiereAusbilderId();
                     break;
 
                 case "Registrierung":

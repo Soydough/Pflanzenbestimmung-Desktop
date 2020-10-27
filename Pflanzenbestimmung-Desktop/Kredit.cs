@@ -5,7 +5,7 @@
 
     class Kredit
     {
-        string hauptkontaktmöglichkeit = "hippopotomonstrosesquippedaliophobie@protonmail.com";
-        bool easterEggs = true;
+        public string hauptkontaktmöglichkeit = "hippopotomonstrosesquippedaliophobie@protonmail.com";
+        public bool easterEggs = true;
     }
 }

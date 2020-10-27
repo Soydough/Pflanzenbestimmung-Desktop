@@ -5,6 +5,6 @@
         public int id_pflanze;
 
         //Es ist gefährlich, alleine zu gehen, id_pflanze. Nimm dies!
-        private int zweiteVariable;
+        public int zweiteVariable;
     }
 }

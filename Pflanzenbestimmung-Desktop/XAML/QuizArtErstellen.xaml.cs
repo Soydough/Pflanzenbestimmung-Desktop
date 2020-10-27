@@ -34,9 +34,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
             if (keinLeererName != "" && keineLeereGroeße != "")
             {
                 string eingabe = QuizgrößeTextBox.Text;
-                int zahl;
-
-                bool erfolg = int.TryParse(eingabe, out zahl);
+                bool erfolg = int.TryParse(eingabe, out _);
                 if (erfolg)
                 {
                     Main.api_anbindung.QuizArtErstellen(keinLeererName, keineLeereGroeße);

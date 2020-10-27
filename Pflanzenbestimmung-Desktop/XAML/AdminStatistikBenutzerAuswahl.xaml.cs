@@ -49,7 +49,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                     MainWindow.changeContent(new AdminStatistik(auswahl));
                 }
             }
-            catch (Exception t)
+            catch (Exception)
             {
                 MessageBox.Show("Ein unerwarteter Fehler ist aufgetreten. Vergewissern Sie sich das eine Statistik für den Auszubildenden vorhanden ist. Wenn der Fehler wiederholt auftritt wenden Sie sich an den System-Administrator.");
             }
