@@ -4,7 +4,7 @@
     {
         public static Pflanze FindeMitID(this Pflanze[] self, int id)
         {
-            foreach(Pflanze pflanze in self)
+            foreach (Pflanze pflanze in self)
             {
                 if (pflanze.id_pflanze == id)
                     return pflanze;

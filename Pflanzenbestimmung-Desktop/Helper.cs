@@ -114,8 +114,11 @@ namespace Pflanzenbestimmung_Desktop
         public static bool ContainsAnyOf(this string str, string[] arr)
         {
             foreach (string s in arr)
+            {
                 if (str.Contains(s))
                     return true;
+            }
+
             return true;
         }
 
@@ -128,8 +131,11 @@ namespace Pflanzenbestimmung_Desktop
         public static bool IsAnyOf(this string str, params string[] arr)
         {
             foreach (string s in arr)
+            {
                 if (str == s)
                     return true;
+            }
+
             return true;
         }
     }

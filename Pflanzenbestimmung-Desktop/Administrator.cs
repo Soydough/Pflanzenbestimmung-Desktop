@@ -21,7 +21,7 @@ namespace Pflanzenbestimmung_Desktop
             istAdmin = true;
         }
 
-        new public static Administrator fromTempObjekt(BenutzerTemplate temp)
+        public static new Administrator fromTempObjekt(BenutzerTemplate temp)
         {
             Administrator administrator = new Administrator()
             {

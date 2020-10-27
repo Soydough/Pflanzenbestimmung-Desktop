@@ -87,11 +87,13 @@ namespace Pflanzenbestimmung_Desktop
         public bool FuegeBenutzerHinzu(string benutzername, string passwort, int ausbilderId, int ausbildungsart, int fachrichtung)
         {
             if (ausbilderId == -1)
+            {
                 MessageBox.Show("Die Ausbilder-ID des angemeldeten Benutzers kann nicht festegestellt werden. Mögliche Ursachen:\n" +
                     "   • Es besteht keine Internet-Verbindung\n" +
                     "   • Sie haben versucht, eine Sicherheitslücke zu finden ;)\n" +
                     "\n" +
                     "Bitte versuchen Sie es in einigen Minuten noch einmal");
+            }
             else
             {
                 //try

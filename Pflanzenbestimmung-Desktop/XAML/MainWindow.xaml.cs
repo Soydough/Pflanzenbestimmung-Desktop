@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -80,7 +79,7 @@ namespace Pflanzenbestimmung_Desktop
             double yoff1 = 0;
             double yoff2 = 0;
 
-            if(xoff < 0)
+            if (xoff < 0)
             {
                 xoff2 = -1 * xoff;
             }
@@ -89,7 +88,7 @@ namespace Pflanzenbestimmung_Desktop
                 xoff1 = xoff;
             }
 
-            if(yoff < 0)
+            if (yoff < 0)
             {
                 yoff2 = -1 * yoff;
             }
@@ -118,7 +117,9 @@ namespace Pflanzenbestimmung_Desktop
                 case "Hauptmenü":
                     dieses.Title = "Pflanzenbestimmung";
                     if (!Main.benutzer.istAdmin)
+                    {
                         ((Hauptmenü)o).AdministrationButton.Visibility = Visibility.Collapsed;
+                    }
                     else
                     {
                         Hauptmenü h = o as Hauptmenü;

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -7,7 +6,7 @@ namespace Pflanzenbestimmung_Desktop
     {
         public static KategorieAbfrage FindeKategorie(this KategorieAbfrage[] arr, string name)
         {
-            foreach(KategorieAbfrage k in arr)
+            foreach (KategorieAbfrage k in arr)
             {
                 if (k.kategorie_name == name)
                     return k;

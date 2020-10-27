@@ -11,7 +11,7 @@ namespace Pflanzenbestimmung_Desktop
     public partial class PflanzenAnlegung : UserControl
     {
         List<string> bilder = new List<string>();
-        
+
 
         public PflanzenAnlegung()
         {
@@ -40,14 +40,18 @@ namespace Pflanzenbestimmung_Desktop
             }
 
             //CheckBox für IstGala
-            CheckBox galaCheckBox = new CheckBox();
-            galaCheckBox.Content = "Gilt für den Bereich: Gartenlandschaftsbau";
-            galaCheckBox.Margin = new Thickness(0, 10, 0, 10);
+            CheckBox galaCheckBox = new CheckBox
+            {
+                Content = "Gilt für den Bereich: Gartenlandschaftsbau",
+                Margin = new Thickness(0, 10, 0, 10)
+            };
 
             //CheckBox für IstZier
-            CheckBox zierCheckBox = new CheckBox();
-            zierCheckBox.Content = "Gilt für den Bereich: Ziergartenbau";
-            zierCheckBox.Margin = new Thickness(0, 10, 0, 10);
+            CheckBox zierCheckBox = new CheckBox
+            {
+                Content = "Gilt für den Bereich: Ziergartenbau",
+                Margin = new Thickness(0, 10, 0, 10)
+            };
 
             RegisterName("galaCheckBox", galaCheckBox);
             RegisterName("zierCheckBox", zierCheckBox);

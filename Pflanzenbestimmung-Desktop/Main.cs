@@ -301,7 +301,7 @@ namespace Pflanzenbestimmung_Desktop
             //azubiQuizZuweisungen = api_anbindung.BekommeQuizPZuweisung(benutzer.id);
 
             //if (azubiQuizZuweisungen.IsNullOrEmpty())
-            if(azubiQuizArt.pflanzen.IsNullOrEmpty())
+            if (azubiQuizArt.pflanzen.IsNullOrEmpty())
             {
                 MessageBox.Show("Ihnen ist kein Quiz zugewiesen!");
                 return;
@@ -313,7 +313,7 @@ namespace Pflanzenbestimmung_Desktop
                 List<Pflanze> tempPflanzen = new List<Pflanze>();
 
                 //for (int i = 0; i < azubiQuizZuweisungen.Length; i++)
-                for(int i = 0; i < azubiQuizArt.pflanzen.Length; i++)
+                for (int i = 0; i < azubiQuizArt.pflanzen.Length; i++)
                 {
                     //int index = azubiQuizZuweisungen[i].id_pflanze - 1;
                     int id = azubiQuizArt.pflanzen[i].id_pflanze;
