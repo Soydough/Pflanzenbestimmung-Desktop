@@ -19,7 +19,7 @@
         </DataGrid>
         <Label Content="Kategorie Bearbeiten" HorizontalAlignment="Left" Margin="275,21,0,0" VerticalAlignment="Top" Width="215"/>
         <Button x:Name="btnkatAenderungSpeich" Content="Änderung speichern" HorizontalAlignment="Left" Margin="275,305,0,0" VerticalAlignment="Top" Width="215" Click="btnkatAenderungSpeich_Click" ToolTip="Zum Speichern der geänderten Kategorie."/>
-        <DataGrid x:Name="listvkategorieausw" HorizontalAlignment="Left" Height="208" Margin="560,82,0,0" VerticalAlignment="Top" Width="215" AutoGenerateColumns="False" ToolTip="Zeigt an ob eine Kategorie im abgefragt wird.">
+        <DataGrid x:Name="listvkategorieausw" HorizontalAlignment="Left" Height="208" Margin="560,82,0,0" VerticalAlignment="Top" Width="215" AutoGenerateColumns="False" ToolTip="Zeigt an ob eine Kategorie im Quiz abgefragt wird.">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Kategorie" Binding="{Binding Kategorien}"/>
                 <DataGridTextColumn Header="Ausgewählt" Binding="{Binding QuizAuswahl}"/>
