@@ -1,5 +1,8 @@
-﻿namespace Pflanzenbestimmung_Desktop
+﻿using System;
+
+namespace Pflanzenbestimmung_Desktop
 {
+    [Obsolete("Wird nicht mehr benötigt", true)]
     public class QuizPZuweisung
     {
         public int id_pflanze;

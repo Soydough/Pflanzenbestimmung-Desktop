@@ -183,6 +183,7 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
+        [Obsolete("Wird nicht mehr benötigt(?)")]
         public QuizPZuweisung[] BekommeQuizPZuweisung(int IDaz)
         {
             try
@@ -229,7 +230,7 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         MessageBox.Show("Kategorie erfolgreich hinzugefügt. Bitte aktualisieren Sie die Pflanzen bevor Sie die Kategorie benutzen.");
                     }
-                    else 
+                    else
                     {
                         if (responseString.Contains("Duplicate entry"))
                         {
@@ -238,9 +239,9 @@ namespace Pflanzenbestimmung_Desktop
                         else
                         {
                             MessageBox.Show("Ein unerwarteter fehler ist aufgeträten, bitte versuchen Sie es später erneut oder Kontaktieren Sie den Programmadministrator.");
-                        }                        
+                        }
                     }
-                }         
+                }
             }
             catch (Exception e)
             {

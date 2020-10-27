@@ -125,7 +125,6 @@
     <Compile Include="AzubiStatistik.cs" />
     <Compile Include="Benutzer.cs" />
     <Compile Include="BenutzerTemplate.cs" />
-    <Compile Include="Datenbankverbindung.cs" />
     <Compile Include="Fachrichtung.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Kategorie.cs" />
@@ -141,9 +140,6 @@
     <Compile Include="QuizPZuweisung.cs" />
     <Compile Include="StatistikPflanze.cs" />
     <Compile Include="StatistikPflanzeAntwort.cs" />
-    <Compile Include="Uebersicht.xaml.cs">
-      <DependentUpon>Uebersicht.xaml</DependentUpon>
-    </Compile>
     <Compile Include="XAML\AdminGesamtStatistik.xaml.cs">
       <DependentUpon>AdminGesamtStatistik.xaml</DependentUpon>
     </Compile>
@@ -195,10 +191,6 @@
     <Compile Include="XAML\Statistik.xaml.cs">
       <DependentUpon>Statistik.xaml</DependentUpon>
     </Compile>
-    <Page Include="Uebersicht.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="XAML\AdminGesamtStatistik.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

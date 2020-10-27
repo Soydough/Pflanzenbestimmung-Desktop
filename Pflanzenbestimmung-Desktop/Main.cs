@@ -63,10 +63,12 @@ namespace Pflanzenbestimmung_Desktop
         //Das Bild für die Anzeige in BildAnzeigeVollbild
         public static ImageSource fullscreenImage;
 
+        [Obsolete("Wird nicht mehr benötigt(?)")]
         public static QuizPZuweisung[] quizPZuweisungen;
 
         public static Azubis[] azubi;
 
+        [Obsolete("Wird nicht mehr benötigt(?)")]
         public static QuizPZuweisung[] azubiQuizZuweisungen;
 
         //Zeitpunkt des Beginns des Quiz
