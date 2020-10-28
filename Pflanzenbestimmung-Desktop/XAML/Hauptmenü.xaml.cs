@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pflanzenbestimmung_Desktop.XAML;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -84,7 +85,7 @@ namespace Pflanzenbestimmung_Desktop
 
         private void BugReportButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow.changeContent(new BugReport());
         }
     }
 }
