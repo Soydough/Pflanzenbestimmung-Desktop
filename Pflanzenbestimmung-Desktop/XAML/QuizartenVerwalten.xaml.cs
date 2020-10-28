@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Pflanzenbestimmung_Desktop
+namespace Pflanzenbestimmung_Desktop.XAML
 {
     /// <summary>
     /// Interaktionslogik für QuizartenVerwalten.xaml
