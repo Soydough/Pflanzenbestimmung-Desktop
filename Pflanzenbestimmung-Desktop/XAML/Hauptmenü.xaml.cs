@@ -78,7 +78,7 @@ namespace Pflanzenbestimmung_Desktop
         {
             if (eineminuteErstesMal)
             {
-                MessageBox.Show("Dieser Button macht gar nichts. lol", "You just got pranked!");
+                MessageBox.Show("Dieser Button macht momentan noch nichts");
                 eineminuteErstesMal = false;
             }
         }
