@@ -67,5 +67,10 @@ namespace Pflanzenbestimmung_Desktop
         {
             currentTab = (sender as TabControl).SelectedIndex;
         }
+
+        private void QuizArtenVerwalten_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.changeContent(new QuizartenVerwalten());
+        }
     }
 }

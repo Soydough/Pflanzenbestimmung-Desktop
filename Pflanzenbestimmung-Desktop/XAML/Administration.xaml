@@ -12,7 +12,6 @@
             <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
                 <Button Name="ZuLernendeKategorienEinstellungButton" Click="ZuLernendeKategorienEinstellungButton_Click" Content="Kategorien verwalten" ToolTip="Öffnet das Verwaltungsfenster für Kategorien"/>
                 <Button Name="StatistikButton" Click="StatistikButton_Click" Content="Statistik" ToolTip="Öffnet das Fenster zum Ansehen von Statistiken" />
-                <Button Name="QuizGroeßeErstellen" Click="QuizGroeßeErstellen_Click" Content="Quizart erstellen" ToolTip="Öffnet das Fenster zum Erstellen von Quizgrößen" />
                 <Button Name="HauptmenüButton" Click="HauptmenüButton_Click" Content="Zurück zum Hauptmenü" ToolTip="Öffnet das Hauptmenü" />
             </StackPanel>
         </TabItem>
@@ -27,6 +26,12 @@
             <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
                 <Button Name="NeuerBenutzer" Click="NeuerBenutzer_Click" Content="Neuen Benutzer anlegen" ToolTip="Öffnet das Fenster zum Erstellen von Benutzern" />
                 <Button Name="Benutzerverwaltung" Click="Benutzerverwaltung_Click" Content="Vorhandene Nutzer verwalten" ToolTip="Öffnet das Fenster zum Bearbeiten von Benutzern" />
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Quizes" ToolTip="Einstellungen der Quizes.">
+            <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
+                <Button Name="QuizGroeßeErstellen" Click="QuizGroeßeErstellen_Click" Content="Quizart erstellen" ToolTip="Öffnet das Fenster zum Erstellen von Quizarten" />
+                <Button Name="QuizArtenVerwalten" Click="QuizArtenVerwalten_Click" Content="Quizarten verwalten" ToolTip="Öffnet das Fenster zum verändern und löschen von Quizarten"/>
             </StackPanel>
         </TabItem>
     </TabControl>

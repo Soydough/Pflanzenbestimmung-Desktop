@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace Pflanzenbestimmung_Desktop
@@ -629,7 +630,7 @@ namespace Pflanzenbestimmung_Desktop
 #endif
         }
 
-        public void QuizArtErstellen(string quizName, string quizGroeße)
+        public void QuizArtErstellen(string quizName, int quizGroeße, List<int> pflanzenID)
         {
             try
             {
@@ -640,11 +641,41 @@ namespace Pflanzenbestimmung_Desktop
                     {
                         ["method"] = "createQuizArt",
                         ["Quizname"] = quizName,
-                        ["Groeße"] = quizGroeße
+                        ["Groeße"] = quizGroeße.ToString()
                     };
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
+                    if (responseString.Contains("ID_QuizArt"))
+                    {
+                        int quizartId = Convert.ToInt32(Regex.Replace(responseString, @"[^\d]", ""));
+                        for (int i = 0; i < pflanzenID.Count; i++)
+                        {
+                            ErstelleQuizPZuweisung(quizartId, pflanzenID[i]);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e + "");
+            }
+        }
 
+        public void ErstelleQuizPZuweisung(int idqa, int idp)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    Azubis Azubidaten = new Azubis();
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "createQuizPZuweisung",
+                        ["IDqa"] = idqa.ToString(),
+                        ["IDp"] = idp.ToString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
                 }
             }
             catch (Exception e)

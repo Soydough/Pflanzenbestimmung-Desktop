@@ -47,10 +47,43 @@
                 return zierpflanzenbau != 0;
             }
         }
+        public string IstGalaReturnString
+        {
+            get
+            {
+                if (gartenlandschaftsbau == 0)
+                {
+                    return "Nein";
+                }
+                else
+                {
+                    return "Ja";
+                }
+
+            }
+        }
+
+
+        public string IstZierReturnString
+        {
+            get
+            {
+                if (zierpflanzenbau == 0)
+                {
+                    return  "Nein";
+                }
+                else
+                {
+                    return "Ja";
+                }
+                
+            }
+        }
+
 
         public override string ToString()
         {
-            return $"{kategorien[0].antwort} {kategorien[1].antwort} {kategorien[2].antwort}";
+            return $"{kategorien[1].antwort}, {kategorien[0].antwort}";
         }
     }
 }

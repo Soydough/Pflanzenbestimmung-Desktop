@@ -27,16 +27,23 @@
             </Grid>
             <Grid>
                 <Label Content="Quizgröße:"/>
-                <TextBox Name="QuizgrößeTextBox" PreviewTextInput="Numbers" />
+                <Label Name="aktuelleQuizGroeße" Content="0" Margin="65,0,0,10"/>
             </Grid>
             <Grid>
-                <Label Content="Pflanzen:"/>
-                <DataGrid Name="PflanzenListe" AutoGenerateColumns="False" CanUserAddRows="False" >
+                <DataGrid Name="DataGridPflanzenListe" AutoGenerateColumns="False" CanUserAddRows="False" SelectionChanged="PflanzenListe_SelectionChanged" >
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Header="Auswählen"/>
-                        <DataGridTextColumn Header="Pflanzenname"/>
-                        <DataGridTextColumn Header="Gartenlandschaftsbau"/>
-                        <DataGridTextColumn Header="Zierpflanzenbau"/>
+                        <DataGridCheckBoxColumn Header="Auswählen" x:Name="QuizartPflanzenauswahlCheckbox">
+                            <DataGridCheckBoxColumn.CellStyle>
+                                <Style>
+                                    <EventSetter Event="CheckBox.Checked" Handler="OnChecked"/>
+                                    <EventSetter Event="CheckBox.Unchecked" Handler="OnUnchecked"/>
+                                </Style>
+                            </DataGridCheckBoxColumn.CellStyle>
+                        </DataGridCheckBoxColumn>
+                        <DataGridTextColumn Header="Pflanzenname" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Gartenlandschaftsbau" Binding="{Binding IstGalaReturnString}"/>
+                        <DataGridTextColumn Header="Zierpflanzenbau" Binding="{Binding IstZierReturnString}">
+                        </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
