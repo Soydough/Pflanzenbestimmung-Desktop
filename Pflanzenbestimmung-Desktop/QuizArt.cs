@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Dynamic;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -14,10 +15,23 @@ namespace Pflanzenbestimmung_Desktop
         {
             return quizname.ToString();
         }
+
+        public string Quizname
+        {
+            get { return quizname; }
+            set { quizname = value; }
+        }
+
+        public int Quizgroeße
+        {
+            get { return quizgröße; }
+            set { quizgröße = value; }
+        }
     }
 
     public class QuizArtPflanze
     {
         public int id_pflanze { get; set; }
     }
+   
 }

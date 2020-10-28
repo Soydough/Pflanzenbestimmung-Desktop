@@ -22,6 +22,10 @@ namespace Pflanzenbestimmung_Desktop.XAML
         public QuizartenVerwalten()
         {
             InitializeComponent();
+            //Lädt alle Quizarten 
+            DataGridQuizArten.ItemsSource = Main.quizArt;
+           
+                
         }
     }
 }
