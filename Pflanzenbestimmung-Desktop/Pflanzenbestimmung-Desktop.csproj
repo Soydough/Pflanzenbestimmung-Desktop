@@ -136,6 +136,9 @@
     <Compile Include="Pflanzenbild.cs" />
     <Compile Include="PflanzenVorschauTemplate.cs" />
     <Compile Include="QuizArt.cs" />
+    <Compile Include="QuizartenVerwalten.xaml.cs">
+      <DependentUpon>QuizartenVerwalten.xaml</DependentUpon>
+    </Compile>
     <Compile Include="QuizPflanze.cs" />
     <Compile Include="QuizPZuweisung.cs" />
     <Compile Include="StatistikPflanze.cs" />

@@ -1,4 +1,7 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,17 +14,29 @@ namespace Pflanzenbestimmung_Desktop.XAML
     /// </summary>
     public partial class QuizArtErstellen : UserControl
     {
+        List<int> pflanzenID;
+        int aktuelleGroeße;
         public QuizArtErstellen()
         {
             InitializeComponent();
-            //PflanzenListe.ItemsSource = 
+            DataGridPflanzenListe.ItemsSource = Main.pflanzen;
+            pflanzenID = new List<int>();
+            aktuelleGroeße = 0;
         }
 
-        private void Numbers(object sender, TextCompositionEventArgs e)
+        
+        void OnChecked(object sender, RoutedEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]");
-            e.Handled = regex.IsMatch(QuizgrößeTextBox.Text);
+            aktuelleGroeße = aktuelleGroeße + 1;
+            aktuelleQuizGroeße.Content = aktuelleGroeße.ToString();
         }
+
+        void OnUnchecked(object sender, RoutedEventArgs e)
+        {
+            aktuelleGroeße = aktuelleGroeße - 1;
+            aktuelleQuizGroeße.Content = aktuelleGroeße.ToString();
+        }
+
 
         private void ArtErstellenAbbrechenButton_Click(object sender, RoutedEventArgs e)
         {
@@ -31,20 +46,22 @@ namespace Pflanzenbestimmung_Desktop.XAML
         private void ArtErstellenSpeichernButton_Click(object sender, RoutedEventArgs e)
         {
             string keinLeererName = NameDerQuizgrößeTextBox.Text.Trim();
-            string keineLeereGroeße = QuizgrößeTextBox.Text.Trim();
-            if (keinLeererName != "" && keineLeereGroeße != "")
+
+            for (int i = 0; i < DataGridPflanzenListe.Items.Count; i++)
             {
-                string eingabe = QuizgrößeTextBox.Text;
-                bool erfolg = int.TryParse(eingabe, out _);
-                if (erfolg)
+                bool bla = (DataGridPflanzenListe.Columns[0].GetCellContent(DataGridPflanzenListe.Items[i]) as CheckBox).IsChecked.Value;
+
+                if (bla)
                 {
-                    Main.api_anbindung.QuizArtErstellen(keinLeererName, keineLeereGroeße);
-                    MainWindow.changeContent(new Administration());
+                    pflanzenID.Add(Main.pflanzen[i].id_pflanze);
                 }
-                else
-                {
-                    MessageBox.Show("Bitte keine Buchstaben in der Quizgröße eingeben.");
-                }
+            }
+
+            int quizGroeße = pflanzenID.Count;
+            if (keinLeererName != "")
+            {                 
+                    Main.api_anbindung.QuizArtErstellen(keinLeererName, quizGroeße, pflanzenID);
+                    MainWindow.changeContent(new Administration());               
             }
             else
             {
@@ -54,7 +71,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
         private void PflanzenListe_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            //pflanzenID.Add(DataGridPflanzenListe.SelectedIndex);
         }
     }
 }
