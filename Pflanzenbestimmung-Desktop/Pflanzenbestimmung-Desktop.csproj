@@ -173,6 +173,9 @@
     <Compile Include="XAML\QuizartenVerwalten.xaml.cs">
       <DependentUpon>QuizartenVerwalten.xaml</DependentUpon>
     </Compile>
+    <Compile Include="XAML\QuizArtBearbeiten.xaml.cs">
+      <DependentUpon>QuizArtBearbeiten.xaml</DependentUpon>
+    </Compile>
     <Compile Include="XAML\QuizArtErstellen.xaml.cs">
       <DependentUpon>QuizArtErstellen.xaml</DependentUpon>
     </Compile>
@@ -284,6 +287,10 @@
     <Page Include="XAML\QuizartenVerwalten.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\QuizArtBearbeiten.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="XAML\QuizArtErstellen.xaml">
       <SubType>Designer</SubType>

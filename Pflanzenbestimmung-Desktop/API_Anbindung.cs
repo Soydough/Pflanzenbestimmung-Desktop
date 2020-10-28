@@ -652,7 +652,7 @@ namespace Pflanzenbestimmung_Desktop
                         {
                             ErstelleQuizPZuweisung(quizartId, pflanzenID[i]);
                         }
-                    }
+                    }               
                 }
             }
             catch (Exception e)
@@ -880,6 +880,68 @@ namespace Pflanzenbestimmung_Desktop
                 VerbindungsFehler(e);
             }
         }
+
+        public void QuizArtLoeschen(int id, QuizArtPflanze[] idPflanze)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "deleteQuizArt",
+                        ["IDqa"] = id.ToString(),
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                    if (idPflanze.Length !=0 )
+                    {
+                        if (responseString == "")
+                        {
+                            for (int i = 0; i < idPflanze.Length; i++)
+                            {
+                                QuizZuweisungLoeschen(id, idPflanze[i].id_pflanze);
+                            }
+                        }
+                    }
+                    
+                }
+            }
+
+            catch (Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
+        public void QuizZuweisungLoeschen(int idQuiz, int idPflanze)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "deleteQuizPZuweisung",
+                        ["IDqa"] = idQuiz.ToString(),
+                        ["IDp"] = idPflanze.ToString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    if (responseString != "")
+                    {
+
+                    }
+                }
+            }
+
+            catch (Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
 
     }//End Class
 }//End Namespace

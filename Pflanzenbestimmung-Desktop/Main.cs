@@ -182,6 +182,21 @@ namespace Pflanzenbestimmung_Desktop
             return AdminVerwaltungListe;
         }
 
+        public static ObservableCollection<QuizArt> QuizArtVerwaltungListe
+        {
+            get; set;
+        }
+
+        public static ObservableCollection<QuizArt> InitializeQuizArtVerwaltungListe()
+        {
+            QuizArtVerwaltungListe = new ObservableCollection<QuizArt>();
+            for (int i = 0; i < quizArt.Count; i++)
+            {
+                QuizArtVerwaltungListe.Add(quizArt[i]);
+            }
+            return QuizArtVerwaltungListe;
+        }
+
         public static void LadeStatistiken(int id = 0)
         {
             if (!benutzer.istAdmin)

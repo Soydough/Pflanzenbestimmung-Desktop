@@ -12,16 +12,32 @@ namespace Pflanzenbestimmung_Desktop.XAML
     /// <summary>
     /// Interaktionslogik für QuizArtErstellen.xaml
     /// </summary>
-    public partial class QuizArtErstellen : UserControl
+    public partial class QuizArtBearbeiten : UserControl
     {
         List<int> pflanzenID;
         int aktuelleGroeße;
-        public QuizArtErstellen()
+        public QuizArtBearbeiten(QuizArt daten)
         {
             InitializeComponent();
             DataGridPflanzenListe.ItemsSource = Main.pflanzen;
+            NameDerQuizgrößeTextBox.Text = daten.quizname;
+            for (int i = 0; i < daten.pflanzen.Length; i++)
+            {
+                for (int j = 0; j < DataGridPflanzenListe.Items.Count; j++)
+                {
+                    if (daten.pflanzen[i].id_pflanze.Equals(Main.pflanzen[j].id_pflanze))
+                    {
+                        /*CheckBox box =*/
+                        DataGridPflanzenListe.Items[j] = (DataGridPflanzenListe.Columns[0].GetCellContent(DataGridPflanzenListe.Items[j]) as CheckBox);
+                        //box.IsChecked = true;
+                        break;
+                    }
+                }
+                
+            }
+
             pflanzenID = new List<int>();
-            aktuelleGroeße = 0;
+            aktuelleGroeße = daten.quizgröße;
         }
 
         
@@ -49,9 +65,9 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
             for (int i = 0; i < DataGridPflanzenListe.Items.Count; i++)
             {
-                bool bla = (DataGridPflanzenListe.Columns[0].GetCellContent(DataGridPflanzenListe.Items[i]) as CheckBox).IsChecked.Value;
+                bool checket = (DataGridPflanzenListe.Columns[0].GetCellContent(DataGridPflanzenListe.Items[i]) as CheckBox).IsChecked.Value;
 
-                if (bla)
+                if (checket)
                 {
                     pflanzenID.Add(Main.pflanzen[i].id_pflanze);
                 }
