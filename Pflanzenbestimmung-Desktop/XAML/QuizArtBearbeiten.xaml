@@ -35,6 +35,7 @@
                         <DataGridCheckBoxColumn Header="Auswählen" x:Name="QuizartPflanzenauswahlCheckbox">
                             <DataGridCheckBoxColumn.CellStyle>
                                 <Style>
+                                    
                                     <EventSetter Event="CheckBox.Checked" Handler="OnChecked"/>
                                     <EventSetter Event="CheckBox.Unchecked" Handler="OnUnchecked"/>
                                 </Style>

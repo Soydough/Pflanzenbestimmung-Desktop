@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 
@@ -15,29 +16,39 @@ namespace Pflanzenbestimmung_Desktop.XAML
     public partial class QuizArtBearbeiten : UserControl
     {
         List<int> pflanzenID;
+        List<PlanzeMitBool> pflanzenMitBools;
+
         int aktuelleGroeße;
+        
         public QuizArtBearbeiten(QuizArt daten)
         {
             InitializeComponent();
-            DataGridPflanzenListe.ItemsSource = Main.pflanzen;
             NameDerQuizgrößeTextBox.Text = daten.quizname;
-            for (int i = 0; i < daten.pflanzen.Length; i++)
+            pflanzenMitBools = new List<PlanzeMitBool>();
+
+            for (int i = 0; i < Main.pflanzen.Length; i++)
             {
-                for (int j = 0; j < DataGridPflanzenListe.Items.Count; j++)
+                pflanzenMitBools.Add(new PlanzeMitBool(Main.pflanzen[i].id_pflanze,
+                                                       Main.pflanzen[i].Name, 
+                                                       Main.pflanzen[i].zierpflanzenbau, 
+                                                       Main.pflanzen[i].gartenlandschaftsbau, 
+                                                       Main.pflanzen[i].kategorien));
+
+
+                for (int d = 0; d < daten.pflanzen.Length; d++)
                 {
-                    if (daten.pflanzen[i].id_pflanze.Equals(Main.pflanzen[j].id_pflanze))
+                    if (daten.pflanzen[d].id_pflanze.Equals(pflanzenMitBools[i].id_pflanze))
                     {
-                        /*CheckBox box =*/
-                        DataGridPflanzenListe.Items[j] = (DataGridPflanzenListe.Columns[0].GetCellContent(DataGridPflanzenListe.Items[j]) as CheckBox);
-                        //box.IsChecked = true;
-                        break;
+                        pflanzenMitBools[i].imQuiz = true;
                     }
                 }
-                
+
             }
 
             pflanzenID = new List<int>();
             aktuelleGroeße = daten.quizgröße;
+            
+            DataGridPflanzenListe.ItemsSource = this.pflanzenMitBools;
         }
 
         
@@ -84,5 +95,26 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 MessageBox.Show("Bitte alle Felder füllen.");
             }
         }
-    }
-}
+
+        private class PlanzeMitBool : Pflanze
+        {
+            public PlanzeMitBool(int id, string name,  int zier, int gala, KategorieAbfrage[] kat)
+            {
+                imQuiz = false;
+                id_pflanze = id;
+                Name = name;
+                zierpflanzenbau = zier;
+                gartenlandschaftsbau = gala;
+                kategorien = kat;
+            }
+
+            public bool imQuiz
+            {
+                get { return imQuiz; }
+                set { }
+            }
+
+
+        }/// END CLASS
+    }///END CLASS
+}/// END NAMESPACE
