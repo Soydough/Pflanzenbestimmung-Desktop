@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -44,44 +45,24 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
         private void sendEmail(string nachricht)
         {
-            var absender = new MailAddress("mineumann77@gmail.com", "Neumann");
-            var empfänger = new MailAddress("jan.bellenberg@tsbw.cloud", "Kurbanov, Amir");
-            const string absendePSW = "citrix150100";
-            const string betreff = "Bug Report Pflanzenbestimmung";
-            nachricht += "\n Diese Nachricht wurde über das Pflanzenbestimmung-Programm gesendet.";
-
-            var smtp = new SmtpClient
+            nachricht += "\nDiese Nachricht wurde durch das Pflanzenbestimmungs-Desktop-Programm versendet";
+            try
             {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,     
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(absender.Address, absendePSW),
-            };
-
-            using (var message = new MailMessage(absender, empfänger)
-            {
-                Subject = betreff,
-                Body = nachricht
-            })
-            {
-                try
+                using (var client = new WebClient())
                 {
-                    smtp.Send(message);
-                    MessageBox.Show("Danke für ihr Feedback!");
-                }
-                catch(Exception e)
-                {
-                    MessageBox.Show(e.ToString());
-                    string s = e.ToString();
-                    MessageBox.Show("Das sollte nicht passieren! :( \nBitte schreiben Sie selbst eine Email an den Projektmanager: A. K. :) \n" +
-                        "Bei weiteren Fragen, fragen Sie bitte die entsprechende Person." + 
-                        "\nMit freundlichen Grüßen \nIhre Damen und Herren");
+                    var values = new NameValueCollection()
+                    {
+                        ["text"] = nachricht
+                    };
+                    var response = client.UploadValues("https://pbstsbw.000webhostapp.com/email.php", values);
+                    var responseString = Encoding.Default.GetString(response);
+                    MessageBox.Show("Danke für Ihr Feedback!");
                 }
             }
-
-            
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
         }
 
         
