@@ -14,15 +14,15 @@
         <DataGrid x:Name="GridKategorienBearbeiten" HorizontalAlignment="Left" Height="208" Margin="275,82,0,0" VerticalAlignment="Top" Width="215" AutoGenerateColumns="False" SelectionChanged="GridKategorienBearbeiten_SelectionChanged" 
                   ToolTip="Liste von Kategorien, zum ändern auf eine klicken und unter 'Neue Kategorie anlegen' bearbeiten." CanUserAddRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Kategorie" Binding="{Binding Kategorien}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Kategorie" Binding="{Binding Kategorien}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Kategorie Bearbeiten" HorizontalAlignment="Left" Margin="275,21,0,0" VerticalAlignment="Top" Width="215"/>
         <Button x:Name="btnkatAenderungSpeich" Content="Änderung speichern" HorizontalAlignment="Left" Margin="275,305,0,0" VerticalAlignment="Top" Width="215" Click="btnkatAenderungSpeich_Click" ToolTip="Zum Speichern der geänderten Kategorie."/>
         <DataGrid x:Name="listvkategorieausw" HorizontalAlignment="Left" Height="208" Margin="560,82,0,0" VerticalAlignment="Top" Width="215" AutoGenerateColumns="False" ToolTip="Zeigt an ob eine Kategorie im Quiz abgefragt wird.">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Kategorie" Binding="{Binding Kategorien}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Ausgewählt" Binding="{Binding QuizAuswahl}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Kategorie" Binding="{Binding Kategorien}"/>
+                <DataGridTextColumn Header="Ausgewählt" Binding="{Binding QuizAuswahl}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Im Quiz verwendete Kategorien:" HorizontalAlignment="Left" Margin="560,21,0,0" VerticalAlignment="Top" Width="215"/>

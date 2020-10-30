@@ -40,9 +40,9 @@
                                 </Style>
                             </DataGridCheckBoxColumn.CellStyle>
                         </DataGridCheckBoxColumn>
-                        <DataGridTextColumn Header="Pflanzenname" Binding="{Binding Name}" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Gartenlandschaftsbau" Binding="{Binding IstGalaReturnString}" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Zierpflanzenbau" Binding="{Binding IstZierReturnString}" IsReadOnly="True">
+                        <DataGridTextColumn Header="Pflanzenname" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Gartenlandschaftsbau" Binding="{Binding IstGalaReturnString}"/>
+                        <DataGridTextColumn Header="Zierpflanzenbau" Binding="{Binding IstZierReturnString}">
                         </DataGridTextColumn>
                     </DataGrid.Columns>
                 </DataGrid>
