@@ -28,11 +28,12 @@
             <TabItem Header="Daten" ToolTip="Zum bearbeiten der Pflanzendaten.">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="63*" />
+                        <ColumnDefinition Width="217*"/>
+                        <ColumnDefinition Width="279*" />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="0">
+                    <StackPanel Grid.Column="0" Grid.ColumnSpan="2">
                         <StackPanel.Style>
                             <Style>
                                 <Style.Resources>
@@ -64,29 +65,26 @@
                         </ScrollViewer>
                     </StackPanel>
 
-                    <Image Name="BilderHochladenFlaeche" Grid.Column="1" Source="..\Bilder\hochladen.png"  Height="105" VerticalAlignment="Top" AllowDrop="True" ToolTip="Bild(er) zum Hochladen hier reinziehen" />
-                     
-              
-                    <Button Name="AbbrechenButton" Click="AbbrechenButton_Click" Content="Abbrechen" Grid.Column="2" Height="30" Width="120" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="20,20,0,20" ToolTip="Zurück zum Administartionsbreich."/>
-                    <Button Name="SpeichernButton" Click="SpeichernButton_Click" Content="Speichern" Grid.Column="2" Height="30" Width="120" Margin="10,20" ToolTip="Speichern der Änderungen." VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-                    <Button Name="PflanzeLoeschenButton" Click="PflanzeLoeschenButton_Click" Content="Pflanze löschen" Grid.Column="2" Height="30" Width="120" VerticalAlignment="Bottom" Margin="60" ToolTip="Zum löschen der Pflanze."/>
-                    <ListView Name="BilderVorschau" Grid.Column="1" Margin="10,120,10,100" Grid.ColumnSpan="2"/>
+                    <Image Name="BilderHochladenFlaeche" Grid.Column="2" Source="..\Bilder\hochladen.png"  Height="105" VerticalAlignment="Top" AllowDrop="True" ToolTip="Bild(er) zum Hochladen hier reinziehen" />
+
+
+                    <Button Name="AbbrechenButton" Click="AbbrechenButton_Click" Content="Abbrechen" Grid.Column="2" Height="30" Width="120" VerticalAlignment="Bottom" HorizontalAlignment="Left"  Margin="20,0,0,20" ToolTip="Zurück zum Administartionsbreich."/>
+                    <Button Name="SpeichernButton" Click="SpeichernButton_Click" Content="Speichern" Grid.Column="2" Height="30" Width="120" Margin="0,0,10,20" ToolTip="Speichern der Änderungen." VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                    <Button Name="PflanzeLoeschenButton" Click="PflanzeLoeschenButton_Click" Content="Pflanze löschen" Grid.Column="2" Height="30" Width="120" VerticalAlignment="Bottom" Margin="80,0,79,60" ToolTip="Zum löschen der Pflanze."/>
+                    <ListView Name="BilderVorschau" Grid.Column="2" Margin="10,120,10,100"/>
                 </Grid>
             </TabItem>
 
             <TabItem Header="Bilder" ToolTip="Bearbeiten der Pflanzenbilder.">
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="22*"/>
-                        <ColumnDefinition Width="613*"/>
-                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
+
                     <ListView Name="BilderListView" Grid.ColumnSpan="2" />
 
-                    <Button Name="LoeschenButton" Grid.Row="1" Content="Ausgewählte Bilder endgültig LÖSCHEN" Margin="10, 5" Click="LoeschenButton_Click" Grid.ColumnSpan="2"/>
+                    <Button Name="LoeschenButton" Grid.Row="1" Content="Ausgewählte Bilder endgültig LÖSCHEN" Margin="10, 5" Click="LoeschenButton_Click" />
                 </Grid>
             </TabItem>
         </TabControl>

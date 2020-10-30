@@ -85,7 +85,6 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
             //string[] pflanzennamen = Main.pflanzen.Select(pflanze => pflanze.ToString()).ToArray();
 
-            //PflanzenDataGrid.ItemsSource = Main.pflanzen;
             PflanzenDataGrid.ItemsSource = Main.pflanzen;
             PflanzenDataGrid.SelectedIndex = 0;
         }
@@ -238,8 +237,8 @@ namespace Pflanzenbestimmung_Desktop.XAML
         bool bilderGeladen = false;
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            aktualisiereBilder();
-            aktualisiere();
+            //aktualisiereBilder();
+            //aktualisiere();
             //zeigeBildVorschau();
         }
 
