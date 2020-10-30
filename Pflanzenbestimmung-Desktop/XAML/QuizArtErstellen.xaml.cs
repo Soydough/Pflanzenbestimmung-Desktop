@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 
 namespace Pflanzenbestimmung_Desktop.XAML
@@ -24,7 +20,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
             aktuelleGroeße = 0;
         }
 
-        
+
         void OnChecked(object sender, RoutedEventArgs e)
         {
             aktuelleGroeße = aktuelleGroeße + 1;
@@ -59,9 +55,9 @@ namespace Pflanzenbestimmung_Desktop.XAML
 
             int quizGroeße = pflanzenID.Count;
             if (keinLeererName != "")
-            {                 
-                    Main.api_anbindung.QuizArtErstellen(keinLeererName, quizGroeße, pflanzenID);
-                    MainWindow.changeContent(new Administration());               
+            {
+                Main.api_anbindung.QuizArtErstellen(keinLeererName, quizGroeße, pflanzenID);
+                MainWindow.changeContent(new Administration());
             }
             else
             {

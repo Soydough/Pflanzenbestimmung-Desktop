@@ -70,13 +70,13 @@
             {
                 if (zierpflanzenbau == 0)
                 {
-                    return  "Nein";
+                    return "Nein";
                 }
                 else
                 {
                     return "Ja";
                 }
-                
+
             }
         }
 
