@@ -78,7 +78,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
                     auswahl.Add(Main.pflanzen[i].id_pflanze);
                 }
             }
-            aktuelleQuizGroeße.Content = auswahl.Count;  
+            aktuelleQuizGroeße.Content = auswahl.Count;
         }
 
         void OnUncheckedBearbeiten(object sender, RoutedEventArgs e)
@@ -106,7 +106,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
         {
             string keinLeererName = NameDerQuizgrößeTextBox.Text.Trim();
             List<int> LoeschPflanzeZuweisung = new List<int>();
-            int quizid = daten.id;           
+            int quizid = daten.id;
             for (int i = 0; i < pflanzenMitBoolsBackUp.Count; i++)
             {
                 if (pflanzenMitBools[i].ImQuizArt && !pflanzenMitBoolsBackUp[i].ImQuizArt)
@@ -161,3 +161,4 @@ namespace Pflanzenbestimmung_Desktop.XAML
         }/// END CLASS
     }///END CLASS
 }/// END NAMESPACE
+

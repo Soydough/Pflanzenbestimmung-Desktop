@@ -173,6 +173,9 @@
     <Compile Include="XAML\PflanzenAnlegung.xaml.cs">
       <DependentUpon>PflanzenAnlegung.xaml</DependentUpon>
     </Compile>
+    <Compile Include="XAML\QuizArtBearbeiten.xaml.cs">
+      <DependentUpon>QuizArtBearbeiten.xaml</DependentUpon>
+    </Compile>
     <Compile Include="XAML\QuizartenVerwalten.xaml.cs">
       <DependentUpon>QuizartenVerwalten.xaml</DependentUpon>
     </Compile>
@@ -285,6 +288,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="XAML\PflanzenAnlegung.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\QuizArtBearbeiten.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
