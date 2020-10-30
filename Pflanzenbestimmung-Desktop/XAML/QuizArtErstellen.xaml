@@ -23,7 +23,7 @@
             </StackPanel.Style>
             <Grid>
                 <Label Content="Name der Quizgröße:" />
-                <TextBox Name="NameDerQuizgrößeTextBox"  />
+                <TextBox Name="NameDerQuizgrößeTextBox" ToolTip="Suchen Sie nach der Quizgröße"  />
             </Grid>
             <Grid>
                 <Label Content="Quizgröße:"/>
