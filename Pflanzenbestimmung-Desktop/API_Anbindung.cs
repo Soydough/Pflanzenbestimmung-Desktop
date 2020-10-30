@@ -881,5 +881,102 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
+        public void QuizArtLoeschen(int id, QuizArtPflanze[] idPflanze)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "deleteQuizArt",
+                        ["IDqa"] = id.ToString(),
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                    if (idPflanze.Length != 0)
+                    {
+                        if (responseString == "")
+                        {
+                            for (int i = 0; i < idPflanze.Length; i++)
+                            {
+                                QuizZuweisungLoeschen(id, idPflanze[i].id_pflanze);
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            catch (Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
+        public void QuizZuweisungLoeschen(int idQuiz, int idPflanze)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "deleteQuizPZuweisung",
+                        ["IDqa"] = idQuiz.ToString(),
+                        ["IDp"] = idPflanze.ToString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+
+                    if (responseString != "")
+                    {
+
+                    }
+                }
+            }
+
+            catch (Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
+        public void QuizArtBearbeiten(int quizID, string quizName, int quizGroeße, List<int> pflanzenIDneu, List<int> PflanzenIDloesch)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    Azubis Azubidaten = new Azubis();
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "updateQuizArt",
+                        ["IDqa"] = quizID.ToString(),
+                        ["Quizname"] = quizName,
+                        ["Groeße"] = quizGroeße.ToString()
+                    };
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                    if (responseString == "")
+                    {
+                        for (int j = 0; j < PflanzenIDloesch.Count; j++)
+                        {
+                            QuizZuweisungLoeschen(quizID, PflanzenIDloesch[j]);
+                        }
+                        for (int i = 0; i < pflanzenIDneu.Count; i++)
+                        {
+                            ErstelleQuizPZuweisung(quizID, pflanzenIDneu[i]);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e + "");
+            }
+        }
+
+
     }//End Class
 }//End Namespace

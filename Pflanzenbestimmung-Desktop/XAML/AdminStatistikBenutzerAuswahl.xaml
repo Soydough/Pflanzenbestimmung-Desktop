@@ -15,8 +15,8 @@
 
         <DataGrid Height="260" Margin="0,10" Name="SelctUserForStatisticDataGrid" AutoGenerateColumns="False" ToolTip="Liste von Ihren Auszubildenden.">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Vorname" Binding="{Binding Vorname}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Vorname" Binding="{Binding Vorname}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
 

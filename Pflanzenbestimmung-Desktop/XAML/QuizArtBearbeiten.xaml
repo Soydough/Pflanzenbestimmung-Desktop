@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Pflanzenbestimmung_Desktop.XAML.QuizArtErstellen"
+﻿<UserControl x:Class="Pflanzenbestimmung_Desktop.XAML.QuizArtBearbeiten"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -23,20 +23,20 @@
             </StackPanel.Style>
             <Grid>
                 <Label Content="Name der Quizgröße:" />
-                <TextBox Name="NameDerQuizgrößeTextBox" ToolTip="Suchen Sie nach der Quizgröße"  />
+                <TextBox Name="NameDerQuizgrößeTextBox"  />
             </Grid>
             <Grid>
                 <Label Content="Quizgröße:"/>
                 <Label Name="aktuelleQuizGroeße" Content="0" Margin="65,0,0,10"/>
             </Grid>
             <Grid>
-                <DataGrid Name="DataGridPflanzenListe" AutoGenerateColumns="False" CanUserAddRows="False" SelectionChanged="PflanzenListe_SelectionChanged" >
+                <DataGrid Name="DataGridPflanzenListeBearbeiten" AutoGenerateColumns="False" CanUserAddRows="False" >
                     <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Header="Auswählen" x:Name="QuizartPflanzenauswahlCheckbox">
+                        <DataGridCheckBoxColumn Header="Auswählen" Binding="{Binding ImQuizArt}">
                             <DataGridCheckBoxColumn.CellStyle>
                                 <Style>
-                                    <EventSetter Event="CheckBox.Checked" Handler="OnChecked"/>
-                                    <EventSetter Event="CheckBox.Unchecked" Handler="OnUnchecked"/>
+                                    <EventSetter Event="CheckBox.Checked" Handler="OnCheckedBearbeiten"/>
+                                    <EventSetter Event="CheckBox.Unchecked" Handler="OnUncheckedBearbeiten"/>
                                 </Style>
                             </DataGridCheckBoxColumn.CellStyle>
                         </DataGridCheckBoxColumn>
@@ -55,8 +55,8 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
-            <Button Name="QuizArtErstellenAbbrechenButton" Click="ArtErstellenAbbrechenButton_Click" Content="Abbrechen" Margin="10" Height="30" ToolTip="Quiz erstellung abbrechen."/>
-            <Button Name="QuizArtErstellenSpeichernButton" Click="ArtErstellenSpeichernButton_Click" Content="Speichern" Margin="10" Grid.Column="1" Height="30" ToolTip="Quiz speichern."/>
+            <Button Name="QuizArtBearbeitenAbbrechenButton" Click="ArtBearbeitenAbbrechenButton_Click" Content="Abbrechen" Margin="10" Height="30" ToolTip="Quiz erstellung abbrechen."/>
+            <Button Name="QuizArtBearbeitenSpeichernButton" Click="ArtBearbeitenSpeichernButton_Click" Content="Speichern" Margin="10" Grid.Column="1" Height="30" ToolTip="Quiz speichern."/>
         </Grid>
     </Grid>
 </UserControl>
