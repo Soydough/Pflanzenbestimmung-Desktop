@@ -128,6 +128,20 @@ namespace Pflanzenbestimmung_Desktop
                 abgefragtZuweisung.Add(i, abgefragt[i].IstGelernt);
             }
         }
+        public static ObservableCollection<QuizArt> QuizArtVerwaltungListe
+        {
+            get; set;
+        }
+
+        public static ObservableCollection<QuizArt> InitializeQuizArtVerwaltungListe()
+        {
+            QuizArtVerwaltungListe = new ObservableCollection<QuizArt>();
+            for (int i = 0; i < quizArt.Count; i++)
+            {
+                QuizArtVerwaltungListe.Add(quizArt[i]);
+            }
+            return QuizArtVerwaltungListe;
+        }
 
         public static ObservableCollection<Azubis> azubiVerwaltungListe
         {
