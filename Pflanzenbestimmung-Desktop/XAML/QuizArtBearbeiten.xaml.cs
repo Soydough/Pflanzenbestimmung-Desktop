@@ -121,7 +121,18 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 }
             }
 
-            int quizGroeße = pflanzenID.Count;
+            auswahl = new List<int>();
+            for (int i = 0; i < DataGridPflanzenListeBearbeiten.Items.Count; i++)
+            {
+                bool bla = (DataGridPflanzenListeBearbeiten.Columns[0].GetCellContent(DataGridPflanzenListeBearbeiten.Items[i]) as CheckBox).IsChecked.Value;
+
+                if (bla)
+                {
+                    auswahl.Add(Main.pflanzen[i].id_pflanze);
+                }
+            }
+
+            int quizGroeße = auswahl.Count;
             if (keinLeererName != "")
             {
                 Main.api_anbindung.QuizArtBearbeiten(quizid, keinLeererName, quizGroeße, pflanzenID, LoeschPflanzeZuweisung);
