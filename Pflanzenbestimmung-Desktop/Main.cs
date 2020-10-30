@@ -107,6 +107,7 @@ namespace Pflanzenbestimmung_Desktop
             pflanzen = api_anbindung.Bekommen<Pflanze>();
             kategorien = api_anbindung.Bekommen<Kategorie>().ToList();
             azubi = api_anbindung.Bekommen<Azubis>("Azubis");
+            quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt").ToDictionary();
         }
 
         public static void LadeAzubiDaten()
@@ -114,8 +115,7 @@ namespace Pflanzenbestimmung_Desktop
             ausbildungsarten = api_anbindung.Bekommen<Ausbildungsart>("Ausbildungsart").ToDictionary();
             fachrichtungen = api_anbindung.Bekommen<Fachrichtung>("Fachrichtung").ToDictionary();
             ausbilder = api_anbindung.Bekommen<Administrator>("Admins").ToDictionary();
-            azubi = api_anbindung.Bekommen<Azubis>("Azubis");
-            quizArt = api_anbindung.Bekommen<QuizArt>("QuizArt").ToDictionary();
+            azubi = api_anbindung.Bekommen<Azubis>("Azubis");         
         }
 
         public static void LadeAbgefragt()
