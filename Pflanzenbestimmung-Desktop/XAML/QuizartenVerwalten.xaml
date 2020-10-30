@@ -29,9 +29,9 @@
             </DataGrid>
         </StackPanel>
         <Grid>
-            <Button Name="zurückButton" Click="zurückButton_Click" Content="Zurück" VerticalAlignment="Bottom" Height="30" Width="200" HorizontalAlignment="Left" Margin="10" />
-            <Button Name="quizLoeschenButton" Click="quizLoeschenButton_Click" Content="Löschen" VerticalAlignment="Bottom" Height="30" Width="200" HorizontalAlignment="Center" Margin="10"/>
-            <Button Name="quizBearbeitenButton" Click="quizBearbeitenButton_Click" Content="Bearbeiten" VerticalAlignment="Bottom" Height="30" Width="200" HorizontalAlignment="Right" Margin="10"/>
+            <Button Name="zurückButton" Click="zurückButton_Click" Content="Zurück" VerticalAlignment="Bottom" Height="30" Width="200" HorizontalAlignment="Left" Margin="10" ToolTip="Wechseln Sie zum vorherigen Fenster"/>
+            <Button Name="quizLoeschenButton" Click="quizLoeschenButton_Click" Content="Löschen" VerticalAlignment="Bottom" Height="30" Width="200" HorizontalAlignment="Center" Margin="10" ToolTip="Löschen Sie das momentan ausgewählte Quiz"/>
+            <Button Name="quizBearbeitenButton" Click="quizBearbeitenButton_Click" Content="Bearbeiten" VerticalAlignment="Bottom" Height="30" Width="200" HorizontalAlignment="Right" Margin="10" ToolTip="Bearbeiten Sie das momentan ausgewählte Quiz"/>
         </Grid>
     </Grid>
 </UserControl>
