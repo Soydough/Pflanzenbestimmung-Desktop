@@ -15,6 +15,7 @@ namespace Pflanzenbestimmung_Desktop
         public int id_beste_pflanze;
         public StatistikPflanze[] pflanzen;
 
+
         //public DateTime Erstellt
         //{
         //    get

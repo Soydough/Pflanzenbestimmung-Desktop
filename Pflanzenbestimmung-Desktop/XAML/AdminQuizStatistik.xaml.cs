@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -27,8 +28,8 @@ namespace Pflanzenbestimmung_Desktop
             }
 
             //Entferne Platzhalter-Daten
-            StackPanel.Children.Clear();
-
+            AllgemeinStackPanel.Children.Clear();
+            
             //Bekomme die Antworten
             StatistikPflanzeAntwort[] antworten = Main.azubiStatistik.pflanzen[Main.momentanePflanzeAusStatistik].antworten;
 
@@ -89,8 +90,33 @@ namespace Pflanzenbestimmung_Desktop
                 Grid.SetColumn(korrekteAntwortLabel, 1);
                 Grid.SetColumn(gegebeneAntwortLabel, 2);
 
-                StackPanel.Children.Add(grid);
+                AllgemeinStackPanel.Children.Add(grid);
+            }//Ende for-Schleife
+
+            Label notizTextBox = new Label();
+            notizTextBox.Name = "notizTextBox";
+            notizTextBox.Margin = new Thickness(10);
+            string notiz = Main.azubiStatistik.pflanzen[Main.momentanePflanzeAusStatistik].notiz;
+            if (notiz != null)
+            {
+                string[] geteilteNotiz = notiz.Split(' ');
+                int abzaehlen = 1;
+                for (int i = 0; i < geteilteNotiz.Length; i++)
+                {
+                    notizTextBox.Content += geteilteNotiz[i] + " ";
+                    abzaehlen++;
+                    if (abzaehlen == 20)
+                    {
+                        notizTextBox.Content += "\n";
+                        abzaehlen = 1;
+                    }
+                }
             }
+            else
+            {
+                notizTextBox.Content = "";
+            }
+            NotizStackPanel.Children.Add(notizTextBox);
         }
 
         private void HauptmenüButton_Click(object sender, System.Windows.RoutedEventArgs e)
