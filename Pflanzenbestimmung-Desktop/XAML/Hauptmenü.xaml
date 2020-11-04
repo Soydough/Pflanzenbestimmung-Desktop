@@ -28,8 +28,9 @@
             <Button Name="StatistikButton" Click="StatistikButton_Click" Content="Statistik" ToolTip="Öffnet Ihre Statistik-Seite" />
             <Button Name="AdministrationButton" Click="AdministrationButton_Click" Content="Administratives" Visibility="Visible" ToolTip="Öffnet die Administrations-Seite" />
             <Button Name="AusloggenButton" Click="AusloggenButton_Click" Content="Ausloggen" ToolTip="Meldet Sie ab" />
-            <Button Name="BugReport" Click="BugReportButton_Click" Content="Fehler melden?" />
+
 
         </StackPanel>
+        <Button Style="{DynamicResource ButtonStyle}" x:Name="BugReport" Click="BugReportButton_Click" Content="Fehler melden?" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" ToolTip="Wenn Sie einen Fehler im Programm entdeckt haben, können Sie diesen hier melden"/>
     </Grid>
 </UserControl>

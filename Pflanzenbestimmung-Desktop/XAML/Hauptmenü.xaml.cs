@@ -14,6 +14,16 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
             //Main.QuizBekommen();
+            if(Main.benutzer.istAdmin)
+            {
+                BugReport.IsEnabled = true;
+                BugReport.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                BugReport.IsEnabled = false;
+                BugReport.Visibility = Visibility.Hidden;
+            }
         }
 
         private void AusloggenButton_Click(object sender, RoutedEventArgs e)
