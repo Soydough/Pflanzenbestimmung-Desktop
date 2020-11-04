@@ -8,7 +8,7 @@
              d:DesignHeight="400" d:DesignWidth="800"
              Style="{DynamicResource HauptStyle}">
 
-    <Grid>
+    <Grid Name="MainGrid">
         <StackPanel Name="StackPanel">
             <Grid Name="GattungsnameGrid">
                 <Grid.ColumnDefinitions>
@@ -100,11 +100,10 @@
                 <Label Content="Besonderheiten:" />
                 <Label Grid.Column="1" Name="BesonderheitenLabel" Content="farbige Blattmetamorphosen (Hochblätter/Brakteen)" Foreground="Green" />
             </Grid>
-
-            <StackPanel Orientation="Horizontal">
-
-            </StackPanel>
+            
         </StackPanel>
+        <Button Name="Notiz_Speichern" Click="Notiz_Speichern_Click" Content="Notiz Speichern" Visibility="Collapsed" Height="30" Width="200" VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Center" ToolTip=""/>
+        <Button Name="Notiz_bearbeiten" Content="Notiz bearbeiten" Visibility="Visible" Height="30" Width="200" VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Center" ToolTip="" Click="Notiz_bearbeiten_Click"/>
         <Button Name="Weiter" Click="Weiter_Click" Content="Weiter" Height="30" Width="200" VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Right" ToolTip="Zeigt die nächste Antwort des Quiz an."/>
         <Button Name="Hauptmenü" Click="Hauptmenü_Click" Content="Hauptmenü" Grid.Column="1" Height="30" Width="200" VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Left" ToolTip="Zurück ins Hauptmenü."/>
     </Grid>

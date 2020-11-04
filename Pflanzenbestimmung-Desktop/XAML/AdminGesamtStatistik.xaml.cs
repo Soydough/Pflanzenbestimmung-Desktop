@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Org.BouncyCastle.Math.EC.Multiplier;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Pflanzenbestimmung_Desktop.XAML
@@ -17,6 +18,7 @@ namespace Pflanzenbestimmung_Desktop.XAML
             StackPanel.Children.Clear();
 
             StatistikPflanzeAntwort[] antworten = Main.azubiStatistik.pflanzen[Main.momentanePflanzeAusStatistik].antworten;
+            string notiz = Main.azubiStatistik.pflanzen[Main.momentanePflanzeAusStatistik].notiz;
 
             for (int i = 0; i < antworten.Length; i++)
             {
@@ -82,7 +84,25 @@ namespace Pflanzenbestimmung_Desktop.XAML
                 Grid.SetColumn(gegebeneAntwortLabel, 2);
 
                 StackPanel.Children.Add(grid);
+
             }
+            // Notiz Label und Textbox hinzufügen
+            Label lbNotiz = new Label();
+            lbNotiz.Content = "Notiz:";
+            StackPanel.Children.Add(lbNotiz);
+
+            TextBox tbNotiz = new TextBox();
+            RegisterName("tbNotiz", tbNotiz);
+            if (notiz != null)
+            {
+                tbNotiz.Text = notiz;
+            }
+            tbNotiz.IsEnabled = false;
+
+            StackPanel.Children.Add(tbNotiz);
+
+            
+
         }
 
         void Hauptmenü_Click(object sender, RoutedEventArgs e)
@@ -95,6 +115,28 @@ namespace Pflanzenbestimmung_Desktop.XAML
             Main.momentanePflanzeAusStatistik = (Main.momentanePflanzeAusStatistik + 1) % Main.azubiStatistik.pflanzen.Length;
 
             MainWindow.changeContent(new AdminGesamtStatistik(azubi));
+        }
+
+        private void Notiz_Speichern_Click(object sender, RoutedEventArgs e)
+        {
+            (StackPanel.FindName("tbNotiz") as TextBox).IsEnabled = false;
+
+            Notiz_bearbeiten.Visibility = Visibility.Visible;
+            this.Notiz_Speichern.Visibility = Visibility.Collapsed;
+
+            int idp = Main.azubiStatistik.pflanzen[Main.momentanePflanzeAusStatistik].id_pflanze;
+            int ids = Main.azubiStatistik.id_statistik;
+            string notiz = (StackPanel.FindName("tbNotiz") as TextBox).Text;
+
+            Main.api_anbindung.ÄndereStatistikNotiz(ids, idp, notiz);
+        }
+
+        private void Notiz_bearbeiten_Click(object sender, RoutedEventArgs e)
+        {
+            (StackPanel.FindName("tbNotiz") as TextBox).IsEnabled = true;
+            
+            this.Notiz_bearbeiten.Visibility = Visibility.Collapsed;
+            Notiz_Speichern.Visibility = Visibility.Visible;
         }
     }
 }

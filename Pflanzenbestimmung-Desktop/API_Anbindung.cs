@@ -546,6 +546,30 @@ namespace Pflanzenbestimmung_Desktop
             }
         }
 
+        public void ÄndereStatistikNotiz(int IDs, int IDp, string Notiz)
+        {
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    var values = new NameValueCollection
+                    {
+                        ["method"] = "updateNotiz",
+                        ["IDs"] = IDs.ToString(),
+                        ["IDp"] = IDp.ToString(),
+                        ["Notiz"] = Notiz
+                    };
+
+                    var response = client.UploadValues(url, values);
+                    var responseString = Encoding.Default.GetString(response);
+                }
+            }
+            catch (Exception e)
+            {
+                VerbindungsFehler(e);
+            }
+        }
+
         public void BenutzerAendern(bool admin, int id, string benutzername, string passwort, string name, string vorname, int ausbildungsart, int fachrichtung, int ausbilder, int pruefung, int groeßeQuizArt)
         {
             try
