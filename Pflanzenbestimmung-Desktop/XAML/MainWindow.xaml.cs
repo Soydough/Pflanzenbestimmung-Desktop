@@ -126,7 +126,7 @@ namespace Pflanzenbestimmung_Desktop
                         hauptmenü.AktuellesQuizButton.Visibility = Visibility.Collapsed;
                         hauptmenü.ZufälligesQuizButton.Visibility = Visibility.Collapsed;
                         hauptmenü.StatistikButton.Visibility = Visibility.Collapsed;
-                        hauptmenü.EineMinuteProPflanzeButton.Visibility = Visibility.Collapsed;
+                        //hauptmenü.EineMinuteProPflanzeButton.Visibility = Visibility.Collapsed;
                     }
                     break;
 

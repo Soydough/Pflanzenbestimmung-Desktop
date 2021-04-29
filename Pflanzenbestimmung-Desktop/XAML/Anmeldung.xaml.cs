@@ -12,16 +12,7 @@ namespace Pflanzenbestimmung_Desktop
         {
             InitializeComponent();
 
-#if DEBUG
-            AnmeldungBenutzernameTextBox.Text = "SysAdmin";
-            AnmeldungPasswordBox.Password = "KarteiAdmin321#";
-            //AnmeldungBenutzernameTextBox.Text = "SysUserA";
-            //AnmeldungPasswordBox.Password = "test";
 
-            // TODO Löschen der Anmeldedaten vor dem Ausliefern.
-            // Anmerkung Dirk: lol, das bringt sicher viel
-            // Anmerkung Dirk: Das war übrigens Ironie
-#endif
         }
 
         private void AnmeldungButton_Click(object sender, RoutedEventArgs e)
