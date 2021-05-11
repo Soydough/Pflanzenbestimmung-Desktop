@@ -756,6 +756,12 @@ namespace Pflanzenbestimmung_Desktop
                     var response = client.UploadValues(url, values);
                     var responseString = Encoding.Default.GetString(response);
 
+                    if(responseString == "")
+                    {
+                        MessageBox.Show("");
+                        return null;
+                    }
+
                     return JsonConvert.DeserializeObject<QuizArt[]>(responseString)[0];
                 }
             }

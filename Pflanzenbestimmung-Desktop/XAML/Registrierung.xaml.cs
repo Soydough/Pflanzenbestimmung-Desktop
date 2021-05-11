@@ -48,13 +48,31 @@ namespace Pflanzenbestimmung_Desktop
             string passwort = null;
             string name = null;
             string vorname = null;
-            int pruefung;
+            int pruefung = -1;
+
+            int ausbildungsart = -1, fachrichtung = -1,
+                    ausbilderId = -1, quizArtId = -1;
+
             if (!admin)
             {
                 benutzername = BenutzernameTextBox.Text.Trim();
                 passwort = PasswordBox.Password.Trim();
                 name = NachnameTextBox.Text.Trim();
                 vorname = VornameTextBox.Text.Trim();
+
+                ausbildungsart = ((KeyValuePair<int, Ausbildungsart>)dieses.AubildungsartComboBox.SelectedItem).Key;
+                fachrichtung = ((KeyValuePair<int, Fachrichtung>)dieses.FachrichtungComboBox.SelectedItem).Key;
+                ausbilderId = ((KeyValuePair<int, Administrator>)dieses.AusbilderComboBox.SelectedItem).Key;
+                quizArtId = ((KeyValuePair<int, QuizArt>)QuizartenComboBox.SelectedItem).Key;
+
+                if (PruefungsmodusCheckbox.IsChecked == false)
+                {
+                    pruefung = 1;
+                }
+                else
+                {
+                    pruefung = 0;
+                }
             }
             else
             {
@@ -71,19 +89,6 @@ namespace Pflanzenbestimmung_Desktop
             else
             {
                 passwort = Main.GetHashWithSalt(passwort, benutzername);
-
-                if (PruefungsmodusCheckbox.IsChecked == false)
-                {
-                    pruefung = 1;
-                }
-                else
-                {
-                    pruefung = 0;
-                }
-                int ausbildungsart = ((KeyValuePair<int, Ausbildungsart>)dieses.AubildungsartComboBox.SelectedItem).Key;
-                int fachrichtung = ((KeyValuePair<int, Fachrichtung>)dieses.FachrichtungComboBox.SelectedItem).Key;
-                int ausbilderId = ((KeyValuePair<int, Administrator>)dieses.AusbilderComboBox.SelectedItem).Key;
-                int quizArtId = ((KeyValuePair<int, QuizArt>)QuizartenComboBox.SelectedItem).Key;
 
                 try
                 {

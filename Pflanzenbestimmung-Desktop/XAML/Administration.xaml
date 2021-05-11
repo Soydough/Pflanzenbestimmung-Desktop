@@ -19,7 +19,6 @@
             <StackPanel Style="{DynamicResource AdministrationButtonsStyle}">
                 <Button Name="NeuePflanzeButton" Click="NeuePflanzeButton_Click" Content="Neue Pflanze anlegen" ToolTip="Öffnet das Fenster zum Erstellen von Pflanzen" />
                 <Button Name="Pflanzenbearbeiten" Click="Pflanzenbearbeiten_Click" Content="Pflanzen bearbeiten" ToolTip="Öffnet das Fenster zum Bearbeiten von Pflanzen" />
-                <Button Name="ErscheinendePflanzen" Click="ErscheinendePflanzen_Click" Content="Erscheinende Pflanzen verwalten" ToolTip="Öffnet das Fenster zum Verwalten der in Quiz erscheinenden Pflanzen" />
             </StackPanel>
         </TabItem>
         <TabItem Header="Benutzer" ToolTip="Einstellungen für Benutzer.">
@@ -36,3 +35,4 @@
         </TabItem>
     </TabControl>
 </UserControl>
+
