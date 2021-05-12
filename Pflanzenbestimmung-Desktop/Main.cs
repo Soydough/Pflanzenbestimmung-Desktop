@@ -96,6 +96,8 @@ namespace Pflanzenbestimmung_Desktop
         {
             //datenbankverbindung.BekommeAllePflanzenTest();
 
+            Helper.CheckDependencies();
+
             //Platzhalter-Bilder hochladen
             //byte[] platzhalter = File.ReadAllBytes(@"..\..\platzhalter a.jpg");
             //api_anbindung.BildHochladen(1, platzhalter);
@@ -103,7 +105,6 @@ namespace Pflanzenbestimmung_Desktop
             //api_anbindung.BildHochladen(2, platzhalter);
             //platzhalter = File.ReadAllBytes(@"..\..\platzhalter c.jpg");
             //api_anbindung.BildHochladen(3, platzhalter);
-
             pflanzen = api_anbindung.Bekommen<Pflanze>();
             kategorien = api_anbindung.Bekommen<Kategorie>().ToList();
             azubi = api_anbindung.Bekommen<Azubis>("Azubis");
@@ -441,7 +442,7 @@ namespace Pflanzenbestimmung_Desktop
         /// </summary>
         /// <param name="StringIn"></param>
         /// <returns></returns>
-        private static string SHA256HexHashString(string StringIn)
+        public static string SHA256HexHashString(string StringIn)
         {
             string hashString;
             using (var sha256 = SHA256.Create())

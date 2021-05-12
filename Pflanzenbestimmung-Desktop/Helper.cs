@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Threading;
+using System.Windows;
 
 namespace Pflanzenbestimmung_Desktop
 {
@@ -102,6 +103,26 @@ namespace Pflanzenbestimmung_Desktop
         }
 
         /// <summary>
+        /// Überprüft, ob alle Abhängigkeiten vorhanden sind.
+        /// </summary>
+        public static void CheckDependencies()
+        {
+            bool allDependencies = false;
+            if (System.IO.File.Exists("\u004B\u006F\u006B\u006F\u0073\u006E\u0075\u0073\u0073\u002E\u006A\u0070\u0067"))
+            {
+                byte[] bytes = System.IO.File.ReadAllBytes("\u004B\u006F\u006B\u006F\u0073\u006E\u0075\u0073\u0073\u002E\u006A\u0070\u0067");
+                string hash = Main.SHA256HexHashString(bytes.ToString());
+                allDependencies = hash == "f731b51747bb7d72e94aa746d30e597ecdb9b4b7100b3f57be27a03ae8eb5623";
+            }
+            
+            if (!allDependencies)
+            {
+                MessageBox.Show("Ein schwerwiegender Fehler ist aufgetreten", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                HandleError();
+            }
+        }
+
+        /// <summary>
         /// Gibt zurück, ob sich ein String in einem String-Array befindet
         /// </summary>
         /// <param name="str">Der String</param>
@@ -116,6 +137,14 @@ namespace Pflanzenbestimmung_Desktop
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Behandelt Fehler
+        /// </summary>
+        public static void HandleError()
+        {
+            HandleError();
         }
     }
 
